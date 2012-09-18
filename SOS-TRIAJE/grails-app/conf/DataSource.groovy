@@ -11,12 +11,20 @@ hibernate {
 }
 // environment specific settings
 environments {
-    development {
-        dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-            url = "jdbc:hsqldb:mem:devDB"
-        }
-    }
+development {
+		dataSource {
+//          dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+//			url = "jdbc:hsqldb:mem:devDB"
+			
+	        pooling = true
+	        driverClassName = "com.mysql.jdbc.Driver"
+	        url = "jdbc:mysql://localhost:3306/sql-triaje?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
+	        dbCreate = "create-drop"
+	        username = "root"
+	        password = ""
+                //loggingSql = true
+		}
+	}
     test {
         dataSource {
             dbCreate = "update"
