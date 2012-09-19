@@ -18,7 +18,7 @@ development {
 			
 	        pooling = true
 	        driverClassName = "com.mysql.jdbc.Driver"
-	        url = "jdbc:mysql://localhost:3306/sql-triaje?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
+	        url = "jdbc:mysql://localhost:3306/sos_triaje?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
 	        dbCreate = "create-drop"
 	        username = "root"
 	        password = ""
@@ -27,14 +27,24 @@ development {
 	}
     test {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:hsqldb:mem:testDb"
+             pooling = true
+	        driverClassName = "com.mysql.jdbc.Driver"
+	        url = "jdbc:mysql://localhost:3306/sos_triaje?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
+	        dbCreate = "create-drop"
+	        username = "root"
+	        password = ""
+                //loggingSql = true
         }
     }
     production {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+             pooling = true
+	        driverClassName = "com.mysql.jdbc.Driver"
+	        url = "jdbc:mysql://localhost:3306/sos_triaje?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
+	        dbCreate = "create-drop"
+	        username = "root"
+	        password = ""
+                //loggingSql = true
         }
     }
 }
