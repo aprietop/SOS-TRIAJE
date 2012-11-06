@@ -202,7 +202,6 @@ class CasoController {
 
             render(view: "modificarCaso", model: [casoInstanceList: results, casoInstanceTotal: Caso.count()]) 
         }       
-
     }
     
     def edit = {
