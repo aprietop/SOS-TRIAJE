@@ -2,14 +2,24 @@ package persona
 
 class Persona {
     
-    //ATRIBUTOS
+//ATRIBUTOS
     String nombre
     String apellido
     Integer cedula
-    String correo
-    //Imagen imagen
+    String sexo
+    String nacionalidad
     
-    //RELACIONES
-    Usuario usuario
-
+//MAPEO
+    static mapping = {
+        tablePerHierarchy false
+    }
+    
+//CONSTRAINTS    
+    static constraints = {        
+        nombre(nullable: false)
+        apellido(nullable: false)
+        cedula(nullable: false)
+        sexo(nullable: false)
+        nacionalidad(nullable: true)
+    }
 }

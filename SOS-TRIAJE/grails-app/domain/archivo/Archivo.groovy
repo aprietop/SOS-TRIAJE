@@ -1,11 +1,26 @@
 package archivo
 
+import caso.*
+
 class Archivo {
     
-    //ATRIBUTOS
+//ATRIBUTOS
     String nombre
     String descripcion
-    //adjunto
+    byte[] adjunto
     
-    //RELACIONES
+    static belongsTo = [caso:Caso]
+        
+//MAPEO
+/*
+    static mapping = {
+         version false
+    }*/
+    
+//CONSTRAINTS    
+    static constraints = {        
+        nombre(nullable: false)
+        descripcion(nullable: false)
+        adjunto(nullable: false)
+    }   
 }

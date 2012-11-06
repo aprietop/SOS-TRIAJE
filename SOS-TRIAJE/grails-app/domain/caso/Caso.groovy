@@ -3,20 +3,29 @@ package caso
 import especialidad.*
 import status.*
 import archivo.*
+import persona.*
+import opinion.*
 import java.sql.Time
 
 class Caso {
-    //ATRIBUTOS
-    Especialidad especialidad //viene de SOS-HME
+//ATRIBUTOS
     String descripcion
-    Date fechaCreacion
-    String datosDelPaciente
-    Date fechaRespuesta
-    Time horaRespuesta
-    String cuerpoRespuesta
-    //archivo
+    Date fechaInicio
+    Date fechaSolucion 
+    Status status    
+    Paciente paciente //Datos del paciente
+   
+//RELACIONES
+    static hasMany = [especialidades:Especialidad, opiniones:Opinion, archivos:Archivo, historialCasos: HistorialCaso]
     
-    //RELACIONES
-    static hasMany = [status:Status, archivos:Archivo]
-
+//CONSTRAINTS    
+    static constraints = {
+        descripcion(nullable: false)
+        fechaInicio(nullable: false)
+        paciente(nullable: false)  
+        fechaSolucion(nullable: true)
+        status(nullable: false)
+        paciente(nullable: false)
+        especialidades(nullable: true)
+    }
 }

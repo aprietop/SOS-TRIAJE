@@ -1,6 +1,9 @@
 // locations to search for config files that get merged into the main config
 // config files can either be Java properties files or ConfigSlurper scripts
 
+// idiomas disponibles
+langs = ['es','en','pt'] // ISO 639-1 Code
+
 // grails.config.locations = [ "classpath:${appName}-config.properties",
 //                             "classpath:${appName}-config.groovy",
 //                             "file:${userHome}/.grails/${appName}-config.properties",
@@ -87,4 +90,10 @@ log4j = {
            'net.sf.ehcache.hibernate'
 
     warn   'org.mortbay.log'
+}
+
+images.location = "web-app/images/usuarios"
+
+graphviz {
+    dot.executable = "C:/Program Files/Graphviz 2.28/bin/dot" // include full file path if not on path
 }

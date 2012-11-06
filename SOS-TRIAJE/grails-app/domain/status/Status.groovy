@@ -1,14 +1,19 @@
 package status
 
 import caso.*
+import opinion.*
+
 class Status {
     
-    //ATRIBUTOS
+//ATRIBUTOS
     String nombre
     Date fechaStatus
-    //usuario dueño
+    String decripcion
     
-    //RELACIONES
-    //static belongsTo = Caso
-    //static belongsTo = Opinion
+//CONSTRAINTS    
+    static constraints = {        
+        nombre(nullable: false)
+        fechaStatus(nullable: false)
+        decripcion(nullable: false)
+    }
 }

@@ -7,7 +7,8 @@ class UrlMappings {
 			}
 		}
 
-		"/"(view:"/index")
-		"500"(view:'/error')
+//		"/"(view:"/index")
+                "/"(controller:'actorSistema', action:"/login")
+//		"500"(view:'/error')
 	}
 }
