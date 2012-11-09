@@ -19,7 +19,7 @@ class Medico extends ActorSistema {
    
 //CONSTRAINTS    
     static constraints = {        
-        numColegioMedico(nullable: true)
-        numMinisterioSalud(nullable: true)
+        numColegioMedico(blank: true, nullable: true)
+        numMinisterioSalud(blank: true, nullable: true)
     }
 }

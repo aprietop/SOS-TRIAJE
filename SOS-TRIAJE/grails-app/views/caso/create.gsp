@@ -63,7 +63,7 @@
                                     <g:datePicker name="fechaSolucion" precision="day" value="${casoInstance?.fechaSolucion}" default="none" noSelection="['': '']" />
                                 </td>
                             </tr>
-                        
+                        <%--
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="status"><g:message code="caso.status.label" default="Status" /></label>
@@ -72,6 +72,7 @@
                                     <g:select name="status.id" from="${status.Status.list()}" optionKey="id"  optionValue="nombre" value="${casoInstance?.status?.id}"  />
                                 </td>
                             </tr>
+                            --%>
                         
                         </tbody>
                     </table>

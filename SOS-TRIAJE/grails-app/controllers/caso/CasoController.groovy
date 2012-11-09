@@ -3,6 +3,7 @@ package caso
 import medico.Triaje
 import persona.ActorSistema
 import java.util.List
+import status.Status
 
 class CasoController {
 
@@ -32,7 +33,20 @@ class CasoController {
     }
 
     def save = {
+        def s = Status.createCriteria()
+        def statusInstance = s.list{                
+            eq("nombre", "En espera")
+        }
+
+        def auxiliar = ""
+        statusInstance.each{
+            auxiliar = auxiliar + it.id
+        }  
+        def status = Status.get(auxiliar)
+
         def casoInstance = new Caso(params)
+        casoInstance.status=status
+        
         if (casoInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
             redirect(action: "show", id: casoInstance.id)
@@ -57,35 +71,8 @@ class CasoController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         
         if(session?.ActorSistema?.rol == "Triaje" ){
-            
-            def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-            
-            def c = HistorialCaso.createCriteria()
-            def results = c.list {
-                projections { 
-                   distinct("caso")            
-                }            
-                    if ((params.sort=="fechaInicio")||(params.sort=="fechaSolucion")||(params.sort=="status")||(params.sort=="descripcion")){
-                       caso{//OPERADOR ELVIS
-                            def campo=params.sort?:"fecha"
-                            def orden=params.order?:"asc"
-                            order(campo, orden)
-                        }
-                    }
-
-                    if ((params.sort=="nombre")||(params.sort=="cedula")){
-                        caso{
-                            paciente{
-                                def campo=params.sort?:"nombre"
-                                def orden=params.order?:"asc"
-                                order(campo, orden)  
-                            }
-                        }
-                    }                
-                maxResults(10)        
-            }
-            
-            render(view: "menuTriaje", model: [casoInstanceList: results, casoInstanceTotal: Caso.count()]) 
+           
+          render(view: "menuTriaje", model: [casoInstanceList: Caso.list(params), casoInstanceTotal: Caso.count()]) 
         }
         
         if(session?.ActorSistema?.rol == "Especialista" ){
@@ -203,6 +190,82 @@ class CasoController {
             render(view: "modificarCaso", model: [casoInstanceList: results, casoInstanceTotal: Caso.count()]) 
         }       
     }
+    
+    	def casosSinAsignar = {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        
+            if(session?.ActorSistema?.rol == "Triaje" ){        
+
+                def s = Status.createCriteria()
+                def statusInstance = s.list{                
+                    eq("nombre", "En espera")
+                }
+
+                def auxiliar = ""
+                statusInstance.each{
+                    auxiliar = auxiliar + it.id
+                }  
+
+                def status = Status.get(auxiliar)
+
+                def c = Caso.createCriteria()
+                def noAsignados = c.list{
+                    eq("status", status) 
+                    maxResults(10) 
+                }
+
+                render(view: "asignarCaso", model: [casoInstanceList: noAsignados, casoInstanceTotal: noAsignados.count()]) 
+            }
+
+            if(session?.ActorSistema?.rol == "Especialista" ){
+                
+                def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+                def status6 = Status.get(6)
+                def status7 = Status.get(7)
+
+                def d = HistorialCaso.createCriteria()
+                def noResueltos = d.list {
+                    eq("medico", actorInstance) 
+                    and {
+                        caso{
+                          ne("status", status6)  
+                          ne("status", status7)
+                        }                    
+                    }
+                    projections { 
+                       distinct("caso")            
+                    }                
+                }
+
+                render(view: "segundaOpinion", model: [casoInstanceList: noResueltos, casoInstanceTotal: noResueltos.count()]) 
+   
+            }        
+        }
+        
+    	def vResolverCaso = {
+
+            def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+
+            def status6 = Status.get(6)
+            def status7 = Status.get(7)
+
+            def d = HistorialCaso.createCriteria()
+            def noResueltos = d.list {
+                eq("medico", actorInstance) 
+                and {
+                    caso{
+                      ne("status", status6)  
+                      ne("status", status7)
+                    }                    
+                }
+                projections { 
+                   distinct("caso")            
+                }                
+            }
+
+            render(view: "resolverCaso", model: [casoInstanceList: noResueltos, casoInstanceTotal: noResueltos.count()]) 
+             
+    }    
     
     def edit = {
         def casoInstance = Caso.get(params.id)

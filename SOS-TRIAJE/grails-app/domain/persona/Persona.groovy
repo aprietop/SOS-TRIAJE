@@ -20,6 +20,6 @@ class Persona {
         apellido(nullable: false)
         cedula(nullable: false)
         sexo(nullable: false)
-        nacionalidad(nullable: true)
+        nacionalidad(blank: true, nullable: true)
     }
 }

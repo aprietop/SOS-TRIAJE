@@ -6,6 +6,8 @@ import java.text.DateFormat
 import java.util.Date
 import especialidad.Especialidad
 import medico.Especialista
+import medico.Medico
+import status.Status
 
 class HistorialCasoController {
 
@@ -40,33 +42,14 @@ class HistorialCasoController {
     }
     
     def historialModCaso = {
-        def CasoInstance = Caso.get(params.id)         
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss.ms");
-        Date date = new Date();
-        System.out.println(dateFormat.format(date));
-        
-        def especialidadInstance = Especialidad.getAll()
-        
-        return [CasoInstance: CasoInstance, fechaActual:dateFormat.format(date), especialidadList:especialidadInstance]
-    }    
-
-//    def ajaxGetEspecialistas = {    
-//        println "Paso por aqui"
-//        //tengo la instancia de la especialidad que se selecciono en la lista
-//        def especialidadInstance = Especialidad.get(params.id)
-//        
-//        println "Especialidad nombre:"+especialidadInstance.nombre
-//        
-//            def c = especialidad.createCriteria()
-//            def especialistas = c.list {
-//                eq("nombre", especialidadInstance.nombre) 
-//            }
-//            
-//        println "Especialidad id:"+params.id
-//        println "Especialista nombre:"+especialistas.nombre
-////        def especialidadInstance = Especialidad.get(params.especialidad)
-////        especialistaInstance.addToEspecialidades(especialidadInstance)        
-//    }
+        def CasoInstance = Caso.get(params.id)       
+        return [casoInstance: CasoInstance]
+    } 
+    
+    def historial2daOpinion = {
+        def CasoInstance = Caso.get(params.id)       
+        return [casoInstance: CasoInstance]
+    }      
 
     def save = {
         def historialCasoInstance = new HistorialCaso(params)
@@ -83,6 +66,66 @@ class HistorialCasoController {
         }
     }
 
+    def saveAsignacion = {
+        Date date = new Date()
+        def casoInstance = Caso.get(params.id)        
+        def medicoInstance = Medico.get(params.medico)
+
+            def s = Status.createCriteria()
+            def statusInstance = s.list{                
+                eq("nombre", "Asignado")
+            }
+            
+            def auxiliar = ""
+            statusInstance.each{
+                auxiliar = auxiliar + it.id
+            }  
+            
+            def statusN = Status.get(auxiliar)
+
+        casoInstance.status = statusN
+        
+        def asignacion = new HistorialCaso()
+        asignacion.fecha = date
+        asignacion.medico = medicoInstance
+        asignacion.estadoCaso = "Asignado"
+        asignacion.caso = casoInstance
+
+        if (asignacion.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'historialCaso.label', default: 'HistorialCaso'), asignacion.id])}"
+            redirect(action: "show", id: asignacion.id)
+        }
+        else {
+            render(view: "historialModCaso", model: [casoInstance: casoInstance])
+        }       
+        
+    }
+    
+    def saveSegundaOpinion = {
+        Date date = new Date()
+        def casoInstance = Caso.get(params.id)        
+        def medicoInstance = Medico.get(params.medico)
+
+        def statusN = Status.get(4)
+
+        casoInstance.status = statusN
+
+        def asignacion = new HistorialCaso()
+        asignacion.fecha = date
+        asignacion.medico = medicoInstance
+        asignacion.estadoCaso = "Segunda opinion"
+        asignacion.caso = casoInstance
+
+        if (asignacion.save(flush: true)) {
+                flash.message = "${message(code: 'default.created.message', args: [message(code: 'historialCaso.label', default: 'HistorialCaso'), asignacion.id])}"
+                redirect(action: "show", id: asignacion.id)
+        }
+        else {
+                render(view: "historial2daOpinion", model: [casoInstance: casoInstance])
+        }       
+
+    }
+                
     def show = {
         def historialCasoInstance = HistorialCaso.get(params.id)
         if (!historialCasoInstance) {

@@ -13,7 +13,7 @@ class Especialista extends Medico{
     
 //CONSTRAINTS    
     static constraints = {        
-        horarioDeTrabajo(nullable: true)
+        horarioDeTrabajo(blank: true, nullable: true)
         especialidades(nullable: false)
         nombre(blank: false, nullable: false)
         apellido(blank: false, nullable: false)

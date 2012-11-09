@@ -34,7 +34,8 @@
         <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
         <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>
-        <li><g:link controller="caso" action="modificarCasos"><g:message code="Asignar casos" /></g:link></li>
+        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link></li>
+        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
         </ul>
       </div>      
       
@@ -48,8 +49,10 @@
                         <tr>
                             <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />
                         
-                            <g:sortableColumn property="caso" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
+                            <g:sortableColumn property="caso" title="${message(code: 'id.label', default: 'Id')}" />
                             
+                            <g:sortableColumn property="caso" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
+                           
                             <g:sortableColumn property="estadoCaso" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
                         
                             <g:sortableColumn property="medico" title="${message(code: 'medico.nombre.label', default: 'Medico')}" />
@@ -66,7 +69,9 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
                             <td><g:formatDate date="${historialCasoInstance.fecha}" /></td>
-                        
+                                                                              
+                            <td>${historialCasoInstance.caso.id}</td>
+                            
                             <td>${historialCasoInstance.caso.descripcion}</td>
                             
                             <td>${historialCasoInstance.estadoCaso}</td>

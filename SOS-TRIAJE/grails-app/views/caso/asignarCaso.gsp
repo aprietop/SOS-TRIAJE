@@ -25,13 +25,15 @@
       </div>
 
       <div id="menu1">
-        <ul>
-        <li><g:link controller="caso" action="listaDeCasosT" class="selected"><g:message code="Mis casos" /></g:link></li>
-        <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
-        <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>
-        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link></li>
-        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
-        </ul>
+      <ul>        
+            <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Casos" /></g:link></li>
+            <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>
+            <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
+            <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
+            <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>
+            <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Asignar casos" /></g:link></li>
+            <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
+       </ul>
       </div>
       
 <div id="nivel1">
@@ -42,6 +44,8 @@
               <table class="tabla2">
                     <thead>
                         <tr>
+                            <g:sortableColumn property="id" title="${message(code: 'caso.id.label', default: 'Id')}" />
+                            
                             <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                                     
                             <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
@@ -60,6 +64,8 @@
                     <tbody>
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                          
+                            <td><g:link controller="historialCaso" action="historialModCaso" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
                       
                             <td>${casoInstance.descripcion}</td>
                         

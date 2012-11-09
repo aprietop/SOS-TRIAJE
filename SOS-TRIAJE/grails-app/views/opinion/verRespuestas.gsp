@@ -26,6 +26,7 @@
 
       <div id="menu1">
         <ul>
+        <g:if test="${session.ActorSistema.rol == 'Triaje'}">
           <g:if test="${nMetodo==1}">
             <li><g:link controller="opinion" action="verRespuestasT" class="selected"><g:message code="Todas las respuestas" /></g:link></li>
             <li><g:link controller="opinion" action="verOtrasRespuestas"><g:message code="Otras respuestas" /></g:link></li>
@@ -41,6 +42,18 @@
             <li><g:link controller="opinion" action="verOtrasRespuestas"><g:message code="Otras respuestas" /></g:link></li>
             <li><g:link controller="opinion" action="verMisRespuestas" class="selected"><g:message code="Mis respuestas" /></g:link></li>
           </g:if>
+        </g:if> 
+          
+        <g:if test="${session.ActorSistema.rol == 'Especialista'}">
+          <g:if test="${nMetodo==2}">
+            <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Mis respuestas" /></g:link></li>
+            <li><g:link controller="opinion" action="verOtrasRespuestas" class="selected"><g:message code="Otras respuestas" /></g:link></li>
+          </g:if>          
+          <g:if test="${nMetodo==3}">
+            <li><g:link controller="opinion" action="verMisRespuestas" class="selected"><g:message code="Mis respuestas" /></g:link></li>
+            <li><g:link controller="opinion" action="verOtrasRespuestas"><g:message code="Otras respuestas" /></g:link></li>
+          </g:if>
+        </g:if>          
         </ul>
       </div>
       

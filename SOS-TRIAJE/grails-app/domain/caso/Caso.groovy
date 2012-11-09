@@ -23,9 +23,9 @@ class Caso {
         descripcion(nullable: false)
         fechaInicio(nullable: false)
         paciente(nullable: false)  
-        fechaSolucion(nullable: true)
+        fechaSolucion(blank:true, nullable: true)
         status(nullable: false)
         paciente(nullable: false)
-        especialidades(nullable: true)
+        especialidades(blank:true, nullable: true)
     }
 }

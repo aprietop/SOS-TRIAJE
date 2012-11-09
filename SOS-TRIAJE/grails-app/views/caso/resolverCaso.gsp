@@ -25,14 +25,24 @@
       </div>
 
       <div id="menu1">
-        <ul>
-        <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Casos" /></g:link></li>
-        <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>        
-        <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
+      <ul>        
+      <g:if test="${session.ActorSistema.rol == 'Triaje'}">
+            <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Casos" /></g:link></li>
+            <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>
+            <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
+            <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
+            <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>
+            <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link></li>
+            <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
+      </g:if>
+      <g:if test="${session.ActorSistema.rol == 'Especialista'}">
+        <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Mis casos" /></g:link></li>
         <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
-        <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>
-        <li><g:link controller="caso" action="modificarCasos" class="selected"><g:message code="Asignar casos" /></g:link></li>
-        </ul>
+        <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>
+        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link></li>
+        <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
+      </g:if>       
+      </ul>
       </div>
       
 <div id="nivel1">

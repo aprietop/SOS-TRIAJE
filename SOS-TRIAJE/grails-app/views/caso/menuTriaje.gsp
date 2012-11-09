@@ -30,8 +30,9 @@
         <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>        
         <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
         <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
-        <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>
-        <li><g:link controller="caso" action="modificarCasos"><g:message code="Asignar casos" /></g:link></li>
+        <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>       
+        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link></li>
+        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
         </ul>
       </div>
       
@@ -43,6 +44,8 @@
               <table class="tabla2">
                     <thead>
                         <tr>
+                            <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
+                          
                             <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                                     
                             <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
@@ -50,10 +53,12 @@
                             <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
 
                             <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
-
-                            <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
-
-                            <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
+                            
+                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
+                            <%--<g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />--%>
+                            
+                            <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                            <%--<g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />---%>
 
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                         </tr>
@@ -61,7 +66,8 @@
                     <tbody>
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                      
+                            <td>${casoInstance.id}</td>
+                          
                             <td>${casoInstance.descripcion}</td>
                         
                             <td>${casoInstance.status.nombre}</td>
