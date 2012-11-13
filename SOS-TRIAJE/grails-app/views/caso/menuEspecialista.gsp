@@ -27,7 +27,7 @@
       <div id="menu1">
         <ul>
         <li><g:link controller="caso" action="listaDeCasosT" class="selected"><g:message code="Mis casos" /></g:link></li>
-        <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
+        <li><g:link controller="caso" action="miHistorial"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>
         <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link></li>
         <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>

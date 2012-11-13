@@ -118,11 +118,27 @@ class CasoController {
         def orden=params.order?:"asc"
         
 //      HISTORIALES EN LOS CUALES HA SIDO ACTOR EL MEDICO QUE INGRESO EL SISTEMA        
-        def historialInstance = HistorialCaso.findAllByMedico(actorInstance, [sort:campo, order:orden])        
-
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance, [sort:campo, order:orden]) 
+        
         render(view: "mostrarPorMedico", model: [historialCasoInstanceList: historialInstance, historialCasoInstanceTotal: HistorialCaso.count()]) 
 } 
 
+    def miHistorial = {
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
+        
+        def campo=params.sort?:"fecha"
+        def orden=params.order?:"asc"
+        
+        List casoInstanceList = []
+        
+        historialInstance.each{
+            casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso))          
+        }
+        
+     render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count()]) 
+    }
+    
     def casosAsociados = {
 //      MEDICO QUE INGRESO AL SISTEMA
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
@@ -196,17 +212,7 @@ class CasoController {
         
             if(session?.ActorSistema?.rol == "Triaje" ){        
 
-                def s = Status.createCriteria()
-                def statusInstance = s.list{                
-                    eq("nombre", "En espera")
-                }
-
-                def auxiliar = ""
-                statusInstance.each{
-                    auxiliar = auxiliar + it.id
-                }  
-
-                def status = Status.get(auxiliar)
+                def status = Status.get(1)
 
                 def c = Caso.createCriteria()
                 def noAsignados = c.list{
@@ -222,6 +228,7 @@ class CasoController {
                 def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
                 def status6 = Status.get(6)
                 def status7 = Status.get(7)
+                def status4 = Status.get(4)
 
                 def d = HistorialCaso.createCriteria()
                 def noResueltos = d.list {
@@ -230,6 +237,7 @@ class CasoController {
                         caso{
                           ne("status", status6)  
                           ne("status", status7)
+                          ne("status", status4)
                         }                    
                     }
                     projections { 
