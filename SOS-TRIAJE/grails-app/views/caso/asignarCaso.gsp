@@ -25,15 +25,13 @@
       </div>
 
       <div id="menu1">
-      <ul>        
-            <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Casos" /></g:link></li>
-            <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>
-            <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
-            <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
-            <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>
-            <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Asignar casos" /></g:link></li>
-            <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
-       </ul>
+      <ul>  
+        <g:if test="${session.ActorSistema.rol == 'Triaje'}">        
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>        
+        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>  
+        <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Asignar casos" /></g:link></li>
+        </g:if>
+      </ul>
       </div>
       
 <div id="nivel1">
@@ -98,6 +96,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>          
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

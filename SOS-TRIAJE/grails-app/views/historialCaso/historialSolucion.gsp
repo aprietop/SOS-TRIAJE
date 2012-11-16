@@ -59,7 +59,7 @@
                               <td valign="top" class="name"><g:message code="caso.descripcion.label" default="Descripcion" /></td>
                               <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "descripcion")}</td>
                           </tr>
-                                          
+                                         
                           <tr class="prop">
                             <td valign="top" class="name">
                               <g:message code="caso.especialidades.label" default="Especialidades" />
@@ -84,7 +84,7 @@
             
             <div class="buttons">
                     <g:hiddenField name="id" value="${casoInstance?.id}" />
-                    <g:actionSubmit action="saveAsignacion" value="${message(code: 'button.guardar.label', default: 'Guardar')}" />
+                    <g:actionSubmit action="saveSolucion" value="${message(code: 'button.guardar.label', default: 'Guardar')}" />
              </div>
             </g:form>
         </div>

@@ -25,23 +25,18 @@
       </div>
 
       <div id="menu1">
-      <ul>        
-      <g:if test="${session.ActorSistema.rol == 'Triaje'}">
-            <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Casos" /></g:link></li>
-            <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>
-            <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
-            <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
-            <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>
-            <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link></li>
-            <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
-      </g:if>
-      <g:if test="${session.ActorSistema.rol == 'Especialista'}">
-        <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Mis casos" /></g:link></li>
-        <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
-        <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>
-        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link></li>
+      <ul>  
+        <g:if test="${session.ActorSistema.rol == 'Especialista'}">
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>  
         <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
-      </g:if>       
+        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link>
+        </g:if>
+        
+        <g:if test="${session.ActorSistema.rol == 'Triaje'}">
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>  
+        <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
+        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link>
+        </g:if>
       </ul>
       </div>
       
@@ -74,7 +69,7 @@
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                           
-                            <td><g:link controller="historialCaso" action="historialModCaso" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
+                            <td><g:link controller="opinion" action="createSolucion" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
                       
                             <td>${casoInstance.descripcion}</td>
                         
@@ -107,6 +102,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>           
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

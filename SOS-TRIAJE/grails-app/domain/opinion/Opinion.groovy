@@ -23,9 +23,9 @@ class Opinion {
 
 //CONSTRAINTS    
     static constraints = {        
-        fechaOpinion(nullable: false)
-        cuerpoOpinion(nullable: false)
+        fechaOpinion(blank:true, nullable: false)
+        cuerpoOpinion(blank:true, nullable: false)
         estadoOpinion(blank:true, nullable: true)
-        medico(nullable: false)
+        medico(blank:true, nullable: false)
     }
 }

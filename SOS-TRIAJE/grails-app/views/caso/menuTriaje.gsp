@@ -31,8 +31,7 @@
         <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
         <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>       
-        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link></li>
-        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>       
         </ul>
       </div>
       

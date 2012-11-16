@@ -25,12 +25,12 @@
       </div>
 
       <div id="menu1">
-      <ul>        
-        <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Mis casos" /></g:link></li>
-        <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
-        <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>
-        <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Segunda opinión" /></g:link></li>
+      <ul>       
+        <g:if test="${session.ActorSistema.rol == 'Especialista'}">
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>  
         <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
+        <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Segunda opinión" /></g:link>
+        </g:if>
       </ul>
       </div>
       
@@ -96,6 +96,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>           
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

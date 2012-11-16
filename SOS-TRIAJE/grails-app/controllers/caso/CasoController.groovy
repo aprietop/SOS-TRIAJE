@@ -4,6 +4,7 @@ import medico.Triaje
 import persona.ActorSistema
 import java.util.List
 import status.Status
+import medico.Medico
 
 class CasoController {
 
@@ -206,74 +207,47 @@ class CasoController {
             render(view: "modificarCaso", model: [casoInstanceList: results, casoInstanceTotal: Caso.count()]) 
         }       
     }
-    
-    	def casosSinAsignar = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        
-            if(session?.ActorSistema?.rol == "Triaje" ){        
 
-                def status = Status.get(1)
+    def casosSinAsignar = {
+    params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
-                def c = Caso.createCriteria()
-                def noAsignados = c.list{
-                    eq("status", status) 
-                    maxResults(10) 
-                }
+        if(session?.ActorSistema?.rol == "Triaje" ){        
 
-                render(view: "asignarCaso", model: [casoInstanceList: noAsignados, casoInstanceTotal: noAsignados.count()]) 
+            def status = Status.get(1)
+
+            def c = Caso.createCriteria()
+            def noAsignados = c.list{
+                eq("status", status) 
+                maxResults(10) 
             }
 
-            if(session?.ActorSistema?.rol == "Especialista" ){
-                
-                def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-                def status6 = Status.get(6)
-                def status7 = Status.get(7)
-                def status4 = Status.get(4)
-
-                def d = HistorialCaso.createCriteria()
-                def noResueltos = d.list {
-                    eq("medico", actorInstance) 
-                    and {
-                        caso{
-                          ne("status", status6)  
-                          ne("status", status7)
-                          ne("status", status4)
-                        }                    
-                    }
-                    projections { 
-                       distinct("caso")            
-                    }                
-                }
-
-                render(view: "segundaOpinion", model: [casoInstanceList: noResueltos, casoInstanceTotal: noResueltos.count()]) 
-   
-            }        
+            render(view: "asignarCaso", model: [casoInstanceList: noAsignados, casoInstanceTotal: noAsignados.count()]) 
         }
-        
-    	def vResolverCaso = {
+
+        if(session?.ActorSistema?.rol == "Especialista" ){
 
             def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+            def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
 
-            def status6 = Status.get(6)
-            def status7 = Status.get(7)
+            def status2 = Status.get(2)
+            def status3 = Status.get(3)
+            def status4 = Status.get(4)
+            def status5 = Status.get(5)
 
-            def d = HistorialCaso.createCriteria()
-            def noResueltos = d.list {
-                eq("medico", actorInstance) 
-                and {
-                    caso{
-                      ne("status", status6)  
-                      ne("status", status7)
-                    }                    
-                }
-                projections { 
-                   distinct("caso")            
-                }                
-            }
+            List casoInstanceList = []
 
-            render(view: "resolverCaso", model: [casoInstanceList: noResueltos, casoInstanceTotal: noResueltos.count()]) 
-             
-    }    
+            historialInstance.each{            
+                if (((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status2.nombre))||
+                    ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status4.nombre))||
+                    ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status3.nombre))||
+                    ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status5.nombre))){                    
+                
+                casoInstanceList.add(Caso.get(it.caso.id))  
+                }               
+            }            
+            render(view: "segundaOpinion", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
+        }        
+    }   
     
     def edit = {
         def casoInstance = Caso.get(params.id)
@@ -330,5 +304,83 @@ class CasoController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'caso.label', default: 'Caso'), params.id])}"
             redirect(action: "list")
         }
+    }
+    
+    def vResolverCaso = {
+//TRIAJE
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
+        
+        def status2 = Status.get(2)
+        def status3 = Status.get(3)
+        def status4 = Status.get(4)
+        def status5 = Status.get(5)
+            
+        List casoInstanceList = []
+        
+        historialInstance.each{            
+            if (((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status3.nombre))||
+                ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status5.nombre))){
+                
+                casoInstanceList.add(Caso.get(it.caso.id))  
+                }               
+            }
+            
+        render(view: "resolverCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
+    }    
+    
+    def aceptarCaso = {
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
+
+        def status2 = Status.get(2)
+        def status4 = Status.get(4)
+
+        List casoInstanceList = []
+        
+        historialInstance.each{
+            if((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status2.nombre)||
+               (it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status4.nombre)){
+               
+                casoInstanceList.add(Caso.get(it.caso.id))  
+            }
+        }
+        render(view: "aceptarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
+    }    
+    
+    def saveAceptarCaso= {
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        Date date = new Date()
+        def casoInstance = Caso.get(params.id)        
+        def medicoInstance = Medico.get(actorInstance.id)
+        
+//        println "CASO ID: "+casoInstance.id
+
+        def status2 = Status.get(2)
+        def status3 = Status.get(3)
+        def status4 = Status.get(4)
+        def status5 = Status.get(5)
+
+        if (casoInstance.status==status2){
+          casoInstance.status = status3   
+        }
+        if (casoInstance.status==status4){
+          casoInstance.status = status5   
+        }        
+
+        def asignacion = new HistorialCaso()
+        asignacion.fecha = date
+        asignacion.medico = medicoInstance
+        asignacion.estadoCaso = casoInstance.status.nombre
+        asignacion.caso = casoInstance
+
+        if (asignacion.save(flush: true)) {
+                flash.message = "${message(code: 'aceptado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
+                render(view: "aceptarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+        }
+        else {
+                render(view: "aceptarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+        }       
+
     }
 }

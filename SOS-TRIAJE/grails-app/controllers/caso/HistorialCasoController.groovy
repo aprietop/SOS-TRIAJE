@@ -8,6 +8,7 @@ import especialidad.Especialidad
 import medico.Especialista
 import medico.Medico
 import status.Status
+import persona.ActorSistema
 
 class HistorialCasoController {
 
@@ -192,5 +193,5 @@ class HistorialCasoController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'historialCaso.label', default: 'HistorialCaso'), params.id])}"
             redirect(action: "list")
         }
-    }
+    }   
 }

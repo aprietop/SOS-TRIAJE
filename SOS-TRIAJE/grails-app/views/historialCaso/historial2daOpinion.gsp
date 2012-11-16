@@ -55,32 +55,11 @@
             
               <table>
                     <tbody>
-                          <%--
-                          <tr class="prop">
-                              <td valign="top" class="name"><g:message code="caso.id.label" default="Id" /></td>
-                              <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "id")}</td>
-                          </tr>
-                          --%>
-
-                          <tr class="prop">
+                         <tr class="prop">
                               <td valign="top" class="name"><g:message code="caso.descripcion.label" default="Descripcion" /></td>
                               <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "descripcion")}</td>
                           </tr>
-                        <%--
-                          <tr class="prop">
-                            <td valign="top" class="name"><g:message code="fecha" default="Fecha" /></td>                            
-                            <td valign="top" class="value">${fechaActual}</td>                            
-                          </tr>  
-                          
-                           <tr class="prop">
-                            <td valign="top" class="name">
-                              <g:message code="fecha" default="Fecha" />
-                            </td>
-                            <td valign="top" class="value ${hasErrors(bean: casoInstance, field: 'fecha', 'errors')}">                              
-                              <g:formatDate  format="dd-MM-yyyy HH:mm:ss.ms" date="${date}" style="MEDIUM"/>
-                            </td>
-                          </tr>--%>
-                                          
+ 
                           <tr class="prop">
                             <td valign="top" class="name">
                               <g:message code="caso.especialidades.label" default="Especialidades" />

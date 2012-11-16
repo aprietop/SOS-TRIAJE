@@ -1,6 +1,9 @@
 package opinion
 
 import persona.ActorSistema
+import caso.Caso
+import caso.HistorialCaso
+import status.Status
 
 class OpinionController {
 
@@ -95,6 +98,56 @@ class OpinionController {
         render(view: "verRespuestas", model: [opinionInstanceList: opiniones, opinionInstanceTotal: Opinion.count(), nMetodo: metodo])  
     }
 
+    def createSolucion = {
+        def casoInstance = Caso.get(params.id)
+        def opinionInstance = new Opinion()
+        opinionInstance.properties = params
+        return [opinionInstance: opinionInstance, casoInstance:casoInstance]
+    }
+    
+    def saveSolucion = {        
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        
+        Date date = new Date()
+        
+        def opinionInstance = new Opinion()
+        def casoInstance = Caso.get(params.idCaso)        
+       
+        def status3 = Status.get(3)
+        def status5 = Status.get(5)
+        def status6 = Status.get(6)
+        def status7 = Status.get(7)
+        
+            
+            if (casoInstance.status==status3){   
+                casoInstance.status=status7
+            } 
+            if (casoInstance.status==status5){   
+                casoInstance.status=status6
+            } 
+            
+        def asignacion = new HistorialCaso()
+        asignacion.fecha = date
+        asignacion.medico = actorInstance
+        asignacion.estadoCaso = casoInstance.status.nombre
+        asignacion.caso = casoInstance
+        asignacion.save()
+            
+        opinionInstance.fechaOpinion = date
+        opinionInstance.nombreOpinion = params.nombreOpinion
+        opinionInstance.cuerpoOpinion = params.cuerpoOpinion
+        opinionInstance.medico = actorInstance
+        opinionInstance.caso = casoInstance
+        
+        if (opinionInstance.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'opinion.label', default: 'Opinion'), opinionInstance.id])}"
+            redirect(action: "show", id: opinionInstance.id)
+        }
+        else {
+            render(view: "createSolucion", model: [opinionInstance: opinionInstance])
+        }
+    }    
+    
     def edit = {
         def opinionInstance = Opinion.get(params.id)
         if (!opinionInstance) {
