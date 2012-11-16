@@ -28,12 +28,14 @@
       <ul>   
         <g:if test="${session.ActorSistema.rol == 'Especialista'}">
         <li><g:link controller="caso" action="aceptarCaso" class="selected"><g:message code="Aceptar casos" /></g:link></li>  
+        <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
         <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
         <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link>
         </g:if>
 
         <g:if test="${session.ActorSistema.rol == 'Triaje'}">
         <li><g:link controller="caso" action="aceptarCaso" class="selected"><g:message code="Aceptar casos" /></g:link></li>  
+        <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
         <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
         <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link>
         </g:if>

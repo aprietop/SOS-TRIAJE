@@ -25,9 +25,10 @@
       </div>
 
       <div id="menu1">
-      <ul>  
+      <ul>       
         <g:if test="${session.ActorSistema.rol == 'Triaje'}">        
-        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>        
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>
+        <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
         <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>  
         <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Asignar casos" /></g:link></li>
         </g:if>
@@ -96,7 +97,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>          
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>           
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

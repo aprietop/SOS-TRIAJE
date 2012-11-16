@@ -215,10 +215,16 @@ class BootStrap {
 //            if (!status9.save()) println status9.errors  
 //            
 //        def status10 = new Status()
-//            status10.nombre = "Devuelto"
+//            status10.nombre = "Rechazado 1er nivel"
 //            status10.decripcion = "Indica que ha sido rechazada la asignacion del caso"
 //            status10.fechaStatus = new Date(112, 10, 23)      
 //            if (!status10.save()) println status10.errors  
+//
+//        def status11 = new Status()
+//            status11.nombre = "Rechazado 2do nivel"
+//            status11.decripcion = "Indica que ha sido rechazada la solicitud de segunda opinion"
+//            status11.fechaStatus = new Date(112, 10, 23)      
+//            if (!status11.save()) println status11.errors  
 //
 ///****************************** CASOS SOS-TRIAJE ******************************/
 ////

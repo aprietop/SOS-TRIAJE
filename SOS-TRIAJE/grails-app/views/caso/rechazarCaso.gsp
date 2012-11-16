@@ -25,18 +25,18 @@
       </div>
 
       <div id="menu1">
-      <ul>  
+      <ul>   
         <g:if test="${session.ActorSistema.rol == 'Especialista'}">
-        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li> 
-        <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
-        <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>  
+        <li><g:link controller="caso" action="rechazarCaso" class="selected"><g:message code="Rechazar casos" /></g:link></li>  
+        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
         <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link>
         </g:if>
-        
+
         <g:if test="${session.ActorSistema.rol == 'Triaje'}">
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>  
-        <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
-        <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
+        <li><g:link controller="caso" action="rechazarCaso" class="selected"><g:message code="Rechazar casos" /></g:link></li>  
+        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
         <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link>
         </g:if>
       </ul>
@@ -71,7 +71,7 @@
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                           
-                            <td><g:link controller="opinion" action="createSolucion" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
+                            <td><g:link controller="caso" action="saveRechazarCaso" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
                       
                             <td>${casoInstance.descripcion}</td>
                         

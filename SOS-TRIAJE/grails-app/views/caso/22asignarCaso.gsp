@@ -26,18 +26,11 @@
 
       <div id="menu1">
       <ul>  
-        <g:if test="${session.ActorSistema.rol == 'Especialista'}">
-        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li> 
+        <g:if test="${session.ActorSistema.rol == 'Triaje'}">        
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>
         <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
-        <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
-        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Segunda opinión" /></g:link>
-        </g:if>
-        
-        <g:if test="${session.ActorSistema.rol == 'Triaje'}">
-        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>  
-        <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
-        <li><g:link controller="caso" action="vResolverCaso" class="selected"><g:message code="Resolver casos" /></g:link></li>
-        <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link>
+        <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>  
+        <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Asignar casos" /></g:link></li>
         </g:if>
       </ul>
       </div>
@@ -71,7 +64,7 @@
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                           
-                            <td><g:link controller="opinion" action="createSolucion" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
+                            <td><g:link controller="historialCaso" action="historialModCaso" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
                       
                             <td>${casoInstance.descripcion}</td>
                         
@@ -104,7 +97,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>           
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>          
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>
