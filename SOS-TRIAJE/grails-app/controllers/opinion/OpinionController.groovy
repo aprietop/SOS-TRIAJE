@@ -56,20 +56,32 @@ class OpinionController {
 
 //    MUESTRA LAS RESPUESTA QUE HAN REALIZADO TODOS LOS DOCTORES EXCEPTO YO
     def verOtrasRespuestas = {
-        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-        def c = Opinion.createCriteria()
         def metodo = 2
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+               
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)  
         
-        def opiniones = c.list {
-            ne("medico", actorInstance) 
-            def campo=params.sort?:"fechaOpinion"
-            def orden=params.order?:"asc"
-            order(campo, orden)
+        List misCasos = []
+        historialInstance.each{
+            misCasos.add(it.caso)
         }
-      
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
-        render(view: "verRespuestas", model: [opinionInstanceList: opiniones, opinionInstanceTotal: Opinion.count(), nMetodo: metodo])  
+        Set<String> s = new LinkedHashSet<String>(misCasos);
+        misCasos.clear();
+        misCasos.addAll(s);      
+        
+        List misOpiniones = []
+        misCasos.each{
+            if (it.opiniones){
+                misOpiniones.add(it.opiniones)
+            }
+        }
+              
+        Set<String> o = new LinkedHashSet<String>(misOpiniones);
+        misOpiniones.clear();
+        misOpiniones.addAll(o);  
+        
+        render(view: "porMedico", model: [opinionInstanceList: misOpiniones, opinionInstanceTotal: misOpiniones.count(),nMetodo: metodo])  
     } 
     
 //    MUESTRA TODAS LAS RESPUESTA, INCLUYENDO LAS MIAS
@@ -77,7 +89,7 @@ class OpinionController {
         def metodo = 1
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         
-        render(view: "verRespuestas", model: [opinionInstanceList: Opinion.list(params), opinionInstanceTotal: Opinion.count(),nMetodo: metodo])  
+        render(view: "porMedico", model: [opinionInstanceList: Opinion.list(params), opinionInstanceTotal: Opinion.count(),nMetodo: metodo])  
     } 
     
 //    MUESTRA LAS RESPUESTA QUE COMO DOCTOR HE HECHO
@@ -95,7 +107,7 @@ class OpinionController {
         
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
-        render(view: "verRespuestas", model: [opinionInstanceList: opiniones, opinionInstanceTotal: Opinion.count(), nMetodo: metodo])  
+        render(view: "porMedico", model: [opinionInstanceList: opiniones, opinionInstanceTotal: Opinion.count(), nMetodo: metodo])  
     }
 
     def createSolucion = {

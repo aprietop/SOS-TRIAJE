@@ -130,12 +130,16 @@ class CasoController {
         
         def campo=params.sort?:"fecha"
         def orden=params.order?:"asc"
-        
+             
         List casoInstanceList = []
         
         historialInstance.each{
             casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso))          
         }
+        
+        Set<String> s = new LinkedHashSet<String>(casoInstanceList);
+        casoInstanceList.clear();
+        casoInstanceList.addAll(s);
         
      render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count()]) 
     }
@@ -209,34 +213,24 @@ class CasoController {
     }
 
     def casosSinAsignar = {
-//    params.max = Math.min(params.max ? params.int('max') : 10, 100)
         if(session?.ActorSistema?.rol == "Triaje" ){        
-//            
+            
             def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
             def historialInstance = HistorialCaso.getAll()
-//
+
             def status1 = Status.get(1)
             def status2 = Status.get(2)
             def status4 = Status.get(4)
             def status10 = Status.get(10)
             def status11 = Status.get(11)
-////
+
             List casoInstanceList = []
             
             def casoInstance = Caso.findAllByStatus(status1)
             casoInstance.each{
-                println "CASO:  "+it.id
                 casoInstanceList.add(it)
             }
-            
-//            List casoInstanceList = []
-////
-//            casoInstance.each{
-//            if ((casoInstance.status==status1){
-//                
-//                casoInstanceList.add(casoInstance)
-//            }
-//        }
+
             historialInstance.each{            
                 if (((it.estadoCaso==status1.nombre)&&(it.caso.status.nombre==status1.nombre))||
                     ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre))||
@@ -245,21 +239,9 @@ class CasoController {
                         casoInstanceList.add(Caso.get(it.caso.id))  
                 }               
             }
-////            
+            
             render(view: "asignarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
-          
-//            def status1 = Status.get(1)
-//            def status10 = Status.get(10)
-//            def status11 = Status.get(11)
-//
-//            def c = Caso.createCriteria()
-//            def noAsignados = c.list{
-//                eq("status", status1)
-//                maxResults(10) 
-//            }
-//
-//            render(view: "asignarCaso", model: [casoInstanceList: noAsignados, casoInstanceTotal: noAsignados.count()]) 
-        }
+  }
 
         if(session?.ActorSistema?.rol == "Especialista" ){
 

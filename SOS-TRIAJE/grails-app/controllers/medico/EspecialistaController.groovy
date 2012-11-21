@@ -56,16 +56,12 @@ class EspecialistaController {
     }
     
     def ajaxGetEspecialistas = {    
-//        println "Paso por aqui: "+ params.id
-
         List li=new ArrayList();
         li.add("0")
 
         if (params.id){
         //  tengo la instancia de la especialidad que se selecciono en la lista            
-            def especialidadInstance = Especialidad.get(params.id)
-            
-//            println "Especialidad nombre:"+especialidadInstance.nombre        
+            def especialidadInstance = Especialidad.get(params.id)     
      
             def c = Especialista.createCriteria()
             def esp = c.list {
@@ -81,8 +77,7 @@ class EspecialistaController {
             render auxiliar            
         }
         else{
-            println "NO TIENE NADA"
-            
+            println "NO TIENE NADA"            
         }
     }
 

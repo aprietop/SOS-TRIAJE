@@ -29,7 +29,7 @@
         <li><g:link controller="caso" action="listaDeCasosT" class="selected"><g:message code="Casos" /></g:link></li>
         <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>        
         <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
-        <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
+        <li><g:link controller="caso" action="miHistorial"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>       
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>       
         </ul>
