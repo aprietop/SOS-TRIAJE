@@ -6,6 +6,8 @@ import java.util.List
 import status.Status
 import medico.Medico
 
+import java.util.Date
+
 class CasoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -34,19 +36,9 @@ class CasoController {
     }
 
     def save = {
-        def s = Status.createCriteria()
-        def statusInstance = s.list{                
-            eq("nombre", "En espera")
-        }
-
-        def auxiliar = ""
-        statusInstance.each{
-            auxiliar = auxiliar + it.id
-        }  
-        def status = Status.get(auxiliar)
-
+        def status1 = Status.get(1)         //En espera        
         def casoInstance = new Caso(params)
-        casoInstance.status=status
+        casoInstance.status=status1
         
         if (casoInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
@@ -218,11 +210,11 @@ class CasoController {
             def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
             def historialInstance = HistorialCaso.getAll()
 
-            def status1 = Status.get(1)
-            def status2 = Status.get(2)
-            def status4 = Status.get(4)
-            def status10 = Status.get(10)
-            def status11 = Status.get(11)
+            def status1 = Status.get(1)         //En espera
+            def status2 = Status.get(2)         //Asignado
+            def status4 = Status.get(4)         //Segunda Opinion
+            def status10 = Status.get(10)       //Rechazado 1er nivel
+            def status11 = Status.get(11)       //Rechazado 2do nivel
 
             List casoInstanceList = []
             
@@ -248,10 +240,10 @@ class CasoController {
             def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
             def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
 
-            def status2 = Status.get(2)
-            def status3 = Status.get(3)
-            def status4 = Status.get(4)
-            def status5 = Status.get(5)
+            def status2 = Status.get(2)     //Asignado
+            def status3 = Status.get(3)     //En proceso 1er nivel
+            def status4 = Status.get(4)     //Segunda Opinion
+            def status5 = Status.get(5)     //En proceso 2do nivel
 
             List casoInstanceList = []
 
@@ -330,21 +322,27 @@ class CasoController {
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
         
-        def status2 = Status.get(2)
-        def status3 = Status.get(3)
-        def status4 = Status.get(4)
-        def status5 = Status.get(5)
+        def status2 = Status.get(2)     //Asignado
+        def status3 = Status.get(3)     //En proceso 1er nivel
+        def status4 = Status.get(4)     //Segunda Opinion
+        def status5 = Status.get(5)     //En proceso 2do nivel
+        def status6 = Status.get(6)     //Resuelto 2do nivel
             
         List casoInstanceList = []
         
         historialInstance.each{            
             if (((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status3.nombre))||
-                ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status5.nombre))){
-                
-                casoInstanceList.add(Caso.get(it.caso.id))  
+                ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status5.nombre))||
+                ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status6.nombre))){
+                    
+                        casoInstanceList.add(Caso.get(it.caso.id))  
                 }               
             }
             
+        Set<String> o = new LinkedHashSet<String>(casoInstanceList);
+        casoInstanceList.clear();
+        casoInstanceList.addAll(o);  
+        
         render(view: "resolverCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
     }    
     
@@ -352,8 +350,8 @@ class CasoController {
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
 
-        def status2 = Status.get(2)
-        def status4 = Status.get(4)
+        def status2 = Status.get(2)     //Asignado
+        def status4 = Status.get(4)     //Segunda Opinion
 
         List casoInstanceList = []
         
@@ -373,10 +371,10 @@ class CasoController {
         def casoInstance = Caso.get(params.id)        
         def medicoInstance = Medico.get(actorInstance.id)
 
-        def status2 = Status.get(2)
-        def status3 = Status.get(3)
-        def status4 = Status.get(4)
-        def status5 = Status.get(5)
+        def status2 = Status.get(2)     //Asignado
+        def status3 = Status.get(3)     //En proceso 1er nivel
+        def status4 = Status.get(4)     //Segunda Opinion
+        def status5 = Status.get(5)     //En proceso 2do nivel
 
         if (casoInstance.status==status2){
           casoInstance.status = status3   
@@ -400,12 +398,12 @@ class CasoController {
         }       
     }
     
-	def rechazarCaso = {
+    def rechazarCaso = {
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
 
-        def status2 = Status.get(2)
-        def status4 = Status.get(4)
+        def status2 = Status.get(2)     //Asignado
+        def status4 = Status.get(4)     //Segunda Opinion
 
         List casoInstanceList = []
         
@@ -424,11 +422,11 @@ class CasoController {
         Date date = new Date()
         def casoInstance = Caso.get(params.id)        
         def medicoInstance = Medico.get(actorInstance.id)
-
-        def status2 = Status.get(2)
-        def status4 = Status.get(4)
-        def status10 = Status.get(10)
-        def status11 = Status.get(11)
+        
+        def status2 = Status.get(2)         //Asignado
+        def status4 = Status.get(4)         //Segunda Opinion
+        def status10 = Status.get(10)       //Rechazado 1er nivel
+        def status11 = Status.get(11)       //Rechazado 2do nivel
 
         if (casoInstance.status==status2){
           casoInstance.status = status10   
@@ -450,5 +448,78 @@ class CasoController {
         else {
                 render(view: "rechazarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
         }       
+    }
+
+    def cerrarCaso = {
+	def status7 = Status.get(7)
+        def historialInstance = HistorialCaso.findAllByEstadoCaso(status7.nombre)
+                
+        List casoInstanceList = []
+        historialInstance.each{
+            if (it.caso.status==status7){
+                casoInstanceList.add(Caso.get(it.caso.id)) 
+            }                 
+        }
+        render(view: "cerrarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
+    }      
+    
+    def saveCerrarCaso= {
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        Date date = new Date()
+        def casoInstance = Caso.get(params.id)        
+        def medicoInstance = Medico.get(actorInstance.id)
+        
+        def status8 = Status.get(8)         //Cerrado
+        casoInstance.status = status8   
+     
+        def asignacion = new HistorialCaso()
+        asignacion.fecha = date
+        asignacion.medico = medicoInstance
+        asignacion.estadoCaso = casoInstance.status.nombre
+        asignacion.caso = casoInstance
+
+        if (asignacion.save(flush: true)) {
+                flash.message = "${message(code: 'cerrado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
+                render(view: "cerrarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+        }
+        else {
+                render(view: "cerrarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+        }       
     }    
+    
+    def verPorFecha = {
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        
+        def d = params.desde
+        def h = params.hasta
+        
+        def status8 = Status.get(8)
+//                    
+//        def desde = d.format("yyyy-MM-dd HH:mm:ss.s")
+//        def hasta = h.format("yyyy-MM-dd HH:mm:ss.s")          
+//        
+//        println "DESDEEEE: " + d
+//        println "HASTAAAA: " + h
+//
+        def c = HistorialCaso.createCriteria()
+        def casos = c.list {
+            eq("medico", actorInstance) 
+            caso{
+                ge("fechaInicio", d)
+                or{
+                  le("fechaSolucion", h)
+                  isNull("fechaSolucion")
+                }
+            }
+            projections { 
+               distinct("caso")            
+            }
+        }
+        
+//        casos.each{
+//            println "CASO: " + it
+//        }
+        
+        
+    }
 }

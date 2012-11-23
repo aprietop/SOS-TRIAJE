@@ -5,7 +5,7 @@ import status.*
 import archivo.*
 import persona.*
 import opinion.*
-import java.sql.Time
+import java.util.Date
 
 class Caso {
 //ATRIBUTOS

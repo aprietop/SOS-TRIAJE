@@ -38,6 +38,7 @@
         <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
         <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>
         <li><g:link controller="caso" action="casosSinAsignar"><g:message code="Asignar casos" /></g:link>
+        <li><g:link controller="caso" action="cerrarCaso"><g:message code="Cerrar casos" /></g:link>
         </g:if>
       </ul>
       </div>

@@ -125,21 +125,27 @@ class OpinionController {
         def opinionInstance = new Opinion()
         def casoInstance = Caso.get(params.idCaso)        
        
+        def status2 = Status.get(2)
         def status3 = Status.get(3)
         def status5 = Status.get(5)
         def status6 = Status.get(6)
         def status7 = Status.get(7)
         
-            
-            if (casoInstance.status==status3){   
-                casoInstance.status=status7
-            } 
-            if (casoInstance.status==status5){   
-                casoInstance.status=status6
-            } 
-            
+        def hCaso = HistorialCaso.findByCaso(casoInstance)
+        
         def asignacion = new HistorialCaso()
-        asignacion.fecha = date
+        
+            if (casoInstance.status==status3){   
+                casoInstance.status=status7               
+            } 
+            if (casoInstance.status==status6){   
+                casoInstance.status=status7                   
+            }              
+            if (casoInstance.status==status5){   
+                casoInstance.status=status6   
+            }            
+                    
+        asignacion.fecha = date        
         asignacion.medico = actorInstance
         asignacion.estadoCaso = casoInstance.status.nombre
         asignacion.caso = casoInstance
