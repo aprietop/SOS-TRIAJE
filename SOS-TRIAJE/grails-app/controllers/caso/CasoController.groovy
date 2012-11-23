@@ -519,7 +519,8 @@ class CasoController {
 //        casos.each{
 //            println "CASO: " + it
 //        }
-        
+
+//    render(template: 'registroInterno', model: [idCaso: casos.id , descCaso: casos.descripcion])        
         
     }
 }

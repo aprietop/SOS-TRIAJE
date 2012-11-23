@@ -29,7 +29,7 @@
 <div id="updateMe">this div is updated with the result of the byAuthor call</div>
 --%>
 
-
+  <div id="registroInterno">
 <g:formRemote name="busquedaCasoPorFecha"
               url="[controller:'caso',action:'verPorFecha']"
               update="[success: 'resultadoCasoPorFecha', failure: 'errorResultadoCasoPorFecha']"
@@ -52,7 +52,8 @@
   <g:submitButton name="doit" value="${message(code:'buscar.filtro')}" class="boton1" />
               
 </g:formRemote>  
-
+</div>
+  
 <div id="resultadoCasoPorFecha"></div>
 <div id="errorResultadoCasoPorFecha"></div>
 
