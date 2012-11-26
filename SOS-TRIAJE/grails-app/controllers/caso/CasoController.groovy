@@ -7,6 +7,7 @@ import status.Status
 import medico.Medico
 
 import java.util.Date
+import grails.converters.JSON
 
 class CasoController {
 
@@ -470,17 +471,18 @@ class CasoController {
         def medicoInstance = Medico.get(actorInstance.id)
         
         def status8 = Status.get(8)         //Cerrado
-        casoInstance.status = status8   
+        casoInstance.status = status8 
+        casoInstance.fechaSolucion = date
      
         def asignacion = new HistorialCaso()
-        asignacion.fecha = date
+        asignacion.fecha = casoInstance.fechaSolucion
         asignacion.medico = medicoInstance
         asignacion.estadoCaso = casoInstance.status.nombre
         asignacion.caso = casoInstance
 
         if (asignacion.save(flush: true)) {
                 flash.message = "${message(code: 'cerrado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
-                render(view: "cerrarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+                render(view: "showC", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
         }
         else {
                 render(view: "cerrarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
@@ -494,33 +496,25 @@ class CasoController {
         def h = params.hasta
         
         def status8 = Status.get(8)
-//                    
-//        def desde = d.format("yyyy-MM-dd HH:mm:ss.s")
-//        def hasta = h.format("yyyy-MM-dd HH:mm:ss.s")          
-//        
-//        println "DESDEEEE: " + d
-//        println "HASTAAAA: " + h
-//
+
         def c = HistorialCaso.createCriteria()
         def casos = c.list {
             eq("medico", actorInstance) 
             caso{
                 ge("fechaInicio", d)
-                or{
-                  le("fechaSolucion", h)
-                  isNull("fechaSolucion")
-                }
+                le("fechaInicio", h)
             }
             projections { 
                distinct("caso")            
             }
         }
-        
-//        casos.each{
-//            println "CASO: " + it
-//        }
 
-//    render(template: 'registroInterno', model: [idCaso: casos.id , descCaso: casos.descripcion])        
-        
-    }
+        if(session?.ActorSistema?.rol == "Especialista" ){
+            render (view:'menuEspecialista', model:[casoInstanceList:casos, casoInstanceTotal: casos.count()])
+        }
+        if(session?.ActorSistema?.rol == "Triaje" ){
+            render (view:'casosAsociadosP', model:[casoInstanceList:casos, casoInstanceTotal: casos.count()])
+        }        
+    } 
+
 }

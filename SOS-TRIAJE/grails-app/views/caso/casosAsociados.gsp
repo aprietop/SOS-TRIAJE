@@ -35,6 +35,28 @@
       </div>
 
 <div id="nivel1">
+<div id="nivel3"> 
+<g:form  method="post">
+    <label for="desde">
+      <g:message code="buscar.desde" />
+    </label>
+      <g:datePicker name="desde" value="" precision="day" noSelection="['':'']" />
+
+    <label for="hasta">
+      <g:message code="buscar.hasta" />
+    </label>
+      <g:datePicker name="hasta" value="" precision="day" noSelection="['':'']" />    
+   
+<g:actionSubmit action="verPorFecha" value="Filtrar" class="boton1"/>
+
+<g:actionSubmit action="casosAsociados" value="Todos" class="boton1"/>
+
+</g:form>     
+ 
+</div>      
+</div>  
+  
+<div id="nivel1">
 <div id="nivel2">
 <div id="contenido">
 

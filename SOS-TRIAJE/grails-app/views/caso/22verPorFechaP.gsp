@@ -54,7 +54,7 @@
 </g:formRemote>  
 </div>
   
-<div id="resultadoCasoPorFecha"></div>
+<div id="resultadoCasoPorFecha">Prueba</div>
 <div id="errorResultadoCasoPorFecha"></div>
 
   <p>&nbsp;</p>

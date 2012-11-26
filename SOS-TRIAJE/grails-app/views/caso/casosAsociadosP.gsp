@@ -26,10 +26,12 @@
 
       <div id="menu1">
         <ul>
-        <li><g:link controller="caso" action="listaDeCasosT" class="selected"><g:message code="Mis casos" /></g:link></li>
-        <li><g:link controller="caso" action="miHistorial"><g:message code="Mi historial" /></g:link></li>
-        <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>        
-        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>
+       <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Casos" /></g:link></li>
+        <li><g:link controller="historialCaso" action="listaDeHistorialesT"><g:message code="Historiales" /></g:link></li>        
+        <li><g:link controller="caso" action="casosAsociados" class="selected"><g:message code="Mis casos" /></g:link></li>
+        <li><g:link controller="caso" action="mostrarPorMedico"><g:message code="Mi historial" /></g:link></li>
+        <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>       
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>       
         </ul>
       </div>
 
@@ -49,7 +51,7 @@
    
 <g:actionSubmit action="verPorFecha" value="Filtrar" class="boton1"/>
 
-<g:actionSubmit action="listaDeCasosT" value="Todos" class="boton1"/>
+<g:actionSubmit action="casosAsociados" value="Todos" class="boton1"/>
 
 </g:form>     
  

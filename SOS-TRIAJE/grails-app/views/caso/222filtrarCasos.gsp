@@ -1,14 +1,32 @@
 
 <%@ page import="caso.Caso" %>
-<html>
-    <head>
+
+<html> 
+  <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="referenc" />
         <g:set var="entityName" value="${message(code: 'caso.label', default: 'Caso')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
-    </head>
-    <body>
-
+    <g:javascript library="scriptaculous" />
+    
+<g:javascript library="prototype"></g:javascript>
+<g:javascript>
+     function showSpinner(visible) {
+         $('spinner').style.display = visible ? "inline" : "none";
+     }
+     Ajax.Responders.register({
+     onLoading: function() {
+           showSpinner(true);
+     },
+     onComplete: function() {
+     if(!Ajax.activeRequestCount) showSpinner(false);
+     }
+   });
+</g:javascript>    
+  </head> 
+  
+  <body>   
+    
       <div id="cabecera">
         <div id="cabColI">
           <div id="logo">
@@ -30,13 +48,13 @@
         <li><g:link controller="caso" action="miHistorial"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>        
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>
+        
+        <li><g:link controller="caso" action="verPorFecha"><g:message code="fecha" /></g:link></li>
         </ul>
       </div>
-
-
-<div id="nivel1">
-<div id="nivel3"> 
-<g:form  method="post">
+    
+<g:form action="verPorFecha">
+    <p>&nbsp;</p>    
     <label for="desde">
       <g:message code="buscar.desde" />
     </label>
@@ -46,56 +64,48 @@
       <g:message code="buscar.hasta" />
     </label>
       <g:datePicker name="hasta" value="" precision="day" noSelection="['':'']" />    
-   
-<g:actionSubmit action="verPorFecha" value="Filtrar" class="boton1"/>
 
-<g:actionSubmit action="listaDeCasosT" value="Todos" class="boton1"/>
+      <g:submitButton name="buscarF" value="Buscar" class="boton1"/> 
+</g:form>    
+  
+<g:form action="todosCasos">
+    <g:submitButton name="buscarT" value="Todos" class="boton1"/> 
+</g:form>
 
-</g:form>     
- 
-</div>      
-</div>  
+  
+  <div id="resultadoCasoPorFecha">
     
 <div id="nivel1">
   <div id="nivel2">
     <div id="contenido">
+        
         <div  class="form1">
               <table class="tabla2">
                     <thead>
                         <tr>
+                            <g:sortableColumn property="id" title="${message(code: 'caso.id.label', default: 'Id')}" />
                             <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
-                                    
                             <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
-
                             <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
-
                             <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
-
                             <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
-
                             <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
-
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                      
-                            <td>${casoInstance.descripcion}</td>
-                        
-                            <td>${casoInstance.status.nombre}</td>
-                            
-                            <td><g:formatDate date="${casoInstance.fechaInicio}" /></td>
-                            
-                            <td><g:formatDate date="${casoInstance.fechaSolucion}" /></td>
-                        
+                          
+                            <td>${casoInstance.id}</td>
+                           <td>${casoInstance.descripcion}</td>                      
+                            <td>${casoInstance.status.nombre}</td>                            
+                            <td><g:formatDate date="${casoInstance.fechaInicio}" /></td>                            
+                            <td><g:formatDate date="${casoInstance.fechaSolucion}" /></td>                        
                             <td>${casoInstance.paciente.nombre}
                                 ${casoInstance.paciente.apellido}
-                            </td>                        
-                            
-                            <td>${casoInstance.paciente.cedula}</td>
-                            
+                            </td>                                                    
+                            <td>${casoInstance.paciente.cedula}</td>                            
                             <td>
                               <ul>
                                 <g:each in="${casoInstance.opiniones}" var="o">
@@ -116,6 +126,7 @@
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>
-</div>
-    </body>
-</html>
+</div>    
+  </div>  
+</body> 
+</html> 

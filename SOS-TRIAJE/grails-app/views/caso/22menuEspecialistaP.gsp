@@ -30,35 +30,15 @@
         <li><g:link controller="caso" action="miHistorial"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>        
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>
+        
+        <li><g:link controller="caso" action="verPorFecha"><g:message code="fecha" /></g:link></li>
         </ul>
       </div>
-
-
-<div id="nivel1">
-<div id="nivel3"> 
-<g:form  method="post">
-    <label for="desde">
-      <g:message code="buscar.desde" />
-    </label>
-      <g:datePicker name="desde" value="" precision="day" noSelection="['':'']" />
-
-    <label for="hasta">
-      <g:message code="buscar.hasta" />
-    </label>
-      <g:datePicker name="hasta" value="" precision="day" noSelection="['':'']" />    
-   
-<g:actionSubmit action="verPorFecha" value="Filtrar" class="boton1"/>
-
-<g:actionSubmit action="listaDeCasosT" value="Todos" class="boton1"/>
-
-</g:form>     
- 
-</div>      
-</div>  
-    
+      
 <div id="nivel1">
   <div id="nivel2">
     <div id="contenido">
+        
         <div  class="form1">
               <table class="tabla2">
                     <thead>

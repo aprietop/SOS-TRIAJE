@@ -19,7 +19,7 @@ development {
 	        pooling = true
 	        driverClassName = "com.mysql.jdbc.Driver"
 	        url = "jdbc:mysql://localhost:3306/sos_triaje?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8"
-	        dbCreate = "create-drop"//"update"//
+	        dbCreate = "update"//"create-drop"//
 	        username = "root"
 	        password = ""
                 //loggingSql = true
