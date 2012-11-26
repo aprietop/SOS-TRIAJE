@@ -93,8 +93,8 @@ class HistorialCasoController {
         asignacion.caso = casoInstance
 
         if (asignacion.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'historialCaso.label', default: 'HistorialCaso'), asignacion.id])}"
-            redirect(action: "show", id: asignacion.id)
+            flash.message = "${message(code: 'asignado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
+            render(view: "showC", model: [casoInstance: casoInstance])     
         }
         else {
             render(view: "historialModCaso", model: [casoInstance: casoInstance])
@@ -118,8 +118,8 @@ class HistorialCasoController {
         asignacion.caso = casoInstance
 
         if (asignacion.save(flush: true)) {
-                flash.message = "${message(code: 'default.created.message', args: [message(code: 'historialCaso.label', default: 'HistorialCaso'), asignacion.id])}"
-                redirect(action: "show", id: asignacion.id)
+                flash.message = "${message(code: 'segundaOpinion', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
+                render(view: "showC", model: [casoInstance: casoInstance])
         }
         else {
                 render(view: "historial2daOpinion", model: [casoInstance: casoInstance])

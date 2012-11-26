@@ -158,8 +158,8 @@ class OpinionController {
         opinionInstance.caso = casoInstance
         
         if (opinionInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'opinion.label', default: 'Opinion'), opinionInstance.id])}"
-            redirect(action: "show", id: opinionInstance.id)
+            flash.message = "${message(code: 'solucion', args: [message(code: 'solucion', default: 'Solucion'), casoInstance.id])}"
+            render(view: "showC", model: [casoInstance: casoInstance])
         }
         else {
             render(view: "createSolucion", model: [opinionInstance: opinionInstance])

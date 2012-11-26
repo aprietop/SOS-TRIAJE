@@ -392,7 +392,7 @@ class CasoController {
 
         if (asignacion.save(flush: true)) {
                 flash.message = "${message(code: 'aceptado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
-                render(view: "aceptarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+                render(view: "showC", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
         }
         else {
                 render(view: "aceptarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
@@ -444,7 +444,7 @@ class CasoController {
 
         if (asignacion.save(flush: true)) {
                 flash.message = "${message(code: 'rechazado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
-                render(view: "rechazarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+                render(view: "showC", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
         }
         else {
                 render(view: "rechazarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
