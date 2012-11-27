@@ -28,7 +28,6 @@
       <ul>       
         <g:if test="${session.ActorSistema.rol == 'Triaje'}">        
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Aceptar casos" /></g:link></li>
-        <li><g:link controller="caso" action="rechazarCaso"><g:message code="Rechazar casos" /></g:link></li>  
         <li><g:link controller="caso" action="vResolverCaso"><g:message code="Resolver casos" /></g:link></li>  
         <li><g:link controller="caso" action="casosSinAsignar" class="selected"><g:message code="Asignar casos" /></g:link></li>
         <li><g:link controller="caso" action="cerrarCaso"><g:message code="Cerrar casos" /></g:link>

@@ -213,9 +213,7 @@ class CasoController {
 
             def status1 = Status.get(1)         //En espera
             def status2 = Status.get(2)         //Asignado
-            def status4 = Status.get(4)         //Segunda Opinion
             def status10 = Status.get(10)       //Rechazado 1er nivel
-            def status11 = Status.get(11)       //Rechazado 2do nivel
 
             List casoInstanceList = []
             
@@ -226,15 +224,18 @@ class CasoController {
 
             historialInstance.each{            
                 if (((it.estadoCaso==status1.nombre)&&(it.caso.status.nombre==status1.nombre))||
-                    ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre))||
-                    ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status11.nombre))){  
+                    ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre))){  
                     
                         casoInstanceList.add(Caso.get(it.caso.id))  
                 }               
             }
             
+            Set<String> a = new LinkedHashSet<String>(casoInstanceList);
+            casoInstanceList.clear();
+            casoInstanceList.addAll(a);             
+            
             render(view: "asignarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
-  }
+        }
 
         if(session?.ActorSistema?.rol == "Especialista" ){
 
@@ -257,6 +258,11 @@ class CasoController {
                 casoInstanceList.add(Caso.get(it.caso.id))  
                 }               
             }            
+
+            Set<String> e = new LinkedHashSet<String>(casoInstanceList);
+            casoInstanceList.clear();
+            casoInstanceList.addAll(e); 
+            
             render(view: "segundaOpinion", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
         }        
     }   
@@ -322,48 +328,107 @@ class CasoController {
 //TRIAJE
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
-        
-        def status2 = Status.get(2)     //Asignado
-        def status3 = Status.get(3)     //En proceso 1er nivel
-        def status4 = Status.get(4)     //Segunda Opinion
-        def status5 = Status.get(5)     //En proceso 2do nivel
-        def status6 = Status.get(6)     //Resuelto 2do nivel
-            
         List casoInstanceList = []
         
-        historialInstance.each{            
-            if (((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status3.nombre))||
-                ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status5.nombre))||
-                ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status6.nombre))){
-                    
-                        casoInstanceList.add(Caso.get(it.caso.id))  
-                }               
-            }
-            
-        Set<String> o = new LinkedHashSet<String>(casoInstanceList);
-        casoInstanceList.clear();
-        casoInstanceList.addAll(o);  
+        if(session?.ActorSistema?.rol == "Especialista" ){
+            def status2 = Status.get(2)     //Asignado
+            def status3 = Status.get(3)     //En proceso 1er nivel
+            def status4 = Status.get(4)     //Segunda Opinion
+            def status5 = Status.get(5)     //En proceso 2do nivel
+            def status6 = Status.get(6)     //Resuelto 2do nivel
+
+            historialInstance.each{            
+                if (((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status3.nombre))||
+                    ((it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status5.nombre))||
+                    ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status6.nombre))){
+
+                            casoInstanceList.add(Caso.get(it.caso.id))  
+                    }               
+                }
+
+            Set<String> o = new LinkedHashSet<String>(casoInstanceList);
+            casoInstanceList.clear();
+            casoInstanceList.addAll(o);  
+
+            render(view: "resolverCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
+        }
         
-        render(view: "resolverCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
+        if(session?.ActorSistema?.rol == "Triaje" ){     
+            def status3 = Status.get(3)     //En proceso 1er nivel
+            
+            historialInstance.each{            
+                if ((it.estadoCaso==status3.nombre)&&(it.caso.status.nombre==status3.nombre)){
+
+                            casoInstanceList.add(Caso.get(it.caso.id))  
+                    }               
+                }
+
+            Set<String> o = new LinkedHashSet<String>(casoInstanceList);
+            casoInstanceList.clear();
+            casoInstanceList.addAll(o);  
+
+            render(view: "resolverCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()])             
+        }   
     }    
     
     def aceptarCaso = {
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
-
-        def status2 = Status.get(2)     //Asignado
-        def status4 = Status.get(4)     //Segunda Opinion
-
-        List casoInstanceList = []
         
-        historialInstance.each{
-            if((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status2.nombre)||
-               (it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status4.nombre)){
-               
-                casoInstanceList.add(Caso.get(it.caso.id))  
+        List casoInstanceList = []        
+        
+        if(session?.ActorSistema?.rol == "Especialista" ){
+            def status2 = Status.get(2)     //Asignado
+            def status4 = Status.get(4)     //Segunda Opinion
+            def status11 = Status.get(11)       //Rechazado 2do nivel
+
+            
+
+            historialInstance.each{
+                if((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status2.nombre)||
+                   (it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status4.nombre)||
+                   (it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status11.nombre)){
+
+                    casoInstanceList.add(Caso.get(it.caso.id))  
+                }
             }
+            
+            Set<String> a = new LinkedHashSet<String>(casoInstanceList);
+            casoInstanceList.clear();
+            casoInstanceList.addAll(a); 
+            
+            render(view: "aceptarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
         }
-        render(view: "aceptarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
+        
+        if(session?.ActorSistema?.rol == "Triaje" ){            
+
+            def historialInstanceTodos = HistorialCaso.getAll()
+
+            def status1 = Status.get(1)         //En espera
+            def status2 = Status.get(2)         //Asignado
+            def status10 = Status.get(10)       //Rechazado 1er nivel
+
+            List casoInstanceListTriaje = []
+            
+            def casoInstance = Caso.findAllByStatus(status1)
+            casoInstance.each{
+                casoInstanceListTriaje.add(it)
+            }
+
+            historialInstanceTodos.each{            
+                if (((it.estadoCaso==status1.nombre)&&(it.caso.status.nombre==status1.nombre))||
+                    ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre))){  
+                    
+                        casoInstanceListTriaje.add(Caso.get(it.caso.id))  
+                }               
+            }
+            
+            Set<String> e = new LinkedHashSet<String>(casoInstanceListTriaje);
+            casoInstanceListTriaje.clear();
+            casoInstanceListTriaje.addAll(e);              
+            
+            render(view: "aceptarCaso", model: [casoInstanceList: casoInstanceListTriaje, casoInstanceTotal: casoInstanceListTriaje.count()])             
+        }
     }    
     
     def saveAceptarCaso= {
@@ -372,31 +437,58 @@ class CasoController {
         def casoInstance = Caso.get(params.id)        
         def medicoInstance = Medico.get(actorInstance.id)
 
-        def status2 = Status.get(2)     //Asignado
-        def status3 = Status.get(3)     //En proceso 1er nivel
-        def status4 = Status.get(4)     //Segunda Opinion
-        def status5 = Status.get(5)     //En proceso 2do nivel
+        if(session?.ActorSistema?.rol == "Especialista" ){        
+            def status2 = Status.get(2)     //Asignado
+            def status3 = Status.get(3)     //En proceso 1er nivel
+            def status4 = Status.get(4)     //Segunda Opinion
+            def status5 = Status.get(5)     //En proceso 2do nivel
+            def status11 = Status.get(11)       //Rechazado 2do nivel
 
-        if (casoInstance.status==status2){
-          casoInstance.status = status3   
+            if ((casoInstance.status==status2)||(casoInstance.status==status11)){
+              casoInstance.status = status3   
+            }
+            if (casoInstance.status==status4){
+              casoInstance.status = status5   
+            }            
+
+            def asignacion = new HistorialCaso()
+            asignacion.fecha = date
+            asignacion.medico = medicoInstance
+            asignacion.estadoCaso = casoInstance.status.nombre
+            asignacion.caso = casoInstance
+
+            if (asignacion.save(flush: true)) {
+                    flash.message = "${message(code: 'aceptado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
+                    render(view: "showC", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+            }
+            else {
+                    render(view: "aceptarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+            } 
         }
-        if (casoInstance.status==status4){
-          casoInstance.status = status5   
-        }        
+        
+        if(session?.ActorSistema?.rol == "Triaje" ){ 
+            def status1 = Status.get(1)     //En espera
+            def status3 = Status.get(3)     //En proceso 1er nivel
+            
+            if (casoInstance.status==status1){
+              casoInstance.status = status3   
+            } 
+            
+            def asignacion = new HistorialCaso()
+            asignacion.fecha = date
+            asignacion.medico = medicoInstance
+            asignacion.estadoCaso = casoInstance.status.nombre
+            asignacion.caso = casoInstance
 
-        def asignacion = new HistorialCaso()
-        asignacion.fecha = date
-        asignacion.medico = medicoInstance
-        asignacion.estadoCaso = casoInstance.status.nombre
-        asignacion.caso = casoInstance
-
-        if (asignacion.save(flush: true)) {
-                flash.message = "${message(code: 'aceptado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
-                render(view: "showC", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
-        }
-        else {
-                render(view: "aceptarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
-        }       
+            if (asignacion.save(flush: true)) {
+                    flash.message = "${message(code: 'aceptado', args: [message(code: 'caso.label', default: 'Caso'), casoInstance.id])}"
+                    render(view: "showC", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+            }
+            else {
+                    render(view: "aceptarCaso", model: [casoInstance: casoInstance, casoInstanceTotal: casoInstance.count()])
+            }             
+            
+        }  
     }
     
     def rechazarCaso = {
@@ -405,16 +497,23 @@ class CasoController {
 
         def status2 = Status.get(2)     //Asignado
         def status4 = Status.get(4)     //Segunda Opinion
+        def status11 = Status.get(11)       //Rechazado 2do nivel
 
         List casoInstanceList = []
         
         historialInstance.each{
             if((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status2.nombre)||
-               (it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status4.nombre)){
+               (it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status4.nombre)||
+               (it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status11.nombre)){
                
                 casoInstanceList.add(Caso.get(it.caso.id))  
             }
         }
+        
+        Set<String> o = new LinkedHashSet<String>(casoInstanceList);
+        casoInstanceList.clear();
+        casoInstanceList.addAll(o);      
+
         render(view: "rechazarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
     }     
     
@@ -429,9 +528,9 @@ class CasoController {
         def status10 = Status.get(10)       //Rechazado 1er nivel
         def status11 = Status.get(11)       //Rechazado 2do nivel
 
-        if (casoInstance.status==status2){
+        if ((casoInstance.status==status2)||(casoInstance.status==status11)){
           casoInstance.status = status10   
-        }
+        }        
         if (casoInstance.status==status4){
           casoInstance.status = status11   
         }        
@@ -452,7 +551,7 @@ class CasoController {
     }
 
     def cerrarCaso = {
-	def status7 = Status.get(7)
+	def status7 = Status.get(7) //Resuelto 1er nivel
         def historialInstance = HistorialCaso.findAllByEstadoCaso(status7.nombre)
                 
         List casoInstanceList = []
@@ -461,6 +560,11 @@ class CasoController {
                 casoInstanceList.add(Caso.get(it.caso.id)) 
             }                 
         }
+        
+        Set<String> o = new LinkedHashSet<String>(casoInstanceList);
+        casoInstanceList.clear();
+        casoInstanceList.addAll(o); 
+        
         render(view: "cerrarCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()]) 
     }      
     

@@ -71,18 +71,8 @@ class HistorialCasoController {
         Date date = new Date()
         def casoInstance = Caso.get(params.id)        
         def medicoInstance = Medico.get(params.medico)
-
-            def s = Status.createCriteria()
-            def statusInstance = s.list{                
-                eq("nombre", "Asignado")
-            }
             
-            def auxiliar = ""
-            statusInstance.each{
-                auxiliar = auxiliar + it.id
-            }  
-            
-            def statusN = Status.get(auxiliar)
+        def statusN = Status.get(2)
 
         casoInstance.status = statusN
         
