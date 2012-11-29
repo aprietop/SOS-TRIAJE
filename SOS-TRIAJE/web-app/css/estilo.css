@@ -140,6 +140,11 @@ a {
         background-image: -ms-linear-gradient(top, #c1941a, #ebb420);
         background-image: -o-linear-gradient(top, #c1941a, #ebb420);
 	text-decoration:underline;}
+
+#menu1  b {
+	list-style:none;
+	margin:0;
+	padding:0;}
 	
 /*  -------------------------------------------
 
@@ -559,6 +564,22 @@ a {
 	margin-left:130px;
         margin-right:-50px;
 	}
+.form1 .boton_submit5 {
+		display:inline-block;
+		font-size:14px;
+		color:#3f3f3f;
+	padding: 7px 15px;
+	background:#f5cb59 url(../images/bkg_boton1.gif) repeat-x;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f4e2b3), to(#f5c645));
+        background-image: -webkit-linear-gradient(top, #f4e2b3, #f5c645);
+        background-image: -moz-linear-gradient(top, #f4e2b3, #f5c645);
+        background-image: -ms-linear-gradient(top, #f4e2b3, #f5c645);
+        background-image: -o-linear-gradient(top, #f4e2b3, #f5c645);
+	color:#3f3f3f;
+	border:solid 1px #dddddd;
+	text-decoration:none;
+	margin: auto;
+	}        
 .form1 design1 {
         border:2px solid #999;
         padding:5px;

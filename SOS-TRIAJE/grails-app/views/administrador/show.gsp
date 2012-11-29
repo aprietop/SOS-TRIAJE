@@ -39,7 +39,7 @@
         </div>--%>
     
       
-      <div id="nivel1">
+<div id="nivel1">
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos del administrador</h1>
@@ -105,10 +105,15 @@
             <div>
                 <g:form>
                     <g:hiddenField name="id" value="${administradorInstance?.id}" />
-                    <g:actionSubmit class="edit boton_submit4" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" />
-                    <g:actionSubmit class="delete boton_submit4" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" />
+                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </g:form>
             </div>
         </div>
+<p>&nbsp;</p>
+    </div>      
+  </div>
+  <p style="clear:both">&nbsp;</p>
+</div>      
     </body>
 </html>

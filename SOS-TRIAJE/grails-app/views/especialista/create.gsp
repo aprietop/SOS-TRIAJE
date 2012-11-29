@@ -62,7 +62,7 @@
           <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
           
             <p>&nbsp;</p>
-            <%--<h1><g:message code="default.create.label" args="[entityName]" /></h1>--%>
+            
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -181,7 +181,7 @@
                                 <td valign="top">
                                     <label for="especialidad"><g:message code="especialista.especialidad.label" default="Especialidad" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'especialidad', 'errors')}">
+                                <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
                                     <g:select  style="width:250px" name="especialidad" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
                                     value="${especialistaInstance?.especialidades?.id}"/><span class="obligatorio">&nbsp;*</span>
                                 </td>
@@ -199,5 +199,6 @@
        </div>
         <p style="clear:both">&nbsp;</p>
       </div>
+           </div>
     </body>
 </html>

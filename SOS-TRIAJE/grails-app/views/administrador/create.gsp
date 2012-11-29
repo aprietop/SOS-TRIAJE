@@ -32,7 +32,7 @@
     </head>
     <body>
 
-<div id="cabecera">
+      <div id="cabecera">
         <div id="cabColI">
           <div id="logo">
              <h1><img src="${resource(dir:'images',file:'SOS.gif')}" width="97" height="53" align="texttop" />Referencias Médicas</h1>        
@@ -49,8 +49,8 @@
 
       <div id="menu1">
       <ul>
-         <li><g:link controller="especialista" action="list"><g:message code="Modificar Especialista"/></g:link></li>
-         <li><g:link controller="especialista" action="create" class="selected"><g:message code="Crear Especialista"/></g:link></li>
+         <li><g:link controller="administrador" action="list"><g:message code="Modificar Administrador"/></g:link></li>
+         <li><g:link controller="administrador" action="create" class="selected"><g:message code="Crear Administrador"/></g:link></li>
         </ul>
       </div>
       
@@ -66,9 +66,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${especialistaInstance}">
+            <g:hasErrors bean="${administradorInstance}">
             <div class="errors">
-                <g:renderErrors bean="${especialistaInstance}" as="list" />
+                <g:renderErrors bean="${administradorInstance}" as="list" />
             </div>
             </g:hasErrors>
     
@@ -162,5 +162,6 @@
        </div>
         <p style="clear:both">&nbsp;</p>
       </div>
+          </div>
     </body>
 </html>

@@ -107,8 +107,8 @@
             <div>
                 <g:form>
                     <g:hiddenField name="id" value="${triajeInstance?.id}" />
-                    <g:actionSubmit class="edit boton_submit4" action="edit" value="${message(code: 'Editar', default: 'Editar')}" />
-                    <g:actionSubmit class="delete boton_submit4" action="delete" value="${message(code: 'Eliminar', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: '¿Está seguro?')}');" />
+                    <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'Editar', default: 'Editar')}" />
+                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'Eliminar', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: '¿Está seguro?')}');" />
                 </g:form>
             </div>
         </div>

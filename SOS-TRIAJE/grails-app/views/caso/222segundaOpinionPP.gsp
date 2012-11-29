@@ -97,7 +97,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>          
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>           
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>
