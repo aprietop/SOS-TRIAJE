@@ -97,3 +97,16 @@ images.location = "web-app/images/usuarios"
 graphviz {
     dot.executable = "C:/Program Files/Graphviz 2.28/bin/dot" // include full file path if not on path
 }
+
+//Configuracion para enviar mail
+grails {
+   mail {
+     host = "mmailmed.med.ucv.ve"
+     port = 25
+     username = "soporte.caibco@med.ucv.ve"
+     password = "soca012"
+     props = ["mail.smtp.auth":"true"]
+     from="server@yourhost.com"
+   }
+}
+grails.mail.default.from="sos-hme.soporte@telemedicina.com"

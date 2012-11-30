@@ -48,15 +48,39 @@ class AsigReasig2daopToEnEsperaJob {
             
             if(minutos <2){ 
                 contador = contador+1
-                println "Notificacion "+contador+": Recuerde Dr. "+historialInstance.medico.nombre+
-                " "+historialInstance.medico.apellido+", por favor revisar el caso numero "+
-                historialInstance.caso.id+" que le ha sido asignado"
+//                println "Notificacion "+contador+": Recuerde Dr. "+historialInstance.medico.nombre+
+//                " "+historialInstance.medico.apellido+", por favor revisar el caso numero "+
+//                historialInstance.caso.id+" que le ha sido asignado"
+                
+                    try{
+                        sendMail {
+                            to historialInstance.medico.mail //Email del usuario
+                            subject "Revisar caso asignado" // Asunto del mensaje
+                            body    "Notificacion "+contador+": Recuerde Dr. "+historialInstance.medico.nombre+
+                                    " "+historialInstance.medico.apellido+", por favor revisar el caso numero "+
+                                    historialInstance.caso.id+" que le ha sido asignado"
+                        }
+                    }catch(Exception e){
+                        println "Error de conexion"
+                    }
                 
             }else{
-                println "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+
-                " "+historialInstance.medico.apellido+", se le informa que el caso numero "+
-                historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atrazo en su respuesta"
-                    
+//                println "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+
+//                " "+historialInstance.medico.apellido+", se le informa que el caso numero "+
+//                historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atrazo en su respuesta"
+                    try{
+                        sendMail {
+                            to historialInstance.medico.mail //Email del usuario
+                            subject "Libaración de caso asignado" // Asunto del mensaje
+                            body    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+
+                                    " "+historialInstance.medico.apellido+", se le informa que el caso numero "+
+                                    historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atrazo en su respuesta"
+                        }
+                    }catch(Exception e){
+                        println "Error de conexion"
+                    }                    
+                
+                
                     Date date = new Date()
                     
                     it.status = status1                    
@@ -66,7 +90,7 @@ class AsigReasig2daopToEnEsperaJob {
                     asignacion.caso = it
                     asignacion.save()
                     
-                println "CASO LIBERADO CON EXITO"
+                    println "CASO LIBERADO CON EXITO"
             }
         }
     }

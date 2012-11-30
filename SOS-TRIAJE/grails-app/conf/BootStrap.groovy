@@ -28,18 +28,6 @@ class BootStrap {
 //        println "=========== ++++++++++++++++++++ ==========="
 //        println ""     
 //
-///*************************** SISTEMA SOS-TRIAJE ******************************/      
-//      
-//        def sistema = new ActorSistema()
-//            sistema.nombre = "Asignación"
-//            sistema.apellido = "Automatica"
-//            sistema.cedula = 0000000
-//            sistema.sexo = "Sin definir"
-//            sistema.rol = "Sistema"
-//            sistema.login = "sistema"
-//            sistema.password = "sistema1"
-//            if (!sistema.save()) println sistema.errors 
-//         
 ///*************************** ADMINISTRADOR SOS-TRIAJE *************************/      
 ////      
 //        def administrador = new Administrador()
@@ -61,8 +49,9 @@ class BootStrap {
 //            triaje1.apellido = "Gomez"
 //            triaje1.cedula = 19768657
 //            triaje1.sexo = "Femenino"
-//            triaje1.nacionalidad = "Venezolana"
+//            triaje1.nacionalidad = "Venezolana"            
 //            triaje1.rol = "Triaje"
+//            triaje1.mail = "angelica.gomez.ucab@gmail.com"
 //            triaje1.login = "angiita"
 //            triaje1.password = "angiita1"
 //            triaje1.numColegioMedico = 234
@@ -105,6 +94,7 @@ class BootStrap {
 //            especialista1.sexo = "Femenino"
 //            especialista1.nacionalidad = "Venezolana"
 //            especialista1.rol = "Especialista"
+//            especialista1.mail = "angie.gmz@hotmail.com"
 //            especialista1.login = "karlita"
 //            especialista1.password = "karlita1"
 //            especialista1.numColegioMedico = 23412
@@ -130,6 +120,7 @@ class BootStrap {
 //            especialista3.sexo = "Masculino"
 //            especialista3.nacionalidad = "Venezolano"
 //            especialista3.rol = "Especialista"
+//            especialista3.mail = "angel_428_m@hotmail.com"
 //            especialista3.login = "pedro"
 //            especialista3.password = "pedro1"
 //            especialista3.addToEspecialidades(especialidad2)
