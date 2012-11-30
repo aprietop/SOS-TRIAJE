@@ -1,3 +1,4 @@
+import java.util.Date
 import caso.Caso
 import caso.HistorialCaso
 
@@ -22,11 +23,23 @@ class BootStrap {
 ///*
 ///************************** DATA INICIAL SOS-TRIAJE ****************************/   
 //        println ""
-//        println "======== +++++++++++++ ========"
-//        println "======== CARGA DE DATA ========"
-//        println "======== +++++++++++++ ========"
+//        println "=========== ++++++++++++++++++++ ==========="
+//        println "===========     CARGA DE DATA    ==========="
+//        println "=========== ++++++++++++++++++++ ==========="
 //        println ""     
-//        
+//
+///*************************** SISTEMA SOS-TRIAJE ******************************/      
+//      
+//        def sistema = new ActorSistema()
+//            sistema.nombre = "Asignación"
+//            sistema.apellido = "Automatica"
+//            sistema.cedula = 0000000
+//            sistema.sexo = "Sin definir"
+//            sistema.rol = "Sistema"
+//            sistema.login = "sistema"
+//            sistema.password = "sistema1"
+//            if (!sistema.save()) println sistema.errors 
+//         
 ///*************************** ADMINISTRADOR SOS-TRIAJE *************************/      
 ////      
 //        def administrador = new Administrador()
@@ -361,7 +374,12 @@ class BootStrap {
 //            opinion4.fechaOpinion = new Date(112, 10, 27)
 //            opinion4.caso = caso3         
 //            if (!opinion4.save()) println opinion4.errors 
-           
+//           
+//        println ""
+//        println "=========== ++++++++++++++++++++ ==========="
+//        println "=========== FIN DE CARGA DE DATA ==========="
+//        println "=========== ++++++++++++++++++++ ==========="
+
     }
     def destroy = {
     }

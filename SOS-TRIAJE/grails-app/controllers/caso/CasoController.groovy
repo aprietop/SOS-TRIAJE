@@ -223,8 +223,7 @@ class CasoController {
             }
 
             historialInstance.each{            
-                if (((it.estadoCaso==status1.nombre)&&(it.caso.status.nombre==status1.nombre))||
-                    ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre))){  
+                if ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre)){  
                     
                         casoInstanceList.add(Caso.get(it.caso.id))  
                 }               
@@ -416,8 +415,7 @@ class CasoController {
             }
 
             historialInstanceTodos.each{            
-                if (((it.estadoCaso==status1.nombre)&&(it.caso.status.nombre==status1.nombre))||
-                    ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre))){  
+                if ((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status10.nombre)){  
                     
                         casoInstanceListTriaje.add(Caso.get(it.caso.id))  
                 }               

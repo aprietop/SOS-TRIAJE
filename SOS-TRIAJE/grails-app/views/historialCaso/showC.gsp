@@ -89,10 +89,9 @@
                     
                     </tbody>
                 </table>
-<p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Ok"/></g:link>  
 </div>
 <p>&nbsp;</p>
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Ok"/></g:link>
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

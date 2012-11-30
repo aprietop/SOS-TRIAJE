@@ -1,11 +1,11 @@
 package caso
 
+import java.util.Date
 import medico.*
 
 class HistorialCaso {
 //ATRIBUTOS
     Date fecha
-//    Caso caso
     Medico medico
     String estadoCaso
     
