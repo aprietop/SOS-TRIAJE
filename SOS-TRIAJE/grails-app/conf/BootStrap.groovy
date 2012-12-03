@@ -37,6 +37,7 @@ class BootStrap {
 //            administrador.sexo = "Masculino"
 //            administrador.nacionalidad = ""
 //            administrador.rol = "Administrador"
+//            administrador.mail = "angel_428_m@hotmail.com"
 //            administrador.login = "admin"
 //            administrador.password = "admin1"
 //            administrador.mail = ""
@@ -120,7 +121,6 @@ class BootStrap {
 //            especialista3.sexo = "Masculino"
 //            especialista3.nacionalidad = "Venezolano"
 //            especialista3.rol = "Especialista"
-//            especialista3.mail = "angel_428_m@hotmail.com"
 //            especialista3.login = "pedro"
 //            especialista3.password = "pedro1"
 //            especialista3.addToEspecialidades(especialidad2)

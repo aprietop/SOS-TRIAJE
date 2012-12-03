@@ -15,7 +15,7 @@ class AsigReasig2daopToEnEsperaJob {
 
     static int contador = 0
 //    static int metodo = 0
-    
+    def mailService
     def execute() {       
         
         def status2 = Status.get(2) //Asignado
@@ -48,36 +48,28 @@ class AsigReasig2daopToEnEsperaJob {
             
             if(minutos <2){ 
                 contador = contador+1
-//                println "Notificacion "+contador+": Recuerde Dr. "+historialInstance.medico.nombre+
-//                " "+historialInstance.medico.apellido+", por favor revisar el caso numero "+
-//                historialInstance.caso.id+" que le ha sido asignado"
-                
+   
                     try{
-                        sendMail {
-                            to historialInstance.medico.mail //Email del usuario
-                            subject "Revisar caso asignado" // Asunto del mensaje
-                            body    "Notificacion "+contador+": Recuerde Dr. "+historialInstance.medico.nombre+
-                                    " "+historialInstance.medico.apellido+", por favor revisar el caso numero "+
-                                    historialInstance.caso.id+" que le ha sido asignado"
+                        mailService.sendMail {
+                            to "angelica.gomez.ucab@gmail.com"//historialInstance.medico.mail //Email del usuario
+                            subject "Libaración de caso asignado" // Asunto del mensaje
+                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que le fue asignado, Gracias."
                         }
                     }catch(Exception e){
                         println "Error de conexion"
-                    }
+                        e.printStackTrace()
+                    } 
                 
             }else{
-//                println "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+
-//                " "+historialInstance.medico.apellido+", se le informa que el caso numero "+
-//                historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atrazo en su respuesta"
                     try{
-                        sendMail {
-                            to historialInstance.medico.mail //Email del usuario
+                        mailService.sendMail {
+                            to "angelica.gomez.ucab@gmail.com"//historialInstance.medico.mail //Email del usuario
                             subject "Libaración de caso asignado" // Asunto del mensaje
-                            body    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+
-                                    " "+historialInstance.medico.apellido+", se le informa que el caso numero "+
-                                    historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atrazo en su respuesta"
+                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atraso en su respuesta, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"
+                        e.printStackTrace()
                     }                    
                 
                 
