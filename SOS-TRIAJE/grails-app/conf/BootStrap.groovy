@@ -95,7 +95,7 @@ class BootStrap {
 //            especialista1.sexo = "Femenino"
 //            especialista1.nacionalidad = "Venezolana"
 //            especialista1.rol = "Especialista"
-//            especialista1.mail = "angie.gmz@hotmail.com"
+//            especialista1.mail = "angelica.gomez@outlook.com"
 //            especialista1.login = "karlita"
 //            especialista1.password = "karlita1"
 //            especialista1.numColegioMedico = 23412

@@ -6,6 +6,7 @@ import caso.HistorialCaso
 import status.Status
 import groovy.time.TimeCategory
 import groovy.time.TimeDuration
+import medico.Medico
 
 class AsigReasig2daopToEnEsperaJob {
     static triggers = {
@@ -51,8 +52,8 @@ class AsigReasig2daopToEnEsperaJob {
    
                     try{
                         mailService.sendMail {
-                            to "angelica.gomez.ucab@gmail.com"//historialInstance.medico.mail //Email del usuario
-                            subject "Libaración de caso asignado" // Asunto del mensaje
+                            to historialInstance.medico.mail //Email del usuario //"angelica.gomez.ucab@gmail.com"
+                            subject "Notificación de caso asignado" // Asunto del mensaje
                             html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que le fue asignado, Gracias."
                         }
                     }catch(Exception e){
@@ -63,7 +64,8 @@ class AsigReasig2daopToEnEsperaJob {
             }else{
                     try{
                         mailService.sendMail {
-                            to "angelica.gomez.ucab@gmail.com"//historialInstance.medico.mail //Email del usuario
+                            to historialInstance.medico.mail//historialInstance.medico.mail //Email del usuario
+                            cc "angelica.gomez.ucab@gmail.com" //
                             subject "Libaración de caso asignado" // Asunto del mensaje
                             html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atraso en su respuesta, Gracias"
                         }
@@ -82,7 +84,6 @@ class AsigReasig2daopToEnEsperaJob {
                     asignacion.caso = it
                     asignacion.save()
                     
-                    println "CASO LIBERADO CON EXITO"
             }
         }
     }
