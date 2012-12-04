@@ -381,8 +381,6 @@ class CasoController {
             def status4 = Status.get(4)     //Segunda Opinion
             def status11 = Status.get(11)       //Rechazado 2do nivel
 
-            
-
             historialInstance.each{
                 if((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status2.nombre)||
                    (it.estadoCaso==status4.nombre)&&(it.caso.status.nombre==status4.nombre)||
@@ -440,9 +438,10 @@ class CasoController {
             def status3 = Status.get(3)     //En proceso 1er nivel
             def status4 = Status.get(4)     //Segunda Opinion
             def status5 = Status.get(5)     //En proceso 2do nivel
+            def status10 = Status.get(10)       //Rechazado 1er nivel
             def status11 = Status.get(11)       //Rechazado 2do nivel
 
-            if ((casoInstance.status==status2)||(casoInstance.status==status11)){
+            if ((casoInstance.status==status2)||(casoInstance.status==status11)||(casoInstance.status==status10)){
               casoInstance.status = status3   
             }
             if (casoInstance.status==status4){

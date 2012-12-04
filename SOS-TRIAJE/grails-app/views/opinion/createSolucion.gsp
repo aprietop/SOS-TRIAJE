@@ -85,7 +85,7 @@
                                     <g:message code="opinion.nombreOpinion.label" default="Título Solución" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: opinionInstance, field: 'nombreOpinion', 'errors')}">
-                                    <g:textField name="nombreOpinion" value="${opinionInstance?.nombreOpinion}" /><span class="obligatorio">&nbsp;*</span>
+                                    <g:textField style="width:250px" name="nombreOpinion" value="${opinionInstance?.nombreOpinion}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                             
