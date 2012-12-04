@@ -8,26 +8,28 @@ import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import medico.Medico
 
-class AsigReasig2daopToEnEsperaJob {
+class ResSegNivelToResPrimNivelJob {
     static triggers = {
       //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'AsigReasigTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      simple name:'Resuelto2doNivelTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
     }
 
     static int contador = 0
     
     def mailService
-    def execute() {       
-        
+    def execute() {
+       
         def status2 = Status.get(2) //Asignado
-        def status1 = Status.get(1) //En espera
+        def status6 = Status.get(6) //Resuelto segundo nivel
+        def status7 = Status.get(7) //Resuelto primer nivel
         
         def asignacion = new HistorialCaso()
         
         List casoInstanceList = []
+        List histEspAsignado = []
         
         //TODOS LOS CASOS CON ESTADO ASIGNADO
-        def casoInstance = Caso.findAllByStatus(status2)
+        def casoInstance = Caso.findAllByStatus(status6)
         casoInstance.each{
             casoInstanceList.add(it)
         }
@@ -38,15 +40,25 @@ class AsigReasig2daopToEnEsperaJob {
         casoInstanceList.each{       
             
             def historialInstance = HistorialCaso.findAllByCaso(it, [sort: "fecha", order: "desc"])  
-            historialInstance=historialInstance.first()
+            def primerHistorial=historialInstance.first()
             
             Date fechaActual = new Date()
             fechaActual = fechaActual.toTimestamp()
             
-            duration= tiempo.minus(fechaActual, historialInstance.fecha)            
+            duration= tiempo.minus(fechaActual, primerHistorial.fecha)            
             def horas = duration.getHours()
             def minutos = duration.getMinutes()
             def segundos = duration.getSeconds()       
+            
+                def historialAsignado
+
+                historialInstance.each{                 
+                    if (it.estadoCaso==status2.nombre){
+                    histEspAsignado.add(it)
+                    }
+                }
+                
+                historialAsignado = histEspAsignado.first()
             
             //Si no han pasado 2 minutos, envia notificacion de asignacion de caso, 
             //segun el trigger (cada 1 minuto)
@@ -55,9 +67,9 @@ class AsigReasig2daopToEnEsperaJob {
    
                     try{
                         mailService.sendMail {
-                            to historialInstance.medico.mail //Email del usuario //"angelica.gomez.ucab@gmail.com"
-                            subject "Notificación de caso asignado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que le fue asignado, Gracias."
+                            to historialAsignado.medico.mail //Email del usuario //"angelica.gomez.ucab@gmail.com"
+                            subject "Notificación de revision de segunda opinion" // Asunto del mensaje
+                            html    "Notificacion "+contador+": Dr. "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le recuerda revisar la solucion de segunda opinion dada al caso numero "+primerHistorial.caso.id+" , Gracias."
                         }
                     }catch(Exception e){
                         println "Error de conexion"
@@ -69,10 +81,10 @@ class AsigReasig2daopToEnEsperaJob {
             else{            
                     try{
                         mailService.sendMail {
-                            to historialInstance.medico.mail//historialInstance.medico.mail //Email del usuario
+                            to historialAsignado.medico.mail//historialInstance.medico.mail //Email del usuario
                             cc "angelica.gomez.ucab@gmail.com" //
-                            subject "Libaración de caso asignado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atraso en su respuesta, Gracias"
+                            subject "Envio de solucion a Triaje" // Asunto del mensaje
+                            html    "Notificacion "+contador+": Dr. "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le informa que el caso numero "+primerHistorial.caso.id+" fue enviado a Triaje con la solucion de la segunda opinion solicitada sin su revison, debido al atraso en su respuesta, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"
@@ -82,9 +94,9 @@ class AsigReasig2daopToEnEsperaJob {
                 
                     Date date = new Date()
                     
-                    it.status = status1                    
+                    it.status = status7                    
                     asignacion.fecha = date
-                    asignacion.medico = historialInstance.medico
+                    asignacion.medico = primerHistorial.medico
                     asignacion.estadoCaso = it.status.nombre
                     asignacion.caso = it
                     asignacion.save()
