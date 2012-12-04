@@ -66,6 +66,7 @@ class BootStrap {
 //            triaje2.rol = "Triaje"
 //            triaje2.login = "marcos"
 //            triaje2.password = "marcos1"
+//            triaje1.mail = "luiscarlos_toto@hotmail.com"
 //            triaje2.numMinisterioSalud = 5667
 //            if (!triaje2.save()) println triaje2.errors      
 //

@@ -55,7 +55,7 @@ class EnProcSegNivelToAsignadoJob {
            
                 try{
                     mailService.sendMail {
-                        to primerHistorial.medico.mail //Email del usuario //"angelica.gomez.ucab@gmail.com"
+                        to primerHistorial.medico.mail //Email del usuario
                         subject "Notificación de emision de segunda opinion" // Asunto del mensaje
                         html    "Notificacion "+contador+": Dr. "+primerHistorial.medico.nombre+" "+primerHistorial.medico.apellido+", se le recuerda revisar el caso numero "+primerHistorial.caso.id+" que accedio a emitir una segunda opinion, Gracias."
                     }
@@ -69,10 +69,10 @@ class EnProcSegNivelToAsignadoJob {
             else{            
                  try{
                     mailService.sendMail {
-                        to primerHistorial.medico.mail//historialInstance.medico.mail //Email del usuario
+                        to primerHistorial.medico.mail //Email del usuario
                         cc "angelica.gomez.ucab@gmail.com" //
                         subject "Libaración de emision de segunda opinion" // Asunto del mensaje
-                        html    "Notificacion "+contador+": Dr. "+primerHistorial.medico.nombre+" "+primerHistorial.medico.apellido+", se le informa que el caso numero "+primerHistorial.caso.id+" que accedio a emitir una segunda opinion ha sido devuelto a su especialista asignado debido al atraso en su respuesta, Gracias"
+                        html    "Notificacion "+contador+": Dr. "+primerHistorial.medico.nombre+" "+primerHistorial.medico.apellido+", se le informa que el caso numero "+primerHistorial.caso.id+" que accedio a emitir una segunda opinion ha sido devuelto automaticamente a su especialista asignado debido al atraso en su respuesta, Gracias"
                     }
                 }catch(Exception e){
                     println "Error de conexion"

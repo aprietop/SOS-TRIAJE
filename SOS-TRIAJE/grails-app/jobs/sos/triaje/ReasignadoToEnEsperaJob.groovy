@@ -8,26 +8,26 @@ import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import medico.Medico
 
-class EnProcPrimNivelToEnEsperaJob {
-    static triggers = {
+class ReasignadoToEnEsperaJob {
+static triggers = {
       //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'EnProceso1NivelTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      simple name:'ReasignadoTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
     }
 
     static int contador = 0
     
     def mailService
-    def execute() {
-
+    def execute() {       
+        
+        def status9 = Status.get(9) //Reasignado
         def status1 = Status.get(1) //En espera
-        def status3 = Status.get(3) //En proceso primer nivel
         
         def asignacion = new HistorialCaso()
         
         List casoInstanceList = []
         
         //TODOS LOS CASOS CON ESTADO ASIGNADO
-        def casoInstance = Caso.findAllByStatus(status3)
+        def casoInstance = Caso.findAllByStatus(status9)
         casoInstance.each{
             casoInstanceList.add(it)
         }
@@ -48,15 +48,16 @@ class EnProcPrimNivelToEnEsperaJob {
             def minutos = duration.getMinutes()
             def segundos = duration.getSeconds()       
             
-            //Si no han pasado 2 minutos, envia notificacion de asignacion de caso segun el trigger (cada 1 minuto)
+            //Si no han pasado 2 minutos, envia notificacion de asignacion de caso, 
+            //segun el trigger (cada 1 minuto)
             if(minutos <2){ 
                 contador = contador+1
    
                     try{
                         mailService.sendMail {
                             to historialInstance.medico.mail //Email del usuario
-                            subject "Notificación de caso aceptado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que accedio a dar solución, Gracias."
+                            subject "Notificación de caso asignado" // Asunto del mensaje
+                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que le fue asignado, Gracias."
                         }
                     }catch(Exception e){
                         println "Error de conexion"
@@ -70,8 +71,8 @@ class EnProcPrimNivelToEnEsperaJob {
                         mailService.sendMail {
                             to historialInstance.medico.mail //Email del usuario
                             cc "angelica.gomez.ucab@gmail.com" //
-                            subject "Libaración de caso aceptado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que accedio a dar solución ha sido liberado automaticamente debido al atraso en su respuesta, Gracias"
+                            subject "Libaración de caso asignado" // Asunto del mensaje
+                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado automaticamente debido al atraso en su respuesta, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"

@@ -67,7 +67,7 @@ class ResSegNivelToResPrimNivelJob {
    
                     try{
                         mailService.sendMail {
-                            to historialAsignado.medico.mail //Email del usuario //"angelica.gomez.ucab@gmail.com"
+                            to historialAsignado.medico.mail //Email del usuario
                             subject "Notificación de revision de segunda opinion" // Asunto del mensaje
                             html    "Notificacion "+contador+": Dr. "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le recuerda revisar la solucion de segunda opinion dada al caso numero "+primerHistorial.caso.id+" , Gracias."
                         }
@@ -81,10 +81,10 @@ class ResSegNivelToResPrimNivelJob {
             else{            
                     try{
                         mailService.sendMail {
-                            to historialAsignado.medico.mail//historialInstance.medico.mail //Email del usuario
+                            to historialAsignado.medico.mail //Email del usuario
                             cc "angelica.gomez.ucab@gmail.com" //
                             subject "Envio de solucion a Triaje" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le informa que el caso numero "+primerHistorial.caso.id+" fue enviado a Triaje con la solucion de la segunda opinion solicitada sin su revison, debido al atraso en su respuesta, Gracias"
+                            html    "Notificacion "+contador+": Dr. "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le informa que el caso numero "+primerHistorial.caso.id+" fue enviado a Triaje automaticamente con la solucion de la segunda opinion solicitada sin su revison, debido al atraso en su respuesta, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"

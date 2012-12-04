@@ -7,29 +7,37 @@ import status.Status
 import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import medico.Medico
+import medico.Triaje
 
-class EnProcPrimNivelToEnEsperaJob {
+class ResPrimNivelToCerradoJob {
     static triggers = {
       //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'EnProceso1NivelTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      simple name:'Resuelto1erNivelTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
     }
 
     static int contador = 0
     
     def mailService
     def execute() {
-
-        def status1 = Status.get(1) //En espera
-        def status3 = Status.get(3) //En proceso primer nivel
+        
+        def status2 = Status.get(2) //Asignado
+        def status7 = Status.get(7) //Resuelto primer nivel
+        def status8 = Status.get(8) //Cerrado
         
         def asignacion = new HistorialCaso()
         
         List casoInstanceList = []
+        List correoTriajeList = []
         
         //TODOS LOS CASOS CON ESTADO ASIGNADO
-        def casoInstance = Caso.findAllByStatus(status3)
+        def casoInstance = Caso.findAllByStatus(status7)
         casoInstance.each{
             casoInstanceList.add(it)
+        }
+        
+        def triajeInstance = Triaje.findAll()
+        triajeInstance.each{
+            correoTriajeList.add(it.mail)
         }
         
         TimeCategory tiempo = new TimeCategory()
@@ -38,25 +46,26 @@ class EnProcPrimNivelToEnEsperaJob {
         casoInstanceList.each{       
             
             def historialInstance = HistorialCaso.findAllByCaso(it, [sort: "fecha", order: "desc"])  
-            historialInstance=historialInstance.first()
+            def primerHistorial=historialInstance.first()
             
             Date fechaActual = new Date()
             fechaActual = fechaActual.toTimestamp()
             
-            duration= tiempo.minus(fechaActual, historialInstance.fecha)            
+            duration= tiempo.minus(fechaActual, primerHistorial.fecha)            
             def horas = duration.getHours()
             def minutos = duration.getMinutes()
             def segundos = duration.getSeconds()       
             
+ 
             //Si no han pasado 2 minutos, envia notificacion de asignacion de caso segun el trigger (cada 1 minuto)
             if(minutos <2){ 
                 contador = contador+1
-   
+                
                     try{
                         mailService.sendMail {
-                            to historialInstance.medico.mail //Email del usuario
-                            subject "Notificación de caso aceptado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que accedio a dar solución, Gracias."
+                            to correoTriajeList.toArray() //Email de los encargados de Triaje
+                            subject "Notificación de cierre de caso" // Asunto del mensaje
+                            html    "Notificacion "+contador+": Dr. Encargado de Triaje, se le recuerda revisar el caso numero "+primerHistorial.caso.id+" para concluir con su cierre, Gracias."
                         }
                     }catch(Exception e){
                         println "Error de conexion"
@@ -68,27 +77,24 @@ class EnProcPrimNivelToEnEsperaJob {
             else{            
                     try{
                         mailService.sendMail {
-                            to historialInstance.medico.mail //Email del usuario
-                            cc "angelica.gomez.ucab@gmail.com" //
-                            subject "Libaración de caso aceptado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que accedio a dar solución ha sido liberado automaticamente debido al atraso en su respuesta, Gracias"
+                            to correoTriajeList.toArray()//Email de los encargados de Triaje
+                            subject "Notificacion de cierre de caso" // Asunto del mensaje
+                            html    "Notificacion "+contador+": Dr. Encargado de Triaje, se le informa que el caso numero "+primerHistorial.caso.id+" fue cerrado automaticamente debido al atraso en su respuesta para su cierre, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"
                         e.printStackTrace()
                     }                    
-                
-                
+                                
                     Date date = new Date()
                     
-                    it.status = status1                    
+                    it.status = status8                    
                     asignacion.fecha = date
-                    asignacion.medico = historialInstance.medico
+                    asignacion.medico = primerHistorial.medico
                     asignacion.estadoCaso = it.status.nombre
                     asignacion.caso = it
-                    asignacion.save()
-                    
+                    asignacion.save()                    
             }
-        }
+        }        
     }
 }

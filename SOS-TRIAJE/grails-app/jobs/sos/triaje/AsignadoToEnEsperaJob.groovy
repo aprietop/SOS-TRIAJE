@@ -8,10 +8,10 @@ import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import medico.Medico
 
-class AsigReasig2daopToEnEsperaJob {
+class AsignadoToEnEsperaJob {
     static triggers = {
       //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'AsigReasigTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      simple name:'AsignadoTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
     }
 
     static int contador = 0
@@ -55,7 +55,7 @@ class AsigReasig2daopToEnEsperaJob {
    
                     try{
                         mailService.sendMail {
-                            to historialInstance.medico.mail //Email del usuario //"angelica.gomez.ucab@gmail.com"
+                            to historialInstance.medico.mail //Email del usuario
                             subject "Notificación de caso asignado" // Asunto del mensaje
                             html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que le fue asignado, Gracias."
                         }
@@ -69,10 +69,10 @@ class AsigReasig2daopToEnEsperaJob {
             else{            
                     try{
                         mailService.sendMail {
-                            to historialInstance.medico.mail//historialInstance.medico.mail //Email del usuario
+                            to historialInstance.medico.mail //Email del usuario
                             cc "angelica.gomez.ucab@gmail.com" //
                             subject "Libaración de caso asignado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado debido al atraso en su respuesta, Gracias"
+                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado automaticamente debido al atraso en su respuesta, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"
