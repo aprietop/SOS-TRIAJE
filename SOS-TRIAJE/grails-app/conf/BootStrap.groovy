@@ -120,6 +120,7 @@ class BootStrap {
 //            especialista3.cedula = 21768657
 //            especialista3.sexo = "Masculino"
 //            especialista3.nacionalidad = "Venezolano"
+//            especialista3.mail = "angelthebest@gmail.com"
 //            especialista3.rol = "Especialista"
 //            especialista3.login = "pedro"
 //            especialista3.password = "pedro1"

@@ -10,12 +10,12 @@ import medico.Medico
 
 class AsigReasig2daopToEnEsperaJob {
     static triggers = {
-      //Se ejecuta cada 5 segundos, el primero empieza al 2 segundo
+      //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
       simple name:'5SecondsTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
     }
 
     static int contador = 0
-//    static int metodo = 0
+    
     def mailService
     def execute() {       
         
@@ -25,7 +25,8 @@ class AsigReasig2daopToEnEsperaJob {
         def asignacion = new HistorialCaso()
         
         List casoInstanceList = []
-
+        
+        //TODOS LOS CASOS CON ESTADO ASIGNADO
         def casoInstance = Caso.findAllByStatus(status2)
         casoInstance.each{
             casoInstanceList.add(it)
@@ -47,6 +48,8 @@ class AsigReasig2daopToEnEsperaJob {
             def minutos = duration.getMinutes()
             def segundos = duration.getSeconds()       
             
+            //Si no han pasado 2 minutos, envia notificacion de asignacion de caso, 
+            //segun el trigger (cada 1 minuto)
             if(minutos <2){ 
                 contador = contador+1
    
@@ -61,7 +64,9 @@ class AsigReasig2daopToEnEsperaJob {
                         e.printStackTrace()
                     } 
                 
-            }else{
+            }
+            //Si han pasado 2 minutos o mas, envia notificacion de liberacion de caso 1 sola vez            
+            else{            
                     try{
                         mailService.sendMail {
                             to historialInstance.medico.mail//historialInstance.medico.mail //Email del usuario
