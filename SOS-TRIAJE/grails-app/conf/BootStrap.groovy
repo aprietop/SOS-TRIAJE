@@ -66,18 +66,18 @@ class BootStrap {
             triaje1.numColegioMedico = 234
             if (!triaje1.save()) println triaje1.errors     
        
-        def triaje2 = new Triaje()
-            triaje2.nombre = "Marcos"
-            triaje2.apellido = "Perez"
-            triaje2.cedula = 31454676
-            triaje2.sexo = "Masculino"
-            triaje2.rol = "Triaje"
-            triaje2.mail = "luiscarlos_toto@hotmail.com"            
-            triaje2.login = "marcos"
-            triaje2.password = "marcos1"
-            triaje1.mail = "luiscarlos_toto@hotmail.com"
-            triaje2.numMinisterioSalud = 5667
-            if (!triaje2.save()) println triaje2.errors      
+//        def triaje2 = new Triaje()
+//            triaje2.nombre = "Marcos"
+//            triaje2.apellido = "Perez"
+//            triaje2.cedula = 31454676
+//            triaje2.sexo = "Masculino"
+//            triaje2.rol = "Triaje"
+//            triaje2.mail = "luiscarlos_toto@hotmail.com"            
+//            triaje2.login = "marcos"
+//            triaje2.password = "marcos1"
+//            triaje1.mail = "luiscarlos_toto@hotmail.com"
+//            triaje2.numMinisterioSalud = 5667
+//            if (!triaje2.save()) println triaje2.errors      
 
 /************************** ESPECIALIDAD SOS-TRIAJE ***************************/     
 //
