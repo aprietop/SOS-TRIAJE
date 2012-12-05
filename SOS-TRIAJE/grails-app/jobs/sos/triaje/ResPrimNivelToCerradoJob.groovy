@@ -68,7 +68,7 @@ class ResPrimNivelToCerradoJob {
                             html    "Notificacion "+contador+": Dr. Encargado de Triaje, se le recuerda revisar el caso numero "+primerHistorial.caso.id+" para concluir con su cierre, Gracias."
                         }
                     }catch(Exception e){
-                        println "Error de conexion"
+                        println "Error de conexion 1"
                         e.printStackTrace()
                     } 
                 
@@ -82,7 +82,7 @@ class ResPrimNivelToCerradoJob {
                             html    "Notificacion "+contador+": Dr. Encargado de Triaje, se le informa que el caso numero "+primerHistorial.caso.id+" fue cerrado automaticamente debido al atraso en su respuesta para su cierre, Gracias"
                         }
                     }catch(Exception e){
-                        println "Error de conexion"
+                        println "Error de conexion 2"
                         e.printStackTrace()
                     }                    
                                 
