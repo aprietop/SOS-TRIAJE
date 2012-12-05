@@ -55,8 +55,6 @@ class ResPrimNivelToCerradoJob {
             def horas = duration.getHours()
             def minutos = duration.getMinutes()
             def segundos = duration.getSeconds()       
-            
- 
             //Si no han pasado 2 minutos, envia notificacion de asignacion de caso segun el trigger (cada 1 minuto)
             if(minutos <2){ 
                 contador = contador+1
@@ -65,7 +63,7 @@ class ResPrimNivelToCerradoJob {
                         mailService.sendMail {
                             to correoTriajeList.toArray() //Email de los encargados de Triaje
                             subject "Notificación de cierre de caso" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. Encargado de Triaje, se le recuerda revisar el caso numero "+primerHistorial.caso.id+" para concluir con su cierre, Gracias."
+                            html    "Notificacion "+contador+": Dr(a) Encargado de Triaje, se le recuerda revisar el caso numero "+primerHistorial.caso.id+" para concluir con su cierre, Gracias."
                         }
                     }catch(Exception e){
                         println "Error de conexion 1"
@@ -79,7 +77,7 @@ class ResPrimNivelToCerradoJob {
                         mailService.sendMail {
                             to correoTriajeList.toArray()//Email de los encargados de Triaje
                             subject "Notificacion de cierre de caso" // Asunto del mensaje
-                            html    "Notificacion "+contador+": Dr. Encargado de Triaje, se le informa que el caso numero "+primerHistorial.caso.id+" fue cerrado automaticamente debido al atraso en su respuesta para su cierre, Gracias"
+                            html    "Notificacion "+contador+": Dr(a) Encargado de Triaje, se le informa que el caso numero "+primerHistorial.caso.id+" fue cerrado automaticamente debido al atraso en su respuesta para su cierre, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion 2"
