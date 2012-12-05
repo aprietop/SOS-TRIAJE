@@ -260,8 +260,9 @@ class BootStrap {
 //            caso4.fechaInicio = new Date(112, 7, 19)
 //            caso4.paciente = paciente4
 //            caso4.status = status1
+//            caso4.addToEspecialidades(especialidad2)
 //            if (!caso4.save()) println caso4.errors
-//            
+//                
 //        def caso5 = new Caso()
 //            caso5.descripcion = "Caso prueba 5"
 //            caso5.fechaInicio = new Date(112, 06, 25)
