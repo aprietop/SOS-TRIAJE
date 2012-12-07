@@ -110,3 +110,51 @@ grails {
    }
 }
 grails.mail.default.from="sos-hme.soporte@telemedicina.com"
+
+
+
+//CONFIGURACION DE SERVICIO WEB A CONSUMIR DE SOS-HME
+
+// IMPORTANT - these must be set externally to env if you want to refer to them later for use
+// via cxf.  You can also simply hardcode the url in the cxf section and NOT refer to a variable
+// as well
+service.soshme.url.triaje = ""
+
+//service.soshme.serverURL = "http://190.169.161.50:9090"
+service.soshme.serverURL = "http://127.0.0.1:7070"
+
+
+// set per-environment service url
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// port is set to 9090 for test use -Dserver.port=9090 during test
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+environments {
+    production {
+        service.soshme.url.triaje = "${service.soshme.serverURL}/sos/services/sosTriaje"
+    }
+    development {
+        service.soshme.url.triaje = "${service.soshme.serverURL}/sos/services/sosTriaje"
+    }
+    test {
+        service.soshme.url.triaje = "${service.soshme.serverURL}/sos/services/sosTriaje"
+    }
+}
+
+cxf {
+    installDir = "C:/sos/apps/apache-cxf-2.4.4" //only used for wsdl2java script target
+    client {
+       
+        customSecureServiceClientTriaje {
+            wsdl = "docs/sostriaje.wsdl" //only used for wsdl2java script target
+            //wsdlArgs = ['-autoNameResolution', '-validate']
+            namespace = "triaje"
+            //client = false //defaults to false
+            //bindingFile = "grails-app/conf/bindings.xml"
+            //outputDir = "src/java"
+            
+            clientInterface = triaje.SosTriajeServicePortType
+            serviceEndpointAddress = "${service.soshme.url.triaje}"
+        }
+         
+    }
+}

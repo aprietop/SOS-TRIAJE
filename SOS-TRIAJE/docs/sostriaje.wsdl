@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="SosTriajeService" targetNamespace="http://triaje/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://triaje/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://triaje/" xmlns:tns="http://triaje/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="servicioPruebaSosHME" type="tns:servicioPruebaSosHME"/>
+  <xsd:complexType name="servicioPruebaSosHME">
+    <xsd:sequence/>
+  </xsd:complexType>
+  <xsd:element name="servicioPruebaSosHMEResponse" type="tns:servicioPruebaSosHMEResponse"/>
+  <xsd:complexType name="servicioPruebaSosHMEResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="servicioPruebaSosHMEResponse">
+    <wsdl:part element="tns:servicioPruebaSosHMEResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="servicioPruebaSosHME">
+    <wsdl:part element="tns:servicioPruebaSosHME" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SosTriajeServicePortType">
+    <wsdl:operation name="servicioPruebaSosHME">
+      <wsdl:input message="tns:servicioPruebaSosHME" name="servicioPruebaSosHME">
+    </wsdl:input>
+      <wsdl:output message="tns:servicioPruebaSosHMEResponse" name="servicioPruebaSosHMEResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SosTriajeServiceSoapBinding" type="tns:SosTriajeServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="servicioPruebaSosHME">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="servicioPruebaSosHME">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="servicioPruebaSosHMEResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SosTriajeService">
+    <wsdl:port binding="tns:SosTriajeServiceSoapBinding" name="SosTriajeServicePort">
+      <soap:address location="http://localhost:7070/sos/services/sosTriaje"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
