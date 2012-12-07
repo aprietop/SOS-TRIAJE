@@ -46,28 +46,24 @@
            <table class="tabla2">
                     <thead>
                         <tr>
-                            <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />
-                        
                             <g:sortableColumn property="caso" title="${message(code: 'id.label', default: 'Id')}" />
                             
                             <g:sortableColumn property="caso" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                            
                             <g:sortableColumn property="estadoCaso" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
                         
+                            <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />
+                            
                             <g:sortableColumn property="medico" title="${message(code: 'medico.nombre.label', default: 'Medico')}" />
                             
                             <g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.nombre.label', default: 'Paciente')}" />
                             
                             <g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
-                           
-                            <th><g:message code="opiniones.label" default="Opiniones" /></th>
-                        </tr>
+                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${historialCasoInstanceList}" status="i" var="historialCasoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:formatDate date="${historialCasoInstance.fecha}" /></td>
                                                                               
                             <td>${historialCasoInstance.caso.id}</td>
                             
@@ -75,6 +71,8 @@
                             
                             <td>${historialCasoInstance.estadoCaso}</td>
                         
+                            <td><g:formatDate date="${historialCasoInstance.fecha}" /></td>
+
                             <td>${historialCasoInstance.medico.nombre} 
                                 ${historialCasoInstance.medico.apellido}
                             </td>
@@ -84,14 +82,6 @@
                             </td>                        
                             
                             <td>${historialCasoInstance.caso.paciente.cedula}</td>
-                            
-                            <td>
-                              <ul>
-                                <g:each in="${historialCasoInstance.caso.opiniones}" var="o">
-                                  <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                              </ul>
-                            </td>
                         </tr>
                     </g:each>
                     </tbody>

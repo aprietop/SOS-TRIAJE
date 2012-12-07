@@ -65,8 +65,36 @@ class CasoController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         
         if(session?.ActorSistema?.rol == "Triaje" ){
-           
-          render(view: "menuTriaje", model: [casoInstanceList: Caso.list(params), casoInstanceTotal: Caso.count()]) 
+            
+        def historialInstance 
+        def todosLosCasos = Caso.list(params)
+        List medicos = []
+  
+        def status8 = Status.get(8)         //Cerrado
+            
+            
+        def c = Caso.createCriteria()
+        def casosNoCerrados = c.list {
+            ne("status", status8) 
+        }
+            
+          casosNoCerrados.each{
+              historialInstance = HistorialCaso.findAllByCaso(it, [sort: "fecha", order: "desc"])   
+                if(historialInstance){
+                    historialInstance=historialInstance.first()
+                    
+                    if (historialInstance.estadoCaso==status8.nombre){
+                        medicos.add(null)   
+                    }else{
+                        medicos.add(historialInstance.medico)
+                    }                    
+                }
+                else{
+                    medicos.add(null)
+                }
+          }
+            
+          render(view: "menuTriaje", model: [casoInstanceList: casosNoCerrados, casoInstanceTotal: casosNoCerrados.count(), medicoList:medicos]) 
         }
         
         if(session?.ActorSistema?.rol == "Especialista" ){
@@ -140,11 +168,16 @@ class CasoController {
     def casosAsociados = {
 //      MEDICO QUE INGRESO AL SISTEMA
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-
+        
+        def status8 = Status.get(8)         //Cerrado
+        
 //      CRITERIA PARA LISTAR LOS CASOS DISTINTOS DEL MEDICO ACTOR DEL SISTEMA        
         def c = HistorialCaso.createCriteria()
         def results = c.list {
             eq("medico", actorInstance) 
+                caso{
+                    ne("status", status8)
+                }
             projections { 
                distinct("caso")            
             }            

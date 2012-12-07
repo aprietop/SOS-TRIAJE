@@ -53,12 +53,12 @@
 
                             <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
                             
-                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
-                            <%--<g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />--%>
+                            <th><g:message code="medico.nombre.label" default="Nombre Médico" /></th>
                             
+                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
+                             
                             <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
-                            <%--<g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />---%>
-
+                    
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                         </tr>
                     </thead>
@@ -74,6 +74,10 @@
                             <td><g:formatDate date="${casoInstance.fechaInicio}" /></td>
                             
                             <td><g:formatDate date="${casoInstance.fechaSolucion}" /></td>
+                            
+                            <td>${medicoList[i]?.nombre} 
+                                ${medicoList[i]?.apellido}
+                            </td>                             
                         
                             <td>${casoInstance.paciente.nombre}
                                 ${casoInstance.paciente.apellido}

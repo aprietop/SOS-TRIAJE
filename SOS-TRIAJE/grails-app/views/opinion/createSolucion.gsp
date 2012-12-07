@@ -56,11 +56,11 @@
           </div>
       </div>
 
-      <div id="menu1">
-      <b>
-        
-      </b>
-      </div>
+  <div id="menu1">
+  <ul>
+    <d>Solución al caso</d>        
+  </ul>
+  </div>
       
         <div id="nivel1">
         <div id="nivel2">
@@ -103,7 +103,8 @@
             <div >
                     <g:hiddenField name="id" value="${casoInstance?.id}" />
                     <g:actionSubmit class="boton_submit5" action="saveSolucion" value="${message(code: 'button.solucionar', default: 'Enviar')}" />
-             </div>
+                    <g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>  
+            </div>
             </g:form>
         </div>
 </div>

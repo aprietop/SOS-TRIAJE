@@ -145,7 +145,13 @@ a {
 	list-style:none;
 	margin:0;
 	padding:0;}
-	
+
+#menu1 d {
+	display:block;
+	padding:9px 30px;
+	color:#FFF;
+        text-decoration:underline;
+	}	
 /*  -------------------------------------------
 
      3. MENU 2 |  Para las páginas que lo requieran

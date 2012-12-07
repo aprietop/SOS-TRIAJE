@@ -24,10 +24,11 @@
 </div>
 </div>
       
-      <div id="menu1">
-      <ul>
-      </ul>
-      </div>
+  <div id="menu1">
+  <ul>
+    <d>Detalle de operación</d>        
+  </ul>
+  </div>
       
       <div id="nivel1">
   <div id="nivel2">
