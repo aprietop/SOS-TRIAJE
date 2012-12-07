@@ -59,7 +59,7 @@ class ResSegNivelToResPrimNivelJob {
 //            
 //            //Si no han pasado 2 minutos, envia notificacion de asignacion de caso, 
 //            //segun el trigger (cada 1 minuto)
-//            if(minutos <4){ 
+//            if(minutos <2){ 
 //                    try{
 //                        mailService.sendMail {
 //                            to historialAsignado.medico.mail //Email del usuario

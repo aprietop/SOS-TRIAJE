@@ -48,7 +48,7 @@ class SegOpinionToAsignadoJob {
 //            String trato = triajeService.getGenero(historialInstance.medico)               
 //     
 //            //Si no han pasado 2 minutos, envia notificacion de peticion de segunda opinion segun trigger (cada 1 minuto)
-//            if(minutos <4){ 
+//            if(minutos <2){ 
 //                try{
 //                    mailService.sendMail {
 //                        to primerHistorial.medico.mail //Email del usuario
