@@ -59,14 +59,6 @@ class ResSegNivelToResPrimNivelJob {
                 }
                 
                 historialAsignado = histEspAsignado.first()
-                
-            def trato
-            if(historialAsignado.medico.sexo=="Femenino"){
-                trato = "Dra."
-            }
-            if(historialAsignado.medico.sexo=="Masculino"){
-                trato = "Dr."
-            }  
             
             //Si no han pasado 2 minutos, envia notificacion de asignacion de caso, 
             //segun el trigger (cada 1 minuto)
@@ -77,7 +69,7 @@ class ResSegNivelToResPrimNivelJob {
                         mailService.sendMail {
                             to historialAsignado.medico.mail //Email del usuario
                             subject "Notificación de revision de segunda opinion" // Asunto del mensaje
-                            html    "Notificacion "+contador+": "+trato+" "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le recuerda revisar la solucion de segunda opinion dada al caso numero "+primerHistorial.caso.id+" , Gracias."
+                            html    "Notificacion "+contador+": Dr. "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le recuerda revisar la solucion de segunda opinion dada al caso numero "+primerHistorial.caso.id+" , Gracias."
                         }
                     }catch(Exception e){
                         println "Error de conexion"
@@ -92,7 +84,7 @@ class ResSegNivelToResPrimNivelJob {
                             to historialAsignado.medico.mail //Email del usuario
                             cc "angelica.gomez.ucab@gmail.com" //
                             subject "Envio de solucion a Triaje" // Asunto del mensaje
-                            html    "Notificacion "+contador+": "+trato+" "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le informa que el caso numero "+primerHistorial.caso.id+" fue enviado a Triaje automaticamente con la solucion de la segunda opinion solicitada sin su revison, debido al atraso en su respuesta, Gracias"
+                            html    "Notificacion "+contador+": Dr. "+historialAsignado.medico.nombre+" "+historialAsignado.medico.apellido+", se le informa que el caso numero "+primerHistorial.caso.id+" fue enviado a Triaje automaticamente con la solucion de la segunda opinion solicitada sin su revison, debido al atraso en su respuesta, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"

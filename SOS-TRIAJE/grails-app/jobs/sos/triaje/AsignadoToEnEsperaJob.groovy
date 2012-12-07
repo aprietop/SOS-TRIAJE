@@ -48,14 +48,6 @@ class AsignadoToEnEsperaJob {
             def minutos = duration.getMinutes()
             def segundos = duration.getSeconds()       
             
-            def trato
-            if(historialInstance.medico.sexo=="Femenino"){
-                trato = "Dra."
-            }
-            if(historialInstance.medico.sexo=="Masculino"){
-                trato = "Dr."
-            }            
-            
             //Si no han pasado 2 minutos, envia notificacion de asignacion de caso, 
             //segun el trigger (cada 1 minuto)
             if(minutos <2){ 
@@ -65,7 +57,7 @@ class AsignadoToEnEsperaJob {
                         mailService.sendMail {
                             to historialInstance.medico.mail //Email del usuario
                             subject "Notificación de caso asignado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": "+trato+" "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que le fue asignado, Gracias."
+                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le recuerda revisar el caso numero "+historialInstance.caso.id+" que le fue asignado, Gracias."
                         }
                     }catch(Exception e){
                         println "Error de conexion"
@@ -80,7 +72,7 @@ class AsignadoToEnEsperaJob {
                             to historialInstance.medico.mail //Email del usuario
                             cc "angelica.gomez.ucab@gmail.com" //
                             subject "Libaración de caso asignado" // Asunto del mensaje
-                            html    "Notificacion "+contador+": "+trato+" "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado automaticamente debido al atraso en su respuesta, Gracias"
+                            html    "Notificacion "+contador+": Dr. "+historialInstance.medico.nombre+" "+historialInstance.medico.apellido+", se le informa que el caso numero "+historialInstance.caso.id+" que le fue asignado ha sido liberado automaticamente debido al atraso en su respuesta, Gracias"
                         }
                     }catch(Exception e){
                         println "Error de conexion"
