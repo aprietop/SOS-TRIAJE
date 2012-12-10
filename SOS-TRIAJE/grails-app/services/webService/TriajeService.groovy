@@ -1,10 +1,11 @@
 package webService
 import pojos.PojoPrueba
+import caso.Caso
 
 class TriajeService {
 
     static transactional = true
-     static expose=['cxf']
+    static expose=['cxf']
     
     
     PojoPrueba serviceHolaMundo(){
@@ -13,5 +14,6 @@ class TriajeService {
         PojoPrueba p = new PojoPrueba()
         return p
     }
+
     
 }
