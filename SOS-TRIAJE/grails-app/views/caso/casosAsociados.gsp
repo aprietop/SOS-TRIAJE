@@ -89,9 +89,9 @@
                   
                   <td>${CasoInstance.status.nombre}</td>
                   
-                  <td>${CasoInstance.fechaInicio}</td>
-
-                  <td>${CasoInstance.fechaSolucion}</td>
+                  <td><g:formatDate format="dd-MM-yyyy" date="${CasoInstance.fechaInicio}"/></td>
+                  
+                  <td><g:formatDate format="dd-MM-yyyy" date="${CasoInstance.fechaSolucion}"/></td>
           
                   <td>${CasoInstance.paciente.nombre}
                       ${CasoInstance.paciente.apellido}</td>

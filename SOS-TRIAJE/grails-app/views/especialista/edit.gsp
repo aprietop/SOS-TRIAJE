@@ -28,7 +28,7 @@
 <div id="menu1">
 <ul>
 <li><g:link controller="especialista" action="list" class="selected"><g:message code="Modificar Especialista"/></g:link></li>
-<li><g:link controller="especialista" action="create"><g:message code="Crear Especialista"/></g:link></li>
+<li><g:link controller="especialista" action="create"><g:message code="Cargar Especialista"/></g:link></li>
 </ul>
 </div>
             

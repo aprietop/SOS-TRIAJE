@@ -51,7 +51,7 @@
       <div id="menu1">
       <ul>
          <li><g:link controller="triaje" action="list"><g:message code="Modificar Encargado de Triaje"/></g:link></li>
-         <li><g:link controller="triaje" action="create" class="selected"><g:message code="Crear Encargado de Triaje"/></g:link></li>
+         <li><g:link controller="triaje" action="create" class="selected"><g:message code="Cargar Encargado de Triaje"/></g:link></li>
         </ul>
       </div>     
       

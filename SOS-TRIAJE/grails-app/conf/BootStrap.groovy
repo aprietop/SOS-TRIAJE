@@ -16,6 +16,7 @@ import persona.Paciente
 import persona.ActorSistema
 
 import status.Status
+import centro.CentroSOS
 
 class BootStrap {
 
@@ -178,67 +179,56 @@ class BootStrap {
         def status1 = new Status()
             status1.nombre = "En espera"
             status1.decripcion = "Indica que el caso se encuentra en espera de asignacion y/o resolución"
-            status1.fechaStatus = new Date(12, 10, 23)      
             if (!status1.save()) println status1.errors  
 
         def status2 = new Status()
             status2.nombre = "Asignado"
             status2.decripcion = "Indica que el caso ha sido asignado a un especialista"
-            status2.fechaStatus = new Date(12, 10, 23)      
             if (!status2.save()) println status2.errors    
 
         def status3 = new Status()
             status3.nombre = "En proceso 1er nivel"
             status3.decripcion = "Indica que el caso fue aceptado por el especialista para su soluciónespecialista"
-            status3.fechaStatus = new Date(2012, 10, 23)      
             if (!status3.save()) println status3.errors   
 
         def status4 = new Status()
             status4.nombre = "Segunda opinion"
             status4.decripcion = "Indica que el especialista solicitó una segunda opinion"
-            status4.fechaStatus = new Date(112, 10, 23)      
             if (!status4.save()) println status4.errors  
       
         def status5 = new Status()
             status5.nombre = "En proceso 2do nivel"
             status5.decripcion = "Indica que la solicitud de segunda opinion ha sido aceptada para responder"
-            status5.fechaStatus = new Date(112, 10, 23)      
             if (!status5.save()) println status5.errors  
 
         def status6 = new Status()
             status6.nombre = "Resuelto 2do nivel"
             status6.decripcion = "Indica que la segunda opinion fue resuelta"
-            status6.fechaStatus = new Date(112, 10, 23)      
             if (!status6.save()) println status6.errors  
             
         def status7 = new Status()
             status7.nombre = "Resuelto 1er nivel"
             status7.decripcion = "Indica que el caso ha sido resuelto"
-            status7.fechaStatus = new Date(112, 10, 23)      
             if (!status7.save()) println status7.errors   
 
         def status8 = new Status()
             status8.nombre = "Cerrado"
             status8.decripcion = "Indica que el caso ha sido cerrado y se enviara respuesta a HME"
-            status8.fechaStatus = new Date(112, 10, 23)      
             if (!status8.save()) println status8.errors  
 
         def status9 = new Status()
             status9.nombre = "Reasignado"
             status9.decripcion = "Indica que el caso ha sido reasignado por limite de tiempo en espera"
-            status9.fechaStatus = new Date(112, 10, 23)      
             if (!status9.save()) println status9.errors  
             
         def status10 = new Status()
             status10.nombre = "Rechazado 1er nivel"
             status10.decripcion = "Indica que ha sido rechazada la asignacion del caso"
-            status10.fechaStatus = new Date(112, 10, 23)      
             if (!status10.save()) println status10.errors  
 
         def status11 = new Status()
             status11.nombre = "Rechazado 2do nivel"
             status11.decripcion = "Indica que ha sido rechazada la solicitud de segunda opinion"
-            status11.fechaStatus = new Date(112, 10, 23)      
             if (!status11.save()) println status11.errors  
 
 /****************************** CASOS SOS-TRIAJE ******************************/
@@ -378,6 +368,15 @@ class BootStrap {
             opinion4.fechaOpinion = new Date(112, 10, 27)
             opinion4.caso = caso3         
             if (!opinion4.save()) println opinion4.errors 
+            
+//**************************** CENTROS SOS-TRIAJE ****************************/
+//           
+        def centro1 = new CentroSOS()
+        centro1.nombre = "Ambulatorio prueba SOS"
+        centro1.url = "www.ambulatorio.sos.com"
+        if (!centro1.save()) println centro1.errors                 
+        
+////////////////////////////////////////////////////////////////////////////////                
            
         println ""
         println "=========== ++++++++++++++++++++ ==========="

@@ -29,6 +29,7 @@
         <li><g:link controller="especialista" action="list"><g:message code="Especialista" /></g:link></li>	
         <li><g:link controller="triaje" action="list"><g:message code="Triaje"/></g:link></li>
         <li><g:link controller="administrador" action="list"><g:message code="Administrador"/></g:link></li>
+        <li><g:link controller="centroSOS" action="list"><g:message code="Centros SOS"/></g:link></li>
         </ul>
       </div> 
     

@@ -6,6 +6,7 @@ import archivo.*
 import persona.*
 import opinion.*
 import java.util.Date
+import centro.CentroSOS
 
 class Caso {
 //ATRIBUTOS
@@ -14,6 +15,8 @@ class Caso {
     Date fechaSolucion 
     Status status    
     Paciente paciente //Datos del paciente
+    String idCasoSOS  //ID del caso en SOS-HME
+    CentroSOS centro
    
 //RELACIONES
     static hasMany = [especialidades:Especialidad, opiniones:Opinion, archivos:Archivo, historialCasos: HistorialCaso]
@@ -27,5 +30,7 @@ class Caso {
         status(nullable: false)
         paciente(nullable: false)
         especialidades(blank:true, nullable: true)
+        idCasoSOS(nullable: true, blank:true)
+        centro(nullable: true, blank:true)
     }
 }

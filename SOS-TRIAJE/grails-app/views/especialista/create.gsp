@@ -51,7 +51,7 @@
       <div id="menu1">
       <ul>
          <li><g:link controller="especialista" action="list"><g:message code="Modificar Especialista"/></g:link></li>
-         <li><g:link controller="especialista" action="create" class="selected"><g:message code="Crear Especialista"/></g:link></li>
+         <li><g:link controller="especialista" action="create" class="selected"><g:message code="Cargar Especialista"/></g:link></li>
         </ul>
       </div>
       
