@@ -23,9 +23,14 @@ class SosHmeController {
             caso.setOpinion("ddd")
             caso.setFechaSolucion("Alguna fecha1")
                 
-        def c = customSecureServiceClientTriaje.enviarCasoSosHme(caso)
-        
-            render c.idCasoSOS +" "+c.responsable.nombre
+        def c = customSecureServiceClientTriaje.enviarCasoSosHme(caso)        
+//            render c.idCasoSOS +" "+c.responsable.nombre
+
+        if (c==true){
+            render "CASO ENVIADO EXITOSAMENTE"
+        }else{
+            render "EL CASO NO PUDO SER ENVIADO A SOS-HME"
+        }
 
                 
     }   
