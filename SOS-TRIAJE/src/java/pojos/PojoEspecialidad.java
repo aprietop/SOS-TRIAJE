@@ -14,8 +14,6 @@ public class PojoEspecialidad {
     public String descripcion;
     
     
-    public PojoEspecialidad(String nombre, String descripcion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+    public PojoEspecialidad() {
     }
 }

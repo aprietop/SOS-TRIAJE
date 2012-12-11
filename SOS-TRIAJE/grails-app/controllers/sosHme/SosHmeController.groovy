@@ -1,6 +1,8 @@
 package sosHme
 import triaje.EnviarCasoSosHmeResponse
 import triaje.EnviarCasoSosHme
+import triaje.PojoCasoResuelto
+import triaje.PojoMedico
 class SosHmeController {
     
     def customSecureServiceClientTriaje
@@ -9,16 +11,22 @@ class SosHmeController {
     
        // render customSecureServiceClientTriaje.servicioPruebaSosHME()    
     
+      PojoMedico medico = new PojoMedico()
+            medico.setNombre("Pepe")
+            medico.setApellido("Perez")
+            medico.setColegioDeMedico(133)
+            medico.setMinisterioDeSalud(343)
+               
+      PojoCasoResuelto caso = new PojoCasoResuelto()
+            caso.setIdCasoSOS("abc")
+            caso.setResponsable(medico)
+            caso.setOpinion("ddd")
+            caso.setFechaSolucion("Alguna fecha1")
+                
+        def c = customSecureServiceClientTriaje.enviarCasoSosHme(caso)
         
-        def c = customSecureServiceClientTriaje.enviarCasoSosHme()
-         println "HOLA"
-            render c.idCasoSOS+" "+c.fechaSolucion+" "+c.responsable
-        
-        
-        
-        
-        
-    }
+            render c.idCasoSOS +" "+c.responsable.nombre
 
-    
+                
+    }   
 }

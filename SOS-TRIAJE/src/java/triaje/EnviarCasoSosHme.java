@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="caso" type="{http://triaje/}pojoCasoResuelto" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,8 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "enviarCasoSosHme")
+@XmlType(name = "enviarCasoSosHme", propOrder = {
+    "caso"
+})
 public class EnviarCasoSosHme {
 
+    protected PojoCasoResuelto caso;
+
+    /**
+     * Obtiene el valor de la propiedad caso.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PojoCasoResuelto }
+     *     
+     */
+    public PojoCasoResuelto getCaso() {
+        return caso;
+    }
+
+    /**
+     * Define el valor de la propiedad caso.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PojoCasoResuelto }
+     *     
+     */
+    public void setCaso(PojoCasoResuelto value) {
+        this.caso = value;
+    }
 
 }

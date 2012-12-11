@@ -14,10 +14,7 @@ public class PojoArchivo {
     public String descripcion;
     public byte[] adjunto;
     
-    public PojoArchivo(String nombre, String descripcion, byte[] adjunto){    
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.adjunto = adjunto;
+    public PojoArchivo(){    
     }    
     
 }

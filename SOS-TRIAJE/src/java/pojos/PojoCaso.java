@@ -19,14 +19,7 @@ public class PojoCaso {
     public String fechaInicio;
     public String fechaSolucion;
     
-    public PojoCaso(String idCasoSOS, List<PojoArchivo> archivos, List<PojoEspecialidad> especialidad, PojoPaciente paciente, String descripcion, String fechaInicio, String fechaSolucion){
-        this.idCasoSOS = idCasoSOS;
-        this.archivos = archivos;
-        this.especialidad = especialidad;
-        this.paciente = paciente;
-        this.descripcion = descripcion;
-        this.fechaInicio = fechaInicio;
-        this.fechaSolucion = fechaSolucion;        
+    public PojoCaso(){
     }
             
 }
