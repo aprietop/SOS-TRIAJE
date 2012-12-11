@@ -28,7 +28,8 @@
         <ul>
          <li><g:link controller="especialista" action="list" class="selected"><g:message code="Modificar Especialista"/></g:link></li>
          <li><g:link controller="especialista" action="create"><g:message code="Cargar Especialista"/></g:link></li>
-     </div>
+         </ul>
+      </div>
       
   <div id="nivel1">
   <div id="nivel2">

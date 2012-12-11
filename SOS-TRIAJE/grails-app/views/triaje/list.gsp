@@ -28,7 +28,8 @@
         <ul>
          <li><g:link controller="triaje" action="list" class="selected"><g:message code="Modificar Encargado de Triaje"/></g:link></li>
          <li><g:link controller="triaje" action="create"><g:message code="Cargar Encargado de Triaje"/></g:link></li>
-     </div>
+         </ul>
+      </div>
       
 <div id="nivel1">
   <div id="nivel2">
