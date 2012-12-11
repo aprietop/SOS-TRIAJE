@@ -8,16 +8,14 @@ package pojos;
  *
  * @author prod1
  */
-public class PojoArchivo {
+public class PojoEspecialidad {
     
     public String Nombre;
     public String Descripcion;
-    public byte[] Adjunto;
     
-    public PojoArchivo(String Nombre, String Descripcion, byte[] Adjunto){    
+    
+    public PojoEspecialidad(String Nombre, String Descripcion) {
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
-        this.Adjunto = Adjunto;
-    }    
-    
+    }
 }
