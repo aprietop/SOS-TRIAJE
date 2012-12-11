@@ -2,11 +2,10 @@ package webService
 import pojos.PojoPrueba
 import caso.Caso
 
-class TriajeService {
+class ServicioWebTriajeService {
 
     static transactional = true
     static expose=['cxf']
-    
     
     PojoPrueba serviceHolaMundo(){
         println "Esto es todo amigos"
@@ -15,5 +14,4 @@ class TriajeService {
         return p
     }
 
-    
 }
