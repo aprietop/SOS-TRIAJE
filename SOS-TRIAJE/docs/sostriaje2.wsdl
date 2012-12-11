@@ -1,29 +1,34 @@
 <?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="SosTriajeService" targetNamespace="http://triaje/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://triaje/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
-<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://triaje/" xmlns:tns="http://triaje/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:element name="servicioPruebaSosHME" type="tns:servicioPruebaSosHME"/>
-  <xsd:complexType name="servicioPruebaSosHME">
-    <xsd:sequence/>
-  </xsd:complexType>
-  <xsd:element name="servicioPruebaSosHMEResponse" type="tns:servicioPruebaSosHMEResponse"/>
-  <xsd:complexType name="servicioPruebaSosHMEResponse">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="return" type="xsd:string"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:element name="enviarCasoSosHme" type="tns:enviarCasoSosHme"/>
-  <xsd:complexType name="enviarCasoSosHme">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="caso"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:element name="enviarCasoSosHmeResponse" type="tns:enviarCasoSosHmeResponse"/>
-  <xsd:complexType name="enviarCasoSosHmeResponse">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="return"/>
-    </xsd:sequence>
-  </xsd:complexType>
-</xsd:schema>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://triaje/" xmlns="http://triaje/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="pojoCasoResuelto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idCasoSOS" type="xs:string"/>
+      <xs:element minOccurs="0" name="opinion" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaSolucion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="servicioPruebaSosHME" type="servicioPruebaSosHME"/>
+  <xs:complexType name="servicioPruebaSosHME">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="servicioPruebaSosHMEResponse" type="servicioPruebaSosHMEResponse"/>
+  <xs:complexType name="servicioPruebaSosHMEResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="enviarCasoSosHme" type="enviarCasoSosHme"/>
+  <xs:complexType name="enviarCasoSosHme">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="enviarCasoSosHmeResponse" type="enviarCasoSosHmeResponse"/>
+  <xs:complexType name="enviarCasoSosHmeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="pojoCasoResuelto"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
   </wsdl:types>
   <wsdl:message name="servicioPruebaSosHMEResponse">
     <wsdl:part element="tns:servicioPruebaSosHMEResponse" name="parameters">

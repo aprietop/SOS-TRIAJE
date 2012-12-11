@@ -11,22 +11,22 @@ import java.util.List;
  * @author prod1
  */
 public class PojoCaso {
-    public String IdCasoSOS;
-    public List<PojoArchivo> Archivos;
-    public List<PojoEspecialidad> Especialidad;
-    public PojoPaciente Paciente;
-    public String Descripcion;
-    public String FechaInicio;
-    public String FechaSolucion;
+    public String idCasoSOS;
+    public List<PojoArchivo> archivos;
+    public List<PojoEspecialidad> especialidad;
+    public PojoPaciente paciente;
+    public String descripcion;
+    public String fechaInicio;
+    public String fechaSolucion;
     
-    public PojoCaso(String IdCasoSOS, List<PojoArchivo> Archivos, List<PojoEspecialidad> Especialidad, PojoPaciente Paciente, String Descripcion, String FechaInicio, String FechaSolucion){
-        this.IdCasoSOS = IdCasoSOS;
-        this.Archivos = Archivos;
-        this.Especialidad = Especialidad;
-        this.Paciente = Paciente;
-        this.Descripcion = Descripcion;
-        this.FechaInicio = FechaInicio;
-        this.FechaSolucion = FechaSolucion;        
+    public PojoCaso(String idCasoSOS, List<PojoArchivo> archivos, List<PojoEspecialidad> especialidad, PojoPaciente paciente, String descripcion, String fechaInicio, String fechaSolucion){
+        this.idCasoSOS = idCasoSOS;
+        this.archivos = archivos;
+        this.especialidad = especialidad;
+        this.paciente = paciente;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaSolucion = fechaSolucion;        
     }
             
 }

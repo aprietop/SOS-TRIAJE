@@ -11,21 +11,21 @@ package pojos;
  * @author prod1
  */
 public class PojoPaciente {
-    public String Nombre;
-    public String Apellido;
-    public String Cedula;
-    public String Sexo;
-    public String Nacionalidad;
-    public String FechaNacimiento;
+    public String nombre;
+    public String apellido;
+    public String cedula;
+    public String sexo;
+    public String nacionalidad;
+    public String fechaNacimiento;
 //    public Date Fecha;
     
-    public PojoPaciente(String Nombre, String Apellido, String Cedula, String Sexo, String Nacionalidad, String FechaNacimiento){
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Cedula = Cedula;
-        this.Sexo = Sexo;
-        this.Nacionalidad = Nacionalidad;
-        this.FechaNacimiento = FechaNacimiento;
+    public PojoPaciente(String nombre, String apellido, String cedula, String sexo, String nacionalidad, String fechaNacimiento){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.sexo = sexo;
+        this.nacionalidad = nacionalidad;
+        this.fechaNacimiento = fechaNacimiento;
     }
     
 }

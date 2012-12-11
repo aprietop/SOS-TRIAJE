@@ -13,14 +13,12 @@
   </xsd:complexType>
   <xsd:element name="enviarCasoSosHme" type="tns:enviarCasoSosHme"/>
   <xsd:complexType name="enviarCasoSosHme">
-    <xsd:sequence>
-      <xsd:element minOccurs="0" name="caso"/>
-    </xsd:sequence>
+    <xsd:sequence/>
   </xsd:complexType>
   <xsd:element name="enviarCasoSosHmeResponse" type="tns:enviarCasoSosHmeResponse"/>
   <xsd:complexType name="enviarCasoSosHmeResponse">
     <xsd:sequence>
-      <xsd:element minOccurs="0" name="return"/>
+      <xsd:element minOccurs="0" name="return" type="xsd:anyType"/>
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>

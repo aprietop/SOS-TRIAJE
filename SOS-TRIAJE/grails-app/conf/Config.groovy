@@ -145,7 +145,7 @@ cxf {
     client {
        
         customSecureServiceClientTriaje {
-            wsdl = "docs/sostriaje.wsdl" //only used for wsdl2java script target
+            wsdl = "docs/sostriaje3.wsdl" //only used for wsdl2java script target
             //wsdlArgs = ['-autoNameResolution', '-validate']
             namespace = "triaje"
             //client = false //defaults to false

@@ -10,12 +10,12 @@ package pojos;
  */
 public class PojoEspecialidad {
     
-    public String Nombre;
-    public String Descripcion;
+    public String nombre;
+    public String descripcion;
     
     
-    public PojoEspecialidad(String Nombre, String Descripcion) {
-        this.Nombre = Nombre;
-        this.Descripcion = Descripcion;
+    public PojoEspecialidad(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 }

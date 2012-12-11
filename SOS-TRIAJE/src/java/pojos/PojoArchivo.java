@@ -10,14 +10,14 @@ package pojos;
  */
 public class PojoArchivo {
     
-    public String Nombre;
-    public String Descripcion;
-    public byte[] Adjunto;
+    public String nombre;
+    public String descripcion;
+    public byte[] adjunto;
     
-    public PojoArchivo(String Nombre, String Descripcion, byte[] Adjunto){    
-        this.Nombre = Nombre;
-        this.Descripcion = Descripcion;
-        this.Adjunto = Adjunto;
+    public PojoArchivo(String nombre, String descripcion, byte[] adjunto){    
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.adjunto = adjunto;
     }    
     
 }
