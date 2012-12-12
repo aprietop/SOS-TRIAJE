@@ -2,6 +2,7 @@ package webService
 import pojos.PojoPrueba
 import caso.Caso
 import pojos.PojoCaso
+import triaje.PojoCasoResuelto
 
 class ServicioWebTriajeService {
 
@@ -42,11 +43,13 @@ class ServicioWebTriajeService {
         } 
         
     
-//        String getCasoResuelto(String uuid){
-//
-//               //OPERACIONES PARA OBTENER EL STATUS DEL CASO
-//
-//    
-//        } 
+        PojoCasoResuelto getCasoResuelto(PojoCaso caso){
+               //OPERACIONES PARA OBTENER EL CASO RESUELTO
+               
+        
+            PojoCasoResuelto casoResuelto = new PojoCasoResuelto()
+            
+            return casoResuelto    
+        } 
 
 }
