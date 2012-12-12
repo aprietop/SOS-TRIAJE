@@ -52,6 +52,8 @@ class ArchivoController {
         }
     }
 
+    def importar = {}
+    
     def update = {
         def archivoInstance = Archivo.get(params.id)
         if (archivoInstance) {
@@ -100,7 +102,7 @@ class ArchivoController {
     
     def importarArchivos = {
         // se recupera el archivo en la varible archivo (fileName), que es el nombre del imput file del gsp
-//        def archivo= request.getFile('fileName')
+        def archivo= request.getFile('fileName')
           // se crea el directorio en la ruta donde esta la aplicacion y se agrega la carpeta cargarArchivos
         
         def webRootDir = servletContext.getRealPath("/")        
