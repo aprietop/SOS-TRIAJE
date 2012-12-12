@@ -10,8 +10,8 @@ import medico.Medico
 
 class EnProcSegNivelToAsignadoJob {
     static triggers = {
-      //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'EnProceso2NivelTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      //Se ejecuta cada 6 horas, el primero empieza en el segundo 2
+      simple name:'EnProceso2NivelTrigger', startDelay:2000, repeatInterval: 21600000//cada 6 horas
     }
    
     def triajeService
@@ -46,8 +46,8 @@ class EnProcSegNivelToAsignadoJob {
 //            
 //            String trato = triajeService.getGenero(historialInstance.medico)                    
 //     
-//            //Si no han pasado 2 minutos, envia notificacion de peticion de segunda opinion segun trigger (cada 1 minuto)
-//            if(minutos <2){ 
+//            //Si no han pasado 24 horas, envia notificacion de peticion de segunda opinion segun trigger (cada 6 horas)
+//            if(horas <24){ 
 //                 try{
 //                    mailService.sendMail {
 //                        to primerHistorial.medico.mail //Email del usuario

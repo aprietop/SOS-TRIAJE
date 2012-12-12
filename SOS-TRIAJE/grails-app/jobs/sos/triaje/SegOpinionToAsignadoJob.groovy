@@ -10,8 +10,8 @@ import medico.Medico
 
 class SegOpinionToAsignadoJob {
     static triggers = {
-      //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'SegundaOpinionTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      //Se ejecuta cada 2 horas, el primero empieza en el segundo 2
+      simple name:'SegundaOpinionTrigger', startDelay:2000, repeatInterval: 7200000//cada 2 horas
     }
 
     def triajeService    
@@ -47,8 +47,8 @@ class SegOpinionToAsignadoJob {
 //            
 //            String trato = triajeService.getGenero(historialInstance.medico)               
 //     
-//            //Si no han pasado 2 minutos, envia notificacion de peticion de segunda opinion segun trigger (cada 1 minuto)
-//            if(minutos <2){ 
+//            //Si no han pasado 6 horas, envia notificacion de peticion de segunda opinion segun trigger (cada 2 horas)
+//            if(horas <6){ 
 //                try{
 //                    mailService.sendMail {
 //                        to primerHistorial.medico.mail //Email del usuario
@@ -61,7 +61,7 @@ class SegOpinionToAsignadoJob {
 //                } 
 //                
 //            }
-//            //Si han pasado 2 minutos o mas, envia notificacion de devolucion del caso a su especialista asignado
+//            //Si han pasado 6 horas o mas, envia notificacion de devolucion del caso a su especialista asignado
 //            else{            
 //                 try{
 //                    mailService.sendMail {

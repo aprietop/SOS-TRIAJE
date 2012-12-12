@@ -11,8 +11,8 @@ import medico.Triaje
 
 class ResPrimNivelToCerradoJob {
     static triggers = {
-      //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'Resuelto1erNivelTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      //Se ejecuta cada 2 horas, el primero empieza en el segundo 2
+      simple name:'Resuelto1erNivelTrigger', startDelay:2000, repeatInterval: 7200000//cada 2 horas
     }
     
     def triajeService    
@@ -51,8 +51,8 @@ class ResPrimNivelToCerradoJob {
 //            def minutos = duration.getMinutes()     
 //            
 // 
-//            //Si no han pasado 2 minutos, envia notificacion de asignacion de caso segun el trigger (cada 1 minuto)
-//            if(minutos <2){ 
+//            //Si no han pasado 6 horas, envia notificacion de asignacion de caso segun el trigger (cada 2 horas)
+//            if(horas <6){ 
 //                    try{
 //                        mailService.sendMail {
 //                            to correoTriajeList.toArray() //Email de los encargados de Triaje

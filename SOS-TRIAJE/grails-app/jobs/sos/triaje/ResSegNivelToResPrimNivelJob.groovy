@@ -10,8 +10,8 @@ import medico.Medico
 
 class ResSegNivelToResPrimNivelJob {
     static triggers = {
-      //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'Resuelto2doNivelTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      //Se ejecuta cada 6 horas, el primero empieza en el segundo 2
+      simple name:'Resuelto2doNivelTrigger', startDelay:2000, repeatInterval: 21600000//cada 6 horas
     }
 
     def triajeService
@@ -57,9 +57,8 @@ class ResSegNivelToResPrimNivelJob {
 //                
 //            String trato = triajeService.getGenero(historialInstance.medico)           
 //            
-//            //Si no han pasado 2 minutos, envia notificacion de asignacion de caso, 
-//            //segun el trigger (cada 1 minuto)
-//            if(minutos <2){ 
+//            //Si no han pasado 24 horas, envia notificacion de asignacion de caso segun el trigger (cada 6 horas)
+//            if(horas <24){ 
 //                    try{
 //                        mailService.sendMail {
 //                            to historialAsignado.medico.mail //Email del usuario
@@ -72,7 +71,7 @@ class ResSegNivelToResPrimNivelJob {
 //                    } 
 //                
 //            }
-//            //Si han pasado 2 minutos o mas, envia notificacion de liberacion de caso 1 sola vez            
+//            //Si han pasado 24 horas mas, envia notificacion de liberacion de caso 1 sola vez            
 //            else{            
 //                    try{
 //                        mailService.sendMail {

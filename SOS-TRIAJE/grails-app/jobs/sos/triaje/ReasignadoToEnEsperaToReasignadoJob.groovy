@@ -13,8 +13,8 @@ import caso.HistorialCaso
 
 class ReasignadoToEnEsperaToReasignadoJob {
     static triggers = {
-      //Se ejecuta cada 1 minuto, el primero empieza en el segundo 2
-      simple name:'ReasignadoEnEsperaReasignadoTrigger', startDelay:2000, repeatInterval: 60000//1 minuto
+      //Se ejecuta cada 2 horas, el primero empieza en el segundo 2
+      simple name:'ReasignadoEnEsperaReasignadoTrigger', startDelay:2000, repeatInterval: 7200000//cada 2 horas
     }
     
     def triajeService
@@ -56,8 +56,8 @@ class ReasignadoToEnEsperaToReasignadoJob {
 //            
 //            String trato = triajeService.getGenero(historialInstance.medico)                     
 //            
-//            //Si no han pasado 2 minutos, envia notificacion de asignacion de caso segun el trigger (cada 1 minuto)
-//            if(segundos <118){ 
+//            //Si no han pasado 358 minutos, envia notificacion de asignacion de caso segun el trigger (cada 2 horas)
+//            if(minutos <358){ 
 //                  try{
 //                        mailService.sendMail {
 //                            to historialInstance.medico.mail //Email del usuario
