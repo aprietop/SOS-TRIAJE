@@ -15,17 +15,38 @@ class ServicioWebTriajeService {
         return p
     }
     
-       boolean enviarCasoTriaje(PojoCaso caso, String uuid){
-        boolean flag = false
+        //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
+        boolean enviarCasoTriaje(PojoCaso caso, String uuid){
+            
+            boolean flag = false
+
+                if(caso){
+                flag = true
+                }
+
+
+            //OPERACIONES PARA GUARDAR TODO EN LA BASE DE DATOS
+
+            return flag
+        }    
+
+        //SERVICIO PARA OBTENER EL STATUS DEL CASO, SI ES "CERRADO" LLAMAR AL SERVICIO SIGUIENTE
+        String getStatusCaso(String uuid){
+
+            String status = ""
+
+
+            //OPERACIONES PARA OBTENER EL STATUS DEL CASO
+
+            return status
+        } 
         
-        if(caso){
-            flag = true
-        }
-        
-        
-        //OPERACIONES PARA GUARDAR TODO EN LA BASE DE DATOS
-        
-        return flag
-    }    
+    
+//        String getCasoResuelto(String uuid){
+//
+//               //OPERACIONES PARA OBTENER EL STATUS DEL CASO
+//
+//    
+//        } 
 
 }
