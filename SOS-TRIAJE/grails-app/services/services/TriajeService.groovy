@@ -33,4 +33,9 @@ class TriajeService {
         return casoInstanceList
     }
     
+//    boolean getCentroPorUuid(String uuid){
+//        
+//        def centroInstance = CentroSOS.findByUuid(uuid)
+//    }
+    
 }

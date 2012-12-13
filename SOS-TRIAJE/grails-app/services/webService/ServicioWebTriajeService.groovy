@@ -9,6 +9,8 @@ class ServicioWebTriajeService {
     static transactional = true
     static expose=['cxf']
     
+    def triajeService
+    
     PojoPrueba serviceHolaMundo(){
         println "Esto es todo amigos"
         
@@ -17,14 +19,19 @@ class ServicioWebTriajeService {
     }
     
         //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
-        boolean enviarCasoTriaje(PojoCaso caso, String uuid){
-            
+        boolean enviarCasoTriaje(PojoCaso caso, String uuid){            
             boolean flag = false
 
                 if(caso){
                 flag = true
                 }
 
+//            
+//            boolean exist = triajeService.getCentroPorUuid(uuid)
+//            if (exist){
+//                printl "centro encontrado"
+//            }
+//                
 
             //OPERACIONES PARA GUARDAR TODO EN LA BASE DE DATOS
 
