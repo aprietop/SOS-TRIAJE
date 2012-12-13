@@ -16,8 +16,8 @@ public class PojoCaso {
     public List<PojoEspecialidad> especialidad;
     public PojoPaciente paciente;
     public String descripcion;
-    public String fechaInicio;
-    public String fechaSolucion;
+//    public String fechaInicio;
+//    public String fechaSolucion;
     
     public PojoCaso(){
     }
