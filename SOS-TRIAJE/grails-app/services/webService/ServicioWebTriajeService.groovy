@@ -30,20 +30,11 @@ class ServicioWebTriajeService {
     public PojoPaciente thisPaciente
     public String thisUuid
 
-    //    PojoPrueba serviceHolaMundo(){
-    //        println "Esto es todo amigos"
-    //
-    //        PojoPrueba p = new PojoPrueba()
-    //        return p
-    //    }
-
     //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
     boolean enviarCasoTriaje(PojoCaso caso, String uuid){
         boolean flag = false
 
         if(caso){
-            //                flag = true
-            //                    boolean exist = triajeService.getCentroPorUuid(uuid)
             def centroInstance = CentroSOS.findByUuid(uuid)
             if (centroInstance){
                 println "centro encontrado"
@@ -108,14 +99,21 @@ class ServicioWebTriajeService {
     }
 
     //SERVICIO PARA OBTENER EL STATUS DEL CASO, SI ES "CERRADO" LLAMAR AL SERVICIO SIGUIENTE
-    String getStatusCaso(String uuid){
+    def getStatusCaso(String uuid){
+        List casoInstanceList = []
+        def centroInstance = CentroSOS.findByUuid(uuid)
+        def status8 = Status.get(8)         //Cerrado
+        
+        if(centroInstance){
+           def casoInstance = Caso.findByCentro(centroInstance)  
+               casoInstance.each{
+                   if(it.status==status8){
+                       casoInstanceList.add(it)
+                   }
+               }
+        }
 
-        String status = ""
-
-
-        //OPERACIONES PARA OBTENER EL STATUS DEL CASO
-
-        return status
+        return casoInstanceList
     }
 
 

@@ -367,14 +367,8 @@ class BootStrap {
             opinion4.medico = triaje1
             opinion4.fechaOpinion = new Date(112, 10, 27)
             opinion4.caso = caso3         
-            if (!opinion4.save()) println opinion4.errors 
-            
-//**************************** CENTROS SOS-TRIAJE ****************************/
-//           
-        def centro1 = new CentroSOS()
-        centro1.nombre = "Ambulatorio CIM UCV"
-        centro1.url = "http://127.0.0.1:7070"
-        if (!centro1.save()) println centro1.errors                 
+            if (!opinion4.save()) println opinion4.errors          
+          
         
 ////////////////////////////////////////////////////////////////////////////////                
            
