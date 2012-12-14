@@ -11,7 +11,6 @@ package pojos;
 public class PojoEspecialidad {
     
     public String nombre;
-    public String descripcion;
     
     
     public PojoEspecialidad() {
