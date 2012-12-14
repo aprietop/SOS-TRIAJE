@@ -11,12 +11,12 @@ class ServicioWebTriajeService {
     
     def triajeService
     
-    PojoPrueba serviceHolaMundo(){
-        println "Esto es todo amigos"
-        
-        PojoPrueba p = new PojoPrueba()
-        return p
-    }
+//    PojoPrueba serviceHolaMundo(){
+//        println "Esto es todo amigos"
+//        
+//        PojoPrueba p = new PojoPrueba()
+//        return p
+//    }
     
         //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
         boolean enviarCasoTriaje(PojoCaso caso, String uuid){            
@@ -26,13 +26,14 @@ class ServicioWebTriajeService {
                 flag = true
                 }
 
-//            
-//            boolean exist = triajeService.getCentroPorUuid(uuid)
-//            if (exist){
-//                printl "centro encontrado"
-//            }
-//                
-
+            
+            boolean exist = triajeService.getCentroPorUuid(uuid)
+            if (exist==true){
+                println "centro encontrado"
+            }else{
+                println "centro NO encontrado"
+            }
+                
             //OPERACIONES PARA GUARDAR TODO EN LA BASE DE DATOS
 
             return flag

@@ -4,6 +4,7 @@ import medico.Medico
 import caso.Caso
 import status.Status
 import caso.HistorialCaso
+import centro.CentroSOS
 
 class TriajeService {
 
@@ -33,9 +34,16 @@ class TriajeService {
         return casoInstanceList
     }
     
-//    boolean getCentroPorUuid(String uuid){
-//        
-//        def centroInstance = CentroSOS.findByUuid(uuid)
-//    }
+    boolean getCentroPorUuid(String uuid){
+        boolean encontrado = false
+        
+        def centroInstance = CentroSOS.findByUuid(uuid)
+        
+        if (centroInstance){
+            encontrado = true
+        }
+        
+        return encontrado        
+    }
     
 }
