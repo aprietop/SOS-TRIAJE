@@ -37,6 +37,7 @@ class ServicioWebTriajeService {
         if(caso){
             def centroInstance = CentroSOS.findByUuid(uuid)
             if (centroInstance){
+                def casoNuevo = new Caso()
                 println "centro encontrado"
                 flag = true
 
@@ -47,23 +48,28 @@ class ServicioWebTriajeService {
                 this.thisPaciente = thisCaso.paciente
                 this.thisUuid = uuid
 
-                println "especialidades: "+thisEspecialidades
                 def status = Status.get(1)         //En espera
 
                 Date today = new Date()
-
-                def paciente = new Paciente()
-                paciente.nombre = thisPaciente.nombre
-                paciente.apellido = thisPaciente.apellido
-                paciente.cedula = Integer.parseInt(thisPaciente.cedula)
-                paciente.sexo = thisPaciente.sexo
-                paciente.fechaNacimiento = new Date().parse("yyyy-MM-dd",thisPaciente.fechaNacimiento)
-                if (!paciente.save()) println "Error al guardar el paciente: "+paciente.errors
-
-                def casoNuevo = new Caso()
+                
+                def pacienteNuevo = new Paciente()
+                pacienteNuevo.nombre = thisPaciente.nombre
+                pacienteNuevo.apellido = thisPaciente.apellido
+                pacienteNuevo.cedula = Integer.parseInt(thisPaciente.cedula)
+                pacienteNuevo.sexo = thisPaciente.sexo
+                pacienteNuevo.fechaNacimiento = new Date().parse("yyyy-MM-dd",thisPaciente.fechaNacimiento)
+                
+                def pacienteInstance = Paciente.findByCedula(Integer.parseInt(thisPaciente.cedula))
+                if(pacienteInstance){
+                    println "Paciente encontrado"
+                    casoNuevo.paciente = pacienteInstance
+                }else{
+                    if (!pacienteNuevo.save()) println "Error al guardar el paciente: "+paciente.errors
+                    casoNuevo.paciente = pacienteNuevo
+                }              
+                
                 casoNuevo.descripcion = thisCaso.descripcion
-                casoNuevo.fechaInicio = today
-                casoNuevo.paciente = paciente
+                casoNuevo.fechaInicio = today                
                 casoNuevo.status = status
                 casoNuevo.idCasoSOS = thisCaso.idCasoSOS
                 casoNuevo.centro = centroInstance
@@ -90,8 +96,13 @@ class ServicioWebTriajeService {
                         j++;
                     }
                 }
-
-                if (!casoNuevo.save()) println "Error al guardar el caso: "+casoNuevo.errors
+                
+                def casoInstance = Caso.findByIdCasoSOS(thisCaso.idCasoSOS)
+                if (casoInstance){
+                    println "Caso ya existente"
+                }else{
+                    if (!casoNuevo.save()) println "Error al guardar el caso: "+casoNuevo.errors
+                }                
             }
         }
 
@@ -99,8 +110,8 @@ class ServicioWebTriajeService {
     }
 
     //SERVICIO PARA OBTENER EL STATUS DEL CASO, SI ES "CERRADO" LLAMAR AL SERVICIO SIGUIENTE
-    def getStatusCaso(String uuid){
-        List casoInstanceList = []
+    def getIdCasoCerrado(String uuid){
+        List idCasosCerradosList = []
         def centroInstance = CentroSOS.findByUuid(uuid)
         def status8 = Status.get(8)         //Cerrado
         
@@ -108,12 +119,11 @@ class ServicioWebTriajeService {
            def casoInstance = Caso.findByCentro(centroInstance)  
                casoInstance.each{
                    if(it.status==status8){
-                       casoInstanceList.add(it)
+                       idCasosCerradosList.add(it.idCasoSOS)
                    }
                }
         }
-
-        return casoInstanceList
+        return idCasosCerradosList
     }
 
 
