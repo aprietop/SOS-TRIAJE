@@ -8,6 +8,8 @@ import pojos.PojoArchivo
 import pojos.PojoEspecialidad
 import pojos.PojoPaciente
 
+import java.util.List
+
 import archivo.Archivo
 import caso.Caso
 import centro.CentroSOS
@@ -110,20 +112,27 @@ class ServicioWebTriajeService {
     }
 
     //SERVICIO PARA OBTENER EL STATUS DEL CASO, SI ES "CERRADO" LLAMAR AL SERVICIO SIGUIENTE
-    def getIdCasoCerrado(String uuid){
-        List idCasosCerradosList = []
+    List<String> getIdCasoCerrado(String uuid){
+        List<String> IdCasosCerrados = new ArrayList<String>();
+           
         def centroInstance = CentroSOS.findByUuid(uuid)
         def status8 = Status.get(8)         //Cerrado
-        
+        def casosCerrados
+
         if(centroInstance){
-           def casoInstance = Caso.findByCentro(centroInstance)  
-               casoInstance.each{
-                   if(it.status==status8){
-                       idCasosCerradosList.add(it.idCasoSOS)
-                   }
-               }
+            
+            def c = Caso.findByCentro(centroInstance).createCriteria()
+            casosCerrados = c.list {
+                eq("status", status8) 
+            }
+                
+            casosCerrados.each{
+//                println "caso cerrado: "+it.idCasoSOS
+                IdCasosCerrados.add(it.idCasoSOS)
+            }
         }
-        return idCasosCerradosList
+
+        return IdCasosCerrados
     }
 
 
