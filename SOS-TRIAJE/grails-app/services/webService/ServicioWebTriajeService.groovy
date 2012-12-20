@@ -139,7 +139,6 @@ class ServicioWebTriajeService {
     PojoCasoResuelto getCasoResuelto(PojoCaso caso){
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
 
-
         PojoCasoResuelto casoResuelto = new PojoCasoResuelto()
 
         return casoResuelto
