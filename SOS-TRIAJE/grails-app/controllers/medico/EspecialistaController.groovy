@@ -70,7 +70,7 @@ class EspecialistaController {
                 }
             }
             
-            def auxiliar = ""
+            def auxiliar = "<option value=0>Seleccione</option>"
             esp.each{
                 auxiliar = auxiliar + """<option value="${it.id}">${it.nombre} ${it.apellido}</option>"""
             }

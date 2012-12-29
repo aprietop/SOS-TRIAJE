@@ -3,6 +3,7 @@ package opinion
 import status.*
 import medico.*
 import caso.*
+import java.util.Date
 
 import java.sql.Time
 

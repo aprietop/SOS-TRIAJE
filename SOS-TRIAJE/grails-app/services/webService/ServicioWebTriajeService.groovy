@@ -1,8 +1,8 @@
 package webService
 import pojos.PojoPrueba
 import pojos.PojoCaso
+//import pojos.PojoMedico
 import triaje.PojoCasoResuelto
-import persona.Paciente
 import persona.Paciente
 import pojos.PojoArchivo
 import pojos.PojoEspecialidad
@@ -12,11 +12,13 @@ import java.util.List
 
 import archivo.Archivo
 import caso.Caso
+import opinion.Opinion
 import centro.CentroSOS
 import especialidad.Especialidad
 import persona.Persona
 import persona.Paciente
 import status.Status
+import java.text.SimpleDateFormat
 
 
 class ServicioWebTriajeService {
@@ -136,12 +138,65 @@ class ServicioWebTriajeService {
     }
 
 
-    PojoCasoResuelto getCasoResuelto(PojoCaso caso){
+    PojoCasoResuelto getCasoResuelto(String idCasoSOS){
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
+//        println "id caso a buscar: "+idCasoSOS
+//        println "paso por aqui 1"
+        def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
+//        println "caso en triaje: "+casoInstance        
+//        println "paso por aqui 2"
 
+        //Ultima opinion del caso, tiene consigo el medico quien emitio la opinion
+        def opinionInstance = Opinion.findAllByCaso(casoInstance, [sort: "fechaOpinion", order: "desc"])
+            opinionInstance=opinionInstance.first()
+        println "cuerpo opinion: "+opinionInstance.cuerpoOpinion+" "+opinionInstance.cuerpoOpinion.class
+        String Opinion = opinionInstance.cuerpoOpinion
+        
+        SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd")
+        String fechaSolucion = fecha.format(casoInstance.fechaSolucion)
+//        println " fecha solucion en string: "+fechaSolucion  
+        
+//            println "paso 1"
+//            //Medico que emitio la solucion al caso   
+//            PojoMedico medicoCaso = new PojoMedico()
+//            println "paso 2"
+//            medicoCaso.nombre = opinionInstance.medico.nombre
+//            println "paso 3a "+opinionInstance.medico.nombre
+//            println "paso 3b "+medicoCaso.nombre
+//            medicoCaso.apellido = opinionInstance.medico.apellido
+//            println "paso 4a "+opinionInstance.medico.apellido
+//            println "paso 4b "+medicoCaso.apellido
+//            if (opinionInstance.medico.numColegioMedico){
+//                medicoCaso.colegioDeMedico = opinionInstance.medico.numColegioMedico
+//            println "paso 5a "+opinionInstance.medico.numColegioMedico
+//            println "paso 5b "+medicoCaso.colegioDeMedico
+//            }   
+//            if (opinionInstance.medico.numMinisterioSalud){
+//               medicoCaso.ministerioDeSalud = opinionInstance.medico.numMinisterioSalud 
+//               println "paso 6a "+opinionInstance.medico.numMinisterioSalud
+//               println "paso 6b "+medicoCaso.ministerioDeSalud
+//            }
+            println "paso 7"
+            
+            println "paso 8"
+            /*
+//    public String opinion; //VERIFICAR SI ES MEJOR QUE SEA UN POJO PARA QUE ENVIE ARCHIVOS TAMBIEN
         PojoCasoResuelto casoResuelto = new PojoCasoResuelto()
-
+        println "paso 9"
+            casoResuelto.setIdCasoSOS(idCasoSOS)
+            println "paso 10 "+casoResuelto.getIdCasoSOS()
+            println "Opinion: "+Opinion
+            casoResuelto.setOpinion(Opinion)
+            println "paso 11 "+casoResuelto.getOpinion()
+//            println "Medico: "+medicoCaso.nombre
+//            casoResuelto.setResponsable(medicoCaso)            
+            println "paso 12 "+casoResuelto.getResponsable()
+            casoResuelto.setFechaSolucion(fechaSolucion)
+            println "paso 13 "+casoResuelto.getFechaSolucion
+            
+        println "pojo caso resuelto: "
+        println "pojo caso resuelto: "+casoResuelto
+        */
         return casoResuelto
     }
-
 }
