@@ -361,7 +361,6 @@ class CasoController {
     }
     
     def vResolverCaso = {
-//TRIAJE
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
         List casoInstanceList = []
