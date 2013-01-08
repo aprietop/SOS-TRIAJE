@@ -87,7 +87,7 @@
 
                   <td><g:link action="show" id="${opinionInstance.id}">${fieldValue(bean: opinionInstance, field: "id")}</g:link></td>
 
-                  <td><g:formatDate date="${opinionInstance.fechaOpinion}" /></td>
+                  <td><g:formatDate format="dd-MM-yyyy" date="${opinionInstance.fechaOpinion}"/></td>
 
                   <td>${fieldValue(bean: opinionInstance, field: "cuerpoOpinion")}</td>
 

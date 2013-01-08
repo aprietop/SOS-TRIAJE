@@ -63,6 +63,7 @@ class CasoController {
         
     def listaDeCasosT = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        def tipoBusqueda = 1
         
         if(session?.ActorSistema?.rol == "Triaje" ){
             
@@ -94,7 +95,7 @@ class CasoController {
                 }
           }
             
-          render(view: "menuTriaje", model: [casoInstanceList: casosNoCerrados, casoInstanceTotal: casosNoCerrados.count(), medicoList:medicos]) 
+          render(view: "menuTriaje", model: [casoInstanceList: casosNoCerrados, casoInstanceTotal: casosNoCerrados.count(), medicoList:medicos, tipoBusqueda:tipoBusqueda]) 
         }
         
         if(session?.ActorSistema?.rol == "Especialista" ){
@@ -127,11 +128,12 @@ class CasoController {
                     }                
                 maxResults(10)        
             }    
-            render(view: "menuEspecialista", model: [casoInstanceList: results, casoInstanceTotal: Caso.count()])
+            render(view: "menuEspecialista", model: [casoInstanceList: results, casoInstanceTotal: Caso.count(), tipoBusqueda:tipoBusqueda])
          }
     }
     
     def mostrarPorMedico = {
+        def tipoBusqueda = 1
 //      MEDICO QUE INGRESO AL SISTEMA
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
 
@@ -142,10 +144,11 @@ class CasoController {
 //      HISTORIALES EN LOS CUALES HA SIDO ACTOR EL MEDICO QUE INGRESO EL SISTEMA        
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance, [sort:campo, order:orden]) 
         
-        render(view: "mostrarPorMedico", model: [historialCasoInstanceList: historialInstance, historialCasoInstanceTotal: HistorialCaso.count()]) 
+        render(view: "mostrarPorMedico", model: [historialCasoInstanceList: historialInstance, historialCasoInstanceTotal: HistorialCaso.count(), tipoBusqueda:tipoBusqueda]) 
 } 
 
     def miHistorial = {
+        def tipoBusqueda = 1
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
         
@@ -162,10 +165,11 @@ class CasoController {
         casoInstanceList.clear();
         casoInstanceList.addAll(s);
         
-     render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count()]) 
+     render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count(), tipoBusqueda:tipoBusqueda]) 
     }
     
     def casosAsociados = {
+        def tipoBusqueda = 1
 //      MEDICO QUE INGRESO AL SISTEMA
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         
@@ -201,7 +205,7 @@ class CasoController {
                 }                
             maxResults(10)        
         }          
-        render(view: "casosAsociados", model: [CasoInstanceList: results])
+        render(view: "casosAsociados", model: [CasoInstanceList: results, casoInstanceTotal: results.count(), tipoBusqueda:tipoBusqueda])
 } 
     
     def modificarCasos = {
@@ -234,7 +238,7 @@ class CasoController {
                 maxResults(10)        
             }
 
-            render(view: "modificarCaso", model: [casoInstanceList: results, casoInstanceTotal: Caso.count()]) 
+            render(view: "modificarCaso", model: [casoInstanceList: results, casoInstanceTotal: results.count(), tipoBusqueda:tipoBusqueda]) 
         }       
     }
 
@@ -580,6 +584,48 @@ class CasoController {
         }       
     }
 
+    def verPorFechaT = {
+        def tipoBusqueda = 2
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+                
+        if(session?.ActorSistema?.rol == "Triaje" ){   
+            
+            def d = params.desde
+            def h = params.hasta            
+            def status8 = Status.get(8)         //Cerrado
+
+            def historialInstance 
+            def todosLosCasos = Caso.list(params)
+            List medicos = []
+
+            def c = Caso.createCriteria()
+            def casosNoCerrados = c.list {
+                ne("status", status8) 
+                ge("fechaInicio", d)
+                le("fechaInicio", h)
+            }
+
+              casosNoCerrados.each{
+                  historialInstance = HistorialCaso.findAllByCaso(it, [sort: "fecha", order: "desc"])   
+                    if(historialInstance){
+                        historialInstance=historialInstance.first()
+
+                        if (historialInstance.estadoCaso==status8.nombre){
+                            medicos.add(null)   
+                        }else{
+                            medicos.add(historialInstance.medico)
+                        }                    
+                    }
+                    else{
+                        medicos.add(null)
+                    }
+              }
+
+              render(view: "menuTriaje", model: [casoInstanceList: casosNoCerrados, casoInstanceTotal: casosNoCerrados.count(), medicoList:medicos, tipoBusqueda:tipoBusqueda])         
+        
+        }        
+    }
+    
     def cerrarCaso = {
 	def status7 = Status.get(7) //Resuelto 1er nivel
         def historialInstance = HistorialCaso.findAllByEstadoCaso(status7.nombre)
@@ -624,31 +670,96 @@ class CasoController {
     }    
     
     def verPorFecha = {
+        def tipoBusqueda = 2
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-        
-        def d = params.desde
-        def h = params.hasta
-        
-        def status8 = Status.get(8)
-
         def c = HistorialCaso.createCriteria()
-        def casos = c.list {
-            eq("medico", actorInstance) 
-            caso{
-                ge("fechaInicio", d)
-                le("fechaInicio", h)
-            }
-            projections { 
-               distinct("caso")            
-            }
-        }
-
+        
         if(session?.ActorSistema?.rol == "Especialista" ){
-            render (view:'menuEspecialista', model:[casoInstanceList:casos, casoInstanceTotal: casos.count()])
-        }
-        if(session?.ActorSistema?.rol == "Triaje" ){
-            render (view:'casosAsociadosP', model:[casoInstanceList:casos, casoInstanceTotal: casos.count()])
-        }        
-    } 
+            def d = params.desde
+            def h = params.hasta
 
+            def casos = c.list {
+                eq("medico", actorInstance) 
+                caso{
+                    ge("fechaInicio", d)
+                    le("fechaInicio", h)
+                }
+                projections { 
+                   distinct("caso")            
+                }
+            }
+           render (view:'menuEspecialista', model:[casoInstanceList:casos, casoInstanceTotal: casos.count(), tipoBusqueda:tipoBusqueda])
+        }
+        if(session?.ActorSistema?.rol == "Triaje" ){   
+            
+            def d = params.desde
+            def h = params.hasta           
+            def status8 = Status.get(8)         //Cerrado
+
+    //      CRITERIA PARA LISTAR LOS CASOS DISTINTOS DEL MEDICO ACTOR DEL SISTEMA 
+            def results = c.list {
+                eq("medico", actorInstance) 
+                    caso{
+                        ne("status", status8)
+                        ge("fechaInicio", d)
+                        le("fechaInicio", h)
+                    }
+                projections { 
+                   distinct("caso")            
+                }       
+            }          
+            render(view: "casosAsociados", model: [CasoInstanceList: results, casoInstanceTotal: results.count(), tipoBusqueda:tipoBusqueda])            
+//            render (view:'casosAsociadosP', model:[casoInstanceList:casos, casoInstanceTotal: casos.count()])
+        }        
+    }
+    
+    def verHistorialesPorFecha = {
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
+        
+        List casoInstanceList = []
+        
+        def tipoBusqueda = 2
+                
+        def d = params.desde
+        def h = params.hasta      
+        
+            def c = HistorialCaso.createCriteria()
+            def HistorialPorFecha = c.list {
+                ge("fecha", d)
+                le("fecha", h)
+                eq("medico",actorInstance)
+            }
+            
+        HistorialPorFecha.each{
+            casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso))
+        }
+        
+        Set<String> s = new LinkedHashSet<String>(casoInstanceList);
+        casoInstanceList.clear();
+        casoInstanceList.addAll(s);
+
+        render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count(), tipoBusqueda:tipoBusqueda])                     
+    }  
+    
+    
+//    def tipoBusqueda = 1
+//        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
+//        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
+//        
+//        def campo=params.sort?:"fecha"
+//        def orden=params.order?:"asc"
+//             
+//        List casoInstanceList = []
+//        
+//        historialInstance.each{
+//            casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso))          
+//        }
+//        
+//        Set<String> s = new LinkedHashSet<String>(casoInstanceList);
+//        casoInstanceList.clear();
+//        casoInstanceList.addAll(s);
+//        
+//     render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count(), tipoBusqueda:tipoBusqueda]) 
+    
 }

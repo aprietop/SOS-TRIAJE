@@ -43,7 +43,29 @@
   </g:if>
 </ul>
 </div>
-    
+ 
+<div id="nivel1">
+<div id="nivel3"> 
+<g:form  method="post">
+    <label for="desde">
+      <g:message code="buscar.desde" />
+    </label>
+      <g:datePicker name="desde" value="" precision="day" noSelection="['':'']" />
+
+    <label for="hasta">
+      <g:message code="buscar.hasta" />
+    </label>
+      <g:datePicker name="hasta" value="" precision="day" noSelection="['':'']" />    
+   
+<g:actionSubmit action="verHistorialesPorFecha" value="Filtrar" class="boton1"/>
+
+<g:actionSubmit action="miHistorial" value="Todos" class="boton1"/>
+
+</g:form>     
+ 
+</div>      
+</div>
+  
 <div id="nivel1">
 <div id="nivel2">
 <div id="contenido">
@@ -51,7 +73,8 @@
  <table class="tabla2">
           <thead>
               <tr>
-                 <%-- <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />--%>
+                <g:if test="${tipoBusqueda==1}">
+                  <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />
                   
                   <g:sortableColumn property="caso" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                   
@@ -68,7 +91,26 @@
                   <g:sortableColumn property="caso.paciente.cedula" title="${message(code: 'paciente.ci.label', default: 'CI paciente')}" />
                   
                   <th><g:message code="opiniones.label" default="Opiniones" /></th>
+                </g:if>
+                <g:if test="${tipoBusqueda==2}">                  
+                  <th><g:message code="fecha.label" default="Fecha" /></th>
                                     
+                  <th><g:message code="descipcion.caso.label" default="Caso" /></th>
+                  
+                  <th><g:message code="estado.caso.label" default="Estado" /></th>
+                          
+                  <th><g:message code="medico.nombre.label" default="Nombre Medico" /></th>
+                  
+                  <th><g:message code="fecha.inicio.label" default="Fecha Inicio" /></th>
+                  
+                  <th><g:message code="fecha.solucion.label" default="Fecha Solucion" /></th>
+                                    
+                  <th><g:message code="paciente.nombre.label" default="Paciente" /></th>
+                  
+                  <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                  
+                  <th><g:message code="opiniones.label" default="Opiniones" /></th>
+                </g:if>
               </tr>
           </thead>
           <tbody>
@@ -76,7 +118,7 @@
               <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
               <g:each in="${historialCasoList}" status="j" var="historialCasoInstance">
                 <tr>
-                  <%--<td><g:formatDate date="${historialCasoInstance.fecha}" /></td>--%>
+                  <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
 
                   <td>${fieldValue(bean: historialCasoInstance, field: "caso.descripcion")}</td>
                   
@@ -84,10 +126,10 @@
                   
                   <td>${fieldValue(bean: historialCasoInstance, field: "medico.nombre")}
                       ${fieldValue(bean: historialCasoInstance, field: "medico.apellido")}</td>  
-                                   
-                  <td>${fieldValue(bean: historialCasoInstance, field: "caso.fechaInicio")}</td>
+               
+                  <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaInicio}"/></td>
 
-                  <td>${fieldValue(bean: historialCasoInstance, field: "caso.fechaSolucion")}</td>
+                  <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaSolucion}"/></td>
                   
                   <td>${fieldValue(bean: historialCasoInstance, field: "caso.paciente.nombre")}
                       ${fieldValue(bean: historialCasoInstance, field: "caso.paciente.apellido")}</td>

@@ -16,6 +16,7 @@ import centro.CentroSOS
 import especialidad.Especialidad
 import persona.Persona
 import persona.Paciente
+import especialidad.Especialidad
 import status.Status
 import java.text.SimpleDateFormat
 
@@ -128,14 +129,46 @@ class ServicioWebTriajeService {
             }
                 
             casosCerrados.each{
-//                println "caso cerrado: "+it.idCasoSOS
                 IdCasosCerrados.add(it.idCasoSOS)
             }
         }
-
         return IdCasosCerrados
     }
+    
+    //Con wsdl 19
+    List<String> getEspecialidades(String uuid){
+        List<String> especialidadList = new ArrayList<String>();
+           
+        def especialidadInstance = Especialidad.findAll()
 
+            especialidadInstance.each{
+                println "especialidad: "+it.nombre
+                especialidadList.add(it.nombre)                
+            }
+       
+        return especialidadList
+    }       
+  
+    /*//Con wsdl 18
+    boolean getEspecialidades(String uuid){
+        boolean respuesta = false
+           
+        def centroInstance = CentroSOS.findByUuid(uuid)
+
+        if(centroInstance){
+        def especialidadInstance = Especialidad.findAll()
+            if(especialidadInstance){
+                especialidadInstance.each{
+                    println "especialidad: "+it.nombre
+//                    especialidadList.add(it.nombre)                
+                }
+                
+            respuesta = true
+            }
+        }
+        return respuesta
+    }   
+    */
 
     PojoCasoResuelto getCasoResuelto(String idCasoSOS){
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
@@ -171,4 +204,5 @@ class ServicioWebTriajeService {
         
         return casoResuelto
     }
+    
 }

@@ -34,6 +34,28 @@
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>  
         </ul>
       </div>
+
+<div id="nivel1">
+<div id="nivel3"> 
+<g:form  method="post">
+    <label for="desde">
+      <g:message code="buscar.desde" />
+    </label>
+      <g:datePicker name="desde" value="" precision="day" noSelection="['':'']" />
+
+    <label for="hasta">
+      <g:message code="buscar.hasta" />
+    </label>
+      <g:datePicker name="hasta" value="" precision="day" noSelection="['':'']" />    
+   
+<g:actionSubmit action="verPorFechaT" value="Filtrar" class="boton1"/>
+
+<g:actionSubmit action="listaDeCasosT" value="Todos" class="boton1"/>
+
+</g:form>     
+ 
+</div>      
+</div>
       
 <div id="nivel1">
   <div id="nivel2">
@@ -43,6 +65,7 @@
               <table class="tabla2">
                     <thead>
                         <tr>
+                          <g:if test="${tipoBusqueda==1}">  
                             <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                           
                             <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
@@ -60,6 +83,26 @@
                             <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
                     
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
+                          </g:if>
+                          <g:if test="${tipoBusqueda==2}">
+                            <th><g:message code="id.label" default="Id" /></th>
+                            
+                            <th><g:message code="descipcion.caso.label" default="Caso" /></th>
+                                    
+                            <th><g:message code="estado.caso.label" default="Estado" /></th>
+
+                            <th><g:message code="fecha.inicio.label" default="Fecha inicio" /></th>
+
+                            <th><g:message code="fecha.solucion.label" default="Fecha solucion" /></th>
+                            
+                            <th><g:message code="medico.nombre.label" default="Nombre Médico" /></th>
+                            
+                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
+                             
+                            <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                    
+                            <th><g:message code="opiniones.label" default="Opiniones" /></th>                            
+                          </g:if>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,9 +114,9 @@
                         
                             <td>${casoInstance.status.nombre}</td>
                             
-                            <td><g:formatDate date="${casoInstance.fechaInicio}" /></td>
+                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
                             
-                            <td><g:formatDate date="${casoInstance.fechaSolucion}" /></td>
+                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaSolucion}"/></td>
                             
                             <td>${medicoList[i]?.nombre} 
                                 ${medicoList[i]?.apellido}

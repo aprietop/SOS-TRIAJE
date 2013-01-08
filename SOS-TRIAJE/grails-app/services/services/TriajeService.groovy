@@ -9,7 +9,7 @@ import centro.CentroSOS
 class TriajeService {
 
     static transactional = true
-
+    
     def getGenero(Medico medico) {
 
            def trato
@@ -44,6 +44,34 @@ class TriajeService {
         }
         
         return encontrado        
+    }
+    
+    List<String> mostrarCaso (List<String> newLista){
+        //Lista que acumulara por centros los casos que han sido impresos
+        List<String> casosImpresos = new ArrayList<String>() 
+        //Lista que contendra los casos que deberan ser impresos
+        List<String> casosAImprimir = new ArrayList<String>()
+        
+            int k=0;
+            while (k< newLista.size())
+            {
+                casosImpresos.add(newLista.get(k))
+            }
+            
+            int i=0;
+            while (i< newLista.size())
+            {
+                int j=0;
+                while (j< casosImpresos.size()){
+                    if((casosImpresos.get(j))!=(newLista.get(i))){
+                        casosAImprimir.add(newLista.get(i))    
+                    }
+                j++;
+                }
+            i++;
+            }
+            
+        return casosAImprimir
     }
     
 }

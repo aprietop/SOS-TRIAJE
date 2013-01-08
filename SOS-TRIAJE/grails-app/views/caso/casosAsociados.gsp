@@ -64,6 +64,7 @@
 <table class="tabla2">
           <thead>
               <tr>
+                <g:if test="${tipoBusqueda==1}">                
                   <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                                     
                   <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
@@ -77,7 +78,22 @@
                   <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
                   
                   <th><g:message code="opiniones.label" default="Opiniones" /></th>
-                                    
+                </g:if>  
+                <g:if test="${tipoBusqueda==2}">
+                  <th><g:message code="descripcion" default="Caso" /></th>
+
+                  <th><g:message code="status" default="Estado" /></th>
+
+                  <th><g:message code="fechaInicio" default="Fecha Inicio" /></th>
+
+                  <th><g:message code="fechaInicio" default="Fecha Solución" /></th>
+
+                  <th><g:message code="paciente.nombre" default="Nombre Paciente" /></th>
+
+                  <th><g:message code="paciente.ci" default="CI Paciente" /></th>
+
+                  <th><g:message code="opiniones.label" default="Opiniones" /></th>
+                </g:if> 
               </tr>
           </thead>
           <tbody>

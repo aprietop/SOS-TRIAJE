@@ -32,8 +32,9 @@ class HistorialCasoController {
     }
 
     def listaDeHistorialesT = {
+        def tipoBusqueda = 1
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [historialCasoInstanceList: HistorialCaso.list(params), historialCasoInstanceTotal: HistorialCaso.count()]
+        [historialCasoInstanceList: HistorialCaso.list(params), historialCasoInstanceTotal: HistorialCaso.count(), tipoBusqueda:tipoBusqueda]
     }
     
     def create = {
@@ -183,5 +184,21 @@ class HistorialCasoController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'historialCaso.label', default: 'HistorialCaso'), params.id])}"
             redirect(action: "list")
         }
-    }   
+    }
+    
+    def verHistorialesPorFecha = {
+        def tipoBusqueda = 2
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        
+        def d = params.desde
+        def h = params.hasta      
+        
+            def c = HistorialCaso.createCriteria()
+            def HistorialPorFecha = c.list {
+                ge("fecha", d)
+                le("fecha", h)
+            }
+        render(view: "listaDeHistorialesT", model: [historialCasoInstanceList: HistorialPorFecha, historialCasoInstanceTotal: HistorialPorFecha.count(), tipoBusqueda:tipoBusqueda])                     
+       
+    }
 }
