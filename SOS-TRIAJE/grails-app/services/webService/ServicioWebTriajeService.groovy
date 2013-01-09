@@ -149,27 +149,6 @@ class ServicioWebTriajeService {
         return especialidadList
     }       
   
-    /*//Con wsdl 18
-    boolean getEspecialidades(String uuid){
-        boolean respuesta = false
-           
-        def centroInstance = CentroSOS.findByUuid(uuid)
-
-        if(centroInstance){
-        def especialidadInstance = Especialidad.findAll()
-            if(especialidadInstance){
-                especialidadInstance.each{
-                    println "especialidad: "+it.nombre
-//                    especialidadList.add(it.nombre)                
-                }
-                
-            respuesta = true
-            }
-        }
-        return respuesta
-    }   
-    */
-
     PojoCasoResuelto getCasoResuelto(String idCasoSOS){
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
         def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
