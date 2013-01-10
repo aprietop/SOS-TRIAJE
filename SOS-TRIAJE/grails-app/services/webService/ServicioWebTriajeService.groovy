@@ -135,14 +135,13 @@ class ServicioWebTriajeService {
         return IdCasosCerrados
     }
     
-    //Con wsdl 19
     List<String> getEspecialidades(String uuid){
         List<String> especialidadList = new ArrayList<String>();
            
         def especialidadInstance = Especialidad.findAll()
 
             especialidadInstance.each{
-                println "especialidad: "+it.nombre
+//                println "especialidad: "+it.nombre
                 especialidadList.add(it.nombre)                
             }
        

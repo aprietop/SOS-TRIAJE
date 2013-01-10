@@ -17,7 +17,6 @@ public class PojoPaciente {
     public String sexo;
     public String nacionalidad;
     public String fechaNacimiento;
-//    public Date Fecha;
     
     public PojoPaciente(){
     }
