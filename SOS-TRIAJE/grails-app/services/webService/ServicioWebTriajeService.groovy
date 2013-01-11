@@ -37,7 +37,7 @@ class ServicioWebTriajeService {
     //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
     boolean enviarCasoTriaje(PojoCaso caso, String uuid){
         boolean flag = false
-
+    
         if(caso){
             def centroInstance = CentroSOS.findByUuid(uuid)
             if (centroInstance){

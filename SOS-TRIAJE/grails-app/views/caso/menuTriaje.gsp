@@ -62,7 +62,7 @@
     <div id="contenido">
         
         <div  class="form1">
-              <table class="tabla2">
+              <table class="tabla2" >
                     <thead>
                         <tr>
                           <g:if test="${tipoBusqueda==1}">  
