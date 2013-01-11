@@ -741,24 +741,4 @@ class CasoController {
         render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count(), tipoBusqueda:tipoBusqueda])                     
     }  
     
-    
-//    def tipoBusqueda = 1
-//        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-//        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
-//        
-//        def campo=params.sort?:"fecha"
-//        def orden=params.order?:"asc"
-//             
-//        List casoInstanceList = []
-//        
-//        historialInstance.each{
-//            casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso))          
-//        }
-//        
-//        Set<String> s = new LinkedHashSet<String>(casoInstanceList);
-//        casoInstanceList.clear();
-//        casoInstanceList.addAll(s);
-//        
-//     render(view: "mostrarPorMedicoP", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count(), tipoBusqueda:tipoBusqueda]) 
-    
 }
