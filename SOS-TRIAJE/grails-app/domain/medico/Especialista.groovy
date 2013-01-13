@@ -19,7 +19,7 @@ class Especialista extends Medico{
         apellido(blank: false, nullable: false)
         cedula(blank: false, nullable: false, unique: true, number:true)
         sexo(blank: false, nullable: false)
-        mail(blank: true, nullable: true, email: true, unique: true)
+        mail(blank: false, nullable: false, email: true, unique: true)
         login(blank: false, nullable: false, unique: true)
         password(blank: false, nullable: false, size: 6..10)
     }

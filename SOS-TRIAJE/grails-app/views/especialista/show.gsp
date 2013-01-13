@@ -107,7 +107,7 @@
                             <td valign="top" class="value">
                                 <ul>
                                 <g:each in="${especialistaInstance.especialidades}" var="e">
-                                    <g:link controller="especialidad" action="show" id="${e.id}">${e?.nombre}</g:link>
+                                    ${e?.nombre}.
                                 </g:each>
                                 </ul>
                             </td>

@@ -32,8 +32,19 @@ class EspecialistaController {
     def save = {
         def especialistaInstance = new Especialista(params)
         especialistaInstance.rol="Especialista"
+        
         def especialidadInstance = Especialidad.get(params.especialidad)
         especialistaInstance.addToEspecialidades(especialidadInstance)
+        
+        if(params.especialidad2){
+        def especialidadInstance2 = Especialidad.get(params.especialidad2)
+        especialistaInstance.addToEspecialidades(especialidadInstance2)            
+        }
+
+        if(params.especialidad3){
+        def especialidadInstance3 = Especialidad.get(params.especialidad3)
+        especialistaInstance.addToEspecialidades(especialidadInstance3)            
+        }
         
         if (especialistaInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'especialista.label', default: 'Especialista'), especialistaInstance.id])}"
@@ -137,4 +148,12 @@ class EspecialistaController {
             redirect(action: "list")
         }
     }
+  
+    def cargarOtraEspecialidad = {
+        def nuevoTipo = "visible"
+
+        render(view: "create", model: [tipo: nuevoTipo])         
+        
+    }
+    
 }

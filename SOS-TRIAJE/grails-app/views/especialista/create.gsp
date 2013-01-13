@@ -29,7 +29,7 @@
                 });
         });
       </script>
-      
+     
     </head>
     <body>
 
@@ -146,7 +146,7 @@
                                     <label for="mail"><g:message code="especialista.mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'mail', 'errors')}">
-                                    <g:textField  style="width:250px" name="mail" value="${especialistaInstance?.mail}" />
+                                    <g:textField  style="width:250px" name="mail" value="${especialistaInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
 
@@ -179,13 +179,47 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="especialidad"><g:message code="especialista.especialidad.label" default="Especialidad" /></label>
+                                    <label for="especialidad1"><g:message code="especialista.especialidad.label" default="Especialidad 1" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
                                     <g:select  style="width:250px" name="especialidad" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
                                     value="${especialistaInstance?.especialidades?.id}"/><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
+                            
+                            <tr>
+                                <td valign="top">
+                                    <label for="especialidad2"><g:message code="especialista.especialidad.label" default="Especialidad 2" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
+                                    <g:select  style="width:250px" name="especialidad2" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
+                                    value="${especialistaInstance?.especialidades?.id}"/>
+                                    
+                                    <g:link class="boton1" controller="especialista" action="cargarOtraEspecialidad"><g:message code="Otra"/></g:link>
+                                 </td>
+                           </tr>  
+                           <g:if test="${tipo=='visible'}">    
+                           <tr>                              
+                              <td valign="top">
+                                <label for="especialidad3"><g:message code="especialista.especialidad.label" default="Especialidad 3" /></label>
+                                </td>
+                                <td valign="top"  class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
+                                    <g:select  style="width:250px" name="especialidad3" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
+                                    value="${especialistaInstance?.especialidades?.id}"/>
+                                 </td>
+                            </tr>
+                          </g:if>
+                          <g:else>
+                           <tr>                              
+                              <td valign="top" style="visibility:hidden">
+                                <label for="especialidad3"><g:message code="especialista.especialidad.label" default="Especialidad 3" /></label>
+                                </td>
+                                <td valign="top"  style="hidden" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
+                                    <g:select  style="width:250px" style="visibility:hidden" name="especialidad3" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
+                                    value="${especialistaInstance?.especialidades?.id}"/>
+                                </td>
+                            </tr>                            
+                          </g:else>
                         </tbody>
                     </table>              
               <p>&nbsp;</p>
