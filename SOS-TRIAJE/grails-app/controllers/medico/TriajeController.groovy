@@ -29,6 +29,21 @@ class TriajeController {
 
     def save = {
         def triajeInstance = new Triaje(params)
+        
+        if (params.nacionalidad=="V") {
+            if(params.sexo=="Femenino"){
+                triajeInstance.nacionalidad = "Venezolana"
+            }else{
+                triajeInstance.nacionalidad = "Venezolano"
+            }            
+        }else{
+            if(params.sexo=="Femenino"){
+                triajeInstance.nacionalidad = "Extranjera"
+            }else{
+                triajeInstance.nacionalidad = "Extranjero"
+            }               
+        }
+        
         triajeInstance.rol="Triaje"
         if (triajeInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'triaje.label', default: 'Triaje'), triajeInstance.id])}"
@@ -74,6 +89,21 @@ class TriajeController {
                 }
             }
             triajeInstance.properties = params
+            
+            if (params.nacionalidad=="V") {
+                if(params.sexo=="Femenino"){
+                    triajeInstance.nacionalidad = "Venezolana"
+                }else{
+                    triajeInstance.nacionalidad = "Venezolano"
+                }            
+            }else{
+                if(params.sexo=="Femenino"){
+                    triajeInstance.nacionalidad = "Extranjera"
+                }else{
+                    triajeInstance.nacionalidad = "Extranjero"
+                }               
+            }
+        
             if (!triajeInstance.hasErrors() && triajeInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'triaje.label', default: 'Triaje'), triajeInstance.id])}"
                 redirect(action: "show", id: triajeInstance.id)

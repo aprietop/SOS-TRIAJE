@@ -36,7 +36,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos del administrador</h1>
-       <g:link class="boton1" action="list"><g:message code="Volver" args="[entityName]" /></g:link>
+       <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volver" args="[entityName]" /></g:link>
        <p>&nbsp;</p>
        
         <div class="form1">
@@ -55,13 +55,13 @@
      
                     <table class="tabla2">
                         <tbody>
-                        
+                        <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="nombre"><g:message code="nombre.label" default="Nombre" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'nombre', 'errors')}">
-                                    <g:textField style="width:250px" name="nombre" value="${administradorInstance?.nombre}" />
+                                    <g:textField style="width:250px" name="nombre" value="${administradorInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -70,7 +70,7 @@
                                   <label for="apellido"><g:message code="apellido.label" default="Apellido" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'apellido', 'errors')}">
-                                    <g:textField style="width:250px" name="apellido" value="${administradorInstance?.apellido}" />
+                                    <g:textField style="width:250px" name="apellido" value="${administradorInstance?.apellido}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -79,7 +79,7 @@
                                   <label for="cedula"><g:message code="cedula.label" default="Cedula" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'cedula', 'errors')}">
-                                    <g:textField style="width:250px" name="cedula" value="${fieldValue(bean: administradorInstance, field: 'cedula')}" />
+                                    <g:textField style="width:250px" name="cedula" value="${fieldValue(bean: administradorInstance, field: 'cedula')}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -88,7 +88,7 @@
                                   <label for="sexo"><g:message code="sexo.label" default="Sexo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'sexo', 'errors')}">
-                                    <g:select style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${administradorInstance?.sexo}" />
+                                    <g:select style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${administradorInstance?.sexo}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -97,34 +97,34 @@
                                   <label for="nacionalidad"><g:message code="nacionalidad.label" default="Nacionalidad" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'nacionalidad', 'errors')}">
-                                    <g:textField style="width:250px" name="nacionalidad" value="${administradorInstance?.nacionalidad}" />
+                                    <g:select style="width:250px" name="nacionalidad" noSelection="['':'Seleccione']" from="['V', 'E']" value="${administradorInstance?.nacionalidad}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="login"><g:message code="login.label" default="Login" /></label>
+                                  <label for="login"><g:message code="login.label" default="Usuario" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'login', 'errors')}">
-                                    <g:textField style="width:250px" name="login" value="${administradorInstance?.login}" />
+                                    <g:textField style="width:250px" name="login" value="${administradorInstance?.login}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="password"><g:message code="password.label" default="Password" /></label>
+                                  <label for="password"><g:message code="password.label" default="Contraseña" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'password', 'errors')}">
-                                    <g:passwordField style="width:250px" name="password" maxlength="10" value="${administradorInstance?.password}" />
+                                    <g:passwordField style="width:250px" name="password" maxlength="10" value="${administradorInstance?.password}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="mail"><g:message code="mail.label" default="Mail" /></label>
+                                  <label for="mail"><g:message code="mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'mail', 'errors')}">
-                                    <g:textField style="width:250px" name="mail" value="${administradorInstance?.mail}" />
+                                    <g:textField style="width:250px" name="mail" value="${administradorInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         </tbody>

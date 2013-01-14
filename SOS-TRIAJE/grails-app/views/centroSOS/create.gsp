@@ -54,13 +54,14 @@
             <div  class="form1"> 
             <g:form action="save" >
                     <table class="tabla2">
-                        <tbody>                        
+                        <tbody>            
+                          <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="nombre"><g:message code="centroSOS.nombre.label" default="Nombre" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: centroSOSInstance, field: 'nombre', 'errors')}">
-                                    <g:textField style="width:250px" name="nombre" value="${centroSOSInstance?.nombre}" />
+                                    <g:textField style="width:250px" name="nombre" value="${centroSOSInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         

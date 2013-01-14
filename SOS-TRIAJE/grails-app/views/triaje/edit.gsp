@@ -36,7 +36,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos del encargado de triaje</h1>
-       <g:link class="boton1" controller="triaje" action="list"><g:message code="Volver"/></g:link>
+       <g:link class="boton1" controller="triaje" action="list"><g:message code="button.volver.label" default="Volver" /></g:link>
        <p>&nbsp;</p>
        
         <div class="form1">
@@ -55,12 +55,13 @@
                 
                     <table class="tabla2">
                         <tbody>
+                          <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 
                             <tr>
                                 <td valign="top" class="name">
                                   <label for="nombre"><g:message code="nombre.label" default="Nombre" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'nombre', 'errors')}">
-                                    <g:textField style="width:250px" name="nombre" value="${triajeInstance?.nombre}" />
+                                    <g:textField style="width:250px" name="nombre" value="${triajeInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -69,7 +70,7 @@
                                   <label for="apellido"><g:message code="apellido.label" default="Apellido" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'apellido', 'errors')}">
-                                    <g:textField style="width:250px" name="apellido" value="${triajeInstance?.apellido}" />
+                                    <g:textField style="width:250px" name="apellido" value="${triajeInstance?.apellido}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -78,7 +79,7 @@
                                   <label for="cedula"><g:message code="cedula.label" default="Cedula" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'cedula', 'errors')}">
-                                    <g:textField style="width:250px" name="cedula" value="${fieldValue(bean: triajeInstance, field: 'cedula')}" />
+                                    <g:textField style="width:250px" name="cedula" value="${fieldValue(bean: triajeInstance, field: 'cedula')}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -87,7 +88,7 @@
                                   <label for="sexo"><g:message code="sexo.label" default="Sexo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'sexo', 'errors')}">
-                                    <g:select style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${triajeInstance?.sexo}" />
+                                    <g:select style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${triajeInstance?.sexo}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -96,7 +97,7 @@
                                   <label for="nacionalidad"><g:message code="nacionalidad.label" default="Nacionalidad" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'nacionalidad', 'errors')}">
-                                    <g:textField style="width:250px" name="nacionalidad" value="${triajeInstance?.nacionalidad}" />
+                                    <g:select style="width:250px" name="nacionalidad" noSelection="['':'Seleccione']" from="['V', 'E']" value="${triajeInstance?.nacionalidad}" />
                                 </td>
                             </tr>
                         
@@ -105,7 +106,7 @@
                                   <label for="login"><g:message code="login.label" default="Usuario" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'login', 'errors')}">
-                                    <g:textField style="width:250px" name="login" value="${triajeInstance?.login}" />
+                                    <g:textField style="width:250px" name="login" value="${triajeInstance?.login}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -114,7 +115,7 @@
                                   <label for="password"><g:message code="password.label" default="Contraseña" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'password', 'errors')}">
-                                    <g:passwordField style="width:250px" name="password" value="${triajeInstance?.password}" />
+                                    <g:passwordField style="width:250px" name="password" value="${triajeInstance?.password}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -123,7 +124,7 @@
                                   <label for="mail"><g:message code="mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'mail', 'errors')}">
-                                    <g:textField style="width:250px" name="mail" value="${triajeInstance?.mail}" />
+                                    <g:textField style="width:250px" name="mail" value="${triajeInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         

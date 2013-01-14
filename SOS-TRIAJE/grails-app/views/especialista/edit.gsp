@@ -36,7 +36,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos del especialista</h1>
-       <g:link class="boton1" action="list"><g:message code="Volver" args="[entityName]" /></g:link>
+       <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volver" args="[entityName]" /></g:link>
        <p>&nbsp;</p>
        
         <div class="form1">
@@ -55,82 +55,82 @@
                
                     <table class="tabla2">
                         <tbody>
-                        
+                        <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="nombre"><g:message code="especialista.nombre.label" default="Nombre" /></label>
+                                  <label for="nombre"><g:message code="nombre.label" default="Nombre" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'nombre', 'errors')}">
-                                    <g:textField style="width:250px" name="nombre" value="${especialistaInstance?.nombre}" />
+                                    <g:textField style="width:250px" name="nombre" value="${especialistaInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="apellido"><g:message code="especialista.apellido.label" default="Apellido" /></label>
+                                  <label for="apellido"><g:message code="apellido.label" default="Apellido" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'apellido', 'errors')}">
-                                    <g:textField style="width:250px" name="apellido" value="${especialistaInstance?.apellido}" />
+                                    <g:textField style="width:250px" name="apellido" value="${especialistaInstance?.apellido}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="cedula"><g:message code="especialista.cedula.label" default="Cedula" /></label>
+                                  <label for="cedula"><g:message code="cedula.label" default="Cedula" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'cedula', 'errors')}">
-                                    <g:textField style="width:250px" name="cedula" value="${fieldValue(bean: especialistaInstance, field: 'cedula')}" />
+                                    <g:textField style="width:250px" name="cedula" value="${fieldValue(bean: especialistaInstance, field: 'cedula')}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="sexo"><g:message code="especialista.sexo.label" default="Sexo" /></label>
+                                  <label for="sexo"><g:message code="sexo.label" default="Sexo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'sexo', 'errors')}">
-                                    <g:select style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${especialistaInstance?.sexo}" />
+                                    <g:select style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${especialistaInstance?.sexo}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="nacionalidad"><g:message code="especialista.nacionalidad.label" default="Nacionalidad" /></label>
+                                  <label for="nacionalidad"><g:message code="nacionalidad.label" default="Nacionalidad" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'nacionalidad', 'errors')}">
-                                    <g:textField style="width:250px" name="nacionalidad" value="${especialistaInstance?.nacionalidad}" />
+                                    <g:select style="width:250px" name="nacionalidad" noSelection="['':'Seleccione']" from="['V', 'E']" value="${especialistaInstance?.nacionalidad}" />
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="login"><g:message code="especialista.login.label" default="Usuario" /></label>
+                                  <label for="login"><g:message code="login.label" default="Usuario" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'login', 'errors')}">
-                                    <g:textField style="width:250px" name="login" value="${especialistaInstance?.login}" />
+                                    <g:textField style="width:250px" name="login" value="${especialistaInstance?.login}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="password"><g:message code="especialista.password.label" default="Contraseña" /></label>
+                                  <label for="password"><g:message code="password.label" default="Contraseña" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'password', 'errors')}">
-                                    <g:passwordField style="width:250px" name="password" value="${especialistaInstance?.password}" />
+                                    <g:passwordField style="width:250px" name="password" value="${especialistaInstance?.password}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="mail"><g:message code="especialista.mail.label" default="Correo" /></label>
+                                  <label for="mail"><g:message code="mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'mail', 'errors')}">
-                                    <g:textField style="width:250px" name="mail" value="${especialistaInstance?.mail}" />
+                                    <g:textField style="width:250px" name="mail" value="${especialistaInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="numColegioMedico"><g:message code="especialista.numColegioMedico.label" default="Num Colegio Medico" /></label>
+                                  <label for="numColegioMedico"><g:message code="numColegioMedico.label" default="Num Colegio Medico" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'numColegioMedico', 'errors')}">
                                     <g:textField style="width:250px" name="numColegioMedico" value="${fieldValue(bean: especialistaInstance, field: 'numColegioMedico')}" />
@@ -139,7 +139,7 @@
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="numMinisterioSalud"><g:message code="especialista.numMinisterioSalud.label" default="Num Ministerio Salud" /></label>
+                                  <label for="numMinisterioSalud"><g:message code="numMinisterioSalud.label" default="Num Ministerio Salud" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'numMinisterioSalud', 'errors')}">
                                     <g:textField style="width:250px" name="numMinisterioSalud" value="${fieldValue(bean: especialistaInstance, field: 'numMinisterioSalud')}" />
@@ -148,7 +148,7 @@
                         
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="horarioDeTrabajo"><g:message code="especialista.horarioDeTrabajo.label" default="Horario De Trabajo" /></label>
+                                  <label for="horarioDeTrabajo"><g:message code="horarioDeTrabajo.label" default="Horario De Trabajo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'horarioDeTrabajo', 'errors')}">
                                     <g:textField style="width:250px" name="horarioDeTrabajo" value="${especialistaInstance?.horarioDeTrabajo}" />
@@ -158,11 +158,11 @@
                             
                             <tr>
                                 <td valign="top" class="name">
-                                  <label for="especialidades"><g:message code="especialista.especialidades.label" default="Especialidades" /></label>
+                                  <label for="especialidades"><g:message code="especialidad.label" default="Especialidades" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidades', 'errors')}">
                                     <g:select name="especialidades" from="${especialidad.Especialidad.list()}" multiple="yes" optionKey="id"
-                                              optionValue="nombre" size="5" value="${especialistaInstance?.especialidades*.id}"  style="width:250px"/>
+                                              optionValue="nombre" size="5" value="${especialistaInstance?.especialidades*.id}"  style="width:250px"/><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         
@@ -171,7 +171,7 @@
                 <p>&nbsp;</p>
                 <div>
                     <g:actionSubmit class="boton_submit2" action="update" value="${message(code: 'button.update.label', default: 'Actualizar')}" />
-                    <g:actionSubmit class="boton_submit2" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:actionSubmit class="boton_submit2" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: 'Are you sure?')}');" />
                 </div>
             </g:form>
         </div>

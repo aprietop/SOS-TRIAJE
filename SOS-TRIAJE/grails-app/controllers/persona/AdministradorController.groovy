@@ -30,6 +30,21 @@ class AdministradorController {
     def save = {
         def administradorInstance = new Administrador(params)
         administradorInstance.rol = "Administrador"
+        
+            if (params.nacionalidad=="V") {
+                if(params.sexo=="Femenino"){
+                    administradorInstance.nacionalidad = "Venezolana"
+                }else{
+                    administradorInstance.nacionalidad = "Venezolano"
+                }            
+            }else{
+                if(params.sexo=="Femenino"){
+                    administradorInstance.nacionalidad = "Extranjera"
+                }else{
+                    administradorInstance.nacionalidad = "Extranjero"
+                }               
+            }
+            
         if (administradorInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'administrador.label', default: 'Administrador'), administradorInstance.id])}"
             redirect(action: "show", id: administradorInstance.id)
@@ -74,6 +89,20 @@ class AdministradorController {
                 }
             }
             administradorInstance.properties = params
+            if (params.nacionalidad=="V") {
+                if(params.sexo=="Femenino"){
+                    administradorInstance.nacionalidad = "Venezolana"
+                }else{
+                    administradorInstance.nacionalidad = "Venezolano"
+                }            
+            }else{
+                if(params.sexo=="Femenino"){
+                    administradorInstance.nacionalidad = "Extranjera"
+                }else{
+                    administradorInstance.nacionalidad = "Extranjero"
+                }               
+            }            
+            
             if (!administradorInstance.hasErrors() && administradorInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'administrador.label', default: 'Administrador'), administradorInstance.id])}"
                 redirect(action: "show", id: administradorInstance.id)

@@ -59,7 +59,7 @@
         <div id="nivel2">
           <div id="contenido">
           <h1>Datos del Especialista</h1>
-          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volver" /></g:link>
           
             <p>&nbsp;</p>
             
@@ -80,7 +80,7 @@
                         <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 
                             <tr>
                                 <td valign="top">
-                                    <label for="nombre"><g:message code="especialista.nombre.label" default="Nombre" /></label>
+                                    <label for="nombre"><g:message code="nombre.label" default="Nombre" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'nombre', 'errors')}">
                                     <g:textField  style="width:250px" name="nombre" value="${especialistaInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
@@ -89,7 +89,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="apellido"><g:message code="especialista.apellido.label" default="Apellido" /></label>
+                                    <label for="apellido"><g:message code="apellido.label" default="Apellido" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'apellido', 'errors')}">
                                     <g:textField  style="width:250px" name="apellido" value="${especialistaInstance?.apellido}" /><span class="obligatorio">&nbsp;*</span>
@@ -98,7 +98,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="cedula"><g:message code="especialista.cedula.label" default="Cedula" /></label>
+                                    <label for="cedula"><g:message code="cedula.label" default="Cedula" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'cedula', 'errors')}">
                                     <g:textField  style="width:250px" name="cedula" value="${fieldValue(bean: especialistaInstance, field: 'cedula')}" /><span class="obligatorio">&nbsp;*</span>
@@ -107,7 +107,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="sexo"><g:message code="especialista.sexo.label" default="Sexo" /></label>
+                                    <label for="sexo"><g:message code="sexo.label" default="Sexo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'sexo', 'errors')}">
                                     <g:select  style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${especialistaInstance?.sexo}" /><span class="obligatorio">&nbsp;*</span>
@@ -116,16 +116,16 @@
 
                             <tr>
                                 <td valign="top">
-                                    <label for="nacionalidad"><g:message code="especialista.nacionalidad.label" default="Nacionalidad" /></label>
+                                    <label for="nacionalidad"><g:message code="nacionalidad.label" default="Nacionalidad" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'nacionalidad', 'errors')}">
-                                    <g:textField  style="width:250px" name="nacionalidad" value="${especialistaInstance?.nacionalidad}" />
+                                    <g:select style="width:250px" name="nacionalidad" noSelection="['':'Seleccione']" from="['V', 'E']" value="${especialistaInstance?.nacionalidad}" />
                                 </td>
                             </tr>
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="login"><g:message code="especialista.login.label" default="Usuario" /></label>
+                                    <label for="login"><g:message code="login.label" default="Usuario" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'login', 'errors')}">
                                     <g:textField  style="width:250px" name="login" value="${especialistaInstance?.login}" /><span class="obligatorio">&nbsp;*</span>
@@ -134,7 +134,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="password"><g:message code="especialista.password.label" default="Contraseña" /></label>
+                                    <label for="password"><g:message code="password.label" default="Contraseña" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'password', 'errors')}">
                                     <g:passwordField  style="width:250px" name="password" value="${especialistaInstance?.password}" /><span class="obligatorio">&nbsp;*</span>
@@ -143,7 +143,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="mail"><g:message code="especialista.mail.label" default="Correo" /></label>
+                                    <label for="mail"><g:message code="mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'mail', 'errors')}">
                                     <g:textField  style="width:250px" name="mail" value="${especialistaInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>
@@ -152,7 +152,7 @@
 
                             <tr>
                                 <td valign="top">
-                                    <label for="numColegioMedico"><g:message code="especialista.numColegioMedico.label" default="Num Colegio Medico" /></label>
+                                    <label for="numColegioMedico"><g:message code="numColegioMedico.label" default="Num Colegio Medico" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'numColegioMedico', 'errors')}">
                                     <g:textField  style="width:250px" name="numColegioMedico" value="${fieldValue(bean: especialistaInstance, field: 'numColegioMedico')}" />
@@ -161,7 +161,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="numMinisterioSalud"><g:message code="especialista.numMinisterioSalud.label" default="Num Ministerio Salud" /></label>
+                                    <label for="numMinisterioSalud"><g:message code="numMinisterioSalud.label" default="Num Ministerio Salud" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'numMinisterioSalud', 'errors')}">
                                     <g:textField  style="width:250px" name="numMinisterioSalud" value="${fieldValue(bean: especialistaInstance, field: 'numMinisterioSalud')}" />
@@ -170,7 +170,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="horarioDeTrabajo"><g:message code="especialista.horarioDeTrabajo.label" default="Horario De Trabajo" /></label>
+                                    <label for="horarioDeTrabajo"><g:message code="horarioDeTrabajo.label" default="Horario De Trabajo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'horarioDeTrabajo', 'errors')}">
                                     <g:textField  style="width:250px" name="horarioDeTrabajo" value="${especialistaInstance?.horarioDeTrabajo}" />
@@ -179,7 +179,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="especialidad1"><g:message code="especialista.especialidad.label" default="Especialidad 1" /></label>
+                                    <label for="especialidad1"><g:message code="especialidad.label" default="Especialidad 1" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
                                     <g:select  style="width:250px" name="especialidad" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
@@ -189,7 +189,7 @@
                             
                             <tr>
                                 <td valign="top">
-                                    <label for="especialidad2"><g:message code="especialista.especialidad.label" default="Especialidad 2" /></label>
+                                    <label for="especialidad2"><g:message code="especialidad.label" default="Especialidad 2" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
                                     <g:select  style="width:250px" name="especialidad2" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
@@ -201,7 +201,7 @@
                            <g:if test="${tipo=='visible'}">    
                            <tr>                              
                               <td valign="top">
-                                <label for="especialidad3"><g:message code="especialista.especialidad.label" default="Especialidad 3" /></label>
+                                <label for="especialidad3"><g:message code="especialidad.label" default="Especialidad 3" /></label>
                                 </td>
                                 <td valign="top"  class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
                                     <g:select  style="width:250px" name="especialidad3" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
@@ -212,7 +212,7 @@
                           <g:else>
                            <tr>                              
                               <td valign="top" style="visibility:hidden">
-                                <label for="especialidad3"><g:message code="especialista.especialidad.label" default="Especialidad 3" /></label>
+                                <label for="especialidad3"><g:message code="especialidad.label" default="Especialidad 3" /></label>
                                 </td>
                                 <td valign="top"  style="hidden" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
                                     <g:select  style="width:250px" style="visibility:hidden" name="especialidad3" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 

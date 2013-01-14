@@ -35,7 +35,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos del encargado de triaje</h1>
-    <g:link class="boton1" action="list"><g:message code="Volver" args="[entityName]" /></g:link>
+    <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volver" args="[entityName]" /></g:link>
       <p>&nbsp;</p>      
       
         <div class="form1">
@@ -107,8 +107,8 @@
             <div>
                 <g:form>
                     <g:hiddenField name="id" value="${triajeInstance?.id}" />
-                    <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'Editar', default: 'Editar')}" />
-                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'Eliminar', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: '¿Está seguro?')}');" />
+                    <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'button.edit.label', default: 'Editar')}" />
+                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: '¿Está seguro?')}');" />
                 </g:form>
             </div>
         </div>

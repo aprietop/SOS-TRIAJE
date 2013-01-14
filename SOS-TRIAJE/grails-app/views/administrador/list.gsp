@@ -46,17 +46,17 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'administrador.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="nombre" title="${message(code: 'administrador.nombre.label', default: 'Nombre')}" />
+                            <g:sortableColumn property="nombre" title="${message(code: 'nombre.label', default: 'Nombre')}" />
                         
-                            <g:sortableColumn property="apellido" title="${message(code: 'administrador.apellido.label', default: 'Apellido')}" />
+                            <g:sortableColumn property="apellido" title="${message(code: 'apellido.label', default: 'Apellido')}" />
                         
-                            <g:sortableColumn property="cedula" title="${message(code: 'administrador.cedula.label', default: 'Cedula')}" />
+                            <g:sortableColumn property="cedula" title="${message(code: 'cedula.label', default: 'Cedula')}" />
                         
-                            <g:sortableColumn property="sexo" title="${message(code: 'administrador.sexo.label', default: 'Sexo')}" />
+                            <g:sortableColumn property="sexo" title="${message(code: 'sexo.label', default: 'Sexo')}" />
                         
-                            <g:sortableColumn property="nacionalidad" title="${message(code: 'administrador.nacionalidad.label', default: 'Nacionalidad')}" />
+                            <g:sortableColumn property="nacionalidad" title="${message(code: 'nacionalidad.label', default: 'Nacionalidad')}" />
                         
                         </tr>
                     </thead>
@@ -86,7 +86,7 @@
             </div>
           </div>
       <p>&nbsp;</p>
-      <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+      <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volver" /></g:link>
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

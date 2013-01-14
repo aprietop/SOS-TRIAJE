@@ -35,7 +35,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos del especialista</h1>
-    <g:link class="boton1" action="list"><g:message code="Volver" args="[entityName]" /></g:link>
+    <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volver" args="[entityName]" /></g:link>
       <p>&nbsp;</p>
       
         <div class="form1">            
@@ -46,64 +46,64 @@
                 <table class="tabla2">
                     <tbody>
                         <tr>
-                            <td valign="top" class="name"><label for="nombre"><g:message code="especialista.nombre.label" default="Nombre" /></td></label>
+                            <td valign="top" class="name"><label for="nombre"><g:message code="nombre.label" default="Nombre" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "nombre")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="apellido"><g:message code="especialista.apellido.label" default="Apellido" /></td></label>
+                            <td valign="top" class="name"><label for="apellido"><g:message code="apellido.label" default="Apellido" /></td></label>
                             
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "apellido")}</td>
                             
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="cedula"><g:message code="especialista.cedula.label" default="Cedula" /></td></label>
+                            <td valign="top" class="name"><label for="cedula"><g:message code="cedula.label" default="Cedula" /></td></label>
                              <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "cedula")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="sexo"><g:message code="especialista.sexo.label" default="Sexo" /></td></label>
+                            <td valign="top" class="name"><label for="sexo"><g:message code="sexo.label" default="Sexo" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "sexo")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="nacionalidad"><g:message code="especialista.nacionalidad.label" default="Nacionalidad" /></td></label>
+                            <td valign="top" class="name"><label for="nacionalidad"><g:message code="nacionalidad.label" default="Nacionalidad" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "nacionalidad")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="login"><g:message code="especialista.login.label" default="Usuario" /></td></label>
+                            <td valign="top" class="name"><label for="login"><g:message code="login.label" default="Usuario" /></td></label>
                              <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "login")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="password"><g:message code="especialista.password.label" default="Contraseña" /></td></label>
+                            <td valign="top" class="name"><label for="password"><g:message code="password.label" default="Contraseña" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "password")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="mail"><g:message code="especialista.mail.label" default="Correo" /></td></label>
+                            <td valign="top" class="name"><label for="mail"><g:message code="mail.label" default="Correo" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "mail")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="numColegioMedico"><g:message code="especialista.numColegioMedico.label" default="Num Colegio Medico" /></td></label>
+                            <td valign="top" class="name"><label for="numColegioMedico"><g:message code="numColegioMedico.label" default="Num Colegio Medico" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "numColegioMedico")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="numMinisterioSalud"><g:message code="especialista.numMinisterioSalud.label" default="Num Ministerio Salud" /></td></label>
+                            <td valign="top" class="name"><label for="numMinisterioSalud"><g:message code="numMinisterioSalud.label" default="Num Ministerio Salud" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "numMinisterioSalud")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="horarioDeTrabajo"><g:message code="especialista.horarioDeTrabajo.label" default="Horario De Trabajo" /></td></label>
+                            <td valign="top" class="name"><label for="horarioDeTrabajo"><g:message code="horarioDeTrabajo.label" default="Horario De Trabajo" /></td></label>
                             <td valign="top" class="value">${fieldValue(bean: especialistaInstance, field: "horarioDeTrabajo")}</td>
                         </tr>
                     
                         <tr>
-                            <td valign="top" class="name"><label for="especialidades"><g:message code="especialista.especialidades.label" default="Especialidades" /></td></label>
+                            <td valign="top" class="name"><label for="especialidades"><g:message code="especialidad.label" default="Especialidades" /></td></label>
                             <td valign="top" class="value">
                                 <ul>
                                 <g:each in="${especialistaInstance.especialidades}" var="e">
@@ -119,7 +119,7 @@
                 <g:form>
                     <g:hiddenField name="id" value="${especialistaInstance?.id}" />
                     <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'button.edit.label', default: 'Editar')}" />
-                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: 'Are you sure?')}');" />
                 </g:form>
             </div>
         </div>

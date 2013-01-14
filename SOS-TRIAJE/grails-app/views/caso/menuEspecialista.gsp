@@ -38,12 +38,12 @@
 <div id="nivel3"> 
 <g:form  method="post">
     <label for="desde">
-      <g:message code="buscar.desde" />
+      <g:message code="buscar.desde.label" default="Desde" />
     </label>
       <g:datePicker name="desde" value="" precision="day" noSelection="['':'']" />
 
     <label for="hasta">
-      <g:message code="buscar.hasta" />
+      <g:message code="buscar.hast.label" default="Hasta" />
     </label>
       <g:datePicker name="hasta" value="" precision="day" noSelection="['':'']" />    
    

@@ -33,6 +33,20 @@ class EspecialistaController {
         def especialistaInstance = new Especialista(params)
         especialistaInstance.rol="Especialista"
         
+        if (params.nacionalidad=="V") {
+            if(params.sexo=="Femenino"){
+                especialistaInstance.nacionalidad = "Venezolana"
+            }else{
+                especialistaInstance.nacionalidad = "Venezolano"
+            }            
+        }else{
+            if(params.sexo=="Femenino"){
+                especialistaInstance.nacionalidad = "Extranjera"
+            }else{
+                especialistaInstance.nacionalidad = "Extranjero"
+            }               
+        }
+        
         def especialidadInstance = Especialidad.get(params.especialidad)
         especialistaInstance.addToEspecialidades(especialidadInstance)
         
@@ -116,6 +130,21 @@ class EspecialistaController {
                 }
             }
             especialistaInstance.properties = params
+            
+            if (params.nacionalidad=="V") {
+                if(params.sexo=="Femenino"){
+                    especialistaInstance.nacionalidad = "Venezolana"
+                }else{
+                    especialistaInstance.nacionalidad = "Venezolano"
+                }            
+            }else{
+                if(params.sexo=="Femenino"){
+                    especialistaInstance.nacionalidad = "Extranjera"
+                }else{
+                    especialistaInstance.nacionalidad = "Extranjero"
+                }               
+            }
+        
             if (!especialistaInstance.hasErrors() && especialistaInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'especialista.label', default: 'Especialista'), especialistaInstance.id])}"
                 redirect(action: "show", id: especialistaInstance.id)

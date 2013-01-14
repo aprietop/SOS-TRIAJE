@@ -814,7 +814,7 @@ label#errorms {
 
 /*---------------------------------------------------*/
 .obligatorio{
-        font-size: 12px; color:red; font-weight: bolder;
+        font-size: 18px; color:red; font-weight: bolder;
 }
 #loginHeader {
         float: right;

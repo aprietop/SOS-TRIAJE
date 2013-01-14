@@ -58,20 +58,21 @@
             </g:hasErrors>
           
             <table class="tabla2">
+              <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 
                 <tbody>
                   
                     <tr>
                         <td valign="top">
                             <label for="numMinisterioSalud"><g:message code="especialidad.nombre.label" default="Nombre" /></td></label>
                         <td valign="top" class="value ${hasErrors(bean: especialidadInstance, field: 'nombre', 'errors')}">
-                            <g:textField style="width:250px" name="nombre" value="${especialidadInstance?.nombre}" />
+                            <g:textField style="width:250px" name="nombre" value="${especialidadInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
                         </td>
                     </tr>
                     <tr>
                         <td valign="top">
                             <label for="numMinisterioSalud"><g:message code="especialidad.descripcion.label" default="Descripcion" /></td></label>
                         <td valign="top" class="value ${hasErrors(bean: especialidadInstance, field: 'descripcion', 'errors')}">
-                            <g:textArea style="width:250px" name="descripcion" value="${especialidadInstance?.descripcion}" />
+                            <g:textArea style="width:250px" name="descripcion" value="${especialidadInstance?.descripcion}" /><span class="obligatorio">&nbsp;*</span>
                         </td>
                     </tr>
 

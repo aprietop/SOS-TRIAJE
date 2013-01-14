@@ -60,7 +60,7 @@
           <div id="contenido">
           <h1>Datos del administrador</h1>
           
-          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volver" /></g:link>
             <p>&nbsp;</p>
             <%--<h1><g:message code="default.create.label" args="[entityName]" /></h1>--%>
             <g:if test="${flash.message}">
@@ -119,7 +119,7 @@
                                     <label for="nacionalidad"><g:message code="nacionalidad.label" default="Nacionalidad" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'nacionalidad', 'errors')}">
-                                    <g:textField style="width:250px" name="nacionalidad" value="${administradorInstance?.nacionalidad}" />
+                                    <g:select style="width:250px" name="nacionalidad" noSelection="['':'Seleccione']" from="['V', 'E']" value="${administradorInstance?.nacionalidad}" />
                                 </td>
                             </tr>
                         
@@ -146,7 +146,7 @@
                                     <label for="mail"><g:message code="mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: administradorInstance, field: 'mail', 'errors')}">
-                                    <g:textField style="width:250px" name="mail" value="${administradorInstance?.mail}" />
+                                    <g:textField style="width:250px" name="mail" value="${administradorInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                         </tbody>

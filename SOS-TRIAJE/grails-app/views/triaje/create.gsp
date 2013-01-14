@@ -59,7 +59,7 @@
         <div id="nivel2">
           <div id="contenido">
           <h1>Datos del encargado de triaje</h1>
-          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volver" /></g:link>
             <p>&nbsp;</p>
             
         <div class="form1">
@@ -78,7 +78,7 @@
                         <h1></h1>
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="nombre"><g:message code="triaje.nombre.label" default="Nombre" /></label>
+                                    <label for="nombre"><g:message code="nombre.label" default="Nombre" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'nombre', 'errors')}">
                                     <g:textField style="width:250px" name="nombre" value="${triajeInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
@@ -86,7 +86,7 @@
                             </tr>
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="apellido"><g:message code="triaje.apellido.label" default="Apellido" /></label>
+                                    <label for="apellido"><g:message code="apellido.label" default="Apellido" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'apellido', 'errors')}">
                                     <g:textField style="width:250px" name="apellido" value="${triajeInstance?.apellido}" /><span class="obligatorio">&nbsp;*</span>
@@ -94,7 +94,7 @@
                             </tr>
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="cedula"><g:message code="triaje.cedula.label" default="Cedula" /></label>
+                                    <label for="cedula"><g:message code="cedula.label" default="Cedula" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'cedula', 'errors')}">
                                     <g:textField style="width:250px" name="cedula" value="${fieldValue(bean: triajeInstance, field: 'cedula')}" /><span class="obligatorio">&nbsp;*</span>
@@ -102,7 +102,7 @@
                             </tr>
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="sexo"><g:message code="triaje.sexo.label" default="Sexo" /></label>
+                                    <label for="sexo"><g:message code="sexo.label" default="Sexo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'sexo', 'errors')}">
                                     <g:select style="width:250px" name="sexo" noSelection="['':'Seleccione']" from="['Masculino', 'Femenino']" value="${triajeInstance?.sexo}" /><span class="obligatorio">&nbsp;*</span>
@@ -110,15 +110,15 @@
                             </tr>
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="nacionalidad"><g:message code="triaje.nacionalidad.label" default="Nacionalidad" /></label>
+                                    <label for="nacionalidad"><g:message code="nacionalidad.label" default="Nacionalidad" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'nacionalidad', 'errors')}">
-                                    <g:textField style="width:250px" name="nacionalidad" value="${triajeInstance?.nacionalidad}" />
+                                    <g:select style="width:250px" name="nacionalidad" noSelection="['':'Seleccione']" from="['V', 'E']" value="${triajeInstance?.nacionalidad}" />
                                 </td>
                             </tr>                        
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="login"><g:message code="triaje.login.label" default="Login" /></label>
+                                    <label for="login"><g:message code="login.label" default="Usuario" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'login', 'errors')}">
                                     <g:textField style="width:250px" name="login" value="${triajeInstance?.login}" /><span class="obligatorio">&nbsp;*</span>
@@ -126,7 +126,7 @@
                             </tr>
                              <tr>
                                 <td valign="top" class="name">
-                                    <label for="password"><g:message code="triaje.password.label" default="Password" /></label>
+                                    <label for="password"><g:message code="password.label" default="Contraseña" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'password', 'errors')}">
                                     <g:passwordField style="width:250px" name="password" value="${triajeInstance?.password}" /><span class="obligatorio">&nbsp;*</span>
@@ -134,15 +134,15 @@
                             </tr>
                            <tr>
                                 <td valign="top" class="name">
-                                    <label for="mail"><g:message code="triaje.mail.label" default="Mail" /></label>
+                                    <label for="mail"><g:message code="mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'mail', 'errors')}">
-                                    <g:textField style="width:250px" name="mail" value="${triajeInstance?.mail}" />
+                                    <g:textField style="width:250px" name="mail" value="${triajeInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="numColegioMedico"><g:message code="triaje.numColegioMedico.label" default="Num Colegio Medico" /></label>
+                                    <label for="numColegioMedico"><g:message code="numColegioMedico.label" default="Num Colegio Medico" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'numColegioMedico', 'errors')}">
                                     <g:textField style="width:250px" name="numColegioMedico" value="${fieldValue(bean: triajeInstance, field: 'numColegioMedico')}" />
@@ -150,7 +150,7 @@
                             </tr>
                             <tr>
                                 <td valign="top" class="name">
-                                    <label for="numMinisterioSalud"><g:message code="triaje.numMinisterioSalud.label" default="Num Ministerio Salud" /></label>
+                                    <label for="numMinisterioSalud"><g:message code="numMinisterioSalud.label" default="Num Ministerio Salud" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: triajeInstance, field: 'numMinisterioSalud', 'errors')}">
                                     <g:textField style="width:250px" name="numMinisterioSalud" value="${fieldValue(bean: triajeInstance, field: 'numMinisterioSalud')}" />
