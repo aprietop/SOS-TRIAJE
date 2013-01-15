@@ -60,10 +60,10 @@
 
                             <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
 
-                            <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
-
-                            <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
-
+                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
+                            
+                            <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                            
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                         </tr>
                     </thead>

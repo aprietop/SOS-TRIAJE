@@ -75,7 +75,7 @@ class CasoController {
             
             
         def c = Caso.createCriteria()
-        def casosNoCerrados = c.list() {
+        def casosNoCerrados = c.list(params) {
             ne("status", status8) 
         }
             
@@ -99,11 +99,10 @@ class CasoController {
         }
         
         if(session?.ActorSistema?.rol == "Especialista" ){
-            
             def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
             
             def c = HistorialCaso.createCriteria()
-            def results = c.list {
+            def results = c.list() {
                 eq("medico", actorInstance) 
                 projections { 
                    distinct("caso")            
@@ -131,7 +130,7 @@ class CasoController {
             render(view: "menuEspecialista", model: [casoInstanceList: results, casoInstanceTotal: Caso.count(), tipoBusqueda:tipoBusqueda])
          }
     }
-    
+
     def mostrarPorMedico = {
         def tipoBusqueda = 1
 //      MEDICO QUE INGRESO AL SISTEMA
@@ -144,21 +143,33 @@ class CasoController {
 //      HISTORIALES EN LOS CUALES HA SIDO ACTOR EL MEDICO QUE INGRESO EL SISTEMA        
         def historialInstance = HistorialCaso.findAllByMedico(actorInstance, [sort:campo, order:orden]) 
         
-        render(view: "mostrarPorMedico", model: [historialCasoInstanceList: historialInstance, historialCasoInstanceTotal: HistorialCaso.count(), tipoBusqueda:tipoBusqueda]) 
+        List casoInstanceList = []
+        
+        historialInstance.each{
+            casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso, [sort:campo, order:orden]))          
+        }
+        
+        Set<String> s = new LinkedHashSet<String>(casoInstanceList);
+        casoInstanceList.clear();
+        casoInstanceList.addAll(s);        
+        
+        render(view: "mostrarPorMedico", model: [historialCasoInstanceList: casoInstanceList, historialCasoInstanceTotal: casoInstanceList.count(), tipoBusqueda:tipoBusqueda]) 
 } 
 
     def miHistorial = {
         def tipoBusqueda = 1
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
         
         def campo=params.sort?:"fecha"
         def orden=params.order?:"asc"
-             
+        
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance, [sort:campo, order:orden])
+        
+          
         List casoInstanceList = []
         
         historialInstance.each{
-            casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso))          
+            casoInstanceList.add(HistorialCaso.findAllByCaso(it.caso, [sort:campo, order:orden]))          
         }
         
         Set<String> s = new LinkedHashSet<String>(casoInstanceList);
@@ -254,7 +265,7 @@ class CasoController {
 
             List casoInstanceList = []
             
-            def casoInstance = Caso.findAllByStatus(status1)
+            def casoInstance = Caso.findAllByStatus(status1, params)
             casoInstance.each{
                 casoInstanceList.add(it)
             }
@@ -362,7 +373,11 @@ class CasoController {
     
     def vResolverCaso = {
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-        def historialInstance = HistorialCaso.findAllByMedico(actorInstance)
+        def campo=params.sort?:"fechaInicio"
+        def orden=params.order?:"asc"
+        
+        
+        def historialInstance = HistorialCaso.findAllByMedico(actorInstance, params)
         List casoInstanceList = []
         
         if(session?.ActorSistema?.rol == "Especialista" ){
@@ -434,7 +449,10 @@ class CasoController {
         }
         
         if(session?.ActorSistema?.rol == "Triaje" ){            
-
+            //      OPERADOR ELVIS - OPERADOR TERNARIO ACORTADO
+            def campo=params.sort?:"fechaInicio"
+            def orden=params.order?:"asc"
+        
             def historialInstanceTodos = HistorialCaso.getAll()
 
             def status1 = Status.get(1)         //En espera
@@ -443,7 +461,7 @@ class CasoController {
 
             List casoInstanceListTriaje = []
             
-            def casoInstance = Caso.findAllByStatus(status1)
+            def casoInstance = Caso.findAllByStatus(status1, [sort:campo, order:orden])
             casoInstance.each{
                 casoInstanceListTriaje.add(it)
             }

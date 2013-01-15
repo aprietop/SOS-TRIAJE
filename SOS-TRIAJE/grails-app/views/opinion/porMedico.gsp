@@ -65,18 +65,16 @@
  <table class="tabla2">
       <thead>
           <tr>              
-              <th><g:message code="id.opinion.label" default="Id" /></th>
-              <%--<g:sortableColumn property="id" title="${message(code: 'opinion.id.label', default: 'Id')}" />--%>
+              <g:sortableColumn property="id" title="${message(code: 'opinion.id.label', default: 'Id')}" />
               
-              <th><g:message code="fecha.opinion.label" default="Fecha" /></th>
-              <%--<g:sortableColumn property="fechaOpinion" title="${message(code: 'opinion.fechaOpinion.label', default: 'Fecha Opinion')}" />--%>
+              <g:sortableColumn property="fechaOpinion" title="${message(code: 'opinion.fechaOpinion.label', default: 'Fecha Opinion')}" />
 
-              <th><g:message code="cuerpo.opinion.label" default="Cuerpo" /></th>
-              <%--<g:sortableColumn property="cuerpoOpinion" title="${message(code: 'opinion.cuerpoOpinion.label', default: 'Cuerpo Opinion')}" />--%>
+              <g:sortableColumn property="cuerpoOpinion" title="${message(code: 'opinion.cuerpoOpinion.label', default: 'Cuerpo Opinion')}" />
               
-              <th><g:message code="opinion.medico.label" default="Medico" /></th>
-
-              <th><g:message code="opinion.caso.label" default="Caso" /></th>                        
+              <g:sortableColumn property="medico" title="${message(code: 'opinion.medico.label', default: 'Medico')}" />
+              
+              <g:sortableColumn property="caso" title="${message(code: 'opinion.caso.label', default: 'Caso')}" />
+                     
           </tr>
       </thead>
           <tbody>

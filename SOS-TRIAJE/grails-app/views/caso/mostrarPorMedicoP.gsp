@@ -36,7 +36,7 @@
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>        
   </g:if>
   <g:if test="${session.ActorSistema.rol == 'Especialista'}">
-    <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Mis casos" /></g:link></li>
+        <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Mis casos" /></g:link></li>
         <li><g:link controller="caso" action="miHistorial" class="selected"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>
         <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>   

@@ -39,18 +39,17 @@ class BootStrap {
         
 /*************************** ADMINISTRADOR SOS-TRIAJE *************************/      
 //      
-        def administrador = new Administrador()
-            administrador.nombre = "Carlos"
-            administrador.apellido = "Torrealba"
-            administrador.cedula = 20768657
-            administrador.sexo = "Masculino"
-            administrador.nacionalidad = ""
-            administrador.rol = "Administrador"
-            administrador.mail = "angel_428_m@hotmail.com"
-            administrador.login = "admin"
-            administrador.password = "admin1"
-            administrador.mail = ""
-            if (!administrador.save()) println administrador.errors 
+        def administrador1 = new Administrador()
+            administrador1.nombre = "Carlos"
+            administrador1.apellido = "Torrealba"
+            administrador1.cedula = 20768657
+            administrador1.sexo = "Masculino"
+            administrador1.nacionalidad = ""
+            administrador1.rol = "Administrador"
+            administrador1.mail = "angel_428_m@hotmail.com"
+            administrador1.login = "admin"
+            administrador1.password = "admin1"
+            if (!administrador1.save()) println administrador1.errors 
 
 /****************************** TRIAJE SOS-TRIAJE *****************************/   
 //
@@ -76,7 +75,6 @@ class BootStrap {
             triaje2.mail = "luiscarlos_toto@hotmail.com"            
             triaje2.login = "marcos"
             triaje2.password = "marcos1"
-            triaje1.mail = "luiscarlos_toto@hotmail.com"
             triaje2.numMinisterioSalud = 5667
             if (!triaje2.save()) println triaje2.errors      
 
@@ -120,6 +118,7 @@ class BootStrap {
             especialista2.cedula = 24546762
             especialista2.sexo = "Femenino"
             especialista2.rol = "Especialista"
+            especialista2.mail = "angelica@outlook.com"
             especialista2.login = "maria"
             especialista2.password = "maria1"
             especialista2.addToEspecialidades(especialidad3)
@@ -230,14 +229,7 @@ class BootStrap {
             status11.nombre = "Rechazado 2do nivel"
             status11.decripcion = "Indica que ha sido rechazada la solicitud de segunda opinion"
             if (!status11.save()) println status11.errors  
-            
-//**************************** CENTROS SOS-TRIAJE ****************************/
-//
-        def centro1 = new CentroSOS()
-        centro1.nombre = "Ambulatorio prueba SOS"
-        centro1.url = "www.ambulatorio.sos.com"
-        if (!centro1.save()) println centro1.errors 
-        
+
 /****************************** CASOS SOS-TRIAJE ******************************/
 //
         def caso1 = new Caso()
@@ -245,7 +237,6 @@ class BootStrap {
             caso1.fechaInicio = new Date(112, 2, 3)
             caso1.paciente = paciente1
             caso1.status = status7
-            caso1.centro = centro1
             if (!caso1.save()) println caso1.errors
                     
         def caso2 = new Caso()
@@ -253,7 +244,6 @@ class BootStrap {
             caso2.fechaInicio = new Date(112, 3, 3)
             caso2.paciente = paciente2
             caso2.status = status1
-            caso2.centro = centro1
             if (!caso2.save()) println caso2.errors
 
         def caso3 = new Caso()
@@ -261,7 +251,6 @@ class BootStrap {
             caso3.fechaInicio = new Date(112, 4, 13)
             caso3.paciente = paciente3
             caso3.status = status7
-            caso3.centro = centro1
             if (!caso3.save()) println caso3.errors
             
         def caso4 = new Caso()
@@ -270,7 +259,6 @@ class BootStrap {
             caso4.paciente = paciente4
             caso4.status = status1
             caso4.addToEspecialidades(especialidad2)
-            caso4.centro = centro1
             if (!caso4.save()) println caso4.errors
                 
         def caso5 = new Caso()
@@ -278,7 +266,6 @@ class BootStrap {
             caso5.fechaInicio = new Date(112, 06, 25)
             caso5.paciente = paciente1
             caso5.status = status1
-            caso5.centro = centro1
             if (!caso5.save()) println caso5.errors
 
         def caso6 = new Caso()
@@ -286,7 +273,6 @@ class BootStrap {
             caso6.fechaInicio = new Date(112, 05, 22)
             caso6.paciente = paciente2
             caso6.status = status1
-            caso6.centro = centro1
             if (!caso6.save()) println caso6.errors
 
 /************************** HISTORIAL CASO SOS-TRIAJE *************************/
@@ -345,8 +331,9 @@ class BootStrap {
             historialCaso8.estadoCaso = "Resuelto 1er nivel"
             historialCaso8.medico = triaje1
             historialCaso8.caso = caso3         
-            if (!historialCaso8.save()) println historialCaso8.errors  
-        
+            if (!historialCaso8.save()) println historialCaso8.errors         
+            
+
 /**************************** OPINIONES SOS-TRIAJE ****************************/
 //           
         def opinion1 = new Opinion()
@@ -379,8 +366,14 @@ class BootStrap {
             opinion4.medico = triaje1
             opinion4.fechaOpinion = new Date(112, 10, 27)
             opinion4.caso = caso3         
-            if (!opinion4.save()) println opinion4.errors          
-          
+            if (!opinion4.save()) println opinion4.errors 
+            
+//**************************** CENTROS SOS-TRIAJE ****************************/
+//           
+        def centro1 = new CentroSOS()
+        centro1.nombre = "Ambulatorio prueba SOS"
+        centro1.url = "www.ambulatorio.sos.com"
+        if (!centro1.save()) println centro1.errors                 
         
 ////////////////////////////////////////////////////////////////////////////////                
            

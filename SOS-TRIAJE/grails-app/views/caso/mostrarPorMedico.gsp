@@ -33,17 +33,17 @@
         <li><g:link controller="caso" action="casosAsociados"><g:message code="Mis casos" /></g:link></li>
         <li><g:link controller="caso" action="miHistorial" class="selected"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verRespuestasT"><g:message code="Ver Respuestas" /></g:link></li>       
-        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>       
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>        
   </g:if>
   <g:if test="${session.ActorSistema.rol == 'Especialista'}">
         <li><g:link controller="caso" action="listaDeCasosT"><g:message code="Mis casos" /></g:link></li>
         <li><g:link controller="caso" action="miHistorial" class="selected"><g:message code="Mi historial" /></g:link></li>
         <li><g:link controller="opinion" action="verMisRespuestas"><g:message code="Ver Respuestas" /></g:link></li>
-        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>  
+        <li><g:link controller="caso" action="aceptarCaso"><g:message code="Tramitar casos" /></g:link></li>   
   </g:if>
 </ul>
 </div>
-    
+ 
 <div id="nivel1">
 <div id="nivel3"> 
 <g:form  method="post">
@@ -65,11 +65,11 @@
  
 </div>      
 </div>
-
+  
 <div id="nivel1">
 <div id="nivel2">
 <div id="contenido">
-<div  class="form1">
+<div  class="form1">  
  <table class="tabla2">
           <thead>
               <tr>
@@ -80,6 +80,8 @@
                   
                   <g:sortableColumn property="estadoCaso" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
                   
+                  <g:sortableColumn property="medico.nombre" title="${message(code: 'medico.nombre.label', default: 'Nombre Medico')}" />
+                          
                   <g:sortableColumn property="caso.fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha Inicio')}" />
                   
                   <g:sortableColumn property="caso.fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha Solución')}" />
@@ -96,7 +98,9 @@
                   <th><g:message code="descipcion.caso.label" default="Caso" /></th>
                   
                   <th><g:message code="estado.caso.label" default="Estado" /></th>
-                                            
+                          
+                  <th><g:message code="medico.nombre.label" default="Nombre Medico" /></th>
+                  
                   <th><g:message code="fecha.inicio.label" default="Fecha Inicio" /></th>
                   
                   <th><g:message code="fecha.solucion.label" default="Fecha Solucion" /></th>
@@ -110,19 +114,23 @@
               </tr>
           </thead>
           <tbody>
-          <g:each in="${historialCasoInstanceList}" status="i" var="historialCasoInstance">
+          <g:each in="${historialCasoInstanceList}" status="i" var="historialCasoList">
               <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-
+              <g:each in="${historialCasoList}" status="j" var="historialCasoInstance">
+                <tr>
                   <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
 
                   <td>${fieldValue(bean: historialCasoInstance, field: "caso.descripcion")}</td>
                   
                   <td>${fieldValue(bean: historialCasoInstance, field: "estadoCaso")}</td>
                   
+                  <td>${fieldValue(bean: historialCasoInstance, field: "medico.nombre")}
+                      ${fieldValue(bean: historialCasoInstance, field: "medico.apellido")}</td>  
+               
                   <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaInicio}"/></td>
 
                   <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaSolucion}"/></td>
-                                    
+                  
                   <td>${fieldValue(bean: historialCasoInstance, field: "caso.paciente.nombre")}
                       ${fieldValue(bean: historialCasoInstance, field: "caso.paciente.apellido")}</td>
                   
@@ -135,12 +143,13 @@
                     </g:each>
                     </ul>
                  </td>
-                            
-                  </tr>
-              </tr>
+                 </tr>
+            </g:each>                
+            </tr>
           </g:each>
           </tbody>
-      </table>          
+      </table>     
+  
         </div>
     </div>      
   </div>
