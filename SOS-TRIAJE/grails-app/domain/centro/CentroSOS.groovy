@@ -9,8 +9,8 @@ class CentroSOS {
 
 ////CONSTRAINTS    
     static constraints = {
-        nombre(nullable: false, blank:false)
-        url(nullable: false, blank:false)
+        nombre(nullable: false, blank:false, unique:true)
+        url(nullable: true, blank:true)
         uuid(nullable: true, blank:true)  
     }
 

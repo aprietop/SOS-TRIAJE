@@ -36,13 +36,13 @@
     <div id="contenido">
     <h1>Datos del encargado de triaje</h1>
     <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volver" args="[entityName]" /></g:link>
-      <p>&nbsp;</p>      
       
         <div class="form1">
            
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+            <p>&nbsp;</p>      
             
                 <table class="tabla2">
                     <tbody>

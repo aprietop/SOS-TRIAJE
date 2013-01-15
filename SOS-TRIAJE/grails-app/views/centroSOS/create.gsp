@@ -40,16 +40,16 @@
           
           <h1>Datos del Centro SOS</h1>
           <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
-            <p>&nbsp;</p>          
-          
+                      
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${centroSOSInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${centroSOSInstance}" as="list" />
             </div>
             </g:hasErrors>
+            <p>&nbsp;</p>          
             
             <div  class="form1"> 
             <g:form action="save" >

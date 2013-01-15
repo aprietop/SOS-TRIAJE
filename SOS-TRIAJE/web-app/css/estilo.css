@@ -752,10 +752,6 @@ a {
         background-color: #ffff80;
         border: 1px solid #b2d1ff;		
         background: #f3f8fc url(../images/skin/information.png) 8px 50% no-repeat;
-        /*border: 1px solid #b2d1ff;*/
-        /*color: #006dba;*/
-        /*color:#3772aa;*/
-        /*background-color: #f99;*/
         margin: 10px 0 5px 0;
         padding: 5px 5px 5px 30px;
         
@@ -767,7 +763,18 @@ a {
 	font-weight:bolder;
       }
 .error {
-        background-color: #f99;
+        background-color: #ffff80;
+        border: 1px solid #FF0000;		
+        background: #f3f8fc url(../images/skin/icono_error.png) 8px 50% no-repeat;
+        margin: 10px 0 5px 0;
+        padding: 5px 5px 5px 30px;
+        
+        font-size:12px;	
+        color:#FF0000;
+	font-family:Arial, Helvetica, sans-serif;
+	margin-right:45px;	
+        margin-top:5px;
+	font-weight:bolder;        
 }
 label.error {
         background: transparent;

@@ -37,18 +37,19 @@
     <div id="contenido">
     <h1>Datos del especialista</h1>
        <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volver" args="[entityName]" /></g:link>
-       <p>&nbsp;</p>
-       
+              
         <div class="form1">
             
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${especialistaInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${especialistaInstance}" as="list" />
             </div>
             </g:hasErrors>
+          <p>&nbsp;</p>
+          
             <g:form method="post" >
                 <g:hiddenField name="id" value="${especialistaInstance?.id}" />
                 <g:hiddenField name="version" value="${especialistaInstance?.version}" />

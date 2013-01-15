@@ -37,17 +37,18 @@
     <div id="contenido">
     <h1>Datos de la especialidad</h1>
        <g:link class="boton1" controller="centroSOS" action="list"><g:message code="Volver"/></g:link>
-       <p>&nbsp;</p>      
-        <div class="form1">
-            
-            <g:if test="${flash.message}">
+       
+      <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${centroSOSInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${centroSOSInstance}" as="list" />
             </div>
             </g:hasErrors>
+          <p>&nbsp;</p>      
+          
+        <div class="form1">          
             <g:form method="post" >
                 <g:hiddenField name="id" value="${centroSOSInstance?.id}" />
                 <g:hiddenField name="version" value="${centroSOSInstance?.version}" />

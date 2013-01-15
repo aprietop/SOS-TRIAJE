@@ -61,17 +61,17 @@
           <h1>Datos del administrador</h1>
           
           <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volver" /></g:link>
-            <p>&nbsp;</p>
-            <%--<h1><g:message code="default.create.label" args="[entityName]" /></h1>--%>
+            
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${administradorInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${administradorInstance}" as="list" />
             </div>
             </g:hasErrors>
-    
+    <p>&nbsp;</p>
+                      
             <div class="form1">
             <g:form action="save" >
                 <div class="tabla2">

@@ -60,18 +60,17 @@
           <div id="contenido">
           <h1>Datos del Especialista</h1>
           <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volver" /></g:link>
-          
-            <p>&nbsp;</p>
-            
+               
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${especialistaInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${especialistaInstance}" as="list" />
             </div>
             </g:hasErrors>
-    
+                <p>&nbsp;</p>
+                
             <div class="form1">
             <g:form action="save" >
                 <div class="tabla2">
@@ -125,7 +124,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="login"><g:message code="login.label" default="Usuario" /></label>
+                                    <label for="usuario"><g:message code="login.label" default="Usuario" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'login', 'errors')}">
                                     <g:textField  style="width:250px" name="login" value="${especialistaInstance?.login}" /><span class="obligatorio">&nbsp;*</span>
@@ -134,7 +133,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="password"><g:message code="password.label" default="Contraseña" /></label>
+                                    <label for="contraseña"><g:message code="password.label" default="Contraseña" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'password', 'errors')}">
                                     <g:passwordField  style="width:250px" name="password" value="${especialistaInstance?.password}" /><span class="obligatorio">&nbsp;*</span>
@@ -143,7 +142,7 @@
                         
                             <tr>
                                 <td valign="top">
-                                    <label for="mail"><g:message code="mail.label" default="Correo" /></label>
+                                    <label for="correo"><g:message code="mail.label" default="Correo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'mail', 'errors')}">
                                     <g:textField  style="width:250px" name="mail" value="${especialistaInstance?.mail}" /><span class="obligatorio">&nbsp;*</span>

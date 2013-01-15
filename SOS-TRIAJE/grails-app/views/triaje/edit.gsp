@@ -37,7 +37,6 @@
     <div id="contenido">
     <h1>Datos del encargado de triaje</h1>
        <g:link class="boton1" controller="triaje" action="list"><g:message code="button.volver.label" default="Volver" /></g:link>
-       <p>&nbsp;</p>
        
         <div class="form1">
            
@@ -45,11 +44,13 @@
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${triajeInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${triajeInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post" >
+       <p>&nbsp;</p>
+          
+          <g:form method="post" >
                 <g:hiddenField name="id" value="${triajeInstance?.id}" />
                 <g:hiddenField name="version" value="${triajeInstance?.version}" />
                 

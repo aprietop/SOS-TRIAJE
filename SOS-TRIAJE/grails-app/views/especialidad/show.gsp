@@ -37,8 +37,12 @@
     <div id="contenido">
     <h1>Datos de la especialidad</h1>
     <g:link class="boton1" action="list"><g:message code="Volver" args="[entityName]" /></g:link>
-      <p>&nbsp;</p>
       
+            <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+            </g:if>
+            <p>&nbsp;</p>
+            
             <div class="form1">
                 <table class="tabla2">
                     <tbody>

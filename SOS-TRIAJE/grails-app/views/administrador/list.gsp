@@ -41,6 +41,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+         <p>&nbsp;</p>      
          
                 <table class="tabla2">
                     <thead>

@@ -60,17 +60,18 @@
           <div id="contenido">
           <h1>Datos del encargado de triaje</h1>
           <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volver" /></g:link>
-            <p>&nbsp;</p>
             
         <div class="form1">
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${triajeInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${triajeInstance}" as="list" />
             </div>
             </g:hasErrors>
+          <p>&nbsp;</p>
+          
             <g:form action="save" >              
                     <table class="tabla2">
                         <tbody>

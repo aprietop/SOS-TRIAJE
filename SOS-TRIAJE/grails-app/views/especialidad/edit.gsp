@@ -10,8 +10,7 @@
     </head>
     <body>
       
-      
-      
+            
 <div id="cabecera">
   <div id="cabColI">
     <div id="logo">
@@ -44,18 +43,18 @@
     <div id="contenido">
     <h1>Datos de la especialidad</h1>
        <g:link class="boton1" controller="especialidad" action="list"><g:message code="Volver"/></g:link>
-       <p>&nbsp;</p>
-       
+              
         <div class="form1">
           
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${especialidadInstance}">
-            <div class="errors">
+            <div class="error">
                 <g:renderErrors bean="${especialidadInstance}" as="list" />
             </div>
             </g:hasErrors>
+          <p>&nbsp;</p>
           
             <table class="tabla2">
               <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 

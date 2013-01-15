@@ -47,8 +47,10 @@ class EspecialistaController {
             }               
         }
         
+        if(params.especialidad){
         def especialidadInstance = Especialidad.get(params.especialidad)
         especialistaInstance.addToEspecialidades(especialidadInstance)
+        }
         
         if(params.especialidad2){
         def especialidadInstance2 = Especialidad.get(params.especialidad2)

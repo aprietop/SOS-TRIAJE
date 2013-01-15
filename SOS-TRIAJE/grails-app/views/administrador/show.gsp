@@ -36,14 +36,12 @@
     <div id="contenido">
     <h1>Datos del administrador</h1>
     <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volver" args="[entityName]" /></g:link>
-      <p>&nbsp;</p>      
-      
+           
         <div class="form1">
-           <%-- <h1><g:message code="default.show.label" args="[entityName]" /></h1>--%>
-            <g:if test="${flash.message}">
+           <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            
+            <p>&nbsp;</p>      
                 <table class="tabla2">
                     <tbody>
                        <tr class="prop">

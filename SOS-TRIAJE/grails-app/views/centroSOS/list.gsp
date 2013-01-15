@@ -33,11 +33,13 @@
 		<div id="nivel2">
 			<div id="contenido">
 			<h1>Datos del Centro SOS</h1>
-				<div class="form1">
-					<g:if test="${flash.message}">
+                        	<g:if test="${flash.message}">
 					<div class="message">${flash.message}</div>
 					</g:if>
-				
+				<p>&nbsp;</p>      
+                                
+				<div class="form1">
+
 				<table  class="tabla2">
 					<thead>
 					<tr>

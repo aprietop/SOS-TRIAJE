@@ -36,6 +36,10 @@
     <div id="contenido">
     <h1>Datos de la especialidad</h1>
       
+            <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+            </g:if>
+    <p>&nbsp;</p>
       <div class="form1">
             <table class="tabla2">
             <thead>
