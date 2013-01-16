@@ -59,25 +59,24 @@
       
  <div id="nivel1">
   <div id="nivel2">
-    <div id="contenido">        
-        <div  class="form1">      
-          <%--<g:if test="${flash.message}">
+    <div id="contenido">    
+
+       <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="list">--%>
+      
+        <div  class="form1">      
           
               <table class="tabla2">
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'opinion.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="fechaOpinion" title="${message(code: 'opinion.fechaOpinion.label', default: 'Fecha Opinion')}" />
+                            <g:sortableColumn property="fechaOpinion" title="${message(code: 'fechaOpinion.label', default: 'Fecha Opinion')}" />
                         
-                            <g:sortableColumn property="cuerpoOpinion" title="${message(code: 'opinion.cuerpoOpinion.label', default: 'Cuerpo Opinion')}" />
-                        
-                            <g:sortableColumn property="estadoOpinion" title="${message(code: 'opinion.estadoOpinion.label', default: 'Estado Opinion')}" />
-                        
+                            <g:sortableColumn property="cuerpoOpinion" title="${message(code: 'cuerpoOpinion.label', default: 'Cuerpo Opinion')}" />
+                         
                             <th><g:message code="opinion.medico.label" default="Medico" /></th>
                         
                             <th><g:message code="opinion.caso.label" default="Caso" /></th>
@@ -93,9 +92,7 @@
                             <td><g:formatDate date="${opinionInstance.fechaOpinion}" /></td>
                         
                             <td>${fieldValue(bean: opinionInstance, field: "cuerpoOpinion")}</td>
-                        
-                            <td>${fieldValue(bean: opinionInstance, field: "estadoOpinion")}</td>
-                        
+                                                
                             <td>${fieldValue(bean: opinionInstance, field: "medico.nombre")}
                                 ${fieldValue(bean: opinionInstance, field: "medico.apellido")}
                             </td>
@@ -112,7 +109,7 @@
             </div>
         </div>
           <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>          
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.volver.label" default="Volover"/></g:link>          
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

@@ -36,7 +36,7 @@
         <div id="nivel2">
           <div id="contenido">
           <h1>Datos de la especialidad</h1>
-          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volover" /></g:link>
             
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -73,7 +73,7 @@
                             </tr>
                     </table>
                 <div>
-                  <g:submitButton name="create" class="boton_submit" value="${message(code: 'Crear', default: 'Crear')}" />
+                  <g:submitButton name="create" class="boton_submit" value="${message(code: 'button.create.label', default: 'Crear')}" />
                 </div>
             </g:form>
             </div>

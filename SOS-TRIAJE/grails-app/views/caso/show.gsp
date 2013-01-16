@@ -23,49 +23,49 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.id.label" default="Id" /></td>
+                            <td valign="top" class="name"><g:message code="id.label" default="Id" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.descripcion.label" default="Descripcion" /></td>
+                            <td valign="top" class="name"><g:message code="descripcion.label" default="Descripcion" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "descripcion")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.fechaInicio.label" default="Fecha Inicio" /></td>
+                            <td valign="top" class="name"><g:message code="fecha.inicio.label" default="Fecha Inicio" /></td>
                             
                             <td valign="top" class="value"><g:formatDate date="${casoInstance?.fechaInicio}" /></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.paciente.label" default="Paciente" /></td>
+                            <td valign="top" class="name"><g:message code="paciente.nombre.label" default="Paciente" /></td>
                             
                             <td valign="top" class="value"><g:link controller="paciente" action="show" id="${casoInstance?.paciente?.id}">${casoInstance?.paciente?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.fechaSolucion.label" default="Fecha Solucion" /></td>
+                            <td valign="top" class="name"><g:message code="fecha.solucion.label" default="Fecha Solucion" /></td>
                             
                             <td valign="top" class="value"><g:formatDate date="${casoInstance?.fechaSolucion}" /></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.status.label" default="Status" /></td>
+                            <td valign="top" class="name"><g:message code="estado.caso.label" default="Status" /></td>
                             
                             <td valign="top" class="value"><g:link controller="status" action="show" id="${casoInstance?.status?.id}">${casoInstance?.status?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.especialidades.label" default="Especialidades" /></td>
+                            <td valign="top" class="name"><g:message code="especialidades.label" default="Especialidades" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
@@ -78,7 +78,7 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.archivos.label" default="Archivos" /></td>
+                            <td valign="top" class="name"><g:message code="archivos.label" default="Archivos" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
@@ -91,7 +91,7 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.historialCasos.label" default="Historial Casos" /></td>
+                            <td valign="top" class="name"><g:message code="historialCasos.label" default="Historial Casos" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
@@ -104,7 +104,7 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.opiniones.label" default="Opiniones" /></td>
+                            <td valign="top" class="name"><g:message code="opiniones.label" default="Opiniones" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
@@ -122,8 +122,8 @@
             <div class="buttons">
                 <g:form>
                     <g:hiddenField name="id" value="${casoInstance?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'button.edit.label', default: 'Editar')}" /></span>
+                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>
             </div>
         </div>

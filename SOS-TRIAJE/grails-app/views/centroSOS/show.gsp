@@ -35,7 +35,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos del Centro SOS</h1>
-    <g:link class="boton1" action="list"><g:message code="Volver" args="[entityName]" /></g:link>
+    <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volover" args="[entityName]" /></g:link>
       
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -53,7 +53,7 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><label for="Nombre"><g:message code="centroSOS.nombre.label" default="Nombre" /></td></label>
+                            <td valign="top" class="name"><label for="Nombre"><g:message code="nombre.label" default="Nombre" /></td></label>
                             
                             <td valign="top" class="value">${fieldValue(bean: centroSOSInstance, field: "nombre")}</td>
                             
@@ -79,8 +79,8 @@
             <div>
                 <g:form>
                     <g:hiddenField name="id" value="${centroSOSInstance?.id}" />
-                    <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'Editar', default: 'Editar')}" />
-                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code:  'Eliminar', default: 'Eliminar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'button.edit.label', default: 'Editar')}" />
+                    <g:actionSubmit class="boton_submit4" action="delete" value="${message(code:  'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: 'Are you sure?')}');" />
                 </g:form>          
         </div>
 </div>

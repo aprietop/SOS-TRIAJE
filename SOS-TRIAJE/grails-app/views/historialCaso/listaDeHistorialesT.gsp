@@ -71,12 +71,12 @@
                           <g:if test="${tipoBusqueda==1}"> 
                             <g:sortableColumn property="caso" title="${message(code: 'id.label', default: 'Id')}" />
                             
-                            <g:sortableColumn property="caso" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
+                            <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />
+                           
+                            <g:sortableColumn property="caso" title="${message(code: 'descipcion.label', default: 'Caso')}" />
                            
                             <g:sortableColumn property="estadoCaso" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
-                        
-                            <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />
-                            
+                                                     
                             <g:sortableColumn property="medico" title="${message(code: 'medico.nombre.label', default: 'Medico')}" />
                             
                             <g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.nombre.label', default: 'Paciente')}" />
@@ -86,12 +86,12 @@
                           <g:if test="${tipoBusqueda==2}"> 
                             <th><g:message code="id.label" default="Id" /></th>
                             
-                            <th><g:message code="descipcion.caso.label" default="Caso" /></th>
-                            
-                            <th><g:message code="estado.caso.label" default="Estado" /></th>
-                            
                             <th><g:message code="fecha.label" default="Fecha" /></th>
                             
+                            <th><g:message code="descipcion.label" default="Caso" /></th>
+                            
+                            <th><g:message code="estado.caso.label" default="Estado" /></th>
+                                                        
                             <th><g:message code="medico.nombre.label" default="Medico" /></th>
                             
                             <th><g:message code="paciente.nombre.label" default="Paciente" /></th>
@@ -106,12 +106,12 @@
                                                                               
                             <td>${historialCasoInstance.caso.id}</td>
                             
+                            <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
+                            
                             <td>${historialCasoInstance.caso.descripcion}</td>
                             
                             <td>${historialCasoInstance.estadoCaso}</td>
-                        
-                            <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
-
+                                                    
                             <td>${historialCasoInstance.medico.nombre} 
                                 ${historialCasoInstance.medico.apellido}
                             </td>

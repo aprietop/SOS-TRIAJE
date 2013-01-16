@@ -39,7 +39,7 @@
           <div id="contenido">
           
           <h1>Datos del Centro SOS</h1>
-          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+          <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volover" /></g:link>
                       
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -58,7 +58,7 @@
                           <span class="obligatorio">&nbsp;*</span> Campos Obligatorios 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="nombre"><g:message code="centroSOS.nombre.label" default="Nombre" /></label>
+                                    <label for="nombre"><g:message code="nombre.label" default="Nombre" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: centroSOSInstance, field: 'nombre', 'errors')}">
                                     <g:textField style="width:250px" name="nombre" value="${centroSOSInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
@@ -77,7 +77,7 @@
                         </tbody>
                     </table>
                 <div>
-                    <span class="button"><g:submitButton name="create" class="boton_submit" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+                    <span class="button"><g:submitButton name="create" class="boton_submit" value="${message(code: 'button.create.label', default: 'Crear')}" /></span>
                 </div>
             </g:form>
         </div>

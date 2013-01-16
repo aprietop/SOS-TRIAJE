@@ -82,7 +82,7 @@
                             
                           <tr class="prop">
                                 <td valign="top" class="name">
-                                    <g:message code="opinion.nombreOpinion.label" default="Título Solución" /></label>
+                                    <g:message code="nombreOpinion.label" default="Título Resultado" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: opinionInstance, field: 'nombreOpinion', 'errors')}">
                                     <g:textField style="width:250px" name="nombreOpinion" value="${opinionInstance?.nombreOpinion}" /><span class="obligatorio">&nbsp;*</span>
@@ -91,7 +91,7 @@
                             
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <g:message code="opinion.cuerpoOpinion.label" default="Cuerpo Solución" /></label>
+                                    <g:message code="cuerpoOpinion.label" default="Cuerpo Resultado" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: opinionInstance, field: 'cuerpoOpinion', 'errors')}">
                                     <g:textArea style="width:250px" name="cuerpoOpinion" value="${opinionInstance?.cuerpoOpinion}"/><span class="obligatorio">&nbsp;*</span>
@@ -103,7 +103,7 @@
             <div >
                     <g:hiddenField name="id" value="${casoInstance?.id}" />
                     <g:actionSubmit class="boton_submit5" action="saveSolucion" value="${message(code: 'button.solucionar', default: 'Enviar')}" />
-                    <g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>  
+                    <g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.volver.label" default="Volover"/></g:link>  
             </div>
             </g:form>
         </div>

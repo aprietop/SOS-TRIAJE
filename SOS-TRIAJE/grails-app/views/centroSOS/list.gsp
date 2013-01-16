@@ -43,9 +43,9 @@
 				<table  class="tabla2">
 					<thead>
 					<tr>
-					<g:sortableColumn property="id" title="${message(code: 'centroSOS.id.label', default: 'Id')}" />
+					<g:sortableColumn property="id" title="${message(code: 'centroSOS.id.label', default: 'Centro')}" />
 					
-					<g:sortableColumn property="nombre" title="${message(code: 'centroSOS.nombre.label', default: 'Nombre')}" />
+					<g:sortableColumn property="nombre" title="${message(code: 'nombre.label', default: 'Nombre')}" />
 					
 					<g:sortableColumn property="url" title="${message(code: 'centroSOS.url.label', default: 'Url')}" />
 					
@@ -73,7 +73,7 @@
 				</div>
 				</div>
 				<p>&nbsp;</p>
-			<g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+			<g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volover" /></g:link>
 			</div>      
 		</div>
 	<p style="clear:both">&nbsp;</p>

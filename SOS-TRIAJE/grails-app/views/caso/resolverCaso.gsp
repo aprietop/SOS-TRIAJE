@@ -50,25 +50,25 @@
               <table class="tabla2">
                     <thead>
                         <tr>
-                            <g:sortableColumn property="id" title="${message(code: 'caso.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                             
-                            <th><g:message code="pdescipcion.caso.label" default="Caso" /></th>
-                            <%--<g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />--%>
+                            <%--<th><g:message code="pdescipcion.caso.label" default="Caso" /></th>--%>
+                            <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                             
-                            <th><g:message code="estado.caso.label" default="Estado" /></th>
-                            <%--<g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />--%>
+                            <%--<th><g:message code="estado.caso.label" default="Estado" /></th>--%>
+                            <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
                             
-                            <th><g:message code="fecha.inicio.label" default="Fecha inicio" /></th>
-                            <%--<g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />--%>
+                            <%--<th><g:message code="fecha.inicio.label" default="Fecha inicio" /></th>--%>
+                            <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
                             
-                            <th><g:message code="fecha.solucion.label" default="Fecha solucion" /></th>
-                            <%--<g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />--%>
+                            <%--<th><g:message code="fecha.solucion.label" default="Fecha solucion" /></th>--%>
+                            <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
 
-                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
-                            <%--g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />--%>
+                            <%--<th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>--%>
+                            <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
 
-                            <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
-                            <%--<g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />--%>
+                            <%--<th><g:message code="paciente.ci.label" default="CI Paciente" /></th>--%>
+                            <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
 
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                         </tr>
@@ -110,7 +110,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>           
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.volver.label" default="Volover" /></g:link>           
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

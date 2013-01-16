@@ -24,15 +24,15 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'historialCaso.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="fecha" title="${message(code: 'historialCaso.fecha.label', default: 'Fecha')}" />
+                            <g:sortableColumn property="fecha" title="${message(code: 'fecha.label', default: 'Fecha')}" />
                         
-                            <th><g:message code="historialCaso.caso.label" default="Caso" /></th>
+                            <th><g:message code="descipcion.caso.label" default="Caso" /></th>
                         
-                            <th><g:message code="historialCaso.medico.label" default="Medico" /></th>
+                            <th><g:message code="medico.nombre.label" default="Medico" /></th>
                         
-                            <g:sortableColumn property="estadoCaso" title="${message(code: 'historialCaso.estadoCaso.label', default: 'Estado Caso')}" />
+                            <g:sortableColumn property="estadoCaso" title="${message(code: 'estado.caso.label', default: 'Estado Caso')}" />
                         
                         </tr>
                     </thead>

@@ -373,14 +373,11 @@ class CasoController {
     
     def vResolverCaso = {
         def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
-        def campo=params.sort?:"fechaInicio"
-        def orden=params.order?:"asc"
         
-        
-        def historialInstance = HistorialCaso.findAllByMedico(actorInstance, params)
         List casoInstanceList = []
         
         if(session?.ActorSistema?.rol == "Especialista" ){
+            def historialInstance = HistorialCaso.findAllByMedico(actorInstance, params)
             def status2 = Status.get(2)     //Asignado
             def status3 = Status.get(3)     //En proceso 1er nivel
             def status4 = Status.get(4)     //Segunda Opinion
@@ -406,18 +403,51 @@ class CasoController {
         if(session?.ActorSistema?.rol == "Triaje" ){     
             def status3 = Status.get(3)     //En proceso 1er nivel
             
-            historialInstance.each{            
-                if ((it.estadoCaso==status3.nombre)&&(it.caso.status.nombre==status3.nombre)){
-
-                            casoInstanceList.add(Caso.get(it.caso.id))  
-                    }               
+            def c = Caso.createCriteria()            
+            def casosNoResueltos = c.list() {
+                eq("status", status3)                
+                historialCasos {
+                    eq("medico", actorInstance) 
                 }
-
-            Set<String> o = new LinkedHashSet<String>(casoInstanceList);
-            casoInstanceList.clear();
-            casoInstanceList.addAll(o);  
-
-            render(view: "resolverCaso", model: [casoInstanceList: casoInstanceList, casoInstanceTotal: casoInstanceList.count()])             
+               
+//                projections { 
+//                   distinct("caso")            
+//                }            
+                    if ((params.sort=="id")||(params.sort=="fechaInicio")||(params.sort=="fechaSolucion")||(params.sort=="status")||(params.sort=="descripcion")){
+                       //OPERADOR ELVIS
+                            def campo=params.sort?:"fecha"
+                            def orden=params.order?:"asc"
+                            order(campo, orden)
+                        
+                    }
+//
+                    if ((params.sort=="nombre")||(params.sort=="cedula")){
+                        paciente{
+                                def campo=params.sort?:"nombre"
+                                def orden=params.order?:"asc"
+                                order(campo, orden)  
+                        }
+                    }                
+//                maxResults(10)                
+            }            
+            
+                      
+//            casosNoCerrados.each {
+//                casoInstanceList.add(it) 
+//            }
+//            
+////            historialInstance.each{            
+////                if ((it.estadoCaso==status3.nombre)&&(it.caso.status.nombre==status3.nombre)){
+////
+////                            casoInstanceList.add(Caso.get(it.caso.id))  
+////                    }               
+////                }
+//
+//            Set<String> o = new LinkedHashSet<String>(casoInstanceList);
+//            casoInstanceList.clear();
+//            casoInstanceList.addAll(o);  
+//
+            render(view: "resolverCaso", model: [casoInstanceList: casosNoResueltos, casoInstanceTotal: casosNoResueltos.count()])             
         }   
     }    
     
@@ -645,14 +675,19 @@ class CasoController {
     
     def cerrarCaso = {
 	def status7 = Status.get(7) //Resuelto 1er nivel
-        def historialInstance = HistorialCaso.findAllByEstadoCaso(status7.nombre)
-                
+//        def historialInstance = HistorialCaso.findAllByEstadoCaso(status7.nombre)
+//                
         List casoInstanceList = []
-        historialInstance.each{
-            if (it.caso.status==status7){
-                casoInstanceList.add(Caso.get(it.caso.id)) 
-            }                 
-        }
+//        historialInstance.each{
+//            if (it.caso.status==status7){
+//                casoInstanceList.add(Caso.get(it.caso.id)) 
+//            }                 
+//        }
+//        
+            def casoInstance = Caso.findAllByStatus(status7, params)
+            casoInstance.each{
+                casoInstanceList.add(it)
+            }
         
         Set<String> o = new LinkedHashSet<String>(casoInstanceList);
         casoInstanceList.clear();

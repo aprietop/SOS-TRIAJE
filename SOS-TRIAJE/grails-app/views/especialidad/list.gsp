@@ -1,4 +1,4 @@
-
+button.create.label
 <%@ page import="especialidad.Especialidad" %>
 <html>
     <head>
@@ -44,9 +44,9 @@
             <table class="tabla2">
             <thead>
             <tr>
-              <g:sortableColumn property="id" title="${message(code: 'especialidad.id.label', default: 'Seleccionar')}" />
-              <g:sortableColumn property="nombre" title="${message(code: 'especialidad.nombre.label', default: 'Nombre')}" />
-              <g:sortableColumn property="descripcion" title="${message(code: 'especialidad.descripcion.label', default: 'Descripcion')}" />
+              <g:sortableColumn property="id" title="${message(code: 'seleccionar.id.label', default: 'Seleccionar')}" />
+              <g:sortableColumn property="nombre" title="${message(code: 'nombre.label', default: 'Nombre')}" />
+              <g:sortableColumn property="descripcion" title="${message(code: 'descripcion.label', default: 'Descripcion')}" />
             </tr>
             </thead>            
                 <tbody>
@@ -64,7 +64,7 @@
             </div>
       </div>
       <p>&nbsp;</p>
-      <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="Volver"/></g:link>
+      <g:link class="boton1" controller="actorSistema" action="menuAdministrador"><g:message code="button.volver.label" default="Volover" /></g:link>
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

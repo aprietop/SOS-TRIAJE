@@ -42,30 +42,30 @@
                 <table class="tabla2">
                     <tbody>
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.descripcion.label" default="Descripcion" /></td>
+                            <td valign="top" class="name"><g:message code="descripcion.label" default="Descripcion" /></td>
                             <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "descripcion")}</td>
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.fechaInicio.label" default="Fecha Inicio" /></td>
-                            <td valign="top" class="value"><g:formatDate date="${casoInstance?.fechaInicio}" /></td>
-                        </tr>
+                            <td valign="top" class="name"><g:message code="fecha.inicio.label" default="Fecha Inicio" /></td>
+                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
+                            </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.paciente.label" default="Paciente" /></td>
+                            <td valign="top" class="name"><g:message code="paciente.nombre.label" default="Paciente" /></td>
                             <td>${casoInstance.paciente.nombre} ${casoInstance.paciente.apellido}</td>
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.fechaSolucion.label" default="Fecha Solucion" /></td>
-                            <td valign="top" class="value"><g:formatDate date="${casoInstance?.fechaSolucion}" /></td>
+                            <td valign="top" class="name"><g:message code="fecha.solucion.label" default="Fecha Solucion" /></td>
+                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance?.fechaSolucion}"/></td>
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.status.label" default="Status" /></td>
+                            <td valign="top" class="name"><g:message code="estado.caso.label" default="Status" /></td>
                             <td>${casoInstance.status.nombre}</td>
                         </tr>
-                    
+                    <!--
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="caso.archivos.label" default="Archivos" /></td>
                              <td valign="top" style="text-align: left;" class="value">
@@ -75,10 +75,10 @@
                                 </g:each>
                                 </ul>
                             </td>
-                        </tr>
+                        </tr>-->
                    
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="caso.opiniones.label" default="Opiniones" /></td>
+                            <td valign="top" class="name"><g:message code="opiniones.label" default="Opiniones" /></td>
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${casoInstance.opiniones}" var="o">
@@ -91,7 +91,7 @@
                     </tbody>
                 </table>
 <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Ok"/></g:link>  
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.ok.label" default="Ok"/></g:link>  
         </div>
 <p>&nbsp;</p>
     </div>      

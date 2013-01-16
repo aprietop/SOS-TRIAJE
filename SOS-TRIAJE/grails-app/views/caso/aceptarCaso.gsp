@@ -50,7 +50,7 @@
               <table class="tabla2">
                     <thead>
                         <tr>
-                            <g:sortableColumn property="id" title="${message(code: 'caso.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                             
                             <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                                     
@@ -104,7 +104,7 @@
             </div>           
         </div>
           <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>           
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.volver.label" default="Volover" /></g:link>           
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

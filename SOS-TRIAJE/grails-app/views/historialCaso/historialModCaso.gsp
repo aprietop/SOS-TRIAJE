@@ -76,13 +76,13 @@
               <table class="tabla2">
                     <tbody>
                           <tr class="prop">
-                              <td valign="top" class="name"><g:message code="caso.descripcion.label" default="Descripcion" /></td>
+                              <td valign="top" class="name"><g:message code="descripcion.label" default="Descripcion" /></td>
                               <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "descripcion")}</td>
                           </tr>
                                           
                           <tr class="prop">
                             <td valign="top" class="name">
-                              <g:message code="caso.especialidades.label" default="Especialidades" />
+                              <g:message code="especialidades.label" default="Especialidades" />
                             </td>
                             <td valign="top" class="value ${hasErrors(bean: casoInstance, field: 'especialidades', 'errors')}">                              
                               <g:select name="especialidades" style="width:250px" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" value="${CasoInstance?.especialidades*.id}" onchange="mostrarEspecialistas(this.value)"   noSelection="['':'Seleccione']"/>
@@ -91,7 +91,7 @@
                           
                           <tr class="prop">
                             <td valign="top" class="name">
-                              <g:message code="caso.medico.label" default="Medico" />
+                              <g:message code="medico.nombre.label" default="Medico" />
                             </td>
                             <td valign="top" class="value ${hasErrors(bean: casoInstance, field: 'medico', 'errors')}">                              
                               <g:select name="medico" style="width:250px" id="medicos"   noSelection="['':'Seleccione']" />
@@ -103,7 +103,7 @@
              <p>&nbsp;</p>
             <div >
                     <g:hiddenField name="id" value="${casoInstance?.id}" />
-                    <g:actionSubmit class="boton_submit5" action="saveAsignacion" value="${message(code: 'button.asignar.label', default: 'Guardar')}" />
+                    <g:actionSubmit class="boton_submit5" action="saveAsignacion" value="${message(code: 'button.asignar.label', default: 'Asignar')}" />
              </div>
             </g:form>
         </div>

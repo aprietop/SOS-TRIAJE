@@ -46,7 +46,7 @@
             <table class="tabla2">
                     <thead>
                         <tr>
-                        
+                      
                             <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                         
                             <g:sortableColumn property="nombre" title="${message(code: 'nombre.label', default: 'Nombre')}" />

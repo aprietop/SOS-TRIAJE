@@ -65,15 +65,15 @@
  <table class="tabla2">
       <thead>
           <tr>              
-              <g:sortableColumn property="id" title="${message(code: 'opinion.id.label', default: 'Id')}" />
+              <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
               
-              <g:sortableColumn property="fechaOpinion" title="${message(code: 'opinion.fechaOpinion.label', default: 'Fecha Opinion')}" />
+              <g:sortableColumn property="fechaOpinion" title="${message(code: 'fechaOpinion.label', default: 'Fecha Resultado')}" />
 
-              <g:sortableColumn property="cuerpoOpinion" title="${message(code: 'opinion.cuerpoOpinion.label', default: 'Cuerpo Opinion')}" />
+              <g:sortableColumn property="cuerpoOpinion" title="${message(code: 'cuerpoOpinion.label', default: 'Cuerpo Resultado')}" />
               
-              <g:sortableColumn property="medico" title="${message(code: 'opinion.medico.label', default: 'Medico')}" />
+              <g:sortableColumn property="medico" title="${message(code: 'medico.nombre.label', default: 'Medico')}" />
               
-              <g:sortableColumn property="caso" title="${message(code: 'opinion.caso.label', default: 'Caso')}" />
+              <g:sortableColumn property="caso" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                      
           </tr>
       </thead>
@@ -107,7 +107,7 @@
             </div>
         </div>
           <p>&nbsp;</p>
-<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="Volver"/></g:link>          
+<g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.volver.label" default="Volover"/></g:link>          
     </div>      
   </div>
   <p style="clear:both">&nbsp;</p>

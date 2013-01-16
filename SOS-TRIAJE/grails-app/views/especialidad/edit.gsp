@@ -42,7 +42,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos de la especialidad</h1>
-       <g:link class="boton1" controller="especialidad" action="list"><g:message code="Volver"/></g:link>
+       <g:link class="boton1" controller="especialidad" action="list"><g:message code="button.volver.label" default="Volover" /></g:link>
               
         <div class="form1">
           
@@ -62,14 +62,14 @@
                   
                     <tr>
                         <td valign="top">
-                            <label for="numMinisterioSalud"><g:message code="especialidad.nombre.label" default="Nombre" /></td></label>
+                            <label for="numMinisterioSalud"><g:message code="nombre.label" default="Nombre" /></td></label>
                         <td valign="top" class="value ${hasErrors(bean: especialidadInstance, field: 'nombre', 'errors')}">
                             <g:textField style="width:250px" name="nombre" value="${especialidadInstance?.nombre}" /><span class="obligatorio">&nbsp;*</span>
                         </td>
                     </tr>
                     <tr>
                         <td valign="top">
-                            <label for="numMinisterioSalud"><g:message code="especialidad.descripcion.label" default="Descripcion" /></td></label>
+                            <label for="numMinisterioSalud"><g:message code="descripcion.label" default="Descripcion" /></td></label>
                         <td valign="top" class="value ${hasErrors(bean: especialidadInstance, field: 'descripcion', 'errors')}">
                             <g:textArea style="width:250px" name="descripcion" value="${especialidadInstance?.descripcion}" /><span class="obligatorio">&nbsp;*</span>
                         </td>
@@ -80,8 +80,8 @@
             
             <p>&nbsp;</p>
             <div>
-            <g:actionSubmit class="boton_submit2" action="update" value="${message(code: 'Actualizar', default: 'Actualizar')}" />
-            <g:actionSubmit class="boton_submit2" action="delete" value="${message(code: 'Eliminar', default: 'Eliminar')}" onclick="return confirm('${message(code: '¿Está seguro?', default: '¿Está seguro?')}');" />
+            <g:actionSubmit class="boton_submit2" action="update" value="${message(code: 'button.update.label', default: 'Actualizar')}" />
+            <g:actionSubmit class="boton_submit2" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: '¿Está seguro?')}');" />
             </div>
         </div>
         

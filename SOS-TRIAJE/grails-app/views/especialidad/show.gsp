@@ -36,7 +36,7 @@
   <div id="nivel2">
     <div id="contenido">
     <h1>Datos de la especialidad</h1>
-    <g:link class="boton1" action="list"><g:message code="Volver" args="[entityName]" /></g:link>
+    <g:link class="boton1" action="list"><g:message code="button.volver.label" default="Volover" args="[entityName]" /></g:link>
       
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -61,8 +61,8 @@
                 <div>
                     <g:form>
                         <g:hiddenField name="id" value="${especialidadInstance?.id}" />
-                        <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'Editar', default: 'Editar')}" />
-                        <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'Eliminar', default: 'Eliminar')}" onclick="return confirm('${message(code: '¿Está seguro?', default: '¿Está seguro?')}');" />
+                        <g:actionSubmit class="boton_submit4" action="edit" value="${message(code: 'button.edit.label', default: 'Editar')}" />
+                        <g:actionSubmit class="boton_submit4" action="delete" value="${message(code: 'button.delete.label', default: 'Eliminar')}" onclick="return confirm('${message(code: 'delete.confirm.message', default: '¿Está seguro?')}');" />
                     </g:form>
                 </div>
             </div>
