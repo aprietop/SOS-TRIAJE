@@ -94,7 +94,7 @@
                                     <g:message code="cuerpoOpinion.label" default="Cuerpo Resultado" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: opinionInstance, field: 'cuerpoOpinion', 'errors')}">
-                                    <g:textArea style="width:250px" name="cuerpoOpinion" value="${opinionInstance?.cuerpoOpinion}"/><span class="obligatorio">&nbsp;*</span>
+                                    <g:textArea style="width: 850px; height: 650px;" name="cuerpoOpinion" value="${opinionInstance?.cuerpoOpinion}"/><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>  
                     </tbody>

@@ -183,4 +183,11 @@ class ServicioWebTriajeService {
         return casoResuelto
     }
     
+    
+//    List <PojoCasoResuelto> getCasoResuelto(List<String> idCasoSOS, String centroSOS){
+//        
+//        
+//        
+//    }
+    
 }

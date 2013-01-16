@@ -82,7 +82,8 @@ class EspecialistaController {
         }
     }
     
-    def ajaxGetEspecialistas = {    
+    def ajaxGetEspecialistas = {   
+        def actorInstance = ActorSistema.get(session?.ActorSistema?.id)
         List li=new ArrayList();
         li.add("0")
 
@@ -92,6 +93,7 @@ class EspecialistaController {
      
             def c = Especialista.createCriteria()
             def esp = c.list {
+                ne("cedula",actorInstance.cedula)
                 especialidades{
                 eq("nombre", especialidadInstance.nombre)
                 }

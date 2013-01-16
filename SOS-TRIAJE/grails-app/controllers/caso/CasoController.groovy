@@ -550,8 +550,10 @@ class CasoController {
         if(session?.ActorSistema?.rol == "Triaje" ){ 
             def status1 = Status.get(1)     //En espera
             def status3 = Status.get(3)     //En proceso 1er nivel
+            def status10 = Status.get(10)       //Rechazado 1er nivel
+            def status11 = Status.get(11)       //Rechazado 2do nivel
             
-            if (casoInstance.status==status1){
+            if ((casoInstance.status==status1)||(casoInstance.status==status11)||(casoInstance.status==status10)){
               casoInstance.status = status3   
             } 
             
