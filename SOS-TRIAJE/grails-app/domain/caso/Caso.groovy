@@ -23,7 +23,7 @@ class Caso {
     
 //CONSTRAINTS    
     static constraints = {
-        descripcion(nullable: false)
+        descripcion(nullable: false, maxSize : 200000)
         fechaInicio(nullable: false)
         paciente(nullable: false)  
         fechaSolucion(blank:true, nullable: true)

@@ -74,8 +74,8 @@
 
                             <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
 
-                            <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
-                            
+                            <th><g:message code="especialidad.label" default="Especialidad" /></th>
+
                             <th><g:message code="medico.nombre.label" default="Nombre Médico" /></th>
                             
                             <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
@@ -93,7 +93,7 @@
 
                             <th><g:message code="fecha.inicio.label" default="Fecha inicio" /></th>
 
-                            <th><g:message code="fecha.solucion.label" default="Fecha solucion" /></th>
+                            <th><g:message code="especialidad.label" default="Especialidad" /></th>
                             
                             <th><g:message code="medico.nombre.label" default="Nombre Médico" /></th>
                             
@@ -116,8 +116,12 @@
                             
                             <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
                             
-                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaSolucion}"/></td>
-                            
+                            <td>
+                                <g:each in="${casoInstance.especialidades}" var="e">
+                                  ${e?.nombre?.encodeAsHTML()}
+                                </g:each>                            
+                            </td>
+                                                       
                             <td>${medicoList[i]?.nombre} 
                                 ${medicoList[i]?.apellido}
                             </td>                             
@@ -129,12 +133,10 @@
                             <td>${casoInstance.paciente.cedula}</td>
                             
                             <td>
-                              <ul>
-                                <g:each in="${casoInstance.opiniones}" var="o">
-                                  <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                              </ul>
-                            </td>
+                               <g:each in="${casoInstance.opiniones}" var="o">
+                                  <g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link>
+                               </g:each>
+                          </td>
                         </tr>
                     </g:each>
                     </tbody>

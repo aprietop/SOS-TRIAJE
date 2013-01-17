@@ -71,7 +71,7 @@
                                      
                   <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
                   
-                  <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
+                  <th><g:message code="especialidad.label" default="Especialidad" /></th>
                   
                   <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
                   
@@ -86,7 +86,7 @@
 
                   <th><g:message code="fecha.inicio.label" default="Fecha Inicio" /></th>
 
-                  <th><g:message code="fecha.solucion.label" default="Fecha Solución" /></th>
+                  <th><g:message code="especialidad.label" default="Especialidad" /></th>
 
                   <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
 
@@ -107,7 +107,11 @@
                   
                   <td><g:formatDate format="dd-MM-yyyy" date="${CasoInstance.fechaInicio}"/></td>
                   
-                  <td><g:formatDate format="dd-MM-yyyy" date="${CasoInstance.fechaSolucion}"/></td>
+                  <td>
+                      <g:each in="${CasoInstance.especialidades}" var="e">
+                        ${e?.nombre?.encodeAsHTML()}
+                      </g:each>                            
+                  </td>
           
                   <td>${CasoInstance.paciente.nombre}
                       ${CasoInstance.paciente.apellido}</td>

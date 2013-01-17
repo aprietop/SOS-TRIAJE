@@ -36,7 +36,7 @@ class ServicioWebTriajeService {
 
     //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
     boolean enviarCasoTriaje(PojoCaso caso, String uuid){
-        boolean flag = false
+    boolean flag = false
     
         if(caso){
             def centroInstance = CentroSOS.findByUuid(uuid)
@@ -52,7 +52,7 @@ class ServicioWebTriajeService {
                 this.thisPaciente = thisCaso.paciente
                 this.thisUuid = uuid
 
-                def status = Status.get(1)         //En espera
+                def status = Status.get(1) //En espera
 
                 Date today = new Date()
                 
@@ -70,10 +70,10 @@ class ServicioWebTriajeService {
                 }else{
                     if (!pacienteNuevo.save()) println "Error al guardar el paciente: "+paciente.errors
                     casoNuevo.paciente = pacienteNuevo
-                }              
+                }
                 
                 casoNuevo.descripcion = thisCaso.descripcion
-                casoNuevo.fechaInicio = today                
+                casoNuevo.fechaInicio = today
                 casoNuevo.status = status
                 casoNuevo.idCasoSOS = thisCaso.idCasoSOS
                 casoNuevo.centro = centroInstance
@@ -106,7 +106,7 @@ class ServicioWebTriajeService {
                     println "Caso ya existente"
                 }else{
                     if (!casoNuevo.save()) println "Error al guardar el caso: "+casoNuevo.errors
-                }                
+                }
             }
         }
 
@@ -178,7 +178,7 @@ class ServicioWebTriajeService {
             casoResuelto.setResponsable(medicoCaso)         
             casoResuelto.setFechaSolucion(fechaSolucion)
             
-        println "pojo caso resuelto: "+casoResuelto
+//        println "pojo caso resuelto: "+casoResuelto
         
         return casoResuelto
     }

@@ -83,7 +83,7 @@
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${casoInstance.opiniones}" var="o">
-                                    <li><g:link controller="opinion" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+                                    <g:link controller="opinion" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link>
                                 </g:each>
                                 </ul>
                             </td>

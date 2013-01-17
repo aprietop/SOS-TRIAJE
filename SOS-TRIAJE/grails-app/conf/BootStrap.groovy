@@ -371,7 +371,7 @@ class BootStrap {
 //**************************** CENTROS SOS-TRIAJE ****************************/
 //           
         def centro1 = new CentroSOS()
-        centro1.nombre = "Ambulatorio prueba SOS"
+        centro1.nombre = "Ambulatorio CIM UCV"
         centro1.url = "www.ambulatorio.sos.com"
         if (!centro1.save()) println centro1.errors                 
         
