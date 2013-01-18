@@ -122,32 +122,37 @@ class ServicioWebTriajeService {
         def casosCerrados
 
         if(centroInstance){
-            
-            def c = Caso.findByCentro(centroInstance).createCriteria()
-            casosCerrados = c.list {
-                eq("status", status8) 
-            }
-                
-            casosCerrados.each{
-                IdCasosCerrados.add(it.idCasoSOS)
+            def a = Caso.findByCentro(centroInstance)
+            if (a){
+                def c = a.createCriteria()
+                casosCerrados = c.list {
+                    eq("status", status8) 
+                }
+
+                casosCerrados.each{
+                    IdCasosCerrados.add(it.idCasoSOS)
+                }     
             }
         }
         return IdCasosCerrados
     }
     
+    
+    //SERVICIO PARA MOSTRAR EN SOS-HME LAS ESPECIALIDADES SEGUN ESPECIALISTAS DISPONIBLES EN SOS-TRIAJE
     List<String> getEspecialidades(String uuid){
         List<String> especialidadList = new ArrayList<String>();
            
         def especialidadInstance = Especialidad.findAll()
 
             especialidadInstance.each{
-//                println "especialidad: "+it.nombre
                 especialidadList.add(it.nombre)                
             }
        
         return especialidadList
     }       
   
+    
+    //SERVICIO PARA ENVIAR EL CASO RESUELTO A SOS-HME
     PojoCasoResuelto getCasoResuelto(String idCasoSOS){
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
         def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
@@ -177,17 +182,24 @@ class ServicioWebTriajeService {
             casoResuelto.setOpinion(Opinion)
             casoResuelto.setResponsable(medicoCaso)         
             casoResuelto.setFechaSolucion(fechaSolucion)
-            
-//        println "pojo caso resuelto: "+casoResuelto
         
         return casoResuelto
     }
     
     
-//    List <PojoCasoResuelto> getCasoResuelto(List<String> idCasoSOS, String centroSOS){
-//        
-//        
-//        
-//    }
+    //SERVICIO PARA VERIFICAR SI EL CASO QUE SE INTENTA ENVIAR A SOS-TRIAJE YA HA SIDO ENVIADO
+    boolean ifCaseSent(String idCasoSOS, String uuid){
+    boolean flag = false
     
+        def centroInstance = CentroSOS.findByUuid(uuid)
+        
+        if(centroInstance){
+            def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
+            
+            if (casoInstance){
+                flag = true
+            }            
+        }
+        return flag
+    }    
 }

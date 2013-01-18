@@ -9,6 +9,14 @@ class ActorSistemaController {
     def authenticate = {
         def ActorSistema = ActorSistema.findByLoginAndPassword(params.login, params.password)
         
+//        def criteria = ActorSistema.createCriteria()
+//        def ingreso = criteria {
+//            like('login', '%' + params.login + '%')
+//            like('password', '%' + params.password + '%')
+//            
+//        }
+//        
+        
         if(ActorSistema){
           session.ActorSistema = ActorSistema
           flash.message = "Hola ${ActorSistema.login}!"
