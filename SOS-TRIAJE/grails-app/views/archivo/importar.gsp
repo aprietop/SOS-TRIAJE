@@ -15,6 +15,10 @@
 <g:form name="importUser" controller="archivo" action="importarArchivos" method="post" enctype="multipart/form-data">
     <input type="file" id="fileName" name="fileName" width="250px"/>
     <g:submitButton name="importar" value="Importar"/>    
+    
+        <g:each in="${nomArchivo}" var="archivo">
+            <p>${archivo}</p>
+        </g:each>    
 </g:form>  
     
   </body>

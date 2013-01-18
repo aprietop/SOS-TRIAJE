@@ -104,7 +104,6 @@ class ArchivoController {
         // se recupera el archivo en la varible archivo (fileName), que es el nombre del imput file del gsp
         def archivo= request.getFile('fileName')
           // se crea el directorio en la ruta donde esta la aplicacion y se agrega la carpeta cargarArchivos
-        
         def webRootDir = servletContext.getRealPath("/")        
         def userDir = new File(webRootDir, "/cargarArchivos")
         userDir.mkdirs()

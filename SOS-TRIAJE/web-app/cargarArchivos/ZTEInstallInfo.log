@@ -1,0 +1,197 @@
+(2011/6/17 9:41:26) **************** ZTE Driver Install ****************
+
+(2011/6/17 9:41:26) Version    : 1.0.1.42_TME 
+(2011/6/17 9:41:26) OperateCode: Preinstall
+(2011/6/17 9:41:26) OS Version : (2011/6/17 9:41:26) Microsoft Windows XP (2011/6/17 9:41:26) Professional (2011/6/17 9:41:26) Service Pack 3 (Build 2600)
+(2011/6/17 9:41:26) Directory : C:\WINDOWS\system32\massfilter
+(2011/6/17 9:41:26) Search file name: C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\*.sys
+(2011/6/17 9:41:26) Sys file list:
+(2011/6/17 9:41:26) 1.massfilter.sys
+(2011/6/17 9:41:26) 2.ZTEusbccid.sys
+(2011/6/17 9:41:26) 3.ZTEusbmdm6k.sys
+(2011/6/17 9:41:26) 4.ZTEusbnmea.sys
+(2011/6/17 9:41:26) 5.ZTEusbser6k.sys
+(2011/6/17 9:41:26) Search file name: C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\*.inf
+(2011/6/17 9:41:26) Inf file list:
+(2011/6/17 9:41:26) 1.massfilter.inf
+(2011/6/17 9:41:26) 2.zteusbccid32.inf
+(2011/6/17 9:41:26) 3.zteusbdiag.inf
+(2011/6/17 9:41:26) 4.zteusbmodem.inf
+(2011/6/17 9:41:26) 5.zteusbnmea.inf
+(2011/6/17 9:41:26) Found [ACPI\IFX0101] from C:\WINDOWS\inf\oem0.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:26) Found [PCI\VEN_8086&DEV_105E&SUBSYS_105E8086] from C:\WINDOWS\inf\oem1.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:26) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [HDAUDIO\FUNC_01&VEN_11D4&DEV_1884&SUBSYS_103C2818] from C:\WINDOWS\inf\oem10.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [IANSPROTOCOL] from C:\WINDOWS\inf\oem11.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [IANSMINIPORT] from C:\WINDOWS\inf\oem12.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [USB\VID_0D7A&PID_0001] from C:\WINDOWS\inf\oem13.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) SetupOpenInfFile
+ FAILURE: (0xe0000003)(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) SetupFindFirstLine ->[Manufacturer]  FAILURE: (0xe0000102)(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [USBPRINT\HEWLETT-PACKARDHP_LABA3B] from C:\WINDOWS\inf\oem16.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) SetupOpenInfFile
+ FAILURE: (0xe0000003)(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) SetupFindFirstLine -> [Model]  FAILURE: (0xe0000102)(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) SetupFindFirstLine ->[Manufacturer]  FAILURE: (0xe0000102)(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [PCI\VEN_8086&DEV_2910] from C:\WINDOWS\inf\oem2.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) SetupFindFirstLine ->[Manufacturer]  FAILURE: (0xe0000102)(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) SetupOpenInfFile
+ FAILURE: (0xe0000003)(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [TID_TIDNET] from C:\WINDOWS\inf\oem23.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [PCI\VEN_8086&DEV_2920] from C:\WINDOWS\inf\oem3.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:27) Found [PCI\VEN_8086&DEV_2934] from C:\WINDOWS\inf\oem4.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:27) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:28) Found [PCI\VEN_8086&DEV_29B0] from C:\WINDOWS\inf\oem5.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:28) Found [PCI\VEN_8086&DEV_2772] from C:\WINDOWS\inf\oem6.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:28) Found [MONITOR\HWP26EB] from C:\WINDOWS\inf\oem7.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:28) Found [PCI\VEN_8086&DEV_29B4] from C:\WINDOWS\inf\oem8.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:28) Found [PCI\VEN_8086&DEV_29B7&CC_0700] from C:\WINDOWS\inf\oem9.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_2000] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_03] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbccid32.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_01] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbdiag.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_00] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbmodem.inf
+(2011/6/17 9:41:28) Found [USB\VID_19D2&PID_0001&MI_02] from C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\zteusbnmea.inf
+(2011/6/17 9:41:28) Remove sysfile  FAILURE: El sistema no puede hallar el archivo especificado.
+(2011/6/17 9:41:28) Remove sysfile  FAILURE: El sistema no puede hallar el archivo especificado.
+(2011/6/17 9:41:28) Remove sysfile  FAILURE: El sistema no puede hallar el archivo especificado.
+(2011/6/17 9:41:28) Remove sysfile  FAILURE: El sistema no puede hallar el archivo especificado.
+(2011/6/17 9:41:28) Remove sysfile  FAILURE: El sistema no puede hallar el archivo especificado.
+(2011/6/17 9:41:28) Remove Dllfile  FAILURE: El sistema no puede hallar el archivo especificado.
+(2011/6/17 9:41:28) Copy C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\massfilter.sys to C:\WINDOWS\system32\drivers\massfilter.sys
+(2011/6/17 9:41:28) Copy C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\ZTEusbccid.sys to C:\WINDOWS\system32\drivers\ZTEusbccid.sys
+(2011/6/17 9:41:28) Copy C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\ZTEusbmdm6k.sys to C:\WINDOWS\system32\drivers\ZTEusbmdm6k.sys
+(2011/6/17 9:41:28) Copy C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\ZTEusbnmea.sys to C:\WINDOWS\system32\drivers\ZTEusbnmea.sys
+(2011/6/17 9:41:28) Copy C:\WINDOWS\system32\massfilter\Drivers\32bit\WNET\ZTEusbser6k.sys to C:\WINDOWS\system32\drivers\ZTEusbser6k.sys
+(2011/6/17 9:41:28) Found ZTE Mass Storage Device Driver!
+(2011/6/17 9:41:28) INFO: Preinstalling massfilter.inf
+(2011/6/17 9:41:29) SUCCESS: preinstalled driver.
+(2011/6/17 9:41:29) INFO: Preinstalling zteusbccid32.inf
+(2011/6/17 9:41:30) SUCCESS: preinstalled driver.
+(2011/6/17 9:41:30) INFO: Preinstalling zteusbdiag.inf
+(2011/6/17 9:41:30) SUCCESS: preinstalled driver.
+(2011/6/17 9:41:30) INFO: Preinstalling zteusbmodem.inf
+(2011/6/17 9:41:30) SUCCESS: preinstalled driver.
+(2011/6/17 9:41:30) INFO: Preinstalling zteusbnmea.inf
+(2011/6/17 9:41:30) SUCCESS: preinstalled driver.
+(2011/6/17 9:41:30) Found ZTE Mass Storage Device,Active...
+(2011/6/17 9:41:30) Set the massfilter value success!
+(2011/6/17 9:41:31) Create [massfilter] service success!
+(2011/6/17 9:41:31) Buffer : USB\ROOT_HUB&VID8086&PID2934&REV0002
+(2011/6/17 9:41:31) Buffer : USB\ROOT_HUB&VID8086&PID2938&REV0002
+(2011/6/17 9:41:31) Buffer : USB\ROOT_HUB&VID8086&PID2936&REV0002
+(2011/6/17 9:41:31) Buffer : USB\ROOT_HUB&VID8086&PID2937&REV0002
+(2011/6/17 9:41:31) Buffer : USB\ROOT_HUB&VID8086&PID2935&REV0002
+(2011/6/17 9:41:31) Buffer : USB\ROOT_HUB20&VID8086&PID293A&REV0002
+(2011/6/17 9:41:31) Buffer : USB\ROOT_HUB20&VID8086&PID293C&REV0002
+(2011/6/17 9:41:31) Buffer : USB\Vid_0bda&Pid_0111&Rev_1122
+(2011/6/17 9:41:31) Buffer : USB\Vid_19d2&Pid_2000&Rev_0000
+(2011/6/17 9:41:31) IBuffer : USB\VID_19D2&PID_2000\MOVP673M3MASSSTO
+(2011/6/17 9:41:31) id : USB\Vid_19d2&Pid_2000
+(2011/6/17 9:41:31) Set LOWERFILTERS Success!
+(2011/6/17 9:41:31) Set the massfilter value success!
+(2011/6/17 9:41:31) Set FilterInfo Success!
+(2011/6/17 9:41:31) Set LowFilter Success!
+(2011/6/17 9:41:31) Call ejectdisk.exe...
+(2011/6/17 9:41:37) *************************Finish***********************
+
