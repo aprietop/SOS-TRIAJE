@@ -9,28 +9,32 @@ class ActorSistemaController {
     def authenticate = {
         def ActorSistema = ActorSistema.findByLoginAndPassword(params.login, params.password)
         
-//        def criteria = ActorSistema.createCriteria()
-//        def ingreso = criteria {
-//            like('login', '%' + params.login + '%')
-//            like('password', '%' + params.password + '%')
-//            
-//        }
-//        
-        
         if(ActorSistema){
-          session.ActorSistema = ActorSistema
-          flash.message = "Hola ${ActorSistema.login}!"
             
-          if(session?.ActorSistema?.rol == "Administrador" ){
-            redirect(action:"menuAdministrador")
-          }
-          if(session?.ActorSistema?.rol == "Triaje" ){
-            redirect(controller:"caso", action:"listaDeCasosT")
-          }
-          if(session?.ActorSistema?.rol == "Especialista" ){
-            redirect(controller:"caso", action:"listaDeCasosT")
-          }
-               
+            String login = ActorSistema.login
+            String password = ActorSistema.password 
+            
+            boolean loginCompare = login.equals(params.login)
+            boolean passwordCompare = password.equals(params.password)
+            
+                //para comparar la sensibilidad en los caracteres
+                if(loginCompare && passwordCompare){          
+                        session.ActorSistema = ActorSistema
+                        flash.message = "Hola ${ActorSistema.login}!"
+
+                        if(session?.ActorSistema?.rol == "Administrador" ){
+                          redirect(action:"menuAdministrador")
+                        }
+                        if(session?.ActorSistema?.rol == "Triaje" ){
+                          redirect(controller:"caso", action:"listaDeCasosT")
+                        }
+                        if(session?.ActorSistema?.rol == "Especialista" ){
+                          redirect(controller:"caso", action:"listaDeCasosT")
+                        }          
+                }else{
+                  flash.message = "Lo siento, ${params.login}. Por favor intente de nuevo."
+                  redirect(action:"login")                
+                }               
         }else{
           flash.message = "Lo siento, ${params.login}. Por favor intente de nuevo."
           redirect(action:"login")
