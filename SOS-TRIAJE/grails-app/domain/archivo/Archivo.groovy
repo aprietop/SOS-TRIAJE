@@ -21,6 +21,6 @@ class Archivo {
     static constraints = {        
         nombre(nullable: false)
         descripcion(nullable: false)
-        adjunto(nullable: false)
+        adjunto(nullable: false, maxSize : 1024*1024*10)
     }   
 }

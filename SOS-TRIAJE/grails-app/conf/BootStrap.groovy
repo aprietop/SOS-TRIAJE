@@ -239,12 +239,12 @@ class BootStrap {
             caso1.status = status7
             if (!caso1.save()) println caso1.errors
                     
-        def caso2 = new Caso()
-            caso2.descripcion = "Caso prueba 2"
-            caso2.fechaInicio = new Date(112, 3, 3)
-            caso2.paciente = paciente2
-            caso2.status = status1
-            if (!caso2.save()) println caso2.errors
+//        def caso2 = new Caso()
+//            caso2.descripcion = "Caso prueba 2"
+//            caso2.fechaInicio = new Date(112, 3, 3)
+//            caso2.paciente = paciente2
+//            caso2.status = status1
+//            if (!caso2.save()) println caso2.errors
 
         def caso3 = new Caso()
             caso3.descripcion = "Caso prueba 3"
@@ -253,27 +253,27 @@ class BootStrap {
             caso3.status = status7
             if (!caso3.save()) println caso3.errors
             
-        def caso4 = new Caso()
-            caso4.descripcion = "Caso prueba 4"
-            caso4.fechaInicio = new Date(112, 7, 19)
-            caso4.paciente = paciente4
-            caso4.status = status1
-            caso4.addToEspecialidades(especialidad2)
-            if (!caso4.save()) println caso4.errors
-                
-        def caso5 = new Caso()
-            caso5.descripcion = "Caso prueba 5"
-            caso5.fechaInicio = new Date(112, 06, 25)
-            caso5.paciente = paciente1
-            caso5.status = status1
-            if (!caso5.save()) println caso5.errors
-
-        def caso6 = new Caso()
-            caso6.descripcion = "Caso prueba 6"
-            caso6.fechaInicio = new Date(112, 05, 22)
-            caso6.paciente = paciente2
-            caso6.status = status1
-            if (!caso6.save()) println caso6.errors
+//        def caso4 = new Caso()
+//            caso4.descripcion = "Caso prueba 4"
+//            caso4.fechaInicio = new Date(112, 7, 19)
+//            caso4.paciente = paciente4
+//            caso4.status = status1
+//            caso4.addToEspecialidades(especialidad2)
+//            if (!caso4.save()) println caso4.errors
+//                
+//        def caso5 = new Caso()
+//            caso5.descripcion = "Caso prueba 5"
+//            caso5.fechaInicio = new Date(112, 06, 25)
+//            caso5.paciente = paciente1
+//            caso5.status = status1
+//            if (!caso5.save()) println caso5.errors
+//
+//        def caso6 = new Caso()
+//            caso6.descripcion = "Caso prueba 6"
+//            caso6.fechaInicio = new Date(112, 05, 22)
+//            caso6.paciente = paciente2
+//            caso6.status = status1
+//            if (!caso6.save()) println caso6.errors
 
 /************************** HISTORIAL CASO SOS-TRIAJE *************************/
 //        

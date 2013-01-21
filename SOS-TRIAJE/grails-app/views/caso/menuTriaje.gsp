@@ -68,7 +68,7 @@
                           <g:if test="${tipoBusqueda==1}">  
                             <g:sortableColumn property="id" title="${message(code: 'id.label', default: 'Id')}" />
                           
-                            <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
+                            <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}"/>
                                     
                             <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
 
@@ -81,6 +81,8 @@
                             <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
                              
                             <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                            
+                            <th><g:message code="archivos.label" default="Archivos" /></th>
                     
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                           </g:if>
@@ -100,6 +102,8 @@
                             <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
                              
                             <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                            
+                            <th><g:message code="archivos.label" default="Archivos" /></th>
                     
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>                            
                           </g:if>
@@ -110,11 +114,11 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td>${casoInstance.id}</td>
                           
-                            <td>${casoInstance.descripcion}</td>
+                            <td style="width:400px;">${casoInstance.descripcion}</td>
                         
-                            <td>${casoInstance.status.nombre}</td>
+                            <td style="width:65px;">${casoInstance.status.nombre}</td>
                             
-                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
+                            <td style="width:85px;"><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
                             
                             <td>
                                 <g:each in="${casoInstance.especialidades}" var="e">
@@ -131,6 +135,12 @@
                             </td>                        
                             
                             <td>${casoInstance.paciente.cedula}</td>
+                            
+                            <td>
+                                <g:each in="${casoInstance.archivos}" var="archivos">
+                                  ${archivos?.nombre?.encodeAsHTML()}
+                                </g:each>                            
+                            </td>
                             
                             <td>
                                <g:each in="${casoInstance.opiniones}" var="o">

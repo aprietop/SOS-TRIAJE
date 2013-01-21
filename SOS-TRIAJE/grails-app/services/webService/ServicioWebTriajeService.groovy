@@ -51,7 +51,7 @@ class ServicioWebTriajeService {
                 this.thisEspecialidades = thisCaso.especialidad
                 this.thisPaciente = thisCaso.paciente
                 this.thisUuid = uuid
-
+                
                 def status = Status.get(1) //En espera
 
                 Date today = new Date()
