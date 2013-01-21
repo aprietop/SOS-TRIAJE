@@ -99,30 +99,28 @@
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                       
-                            <td>${casoInstance.descripcion}</td>
+                            <td style="width:340px;" class="pJustifica">${casoInstance.descripcion}</td>
                         
-                            <td>${casoInstance.status.nombre}</td>
+                            <td style="width:100px;">${casoInstance.status.nombre}</td>
                             
-                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
+                            <td style="width:85px;"><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
                             
-                            <td>
+                            <td style="width:95px;">
                                 <g:each in="${casoInstance.especialidades}" var="e">
                                   ${e?.nombre?.encodeAsHTML()}
                                 </g:each>                            
                             </td>                            
                         
-                            <td>${casoInstance.paciente.nombre}
+                            <td style="width:100px;">${casoInstance.paciente.nombre}
                                 ${casoInstance.paciente.apellido}
                             </td>                        
                             
-                            <td>${casoInstance.paciente.cedula}</td>
+                            <td style="width:85px;">${casoInstance.paciente.cedula}</td>
                             
-                            <td>
-                              <ul>
+                            <td style="width:125px;">
                                 <g:each in="${casoInstance.opiniones}" var="o">
                                   <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link></li>
                                 </g:each>
-                              </ul>
                             </td>
                         </tr>
                     </g:each>

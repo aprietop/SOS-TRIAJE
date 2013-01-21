@@ -6,6 +6,8 @@
         <meta name="layout" content="referenc" />
         <g:set var="entityName" value="${message(code: 'caso.label', default: 'Caso')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
+        
+        
     </head>
     <body>
 
@@ -84,7 +86,7 @@
                             
                             <th><g:message code="archivos.label" default="Archivos" /></th>
                     
-                            <th><g:message code="opiniones.label" default="Opiniones" /></th>
+                            <th><g:message code="opiniones.label" default="Diagnósticos" /></th>
                           </g:if>
                           <g:if test="${tipoBusqueda==2}">
                             <th><g:message code="id.label" default="Id" /></th>
@@ -105,46 +107,46 @@
                             
                             <th><g:message code="archivos.label" default="Archivos" /></th>
                     
-                            <th><g:message code="opiniones.label" default="Opiniones" /></th>                            
+                            <th><g:message code="opiniones.label" default="Diagnósticos" /></th>                            
                           </g:if>
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${casoInstanceList}" status="i" var="casoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                            <td>${casoInstance.id}</td>
+                            <td style="width:10px;">${casoInstance.id}</td>
                           
-                            <td style="width:400px;">${casoInstance.descripcion}</td>
+                            <td style="width:340px;" class="pJustifica">${casoInstance.descripcion}</td>
                         
                             <td style="width:65px;">${casoInstance.status.nombre}</td>
                             
                             <td style="width:85px;"><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
                             
-                            <td>
+                            <td style="width:85px;">
                                 <g:each in="${casoInstance.especialidades}" var="e">
                                   ${e?.nombre?.encodeAsHTML()}
                                 </g:each>                            
                             </td>
                                                        
-                            <td>${medicoList[i]?.nombre} 
+                            <td style="width:85px;">${medicoList[i]?.nombre} 
                                 ${medicoList[i]?.apellido}
                             </td>                             
                         
-                            <td>${casoInstance.paciente.nombre}
+                            <td style="width:70px;">${casoInstance.paciente.nombre}
                                 ${casoInstance.paciente.apellido}
                             </td>                        
                             
-                            <td>${casoInstance.paciente.cedula}</td>
+                            <td style="width:60px;">${casoInstance.paciente.cedula}</td>
                             
-                            <td>
-                                <g:each in="${casoInstance.archivos}" var="archivos">
-                                  ${archivos?.nombre?.encodeAsHTML()}
+                            <td style="width:60px;">
+                                <g:each in="${casoInstance.archivos}" var="archivos">                                  
+                                  <g:link controller="archivo" action="show" id="${archivos.id}">${archivos?.nombre?.encodeAsHTML()}</g:link>
                                 </g:each>                            
                             </td>
                             
-                            <td>
+                            <td style="width:125px;">
                                <g:each in="${casoInstance.opiniones}" var="o">
-                                  <g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link>
+                                 <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link></li>
                                </g:each>
                           </td>
                         </tr>

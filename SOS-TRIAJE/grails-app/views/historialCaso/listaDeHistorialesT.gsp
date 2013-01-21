@@ -106,21 +106,21 @@
                                                                               
                             <td>${historialCasoInstance.caso.id}</td>
                             
-                            <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
+                            <td style="width:160px;"><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
                             
-                            <td>${historialCasoInstance.caso.descripcion}</td>
+                            <td style="width:360px;" class="pJustifica">${historialCasoInstance.caso.descripcion}</td>
                             
-                            <td>${historialCasoInstance.estadoCaso}</td>
+                            <td style="width:160px;">${historialCasoInstance.estadoCaso}</td>
                                                     
-                            <td>${historialCasoInstance.medico.nombre} 
+                            <td style="width:160px;">${historialCasoInstance.medico.nombre} 
                                 ${historialCasoInstance.medico.apellido}
                             </td>
                             
-                            <td>${historialCasoInstance.caso.paciente.nombre}
+                            <td style="width:160px;">${historialCasoInstance.caso.paciente.nombre}
                                 ${historialCasoInstance.caso.paciente.apellido}
                             </td>                        
                             
-                            <td>${historialCasoInstance.caso.paciente.cedula}</td>
+                            <td style="width:160px;">${historialCasoInstance.caso.paciente.cedula}</td>
                         </tr>
                     </g:each>
                     </tbody>

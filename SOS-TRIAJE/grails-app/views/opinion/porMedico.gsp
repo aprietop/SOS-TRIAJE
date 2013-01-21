@@ -85,15 +85,15 @@
 
                   <td><g:link action="show" id="${opinionInstance.id}">${fieldValue(bean: opinionInstance, field: "id")}</g:link></td>
 
-                  <td><g:formatDate format="dd-MM-yyyy" date="${opinionInstance.fechaOpinion}"/></td>
+                  <td style="width:85px;"><g:formatDate format="dd-MM-yyyy" date="${opinionInstance.fechaOpinion}"/></td>
 
-                  <td>${fieldValue(bean: opinionInstance, field: "cuerpoOpinion")}</td>
+                  <td style="width:400px;" class="pJustifica">${fieldValue(bean: opinionInstance, field: "cuerpoOpinion")}</td>
 
-                  <td>${fieldValue(bean: opinionInstance, field: "medico.nombre")}
+                  <td style="width:100px;">${fieldValue(bean: opinionInstance, field: "medico.nombre")}
                       ${fieldValue(bean: opinionInstance, field: "medico.apellido")}
                   </td>
 
-                  <td>${fieldValue(bean: opinionInstance, field: "caso.descripcion")}</td>
+                  <td style="width:400px;" class="pJustifica">${fieldValue(bean: opinionInstance, field: "caso.descripcion")}</td>
                   
                  </tr>
             </g:each>                

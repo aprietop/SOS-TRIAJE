@@ -118,30 +118,28 @@
               <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
               <g:each in="${historialCasoList}" status="j" var="historialCasoInstance">
                 <tr>
-                  <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
+                  <td style="width:65px;"><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.fecha}"/></td>
 
-                  <td>${fieldValue(bean: historialCasoInstance, field: "caso.descripcion")}</td>
+                  <td style="width:340px;" class="pJustifica">${fieldValue(bean: historialCasoInstance, field: "caso.descripcion")}</td>
                   
-                  <td>${fieldValue(bean: historialCasoInstance, field: "estadoCaso")}</td>
+                  <td style="width:75px;">${fieldValue(bean: historialCasoInstance, field: "estadoCaso")}</td>
                   
-                  <td>${fieldValue(bean: historialCasoInstance, field: "medico.nombre")}
+                  <td style="width:75px;">${fieldValue(bean: historialCasoInstance, field: "medico.nombre")}
                       ${fieldValue(bean: historialCasoInstance, field: "medico.apellido")}</td>  
                
-                  <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaInicio}"/></td>
+                  <td style="width:85px;"><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaInicio}"/></td>
 
-                  <td><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaSolucion}"/></td>
+                  <td style="width:85px;"><g:formatDate format="dd-MM-yyyy" date="${historialCasoInstance.caso.fechaSolucion}"/></td>
                   
-                  <td>${fieldValue(bean: historialCasoInstance, field: "caso.paciente.nombre")}
+                  <td style="width:75px;">${fieldValue(bean: historialCasoInstance, field: "caso.paciente.nombre")}
                       ${fieldValue(bean: historialCasoInstance, field: "caso.paciente.apellido")}</td>
                   
-                  <td>${fieldValue(bean: historialCasoInstance, field: "caso.paciente.cedula")}</td>
+                  <td style="width:75px;">${fieldValue(bean: historialCasoInstance, field: "caso.paciente.cedula")}</td>
                   
-                 <td>
-                    <ul>
+                 <td style="width:120px;">
                     <g:each in="${historialCasoInstance.caso.opiniones}" var="o">
                         <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link></li>
                     </g:each>
-                    </ul>
                  </td>
                  </tr>
             </g:each>                

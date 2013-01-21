@@ -101,28 +101,28 @@
           <g:each in="${CasoInstanceList}" status="i" var="CasoInstance">
               <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                 
-                  <td>${CasoInstance.descripcion}</td>
+                  <td style="width:360px;" class="pJustifica">${CasoInstance.descripcion}</td>
                   
-                  <td>${CasoInstance.status.nombre}</td>
+                  <td style="width:160px;">${CasoInstance.status.nombre}</td>
                   
-                  <td><g:formatDate format="dd-MM-yyyy" date="${CasoInstance.fechaInicio}"/></td>
+                  <td style="width:160px;"><g:formatDate format="dd-MM-yyyy" date="${CasoInstance.fechaInicio}"/></td>
                   
-                  <td>
+                  <td style="width:160px;">
                       <g:each in="${CasoInstance.especialidades}" var="e">
                         ${e?.nombre?.encodeAsHTML()}
                       </g:each>                            
                   </td>
           
-                  <td>${CasoInstance.paciente.nombre}
+                  <td style="width:160px;">${CasoInstance.paciente.nombre}
                       ${CasoInstance.paciente.apellido}</td>
                   
-                  <td>${CasoInstance.paciente.cedula}</td>
+                  <td style="width:160px;">${CasoInstance.paciente.cedula}</td>
                   
-                  <td><ul>
+                  <td style="width:160px;">                  
                     <g:each in="${CasoInstance.opiniones}" var="o">
                         <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion.encodeAsHTML()}</g:link></li>
                     </g:each>
-                  </ul></td>
+                  </td>
              </tr>             
           </g:each>
           </tbody>

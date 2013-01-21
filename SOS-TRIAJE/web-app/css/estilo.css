@@ -832,12 +832,6 @@ label#errorms {
 }
 
 /*------------------------------------------------------*/
-/*#nivel4 {
-	background:#FFF;
-	padding:3px;
-	margin-top:2px;
-	min-height:100px;
-	}
-#nivel4 #contenido {
-	padding:20px 14px;
-	}*/
+.pJustifica{ 
+text-align: justify; 
+} 

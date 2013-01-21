@@ -61,9 +61,6 @@
                             <%--<th><g:message code="fecha.inicio.label" default="Fecha inicio" /></th>--%>
                             <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
                             
-                            <%--<th><g:message code="fecha.solucion.label" default="Fecha solucion" /></th>--%>
-                            <g:sortableColumn property="fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha solucion')}" />
-
                             <%--<th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>--%>
                             <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
 
@@ -79,26 +76,22 @@
                           
                             <td><g:link controller="opinion" action="createSolucion" id="${casoInstance.id}">${fieldValue(bean: casoInstance, field: "id")}</g:link></td>
                       
-                            <td>${casoInstance.descripcion}</td>
+                            <td style="width:460px;" class="pJustifica">${casoInstance.descripcion}</td>
                         
-                            <td>${casoInstance.status.nombre}</td>
+                            <td style="width:100px;">${casoInstance.status.nombre}</td>
                             
-                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
+                            <td style="width:85px;"><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
                             
-                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaSolucion}"/></td>                            
-                        
-                            <td>${casoInstance.paciente.nombre}
+                            <td style="width:100px;">${casoInstance.paciente.nombre}
                                 ${casoInstance.paciente.apellido}
                             </td>                        
                             
-                            <td>${casoInstance.paciente.cedula}</td>
+                            <td style="width:95px;">${casoInstance.paciente.cedula}</td>
                             
-                            <td>
-                              <ul>
+                            <td style="width:200px;">
                                 <g:each in="${casoInstance.opiniones}" var="o">
                                   <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link></li>
                                 </g:each>
-                              </ul>
                             </td>
                         </tr>
                     </g:each>
