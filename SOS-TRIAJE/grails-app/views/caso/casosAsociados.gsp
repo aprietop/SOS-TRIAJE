@@ -77,6 +77,8 @@
                   
                   <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
                   
+                  <th><g:message code="archivos.label" default="Archivos" /></th>
+                  
                   <th><g:message code="opiniones.label" default="Opiniones" /></th>
                 </g:if>  
                 <g:if test="${tipoBusqueda==2}">
@@ -91,6 +93,8 @@
                   <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
 
                   <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                  
+                  <th><g:message code="archivos.label" default="Archivos" /></th>
 
                   <th><g:message code="opiniones.label" default="Opiniones" /></th>
                 </g:if> 
@@ -117,6 +121,12 @@
                       ${CasoInstance.paciente.apellido}</td>
                   
                   <td style="width:160px;">${CasoInstance.paciente.cedula}</td>
+                  
+                  <td style="width:120px;">
+                      <g:each in="${CasoInstance?.archivos}" var="archivos">                                  
+                        <li><g:link controller="archivo" action="showArchivoSeleccionado" id="${archivos.id}" target="_blank">${archivos?.nombre?.encodeAsHTML()}</g:link></li>
+                      </g:each>                            
+                  </td>                  
                   
                   <td style="width:160px;">                  
                     <g:each in="${CasoInstance.opiniones}" var="o">

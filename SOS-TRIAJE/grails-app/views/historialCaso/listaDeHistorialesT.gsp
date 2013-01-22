@@ -75,8 +75,6 @@
                            
                             <g:sortableColumn property="caso" title="${message(code: 'descipcion.label', default: 'Caso')}" />
                            
-                            <g:sortableColumn property="estadoCaso" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
-                                                     
                             <g:sortableColumn property="medico" title="${message(code: 'medico.nombre.label', default: 'Medico')}" />
                             
                             <g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.nombre.label', default: 'Paciente')}" />

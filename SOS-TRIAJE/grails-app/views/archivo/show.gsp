@@ -24,35 +24,22 @@
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="archivo.id.label" default="Id" /></td>
-                            
                             <td valign="top" class="value">${fieldValue(bean: archivoInstance, field: "id")}</td>
-                            
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="archivo.nombre.label" default="Nombre" /></td>
-                            
                             <td valign="top" class="value">${fieldValue(bean: archivoInstance, field: "nombre")}</td>
-                            
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="archivo.descripcion.label" default="Descripcion" /></td>
-                            
                             <td valign="top" class="value">${fieldValue(bean: archivoInstance, field: "descripcion")}</td>
-                            
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="archivo.adjunto.label" default="Adjunto" /></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="archivo.caso.label" default="Caso" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="caso" action="show" id="${archivoInstance?.caso?.id}">${archivoInstance?.caso?.encodeAsHTML()}</g:link></td>
-                            
+                            <td valign="top" class="value">${archivoInstance.nombre}</td>
                         </tr>
                     
                     </tbody>
@@ -65,6 +52,7 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>
             </div>
+            
         </div>
     </body>
 </html>

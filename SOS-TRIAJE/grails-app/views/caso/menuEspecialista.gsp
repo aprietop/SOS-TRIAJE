@@ -66,8 +66,6 @@
                           <g:if test="${tipoBusqueda==1}">  
                             <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                                     
-                            <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
-
                             <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
 
                             <th><g:message code="especialidad.label" default="Especialidad" /></th>
@@ -76,12 +74,12 @@
 
                             <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
 
+                            <th><g:message code="archivos.label" default="Archivos" /></th>
+                            
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                           </g:if>
                           <g:if test="${tipoBusqueda==2}">
                             <th><g:message code="descipcion.caso.label" default="Caso" /></th>
-
-                            <th><g:message code="estado.caso.label" default="Estado" /></th>
 
                             <th><g:message code="fecha.inicio.label" default="Fecha Inicio" /></th>
 
@@ -91,6 +89,8 @@
 
                             <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
 
+                            <th><g:message code="archivos.label" default="Archivos" /></th>
+                            
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>                            
                           </g:if> 
                         </tr>
@@ -117,6 +117,12 @@
                             
                             <td style="width:85px;">${casoInstance.paciente.cedula}</td>
                             
+                            <td style="width:120px;">
+                                <g:each in="${casoInstance.archivos}" var="archivos">                                  
+                                  <li><g:link controller="archivo" action="showArchivoSeleccionado" id="${archivos.id}" target="_blank">${archivos?.nombre?.encodeAsHTML()}</g:link></li>
+                                </g:each>                            
+                            </td>
+
                             <td style="width:125px;">
                                 <g:each in="${casoInstance.opiniones}" var="o">
                                   <li><g:link controller="opinion" action="show" id="${o.id}">${o?.nombreOpinion?.encodeAsHTML()}</g:link></li>

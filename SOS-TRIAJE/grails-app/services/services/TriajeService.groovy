@@ -6,6 +6,9 @@ import status.Status
 import caso.HistorialCaso
 import centro.CentroSOS
 
+import javax.servlet.ServletContext;
+import org.codehaus.groovy.grails.commons.*
+
 class TriajeService {
 
     static transactional = true
@@ -74,4 +77,17 @@ class TriajeService {
         return casosAImprimir
     }
     
+    public static boolean escribirArchivo(byte[] fileBytes, String archivoDestino){ 
+       boolean correcto = false; 
+       try { 
+         OutputStream out = new FileOutputStream(archivoDestino); 
+         out.write(fileBytes); 
+         out.close();         
+         correcto = true; 
+       } catch (Exception e) { 
+         e.printStackTrace(); 
+       }         
+         return correcto;
+
+    }    
 }

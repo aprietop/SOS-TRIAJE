@@ -116,7 +116,7 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td style="width:10px;">${casoInstance.id}</td>
                           
-                            <td style="width:340px;" class="pJustifica">${casoInstance.descripcion}</td>
+                            <td style="width:320px;" class="pJustifica">${casoInstance.descripcion}</td>
                         
                             <td style="width:65px;">${casoInstance.status.nombre}</td>
                             
@@ -132,15 +132,15 @@
                                 ${medicoList[i]?.apellido}
                             </td>                             
                         
-                            <td style="width:70px;">${casoInstance.paciente.nombre}
+                            <td style="width:8px;">${casoInstance.paciente.nombre}
                                 ${casoInstance.paciente.apellido}
                             </td>                        
                             
                             <td style="width:60px;">${casoInstance.paciente.cedula}</td>
                             
-                            <td style="width:60px;">
+                            <td style="width:120px;">
                                 <g:each in="${casoInstance.archivos}" var="archivos">                                  
-                                  <g:link controller="archivo" action="show" id="${archivos.id}">${archivos?.nombre?.encodeAsHTML()}</g:link>
+                                  <li><g:link controller="archivo" action="showArchivoSeleccionado" id="${archivos.id}" target="_blank">${archivos?.nombre?.encodeAsHTML()}</g:link></li>
                                 </g:each>                            
                             </td>
                             

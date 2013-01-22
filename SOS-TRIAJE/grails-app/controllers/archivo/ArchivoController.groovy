@@ -1,5 +1,6 @@
 package archivo
 
+import javax.activation.MimetypesFileTypeMap
 class ArchivoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -117,4 +118,40 @@ class ArchivoController {
         // se regresa la lista a un gsp
     render (view:'importar', model:[nomArchivo:nomArchivo])
     } 
+    
+    
+    def mostrarArchivo = {
+       def webRootDir = servletContext.getRealPath("/")        
+
+       File f = new File(webRootDir+"/cargarArchivos/"+"TDC 25-Jun-12.png")
+        
+       response.setContentType(new MimetypesFileTypeMap().getContentType(f).toString())
+       response.setContentLength(f.getBytes().size())
+       println "tamaño forma1: "+f.getBytes().size()
+       OutputStream out = response.getOutputStream()
+       out.write(f.getBytes())
+       out.close()        
+    }  
+    
+    def showArchivoCargado = {
+        def archivoInstance = Archivo.findByNombre("TDC 25-Jun-12.png") 
+        response.setContentLength(archivoInstance.adjunto.size())
+        OutputStream out = response.getOutputStream()
+        out.write(archivoInstance.adjunto)
+        out.close()   
+    }
+    
+    def showArchivoSeleccionado = {
+        def archivoInstance = Archivo.get(params.id)
+        if (!archivoInstance) {
+            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'archivo.label', default: 'Archivo'), params.id])}"
+            redirect(action: "list")
+        }
+        else {
+            response.setContentLength(archivoInstance.adjunto.size())
+            OutputStream out = response.getOutputStream()
+            out.write(archivoInstance.adjunto)
+            out.close()
+        }     
+    }
 }

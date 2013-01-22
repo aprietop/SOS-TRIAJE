@@ -97,6 +97,7 @@ class ServicioWebTriajeService {
                         archivo.adjunto = thisArchivos.get(j).adjunto
                         archivo.save()
                         casoNuevo.addToArchivos(archivo)
+                        
                         j++;
                     }
                 }
