@@ -75,7 +75,7 @@ class CasoController {
             
             
         def c = Caso.createCriteria()
-        def casosNoCerrados = c.list(params) {
+        def casosNoCerrados = c.list([sort: "status", order: "asc"]) {
             ne("status", status8) 
         }
             
