@@ -4,18 +4,20 @@
  */
 package pojos;
 
+import java.util.List;
+
 /**
  *
  * @author prod1
  */
 public class PojoCasoResuelto {
-
     public String idCasoSOS;
+    public List<PojoArchivo> archivos;
     public PojoMedico responsable;
-    public String opinion; //VERIFICAR SI ES MEJOR QUE SEA UN POJO PARA QUE ENVIE ARCHIVOS TAMBIEN
+    public String opinion;
     public String fechaSolucion;
-
-    public PojoCasoResuelto(){     
-    }    
     
+    public PojoCasoResuelto(){
+    }
+            
 }

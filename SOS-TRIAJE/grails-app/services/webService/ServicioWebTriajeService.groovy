@@ -19,6 +19,7 @@ import persona.Paciente
 import especialidad.Especialidad
 import status.Status
 import java.text.SimpleDateFormat
+import pojos.PojoArchivoEnviado
 
 
 class ServicioWebTriajeService {
@@ -33,6 +34,8 @@ class ServicioWebTriajeService {
     public List<PojoEspecialidad> thisEspecialidades
     public PojoPaciente thisPaciente
     public String thisUuid
+    public List<PojoArchivo> archivosDelCaso
+    public PojoCasoResuelto thisCasoResuelto
 
     //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
     boolean enviarCasoTriaje(PojoCaso caso, String uuid){
@@ -157,7 +160,25 @@ class ServicioWebTriajeService {
     PojoCasoResuelto getCasoResuelto(String idCasoSOS){
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
         def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
-
+        
+        //----------------------  agregadas
+//        List<PojoArchivo> archivosDelCaso = new ArrayList<PojoArchivo>();
+        
+//        def archivos = Archivo.findAllByCaso(casoInstance)
+//        if(archivos){
+//            archivos.each{
+//                
+//                PojoArchivoEnviado archivoEnviado = new PojoArchivoEnviado()
+////                archivoEnviado
+//                archivoEnviado.setNombre(it.nombre)
+//                archivoEnviado.setDescripcion(it.descripcion)
+//                archivoEnviado.setAdjunto(it.adjunto)                   
+//                
+//                this.archivosDelCaso.add(archivoEnviado)
+//            }
+//        }
+        //----------------------  agregadas
+        
         //Ultima opinion del caso, tiene consigo el medico quien emitio la opinion
         def opinionInstance = Opinion.findAllByCaso(casoInstance, [sort: "fechaOpinion", order: "desc"])
             opinionInstance=opinionInstance.first()            
@@ -183,6 +204,11 @@ class ServicioWebTriajeService {
             casoResuelto.setOpinion(Opinion)
             casoResuelto.setResponsable(medicoCaso)         
             casoResuelto.setFechaSolucion(fechaSolucion)
+//----------------------  agregadas            
+//            casoResuelto.setArchivos(archivosDelCaso)
+//----------------------  agregadas                        
+        
+
         
         return casoResuelto
     }
