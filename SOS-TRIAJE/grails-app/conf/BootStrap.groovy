@@ -139,39 +139,39 @@ class BootStrap {
             
 /**************************** PACIENTE SOS-TRIAJE *****************************/        
 //        
-       def paciente1 = new Paciente()
-            paciente1.nombre = "Prieto"
-            paciente1.apellido = "Prieto"
-            paciente1.cedula = 23768657
-            paciente1.sexo = "Masculino"
-            paciente1.nacionalidad = "Venezolano"
-            paciente1.fechaNacimiento = new Date(96, 10, 23)
-            if (!paciente1.save()) println paciente1.errors  
-            
-        def paciente2 = new Paciente()
-            paciente2.nombre = "Nancy"
-            paciente2.apellido = "Urbina"
-            paciente2.cedula = 45454676
-            paciente2.sexo = "Femenino"
-            paciente2.nacionalidad = "Venezolana"
-            paciente2.fechaNacimiento = new Date(86, 10, 23)            
-            if (!paciente2.save()) println paciente2.errors  
-
-        def paciente3 = new Paciente()
-            paciente3.nombre = "Fedra"
-            paciente3.apellido = "Lopez"
-            paciente3.cedula = 17454676
-            paciente3.sexo = "Femenino"
-            paciente3.fechaNacimiento = new Date(86, 9, 13)            
-            if (!paciente3.save()) println paciente3.errors  
-
-        def paciente4 = new Paciente()
-            paciente4.nombre = "Fermin"
-            paciente4.apellido = "Toro"
-            paciente4.cedula = 15454676
-            paciente4.sexo = "Masculino"
-            paciente4.fechaNacimiento = new Date(67, 11, 17)            
-            if (!paciente4.save()) println paciente4.errors         
+//       def paciente1 = new Paciente()
+//            paciente1.nombre = "Prieto"
+//            paciente1.apellido = "Prieto"
+//            paciente1.cedula = 23768657
+//            paciente1.sexo = "Masculino"
+//            paciente1.nacionalidad = "Venezolano"
+//            paciente1.fechaNacimiento = new Date(96, 10, 23)
+//            if (!paciente1.save()) println paciente1.errors  
+//            
+//        def paciente2 = new Paciente()
+//            paciente2.nombre = "Nancy"
+//            paciente2.apellido = "Urbina"
+//            paciente2.cedula = 45454676
+//            paciente2.sexo = "Femenino"
+//            paciente2.nacionalidad = "Venezolana"
+//            paciente2.fechaNacimiento = new Date(86, 10, 23)            
+//            if (!paciente2.save()) println paciente2.errors  
+//
+//        def paciente3 = new Paciente()
+//            paciente3.nombre = "Fedra"
+//            paciente3.apellido = "Lopez"
+//            paciente3.cedula = 17454676
+//            paciente3.sexo = "Femenino"
+//            paciente3.fechaNacimiento = new Date(86, 9, 13)            
+//            if (!paciente3.save()) println paciente3.errors  
+//
+//        def paciente4 = new Paciente()
+//            paciente4.nombre = "Fermin"
+//            paciente4.apellido = "Toro"
+//            paciente4.cedula = 15454676
+//            paciente4.sexo = "Masculino"
+//            paciente4.fechaNacimiento = new Date(67, 11, 17)            
+//            if (!paciente4.save()) println paciente4.errors         
 
 /****************************** STATUS SOS-TRIAJE *****************************/        
 //  
@@ -232,12 +232,12 @@ class BootStrap {
 
 /****************************** CASOS SOS-TRIAJE ******************************/
 //
-        def caso1 = new Caso()
-            caso1.descripcion = "Caso prueba 1"
-            caso1.fechaInicio = new Date(112, 2, 3)
-            caso1.paciente = paciente1
-            caso1.status = status7
-            if (!caso1.save()) println caso1.errors
+//        def caso1 = new Caso()
+//            caso1.descripcion = "Caso prueba 1"
+//            caso1.fechaInicio = new Date(112, 2, 3)
+//            caso1.paciente = paciente1
+//            caso1.status = status7
+//            if (!caso1.save()) println caso1.errors
                     
 //        def caso2 = new Caso()
 //            caso2.descripcion = "Caso prueba 2"
@@ -246,12 +246,12 @@ class BootStrap {
 //            caso2.status = status1
 //            if (!caso2.save()) println caso2.errors
 
-        def caso3 = new Caso()
-            caso3.descripcion = "Caso prueba 3"
-            caso3.fechaInicio = new Date(112, 4, 13)
-            caso3.paciente = paciente3
-            caso3.status = status7
-            if (!caso3.save()) println caso3.errors
+//        def caso3 = new Caso()
+//            caso3.descripcion = "Caso prueba 3"
+//            caso3.fechaInicio = new Date(112, 4, 13)
+//            caso3.paciente = paciente3
+//            caso3.status = status7
+//            if (!caso3.save()) println caso3.errors
             
 //        def caso4 = new Caso()
 //            caso4.descripcion = "Caso prueba 4"
@@ -277,96 +277,96 @@ class BootStrap {
 
 /************************** HISTORIAL CASO SOS-TRIAJE *************************/
 //        
-        def historialCaso1 = new HistorialCaso()
-            historialCaso1.fecha = new Date(112, 5, 22)
-            historialCaso1.estadoCaso = "Asignado"
-            historialCaso1.medico = especialista2
-            historialCaso1.caso = caso1
-            if (!historialCaso1.save()) println historialCaso1.errors
-        
-        def historialCaso2 = new HistorialCaso()
-            historialCaso2.fecha = new Date(112, 5, 23)
-            historialCaso2.estadoCaso = "En proceso 1er nivel"
-            historialCaso2.medico = especialista2
-            historialCaso2.caso = caso1
-            if (!historialCaso2.save()) println historialCaso2.errors
-            
-        def historialCaso3 = new HistorialCaso()
-            historialCaso3.fecha = new Date(112, 5, 27)
-            historialCaso3.estadoCaso = "Resuelto 1er nivel"
-            historialCaso3.medico = especialista2
-            historialCaso3.caso = caso1        
-            if (!historialCaso3.save()) println historialCaso3.errors
-            
-        def historialCaso4 = new HistorialCaso()
-            historialCaso4.fecha = new Date(112, 10, 21)
-            historialCaso4.estadoCaso = "Asignado"
-            historialCaso4.medico = triaje1
-            historialCaso4.caso = caso3
-            if (!historialCaso4.save()) println historialCaso4.errors
-            
-        def historialCaso5 = new HistorialCaso()
-            historialCaso5.fecha = new Date(112, 10, 22)
-            historialCaso5.estadoCaso = "En proceso 1er nivel"
-            historialCaso5.medico = triaje1
-            historialCaso5.caso = caso3         
-            if (!historialCaso5.save()) println historialCaso5.errors
-            
-        def historialCaso6 = new HistorialCaso()
-            historialCaso6.fecha = new Date(112, 10, 22)
-            historialCaso6.estadoCaso = "Segunda opinion"
-            historialCaso6.medico = especialista3
-            historialCaso6.caso = caso3
-            if (!historialCaso6.save()) println historialCaso6.errors
-            
-        def historialCaso7 = new HistorialCaso()
-            historialCaso7.fecha = new Date(112, 10, 26)
-            historialCaso7.estadoCaso = "Resuelto 2do nivel"
-            historialCaso7.medico = especialista3
-            historialCaso7.caso = caso3         
-            if (!historialCaso7.save()) println historialCaso7.errors    
-            
-        def historialCaso8 = new HistorialCaso()
-            historialCaso8.fecha = new Date(112, 10, 27)
-            historialCaso8.estadoCaso = "Resuelto 1er nivel"
-            historialCaso8.medico = triaje1
-            historialCaso8.caso = caso3         
-            if (!historialCaso8.save()) println historialCaso8.errors         
+//        def historialCaso1 = new HistorialCaso()
+//            historialCaso1.fecha = new Date(112, 5, 22)
+//            historialCaso1.estadoCaso = "Asignado"
+//            historialCaso1.medico = especialista2
+//            historialCaso1.caso = caso1
+//            if (!historialCaso1.save()) println historialCaso1.errors
+//        
+//        def historialCaso2 = new HistorialCaso()
+//            historialCaso2.fecha = new Date(112, 5, 23)
+//            historialCaso2.estadoCaso = "En proceso 1er nivel"
+//            historialCaso2.medico = especialista2
+//            historialCaso2.caso = caso1
+//            if (!historialCaso2.save()) println historialCaso2.errors
+//            
+//        def historialCaso3 = new HistorialCaso()
+//            historialCaso3.fecha = new Date(112, 5, 27)
+//            historialCaso3.estadoCaso = "Resuelto 1er nivel"
+//            historialCaso3.medico = especialista2
+//            historialCaso3.caso = caso1        
+//            if (!historialCaso3.save()) println historialCaso3.errors
+//            
+//        def historialCaso4 = new HistorialCaso()
+//            historialCaso4.fecha = new Date(112, 10, 21)
+//            historialCaso4.estadoCaso = "Asignado"
+//            historialCaso4.medico = triaje1
+//            historialCaso4.caso = caso3
+//            if (!historialCaso4.save()) println historialCaso4.errors
+//            
+//        def historialCaso5 = new HistorialCaso()
+//            historialCaso5.fecha = new Date(112, 10, 22)
+//            historialCaso5.estadoCaso = "En proceso 1er nivel"
+//            historialCaso5.medico = triaje1
+//            historialCaso5.caso = caso3         
+//            if (!historialCaso5.save()) println historialCaso5.errors
+//            
+//        def historialCaso6 = new HistorialCaso()
+//            historialCaso6.fecha = new Date(112, 10, 22)
+//            historialCaso6.estadoCaso = "Segunda opinion"
+//            historialCaso6.medico = especialista3
+//            historialCaso6.caso = caso3
+//            if (!historialCaso6.save()) println historialCaso6.errors
+//            
+//        def historialCaso7 = new HistorialCaso()
+//            historialCaso7.fecha = new Date(112, 10, 26)
+//            historialCaso7.estadoCaso = "Resuelto 2do nivel"
+//            historialCaso7.medico = especialista3
+//            historialCaso7.caso = caso3         
+//            if (!historialCaso7.save()) println historialCaso7.errors    
+//            
+//        def historialCaso8 = new HistorialCaso()
+//            historialCaso8.fecha = new Date(112, 10, 27)
+//            historialCaso8.estadoCaso = "Resuelto 1er nivel"
+//            historialCaso8.medico = triaje1
+//            historialCaso8.caso = caso3         
+//            if (!historialCaso8.save()) println historialCaso8.errors         
             
 
 /**************************** OPINIONES SOS-TRIAJE ****************************/
 //           
-        def opinion1 = new Opinion()
-            opinion1.nombreOpinion = "Opinion 1 caso 1"
-            opinion1.cuerpoOpinion = "Se resuleve el caso, diagnosticando gripe comun"
-            opinion1.medico = especialista2
-            opinion1.fechaOpinion = new Date(112, 5, 27)
-            opinion1.caso = caso1
-            if (!opinion1.save()) println opinion1.errors 
-            
-        def opinion2 = new Opinion()
-            opinion2.nombreOpinion = "Opinion 1 caso 3"
-            opinion2.cuerpoOpinion = "Se diagnostica pulmonia, se solicita segunda opinion"
-            opinion2.medico = triaje1
-            opinion2.fechaOpinion = new Date(112, 10, 22)
-            opinion2.caso = caso3     
-            if (!opinion2.save()) println opinion2.errors 
-            
-        def opinion3 = new Opinion()
-            opinion3.nombreOpinion = "Opinion 2 caso 3"
-            opinion3.cuerpoOpinion = "Se confirma diagnostico de pulmonia"
-            opinion3.medico = especialista3
-            opinion3.fechaOpinion = new Date(112, 10, 26)
-            opinion3.caso = caso3            
-            if (!opinion3.save()) println opinion3.errors 
-            
-        def opinion4 = new Opinion()
-            opinion4.nombreOpinion = "Opinion 3 caso 3"
-            opinion4.cuerpoOpinion = "Se diagnostica pulmonia"
-            opinion4.medico = triaje1
-            opinion4.fechaOpinion = new Date(112, 10, 27)
-            opinion4.caso = caso3         
-            if (!opinion4.save()) println opinion4.errors 
+//        def opinion1 = new Opinion()
+//            opinion1.nombreOpinion = "Opinion 1 caso 1"
+//            opinion1.cuerpoOpinion = "Se resuleve el caso, diagnosticando gripe comun"
+//            opinion1.medico = especialista2
+//            opinion1.fechaOpinion = new Date(112, 5, 27)
+//            opinion1.caso = caso1
+//            if (!opinion1.save()) println opinion1.errors 
+//            
+//        def opinion2 = new Opinion()
+//            opinion2.nombreOpinion = "Opinion 1 caso 3"
+//            opinion2.cuerpoOpinion = "Se diagnostica pulmonia, se solicita segunda opinion"
+//            opinion2.medico = triaje1
+//            opinion2.fechaOpinion = new Date(112, 10, 22)
+//            opinion2.caso = caso3     
+//            if (!opinion2.save()) println opinion2.errors 
+//            
+//        def opinion3 = new Opinion()
+//            opinion3.nombreOpinion = "Opinion 2 caso 3"
+//            opinion3.cuerpoOpinion = "Se confirma diagnostico de pulmonia"
+//            opinion3.medico = especialista3
+//            opinion3.fechaOpinion = new Date(112, 10, 26)
+//            opinion3.caso = caso3            
+//            if (!opinion3.save()) println opinion3.errors 
+//            
+//        def opinion4 = new Opinion()
+//            opinion4.nombreOpinion = "Opinion 3 caso 3"
+//            opinion4.cuerpoOpinion = "Se diagnostica pulmonia"
+//            opinion4.medico = triaje1
+//            opinion4.fechaOpinion = new Date(112, 10, 27)
+//            opinion4.caso = caso3         
+//            if (!opinion4.save()) println opinion4.errors 
             
 //**************************** CENTROS SOS-TRIAJE ****************************/
 //           

@@ -4,11 +4,13 @@ import persona.ActorSistema
 import caso.Caso
 import caso.HistorialCaso
 import status.Status
+import archivo.Archivo
 
 class OpinionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+    static def mapArchivoPorCasos= [:]
+    
     def beforeInterceptor = [action:this.&auth]
 
     def auth() {
@@ -157,6 +159,33 @@ class OpinionController {
         opinionInstance.medico = actorInstance
         opinionInstance.caso = casoInstance
         
+        List<String> nombresDeArchivos = new ArrayList<String>()
+        
+        //guardado de archivos cargados       
+        mapArchivoPorCasos.each{
+            if(it.value==opinionInstance.caso.id){
+                nombresDeArchivos.add(it.key)
+            }
+        }
+        println "archivos a guardar: "+mapArchivoPorCasos+" clase: "+mapArchivoPorCasos.class
+        println "archivos a guardados: "+nombresDeArchivos+" clase: "+nombresDeArchivos.class
+            def webRootDir = servletContext.getRealPath("/")  
+            
+            int i=0;
+            while (i< nombresDeArchivos.size())
+            {
+                File txt = new File(webRootDir+"/cargarArchivosSosTriaje/"+nombresDeArchivos.get(i)) 
+            
+                def archivoInstance = new Archivo()
+                println "clase nombre: "+nombresDeArchivos.get(i).class
+                archivoInstance.nombre = nombresDeArchivos.get(i)
+                archivoInstance.descripcion = "Archivo del caso: "+casoInstance.idCasoSOS+" , paciente: "+casoInstance.paciente.nombre+" "+casoInstance.paciente.apellido
+                archivoInstance.adjunto = txt.getBytes()                      
+                archivoInstance.save() 
+                casoInstance.addToArchivos(archivoInstance)
+                i++;
+            }        
+            
         if (opinionInstance.save(flush: true)) {
             flash.message = "${message(code: 'solucion', args: [message(code: 'solucion', default: 'Solucion'), casoInstance.id])}"
             render(view: "showC", model: [casoInstance: casoInstance])
@@ -222,4 +251,37 @@ class OpinionController {
             redirect(action: "list")
         }
     }
+    
+    //METODO PARA IMPORTAR ARCHIVOS
+    def importarArchivos = {
+        // se recupera el archivo en la varible archivo (fileName), que es el nombre del imput file del gsp
+        def archivo= request.getFile('fileName')
+        if (archivo.originalFilename){
+            // se crea el directorio en la ruta donde esta la aplicacion y se agrega la carpeta cargarArchivos
+            def webRootDir = servletContext.getRealPath("/")        
+            def userDir = new File(webRootDir, "/cargarArchivosSosTriaje")
+            userDir.mkdirs()
+            // se guarda el archivo en esa carpeta
+            archivo.transferTo( new File( userDir, archivo.originalFilename))
+            // para obtener el apth del archivo
+            String file=userDir.toString()+ File.separator + archivo.originalFilename
+            // se agrega el nombre del archivo a una lista en caso de querer imprimir el nombre
+            ArrayList nomArchivo=new ArrayList()
+            nomArchivo.add(archivo.originalFilename)
+
+        if (params.idCaso){
+            def casoInstance = Caso.get(params.idCaso)
+            mapArchivoPorCasos.put(archivo.originalFilename, casoInstance.id)
+            render (view:'createSolucion', model:[nomArchivo:nomArchivo, casoInstance:casoInstance])
+        }        
+            
+        }else{
+        if (params.idCaso){
+            println "params.idCaso "+params.idCaso+" xlase "+params.idCaso.class
+            def casoInstance = Caso.get(params.idCaso)
+                flash.message = 'Por favor cargue un archivo e intente nuevamente.'
+                render (view:'createSolucion', model:[casoInstance:casoInstance])
+        }
+      }
+    }    
 }

@@ -66,13 +66,15 @@
         <div id="nivel2">
           <div id="contenido">
             
-        <div class="form1">
-
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
-            </g:if>
-             <g:form>
-                      
+            </g:if>            
+<input type="hidden" value="${fieldValue(bean: casoInstance, field: "id")}" name="idCaso"/>  
+<g:set var="casoInstance" value="${casoInstance}" />
+
+<div class="form1">
+<table><tr><td>          
+             <g:form>                      
               <table class="tabla2">
                       <span class="obligatorio">&nbsp;*</span> Campos Obligatorios   
                       <p>&nbsp;</p>
@@ -82,7 +84,7 @@
                             
                           <tr class="prop">
                                 <td valign="top" class="name">
-                                    <g:message code="nombreOpinion.label" default="Título Resultado" /></label>
+                                    <g:message code="nombreOpinion.label" default="Título Solución" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: opinionInstance, field: 'nombreOpinion', 'errors')}">
                                     <g:textField style="width:250px" name="nombreOpinion" value="${opinionInstance?.nombreOpinion}" /><span class="obligatorio">&nbsp;*</span>
@@ -94,7 +96,7 @@
                                     <g:message code="cuerpoOpinion.label" default="Cuerpo Resultado" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: opinionInstance, field: 'cuerpoOpinion', 'errors')}">
-                                    <g:textArea style="width: 850px; height: 650px;" name="cuerpoOpinion" value="${opinionInstance?.cuerpoOpinion}"/><span class="obligatorio">&nbsp;*</span>
+                                    <g:textArea style="width: 650px; height: 550px;" name="cuerpoOpinion" value="${opinionInstance?.cuerpoOpinion}"/><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>  
                     </tbody>
@@ -106,6 +108,47 @@
                     <g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.volver.label" default="Volover"/></g:link>  
             </div>
             </g:form>
+</td>
+  <td> 
+    <table> 
+<g:form name="importUser" controller="opinion" action="importarArchivos" method="post" enctype="multipart/form-data">  
+  <div class="fileinputs">
+	<input type="file" class="file" id="fileName" name="fileName"/>
+        <input type="hidden" value="${fieldValue(bean: casoInstance, field: "id")}" name="idCaso"/>    
+
+	<div class="fakefile">
+          <input class="tamanio"/> 
+                <img src="${resource(dir:'images',file:'icono-buscar.png')}"/>
+	</div>
+        <g:each in="${nomArchivo}" var="archivo">
+            <p>${archivo}</p>
+        </g:each>        
+  </div>  
+<br/><br/>
+<g:submitButton name="importar" value="Importar" class="boton_submit2"/>
+</g:form> 
+</table>
+    
+<table><tr><td> 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</td></tr></table>
+  
+  </td>
+</tr> 
+</table>      
         </div>
 </div>
         <p style="clear:both">&nbsp;</p>

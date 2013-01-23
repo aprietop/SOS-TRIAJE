@@ -1,10 +1,16 @@
 package persona
 
+import org.apache.commons.validator.EmailValidator
+import java.net.InetAddress
+import java.util.regex.Matcher /*para uso de expresiones regulares*/
+import java.util.regex.Pattern
+
 class ActorSistemaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-        def login = {}
+    def login = {}
+    def mailService
     
     def authenticate = {
         def ActorSistema = ActorSistema.findByLoginAndPassword(params.login, params.password)
@@ -52,6 +58,136 @@ class ActorSistemaController {
       session.ActorSistema = null
       redirect(controller:"actorSistema", action:"login")      
     }
+    
+    def lostPassword = {
+        flash.message = ""
+             
+    }    
+    
+    def sendEmailLink = {
+        def opcion = 1
+        def emailValidator = EmailValidator.getInstance()
+        if (!emailValidator.isValid(params.userEmail)) {
+            flash.message = "loginAuth.sendEmailLink.noValidEmail"
+            render(view:'lostPassword', model:[opcion: opcion])
+            return 
+        }
+
+        def actor = ActorSistema.withCriteria{
+           
+            eq("mail", params.userEmail)
+           
+        }
+
+        if(!actor){            
+            //El usuario no existe
+            flash.message = "loginAuth.sendEmailLink.noExisteEmail"
+            render(view:'lostPassword', model:[opcion: opcion])
+            return 
+            //Eniviar mensaje sobre la no existencia del email   
+        }else{
+            //Asignar idReset            
+            actor = ActorSistema.get(actor[0].id)
+            actor.createIdReset()
+            actor.save()
+
+            def link = "http://"+InetAddress.getLocalHost().getHostAddress() + ":"+ request.getLocalPort() + createLink(controller: 'actorSistema',action:'resetPassword',id:actor.idReset)
+                
+            try{
+            mailService.sendMail {
+                    to actor.mail //Email del usuario
+                    subject "Restablecer contraseña en SOS-TRIAJE" // Asunto del mensaje   <a href="/shop/book/list">Book List</a>
+                    html    'Haz click en el link para restablecer tu contraseña en SOS-TRIAJE <a href="'+link+'">RESTABLECER CONTRASEÑA</a>'
+                    flash.message = "loginAuth.sendEmailLink.mensaje"
+                }
+            }catch(Exception e){
+                flash.message = "loginAuth.sendEmailLink.error"
+                render(view:'lostPassword', model:[opcion: opcion])
+                return 
+            }
+            return         
+        }    
+    }
+    
+    
+    def sendPassword = {
+        def opcion = 2
+        def emailValidator = EmailValidator.getInstance()
+        if (!emailValidator.isValid(params.userEmail2)) {
+            flash.message = "loginAuth.sendEmailLink.noValidEmail"
+            render(view:'lostPassword', model:[opcion: opcion])
+            return 
+        }
+
+        def actor = ActorSistema.withCriteria{
+           
+            eq("mail", params.userEmail2)
+           
+        }
+
+        if(!actor){
+             //El usuario no existe
+            flash.message = "loginAuth.sendEmailLink.noExisteEmail"
+            render(view:'lostPassword', model:[opcion: opcion])
+            return 
+        }else{
+            //Asignar idReset            
+            actor = ActorSistema.get(actor[0].id)
+            actor.createIdReset()
+            actor.save()
+
+            try{
+            mailService.sendMail {
+                    to actor.mail //Email del usuario
+                    subject "Restablecer contraseña en SOS-TRIAJE" // Asunto del mensaje   <a href="/shop/book/list">Book List</a>
+                    html    "Usted ha solicitado el envio de su contraseña. Su contraseña es: "+actor.password
+                    flash.message = "loginAuth.sendEmailPassword.mensaje"
+                }
+            }catch(Exception e){
+                flash.message = "loginAuth.sendEmailLink.error"
+                render(view:'lostPassword', model:[opcion: opcion])
+                return 
+            }
+            return
+        }    
+    }    
+    
+    def resetPassword = {   
+        if(params.id){
+            def actor = ActorSistema.existIdReset(params.id)
+            if(actor){
+                //Link correcto
+                return [result:1, idReset: params.id, actor: actor]
+            }else{
+                //Link Errado
+                flash.message = "loginAuth.resetPassword.linkErrado"
+                 
+                return [result:2]
+            }
+        }else{
+            flash.message = "loginAuth.resetPassword.linkErrado"
+            return [result:2]
+            
+        }
+    }    
+    
+    def restablecerPassword = {
+        if(params.id){
+            def result =1 
+            def actor = ActorSistema.get(params.id)
+            bindData(actor, params)
+            actor.idReset = ""
+            if(actor.save(flush: true)){
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'loginAuth.label', default: 'LoginAuth'), actor.id])}"
+                loginAuth.discard()
+                redirect(controller: "actorSistema",action: "login")
+                return 
+            }else{
+                render(view: 'resetPassword',model:[loginAuth: loginAuth,result:result])
+                return 
+            }
+        }      
+    }    
     
     def index = {
         redirect(action: "list", params: params)
