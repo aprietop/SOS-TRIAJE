@@ -16,6 +16,7 @@ public class PojoCasoResuelto {
     public PojoMedico responsable;
     public String opinion;
     public String fechaSolucion;
+    public String prueba;
     
     public PojoCasoResuelto(){
     }
