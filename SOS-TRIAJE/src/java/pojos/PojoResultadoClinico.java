@@ -10,15 +10,14 @@ import java.util.List;
  *
  * @author prod1
  */
-public class PojoCasoResuelto {
+public class PojoResultadoClinico {
     public String idCasoSOS;
-    public List<PojoArchivo> archivos;
     public PojoMedico responsable;
     public String opinion;
+    public List<PojoArchivo> archivosClinicos;
     public String fechaSolucion;
-    public String prueba;
     
-    public PojoCasoResuelto(){
+    public PojoResultadoClinico(){
     }
-            
+    
 }

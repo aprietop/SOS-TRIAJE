@@ -19,7 +19,6 @@ import persona.Paciente
 import especialidad.Especialidad
 import status.Status
 import java.text.SimpleDateFormat
-import pojos.PojoArchivoEnviado
 
 
 class ServicioWebTriajeService {
@@ -34,8 +33,6 @@ class ServicioWebTriajeService {
     public List<PojoEspecialidad> thisEspecialidades
     public PojoPaciente thisPaciente
     public String thisUuid
-    public List<PojoArchivo> archivosDelCaso
-    public PojoCasoResuelto thisCasoResuelto
 
     //SERVICIO PARA ENVIAR EL CASO A SOS-TRIAJE DESDE SOS-HME Y OPERAR SOS-TRIAJE
     boolean enviarCasoTriaje(PojoCaso caso, String uuid){
@@ -156,29 +153,62 @@ class ServicioWebTriajeService {
     }       
   
     
+//    //SERVICIO PARA ENVIAR EL CASO RESUELTO A SOS-HME
+//    PojoResultadoClinico getCasoResultadoClinico(String idCasoSOS){
+//        
+//        List<PojoArchivo> archivosCasoResuelto = new ArrayList<PojoArchivo>();
+//
+//                def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
+//                def archivos = Archivo.findAllByCaso(casoInstance)
+////                
+//                if(archivos){
+//                    archivos.each{                
+//                        PojoArchivo archivosAEnviar = new PojoArchivo()
+//                        
+//                            archivosAEnviar.setNombre(it.nombre)
+//                            archivosAEnviar.setDescripcion(it.descripcion)
+//                            archivosAEnviar.setAdjunto(it.adjunto)                     
+//
+//                            archivosCasoResuelto.add(archivosAEnviar)                
+//                    }
+//                }        
+////
+//                //Ultima opinion del caso, tiene consigo el medico quien emitio la opinion
+//                def opinionInstance = Opinion.findAllByCaso(casoInstance, [sort: "fechaOpinion", order: "desc"])
+//                    opinionInstance=opinionInstance.first()            
+//                    String Opinion = opinionInstance.cuerpoOpinion
+//
+//                SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd")
+//                String fechaSolucion = fecha.format(casoInstance.fechaSolucion)
+//
+//                    //Medico que emitio la solucion al caso   
+//                    PojoMedico medicoCaso = new PojoMedico()
+//                        medicoCaso.setNombre(opinionInstance.medico.nombre)
+//                        medicoCaso.setApellido(opinionInstance.medico.apellido)
+//
+//                        if (opinionInstance.medico.numColegioMedico){
+//                            medicoCaso.setColegioDeMedico(opinionInstance.medico.numColegioMedico) 
+//                        }   
+//                        if (opinionInstance.medico.numMinisterioSalud){
+//                            medicoCaso.setMinisterioDeSalud(opinionInstance.medico.numMinisterioSalud)
+//                        }            
+//           
+//                PojoResultadoClinico resultadoClinico = new PojoResultadoClinico()
+//                    resultadoClinico.setIdCasoSOS(idCasoSOS)
+//                    resultadoClinico.setOpinion(Opinion)
+//                    resultadoClinico.setResponsable(medicoCaso)         
+//                    resultadoClinico.setFechaSolucion(fechaSolucion)
+//                    resultadoClinico.setArchivosClinicos(archivosDelCaso)
+//            
+//        return PojoResultadoClinico
+//    }  
+    
+    
     //SERVICIO PARA ENVIAR EL CASO RESUELTO A SOS-HME
     PojoCasoResuelto getCasoResuelto(String idCasoSOS){
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
         def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
-        
-        //----------------------  agregadas
-//        List<PojoArchivo> archivosDelCaso = new ArrayList<PojoArchivo>();
-        
-//        def archivos = Archivo.findAllByCaso(casoInstance)
-//        if(archivos){
-//            archivos.each{
-//                
-//                PojoArchivoEnviado archivoEnviado = new PojoArchivoEnviado()
-////                archivoEnviado
-//                archivoEnviado.setNombre(it.nombre)
-//                archivoEnviado.setDescripcion(it.descripcion)
-//                archivoEnviado.setAdjunto(it.adjunto)                   
-//                
-//                this.archivosDelCaso.add(archivoEnviado)
-//            }
-//        }
-        //----------------------  agregadas
-        
+
         //Ultima opinion del caso, tiene consigo el medico quien emitio la opinion
         def opinionInstance = Opinion.findAllByCaso(casoInstance, [sort: "fechaOpinion", order: "desc"])
             opinionInstance=opinionInstance.first()            
@@ -204,14 +234,9 @@ class ServicioWebTriajeService {
             casoResuelto.setOpinion(Opinion)
             casoResuelto.setResponsable(medicoCaso)         
             casoResuelto.setFechaSolucion(fechaSolucion)
-//----------------------  agregadas            
-//            casoResuelto.setArchivos(archivosDelCaso)
-//----------------------  agregadas                        
-        
-
         
         return casoResuelto
-    }
+    }  
     
     
     //SERVICIO PARA VERIFICAR SI EL CASO QUE SE INTENTA ENVIAR A SOS-TRIAJE YA HA SIDO ENVIADO
@@ -228,5 +253,5 @@ class ServicioWebTriajeService {
             }            
         }
         return flag
-    }    
+    }   
 }

@@ -1,6 +1,10 @@
 package status
 
 import java.text.SimpleDateFormat
+import pojos.PojoEspecialidad
+import pojos.PojoArchivo
+import caso.Caso
+import archivo.Archivo
 
 class StatusController {
 
@@ -107,5 +111,37 @@ class StatusController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'status.label', default: 'Status'), params.id])}"
             redirect(action: "list")
         }
+    }
+    
+    def pruebaPojos = {
+        PojoEspecialidad pp = new PojoEspecialidad()
+        pp.nombre = "prueba de muestra S"
+        
+        
+        println "pp: "+pp
+        println "pp.nombre :"+pp.nombre
+        
+        
+        def casoInstance = Caso.findByIdCasoSOS(8)
+        
+        //----------------------  agregadas
+        List<PojoArchivo> archivosDelCaso = new ArrayList<PojoArchivo>();
+        
+        def archivos = Archivo.findAllByCaso(casoInstance)
+        if(archivos){
+            archivos.each{
+                
+                PojoArchivo archivoEnviado = new PojoArchivo()
+                archivoEnviado.nombre = it.nombre
+                archivoEnviado.descripcion = it.descripcion
+                archivoEnviado.adjunto = it.adjunto                   
+                
+                archivosDelCaso.add(archivoEnviado)
+                
+                println "PojoArchivo: "+archivoEnviado
+                println "archivosDelCaso: "+archivosDelCaso
+            }
+        }        
+        
     }
 }
