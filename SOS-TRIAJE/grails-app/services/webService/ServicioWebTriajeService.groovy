@@ -1,7 +1,7 @@
 package webService
 import pojos.PojoCaso
-import triaje.PojoCasoResuelto
-import triaje.PojoMedico
+import pojos.PojoCasoResuelto
+import pojos.PojoMedico
 import persona.Paciente
 import pojos.PojoArchivo
 import pojos.PojoEspecialidad
@@ -209,6 +209,23 @@ class ServicioWebTriajeService {
         //OPERACIONES PARA OBTENER EL CASO RESUELTO
         def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
 
+            List<PojoArchivo> archivosCasoResuelto = new ArrayList<PojoArchivo>();
+                def archivos = Archivo.findAllByCaso(casoInstance)
+                
+//                println "archivos: "+archivos+" clase "+archivos.class
+                
+                if(archivos){
+                    archivos.each{          
+                        PojoArchivo archivosAEnviar = new PojoArchivo()  
+                            archivosAEnviar.nombre = it.nombre
+                            archivosAEnviar.descripcion = it.descripcion
+                            archivosAEnviar.adjunto = it.adjunto
+                            archivosCasoResuelto.add(archivosAEnviar)   
+                            
+//                            println "archivosCasoResuelto "+archivosCasoResuelto+" clase "+archivosCasoResuelto.class
+                    }
+                }                
+        
         //Ultima opinion del caso, tiene consigo el medico quien emitio la opinion
         def opinionInstance = Opinion.findAllByCaso(casoInstance, [sort: "fechaOpinion", order: "desc"])
             opinionInstance=opinionInstance.first()            
@@ -219,21 +236,22 @@ class ServicioWebTriajeService {
         
             //Medico que emitio la solucion al caso   
             PojoMedico medicoCaso = new PojoMedico()
-                medicoCaso.setNombre(opinionInstance.medico.nombre)
-                medicoCaso.setApellido(opinionInstance.medico.apellido)
+                medicoCaso.nombre=opinionInstance.medico.nombre
+                medicoCaso.apellido=opinionInstance.medico.apellido
                 
                 if (opinionInstance.medico.numColegioMedico){
-                    medicoCaso.setColegioDeMedico(opinionInstance.medico.numColegioMedico) 
+                    medicoCaso.colegioDeMedico=opinionInstance.medico.numColegioMedico
                 }   
                 if (opinionInstance.medico.numMinisterioSalud){
-                    medicoCaso.setMinisterioDeSalud(opinionInstance.medico.numMinisterioSalud)
+                    medicoCaso.ministerioDeSalud=opinionInstance.medico.numMinisterioSalud
                 }
             
         PojoCasoResuelto casoResuelto = new PojoCasoResuelto()
-            casoResuelto.setIdCasoSOS(idCasoSOS)
-            casoResuelto.setOpinion(Opinion)
-            casoResuelto.setResponsable(medicoCaso)         
-            casoResuelto.setFechaSolucion(fechaSolucion)
+                    casoResuelto.idCasoSOS = idCasoSOS
+                    casoResuelto.opinion = Opinion
+                    casoResuelto.responsable = medicoCaso         
+                    casoResuelto.fechaSolucion = fechaSolucion
+                    casoResuelto.archivos = archivosCasoResuelto
         
         return casoResuelto
     }  
