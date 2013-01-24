@@ -66,6 +66,8 @@
                           <g:if test="${tipoBusqueda==1}">  
                             <g:sortableColumn property="descripcion" title="${message(code: 'descipcion.caso.label', default: 'Caso')}" />
                                     
+                            <g:sortableColumn property="status" title="${message(code: 'estado.caso.label', default: 'Estado')}" />
+                            
                             <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
 
                             <th><g:message code="especialidad.label" default="Especialidad" /></th>
@@ -80,6 +82,8 @@
                           </g:if>
                           <g:if test="${tipoBusqueda==2}">
                             <th><g:message code="descipcion.caso.label" default="Caso" /></th>
+                            
+                            <th><g:message code="estado.caso.label" default="Estado" /></th>
 
                             <th><g:message code="fecha.inicio.label" default="Fecha Inicio" /></th>
 
