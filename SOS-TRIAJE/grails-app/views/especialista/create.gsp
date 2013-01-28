@@ -175,10 +175,10 @@
                                     <g:textField  style="width:250px" name="horarioDeTrabajo" value="${especialistaInstance?.horarioDeTrabajo}" />
                                 </td>
                             </tr>
-                        
+                
                             <tr>
                                 <td valign="top">
-                                    <label for="especialidad1"><g:message code="especialidad.label" default="Especialidad 1" /></label>
+                                    <label for="especialidad1"><g:message code="especialidad1.label" default="Especialidad 1" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
                                     <g:select  style="width:250px" name="especialidad" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
@@ -186,6 +186,16 @@
                                 </td>
                             </tr>
                             
+                            <tr>
+                                <td valign="top">
+                                    <label for="especialidad2"><g:message code="especialidad2.label" default="Especialidad 2" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: especialistaInstance, field: 'especialidad', 'errors')}">
+                                    <g:select  style="width:250px" name="especialidad2" noSelection="['':'Seleccione']" from="${especialidad.Especialidad.list()}" optionKey="id" optionValue="nombre" 
+                                    value="${especialistaInstance?.especialidades?.id}"/>
+                                </td>
+                            </tr>                            
+                                    <!--
                             <tr>
                                 <td valign="top">
                                     <label for="especialidad2"><g:message code="especialidad.label" default="Especialidad 2" /></label>
@@ -218,7 +228,7 @@
                                     value="${especialistaInstance?.especialidades?.id}"/>
                                 </td>
                             </tr>                            
-                          </g:else>
+                          </g:else> -->
                         </tbody>
                     </table>              
               <p>&nbsp;</p>

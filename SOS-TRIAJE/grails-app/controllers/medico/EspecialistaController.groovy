@@ -57,10 +57,11 @@ class EspecialistaController {
         especialistaInstance.addToEspecialidades(especialidadInstance2)            
         }
 
+        /*
         if(params.especialidad3){
         def especialidadInstance3 = Especialidad.get(params.especialidad3)
         especialistaInstance.addToEspecialidades(especialidadInstance3)            
-        }
+        }*/
         
         if (especialistaInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'especialista.label', default: 'Especialista'), especialistaInstance.id])}"
