@@ -6,6 +6,8 @@ import persona.Paciente
 import pojos.PojoArchivo
 import pojos.PojoEspecialidad
 import pojos.PojoPaciente
+import pojos.PojoSeguimientoCaso
+import pojos.PojoOpinion
 
 import java.util.List
 
@@ -138,6 +140,25 @@ class ServicioWebTriajeService {
         return IdCasosCerrados
     }
     
+    //SERVICIO PARA OBTENER LA LISTA DE TODOS LOS CASOS ENVIADOS POR EL CENTRO
+    List<String> getIdCasosEnviados(String uuid){
+        List<String> IdCasosEnviados = new ArrayList<String>();
+           
+        def centroInstance = CentroSOS.findByUuid(uuid)
+
+        if(centroInstance){
+            def casos = Caso.findAllByCentro(centroInstance)
+            if (casos){
+                casos.each{
+                        if (it.opiniones){
+                            IdCasosEnviados.add(it.idCasoSOS)
+                        }   
+                }   
+            }
+        }
+        return IdCasosEnviados
+    }    
+    
     
     //SERVICIO PARA MOSTRAR EN SOS-HME LAS ESPECIALIDADES SEGUN ESPECIALISTAS DISPONIBLES EN SOS-TRIAJE
     List<String> getEspecialidades(String uuid){
@@ -221,4 +242,57 @@ class ServicioWebTriajeService {
         }
         return flag
     }   
+    
+    //SERVICIO PARA MOSTRAR EL SEGUIMIENTO DEL CASO EN SOS-HME
+    PojoSeguimientoCaso getSeguimientoDelCaso(String idCasoSOS){
+   
+        List<PojoArchivo> archivosCaso = new ArrayList<PojoArchivo>(); 
+        List<PojoOpinion> opinionesDelCaso = new ArrayList<PojoOpinion>();  
+                
+        def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
+            List<PojoArchivo> archivosCasoResuelto = new ArrayList<PojoArchivo>();
+                
+                def archivos = Archivo.findAllByCaso(casoInstance)
+                if(archivos){
+                    archivos.each{          
+                        PojoArchivo archivosAEnviar = new PojoArchivo()  
+                            archivosAEnviar.nombre = it.nombre
+                            archivosAEnviar.descripcion = it.descripcion
+                            archivosAEnviar.adjunto = it.adjunto
+                            archivosCasoResuelto.add(archivosAEnviar)   
+                      }
+                }                
+                def opiniones = Opinion.findAllByCaso(casoInstance, [sort: "fechaOpinion", order: "desc"])
+                if (opiniones){
+                    opiniones.each{                                        
+                        PojoOpinion opinionesAEnviar = new PojoOpinion()
+                            opinionesAEnviar.cuerpoOpinion = it.cuerpoOpinion
+                            SimpleDateFormat fecha = new SimpleDateFormat("dd-MM-yyyy HH:mm a")
+                            String fechaDeOpinion = fecha.format(it.fechaOpinion)                            
+                            opinionesAEnviar.fechaOpinion = fechaDeOpinion
+                
+                        PojoMedico medicoCaso = new PojoMedico()
+                            medicoCaso.nombre=it.medico.nombre
+                            medicoCaso.apellido=it.medico.apellido
+
+                            if (it.medico.numColegioMedico){
+                                medicoCaso.colegioDeMedico=it.medico.numColegioMedico
+                            }   
+                            if (it.medico.numMinisterioSalud){
+                                medicoCaso.ministerioDeSalud=it.medico.numMinisterioSalud
+                            }           
+                            
+                            opinionesAEnviar.medicoOpinion =  medicoCaso
+                            opinionesDelCaso.add(opinionesAEnviar)
+                    }
+                }            
+    
+                        PojoSeguimientoCaso casoSeguimiento = new PojoSeguimientoCaso()
+                            casoSeguimiento.idCasoSOS = idCasoSOS
+                            casoSeguimiento.archivos = archivosCasoResuelto
+                            casoSeguimiento.opiniones = opinionesDelCaso
+        
+        return casoSeguimiento
+    }  
+    
 }

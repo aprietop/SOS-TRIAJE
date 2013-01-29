@@ -19,7 +19,7 @@
 </div>
 </div>
 <div id="cabColD">
-<div id="infoSec">14-12-2011 06:59 PM &nbsp; | &nbsp; Cambiar idioma <a href="#"><img src="${resource(dir:'images',file:'ico_ingles.jpg')}" alt="Inglés" width="25" height="34" hspace="2" border="0" align="absmiddle" /></a> <a href="#"><img src="${resource(dir:'images',file:'ico_port.jpg')}" alt="Portugués" width="25" height="34" hspace="2" border="0" align="absmiddle" /></a></div>
+<div id="infoSec"><g:formatDate format="dd-MM-yyyy HH:mm a" date="${new Date()}"/>&nbsp;<div><br/></div></div>
 <div id="header"><div id="loginHeader"><g:loginControl/></div></div>
 </div>
 </div>
@@ -44,12 +44,12 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="descripcion.label" default="Descripcion" /></td>
                             <!--<td valign="top" class="value">${fieldValue(bean: casoInstance, field: "descripcion")}</td>-->
-                            <td valign="top"><g:encodeAs codec="NL2BR">${casoInstance.descripcion}</g:encodeAs></td>
+                            <td valign="top" class="pJustifica"><g:encodeAs codec="NL2BR">${casoInstance.descripcion}</g:encodeAs></td>
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="fecha.inicio.label" default="Fecha Inicio" /></td>
-                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance.fechaInicio}"/></td>
+                            <td><g:formatDate format="dd-MM-yyyy HH:mm a" date="${casoInstance.fechaInicio}"/></td>
                         </tr>
                     
                         <tr class="prop">
@@ -59,7 +59,7 @@
 
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="fecha.solucion.label" default="Fecha Solucion" /></td>
-                            <td><g:formatDate format="dd-MM-yyyy" date="${casoInstance?.fechaSolucion}"/></td>
+                            <td><g:formatDate format="dd-MM-yyyy HH:mm a" date="${casoInstance?.fechaSolucion}"/></td>
                         </tr>
                         
                         <tr class="prop">

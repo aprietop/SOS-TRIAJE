@@ -57,9 +57,8 @@
                     <tbody>
                           <tr class="prop">
                               <td valign="top" class="name"><g:message code="descripcion.label" default="Descripcion" /></td>
-                              <td valign="top" class="value">${fieldValue(bean: casoInstance, field: "descripcion")}</td>
-                          </tr>
-                                         
+                              <td valign="top" class="value"><g:encodeAs codec="NL2BR">${fieldValue(bean: casoInstance, field: "descripcion")}</g:encodeAs></td>
+                                                                   
                           <tr class="prop">
                             <td valign="top" class="name">
                               <g:message code="especialidades.label" default="Especialidades" />

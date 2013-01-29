@@ -18,7 +18,7 @@
           </div>
         </div>
         <div id="cabColD">
-          <div id="infoSec">14-12-2011 06:59 PM &nbsp; | &nbsp; Cambiar idioma <a href="#"><img src="${resource(dir:'images',file:'ico_ingles.jpg')}" alt="Inglés" width="25" height="34" hspace="2" border="0" align="absmiddle" /></a> <a href="#"><img src="${resource(dir:'images',file:'ico_port.jpg')}" alt="Portugués" width="25" height="34" hspace="2" border="0" align="absmiddle" /></a></div>
+          <div id="infoSec"><g:formatDate format="dd-MM-yyyy HH:mm a" date="${new Date()}"/>&nbsp;<div><br/></div></div>
           <div id="header"><div id="loginHeader"><g:loginControl/></div></div>
         </div>
       </div>
@@ -105,11 +105,11 @@
           <g:each in="${CasoInstanceList}" status="i" var="CasoInstance">
               <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                 
-                  <td style="width:360px;" class="pJustifica">${CasoInstance.descripcion}</td>
+                  <td style="width:360px;" class="pJustifica"><g:encodeAs codec="NL2BR">${CasoInstance.descripcion}</g:encodeAs></td>
                   
                   <td style="width:160px;">${CasoInstance.status.nombre}</td>
                   
-                  <td style="width:160px;"><g:formatDate format="dd-MM-yyyy" date="${CasoInstance.fechaInicio}"/></td>
+                  <td style="width:160px;"><g:formatDate format="dd-MM-yyyy HH:mm a" date="${CasoInstance.fechaInicio}"/></td>
                   
                   <td style="width:160px;">
                       <g:each in="${CasoInstance.especialidades}" var="e">

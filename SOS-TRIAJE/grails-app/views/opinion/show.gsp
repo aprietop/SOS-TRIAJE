@@ -50,9 +50,8 @@
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="opinion.caso.label" default="Caso" /></td>
-                            <td valign="top" class="value">${opinionInstance?.caso?.descripcion?.encodeAsHTML()}</td>
-                        </tr>
-
+                            <td valign="top"  class="pJustifica"><g:encodeAs codec="NL2BR">${opinionInstance?.caso?.descripcion?.encodeAsHTML()}</g:encodeAs></td>
+                        
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="opinion.medico.label" default="Medico" /></td>
                             <td valign="top" class="value">${opinionInstance?.medico?.nombre?.encodeAsHTML()} ${opinionInstance?.medico?.apellido?.encodeAsHTML()}</td>
@@ -60,12 +59,12 @@
                         
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="opinion.fechaOpinion.label" default="Fecha Opinion" /></td>
-                            <td valign="top" class="value"><g:formatDate date="${opinionInstance?.fechaOpinion}" /></td>
+                            <td valign="top" class="value"><g:formatDate format="dd-MM-yyyy HH:mm a" date="${opinionInstance?.fechaOpinion}" /></td>
                         </tr>
 
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="opinion.cuerpoOpinion.label" default="Cuerpo Opinion" /></td>
-                            <td valign="top" class="value">${fieldValue(bean: opinionInstance, field: "cuerpoOpinion")}</td>
+                            <td valign="top" class="name" style="width:200px;"><g:message code="opinion.cuerpoOpinion.label" default="Cuerpo Opinion" /></td>
+                            <td valign="top"  class="pJustifica">${fieldValue(bean: opinionInstance, field: "cuerpoOpinion")}</td>
                         </tr>                        
                     </tbody>
                 </table>
