@@ -139,7 +139,7 @@ environments {
         service.soshme.url.triaje = "${service.soshme.serverURL}/sos/services/sosTriaje"
     }
 }
-
+/*
 cxf {
     installDir = "C:/sos/apps/apache-cxf-2.4.4" //only used for wsdl2java script target
     client {
@@ -157,4 +157,4 @@ cxf {
         }
          
     }
-}
+}*/
