@@ -8,12 +8,14 @@ import pojos.PojoEspecialidad
 import pojos.PojoPaciente
 import pojos.PojoSeguimientoCaso
 import pojos.PojoOpinion
+import pojos.PojoObservacion
 
 import java.util.List
 
 import archivo.Archivo
 import caso.Caso
 import opinion.Opinion
+import caso.HistorialCaso
 import centro.CentroSOS
 import especialidad.Especialidad
 import persona.Persona
@@ -21,6 +23,7 @@ import persona.Paciente
 import especialidad.Especialidad
 import status.Status
 import java.text.SimpleDateFormat
+import observacion.Observacion
 
 
 class ServicioWebTriajeService {
@@ -104,7 +107,7 @@ class ServicioWebTriajeService {
                     }
                 }
                 
-                def casoInstance = Caso.findByIdCasoSOS(thisCaso.idCasoSOS)
+                def casoInstance = Caso.findByIdCasoSOSAndCentro(thisCaso.idCasoSOS, centroInstance)
                 if (casoInstance){
                     println "Caso ya existente"
                 }else{
@@ -234,7 +237,7 @@ class ServicioWebTriajeService {
         def centroInstance = CentroSOS.findByUuid(uuid)
         
         if(centroInstance){
-            def casoInstance = Caso.findByIdCasoSOS(idCasoSOS)
+            def casoInstance = Caso.findByIdCasoSOSAndCentro(idCasoSOS, centroInstance)
             
             if (casoInstance){
                 flag = true
@@ -294,5 +297,50 @@ class ServicioWebTriajeService {
         
         return casoSeguimiento
     }  
+    
+    //SERVICIO PARA ENVIAR LA OBSERVACION DEL CASO A SOS-TRIAJE DESDE SOS-HME
+    boolean enviarObservacionTriaje(PojoObservacion observacion, String uuid){
+    boolean flag = false
+//    println "llego hasta aqui "
+        
+    PojoObservacion thisObservacionCaso        
+    String thisIdCaso
+    String thisObservacion
+    
+        if(observacion){
+            
+            def centroInstance = CentroSOS.findByUuid(uuid)
+            if (centroInstance){                    
+                thisObservacionCaso = observacion
+                thisIdCaso = thisObservacionCaso.idCasoObservacion
+                thisObservacion = thisObservacionCaso.observacion            
+
+                def observacionCaso = new Observacion()
+                    observacionCaso.idCasoObservacion = thisObservacionCaso.idCasoObservacion
+                    observacionCaso.observacion = thisObservacionCaso.observacion
+                    observacionCaso.save()
+
+                def statusN = Status.get(2)  // Asignado
+                def casoDueñoDeLaObservacion = Caso.findByIdCasoSOSAndCentro(thisIdCaso, centroInstance)
+                    casoDueñoDeLaObservacion.descripcion = casoDueñoDeLaObservacion.descripcion+"\n"+"Observacion: "+"\n"+thisObservacion+"\n"+"\n" 
+                    casoDueñoDeLaObservacion.status = statusN  
+                    
+                //Ultima opinion del caso, tiene consigo el medico quien emitio la opinion
+                def opinionInstance = Opinion.findAllByCaso(casoDueñoDeLaObservacion, [sort: "fechaOpinion", order: "desc"])
+                    opinionInstance=opinionInstance.first()                           
+               
+                Date date = new Date()
+                def asignacion = new HistorialCaso()
+                    asignacion.fecha = date
+                    asignacion.medico = opinionInstance.medico
+                    asignacion.estadoCaso = casoDueñoDeLaObservacion.status.nombre
+                    asignacion.caso = casoDueñoDeLaObservacion
+                    asignacion.save()         
+                
+                flag = true
+            }
+        }
+        
+    }
     
 }

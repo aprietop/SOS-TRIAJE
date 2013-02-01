@@ -96,7 +96,7 @@
                                     <g:message code="cuerpoOpinion.label" default="Cuerpo Resultado" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: opinionInstance, field: 'cuerpoOpinion', 'errors')}">
-                                    <g:textArea style="width: 650px; height: 550px;" name="cuerpoOpinion" value="${opinionInstance?.cuerpoOpinion}"/><span class="obligatorio">&nbsp;*</span>
+                                    <g:textArea style="width: 550px; height: 550px;" name="cuerpoOpinion" value="${opinionInstance?.cuerpoOpinion}"/><span class="obligatorio">&nbsp;*</span>
                                 </td>
                             </tr>  
                     </tbody>
@@ -113,12 +113,13 @@
     <table> 
 <g:form name="importUser" controller="opinion" action="importarArchivos" method="post" enctype="multipart/form-data">  
   <div class="fileinputs">
-	<input type="file" class="file" id="fileName" name="fileName"/>
+	<input type="file" class="file" id="fileName" name="fileName" style="width:300px;"/>
         <input type="hidden" value="${fieldValue(bean: casoInstance, field: "id")}" name="idCaso"/>    
 
 	<div class="fakefile">
-          <input class="tamanio"/> 
-                <img src="${resource(dir:'images',file:'icono-buscar.png')}"/>
+         
+                <img src="${resource(dir:'images',file:'busqueda.PNG')}"/>
+                
 	</div>
         <g:each in="${nomArchivo}" var="archivo">
             <p>${archivo}</p>

@@ -167,8 +167,8 @@ class OpinionController {
                 nombresDeArchivos.add(it.key)
             }
         }
-        println "archivos a guardar: "+mapArchivoPorCasos+" clase: "+mapArchivoPorCasos.class
-        println "archivos a guardados: "+nombresDeArchivos+" clase: "+nombresDeArchivos.class
+//        println "archivos a guardar: "+mapArchivoPorCasos+" clase: "+mapArchivoPorCasos.class
+//        println "archivos a guardados: "+nombresDeArchivos+" clase: "+nombresDeArchivos.class
             def webRootDir = servletContext.getRealPath("/")  
             
             int i=0;
@@ -177,7 +177,7 @@ class OpinionController {
                 File txt = new File(webRootDir+"/cargarArchivosSosTriaje/"+nombresDeArchivos.get(i)) 
             
                 def archivoInstance = new Archivo()
-                println "clase nombre: "+nombresDeArchivos.get(i).class
+//                println "clase nombre: "+nombresDeArchivos.get(i).class
                 archivoInstance.nombre = nombresDeArchivos.get(i)
                 archivoInstance.descripcion = "Archivo del caso: "+casoInstance.idCasoSOS+" , paciente: "+casoInstance.paciente.nombre+" "+casoInstance.paciente.apellido
                 archivoInstance.adjunto = txt.getBytes()                      
@@ -277,7 +277,7 @@ class OpinionController {
             
         }else{
         if (params.idCaso){
-            println "params.idCaso "+params.idCaso+" xlase "+params.idCaso.class
+//            println "params.idCaso "+params.idCaso+" xlase "+params.idCaso.class
             def casoInstance = Caso.get(params.idCaso)
                 flash.message = 'Por favor cargue un archivo e intente nuevamente.'
                 render (view:'createSolucion', model:[casoInstance:casoInstance])

@@ -118,8 +118,8 @@ class StatusController {
         pp.nombre = "prueba de muestra S"
         
         
-        println "pp: "+pp
-        println "pp.nombre :"+pp.nombre
+//        println "pp: "+pp
+//        println "pp.nombre :"+pp.nombre
         
         
         def casoInstance = Caso.findByIdCasoSOS(8)
@@ -138,8 +138,8 @@ class StatusController {
                 
                 archivosDelCaso.add(archivoEnviado)
                 
-                println "PojoArchivo: "+archivoEnviado
-                println "archivosDelCaso: "+archivosDelCaso
+//                println "PojoArchivo: "+archivoEnviado
+//                println "archivosDelCaso: "+archivosDelCaso
             }
         }        
         

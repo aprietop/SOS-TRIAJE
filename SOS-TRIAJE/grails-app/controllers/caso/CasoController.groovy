@@ -428,24 +428,14 @@ class CasoController {
                                 order(campo, orden)  
                         }
                     }                
-//                maxResults(10)                
+             
             }            
             
-                      
-//            casosNoCerrados.each {
-//                casoInstanceList.add(it) 
-//            }
-//            
-////            historialInstance.each{            
-////                if ((it.estadoCaso==status3.nombre)&&(it.caso.status.nombre==status3.nombre)){
-////
-////                            casoInstanceList.add(Caso.get(it.caso.id))  
-////                    }               
-////                }
-//
-//            Set<String> o = new LinkedHashSet<String>(casoInstanceList);
-//            casoInstanceList.clear();
-//            casoInstanceList.addAll(o);  
+
+
+            Set<String> o = new LinkedHashSet<String>(casosNoResueltos);
+            casosNoResueltos.clear();
+            casosNoResueltos.addAll(o);  
 //
             render(view: "resolverCaso", model: [casoInstanceList: casosNoResueltos, casoInstanceTotal: casosNoResueltos.count()])             
         }   
@@ -482,15 +472,21 @@ class CasoController {
             //      OPERADOR ELVIS - OPERADOR TERNARIO ACORTADO
             def campo=params.sort?:"fechaInicio"
             def orden=params.order?:"asc"
-        
-            def historialInstanceTodos = HistorialCaso.getAll()
-
             def status1 = Status.get(1)         //En espera
             def status2 = Status.get(2)         //Asignado
             def status10 = Status.get(10)       //Rechazado 1er nivel
-
+        
             List casoInstanceListTriaje = []
             
+            def historialInstanceTodos = HistorialCaso.getAll()
+            def historialInstanceMios = HistorialCaso.findAllByMedico(actorInstance)
+            
+                historialInstanceMios.each{
+                    if((it.estadoCaso==status2.nombre)&&(it.caso.status.nombre==status2.nombre)){
+                        casoInstanceListTriaje.add(Caso.get(it.caso.id))
+                    }            
+                }
+             
             def casoInstance = Caso.findAllByStatus(status1, [sort:campo, order:orden])
             casoInstance.each{
                 casoInstanceListTriaje.add(it)
@@ -549,11 +545,12 @@ class CasoController {
         
         if(session?.ActorSistema?.rol == "Triaje" ){ 
             def status1 = Status.get(1)     //En espera
+            def status2 = Status.get(2)     //Asignado
             def status3 = Status.get(3)     //En proceso 1er nivel
             def status10 = Status.get(10)       //Rechazado 1er nivel
             def status11 = Status.get(11)       //Rechazado 2do nivel
             
-            if ((casoInstance.status==status1)||(casoInstance.status==status11)||(casoInstance.status==status10)){
+            if ((casoInstance.status==status1)||(casoInstance.status==status11)||(casoInstance.status==status10)||(casoInstance.status==status2)){
               casoInstance.status = status3   
             } 
             

@@ -154,7 +154,7 @@ class ArchivoController {
         
        response.setContentType(new MimetypesFileTypeMap().getContentType(f).toString())
        response.setContentLength(f.getBytes().size())
-       println "tamaño forma1: "+f.getBytes().size()
+//       println "tamaño forma1: "+f.getBytes().size()
        OutputStream out = response.getOutputStream()
        out.write(f.getBytes())
        out.close()        

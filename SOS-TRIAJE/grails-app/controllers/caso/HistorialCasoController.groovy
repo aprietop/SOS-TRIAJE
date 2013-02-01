@@ -73,9 +73,9 @@ class HistorialCasoController {
         def casoInstance = Caso.get(params.id)        
         def medicoInstance = Medico.get(params.medico)
             
-        def statusN = Status.get(2)
+        def statusN = Status.get(2)  // Asignado
 
-        casoInstance.status = statusN
+        casoInstance.status = statusN  
         
         def asignacion = new HistorialCaso()
         asignacion.fecha = date
