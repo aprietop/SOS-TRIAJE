@@ -79,9 +79,9 @@
                             
                             <g:sortableColumn property="medico" title="${message(code: 'medico.nombre.label', default: 'Medico')}" />
                             
-                            <g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.nombre.label', default: 'Paciente')}" />
+                            <g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.label', default: 'Paciente')}" />
                             
-                            <g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
+                            <!--<g:sortableColumn property="caso.paciente" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />-->
                           </g:if>
                           <g:if test="${tipoBusqueda==2}"> 
                             <th><g:message code="id.label" default="Id" /></th>
@@ -94,9 +94,9 @@
                                                         
                             <th><g:message code="medico.nombre.label" default="Medico" /></th>
                             
-                            <th><g:message code="paciente.nombre.label" default="Paciente" /></th>
+                            <th><g:message code="paciente.label" default="Paciente" /></th>
                             
-                            <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                            <!--<th><g:message code="paciente.ci.label" default="CI Paciente" /></th>-->
                           </g:if>                    
                         </tr>
                     </thead>
@@ -116,11 +116,15 @@
                                 ${historialCasoInstance.medico.apellido}
                             </td>
                             
-                            <td style="width:160px;">${historialCasoInstance.caso.paciente.nombre}
-                                ${historialCasoInstance.caso.paciente.apellido}
+                            <td style="width:160px;">
+                              <g:link controller="paciente" action="show" id="${historialCasoInstance.caso.paciente.id}">
+                                ${historialCasoInstance.caso.paciente.nombre}
+                                ${historialCasoInstance.caso.paciente.apellido} <br/>
+                                C.I. ${historialCasoInstance.caso.paciente.cedula}
+                              </g:link>
                             </td>                        
                             
-                            <td style="width:160px;">${historialCasoInstance.caso.paciente.cedula}</td>
+                            <!--<td style="width:160px;">${historialCasoInstance.caso.paciente.cedula}</td>-->
                         </tr>
                     </g:each>
                     </tbody>

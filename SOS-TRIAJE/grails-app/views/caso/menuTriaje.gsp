@@ -80,9 +80,9 @@
 
                             <th><g:message code="medico.nombre.label" default="Nombre Médico" /></th>
                             
-                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
+                            <th><g:message code="paciente.label" default="Paciente" /></th>
                              
-                            <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                            <!--<th><g:message code="paciente.ci.label" default="CI Paciente" /></th>-->
                             
                             <th><g:message code="archivos.label" default="Archivos" /></th>
                     
@@ -101,9 +101,9 @@
                             
                             <th><g:message code="medico.nombre.label" default="Nombre Médico" /></th>
                             
-                            <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
+                            <th><g:message code="paciente.label" default="Paciente" /></th>
                              
-                            <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                            <!--<th><g:message code="paciente.ci.label" default="CI Paciente" /></th>-->
                             
                             <th><g:message code="archivos.label" default="Archivos" /></th>
                     
@@ -132,11 +132,15 @@
                                 ${medicoList[i]?.apellido}
                             </td>                             
                         
-                            <td style="width:8px;">${casoInstance.paciente.nombre}
-                                ${casoInstance.paciente.apellido}
+                            <td style="width:90px;">
+                              <g:link controller="paciente" action="show" id="${casoInstance.paciente.id}">
+                                ${casoInstance.paciente.nombre}
+                                ${casoInstance.paciente.apellido} <br/>
+                                C.I. ${casoInstance.paciente.cedula}
+                              </g:link>
                             </td>                        
                             
-                            <td style="width:60px;">${casoInstance.paciente.cedula}</td>
+                           <!-- <td style="width:60px;">${casoInstance.paciente.cedula}</td>-->
                             
                             <td style="width:120px;">
                                 <g:each in="${casoInstance.archivos}" var="archivos">                                  

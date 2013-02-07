@@ -58,9 +58,9 @@
 
                             <g:sortableColumn property="fechaInicio" title="${message(code: 'fecha.inicio.label', default: 'Fecha inicio')}" />
 
-                            <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
+                            <g:sortableColumn property="nombre" title="${message(code: 'paciente.label', default: 'Paciente')}" />
 
-                            <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
+                           <!-- <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />-->
 
                             <th><g:message code="opiniones.label" default="Opiniones" /></th>
                         </tr>
@@ -77,11 +77,15 @@
                                                         
                             <td style="width:85px;"><g:formatDate format="dd-MM-yyyy HH:mm a" date="${casoInstance.fechaInicio}"/></td>
                             
-                            <td style="width:100px;">${casoInstance.paciente.nombre}
-                                ${casoInstance.paciente.apellido}
+                            <td style="width:100px;">
+                              <g:link controller="paciente" action="show" id="${casoInstance.paciente.id}">
+                                ${casoInstance.paciente.nombre}
+                                ${casoInstance.paciente.apellido}<br/>
+                                C.I. ${casoInstance.paciente.cedula}
+                                </g:link>
                             </td>                        
                             
-                            <td style="width:95px;">${casoInstance.paciente.cedula}</td>
+                            <!--<td style="width:95px;">${casoInstance.paciente.cedula}</td>-->
                             
                             <td style="width:200px;">
                                 <g:each in="${casoInstance.opiniones}" var="o">

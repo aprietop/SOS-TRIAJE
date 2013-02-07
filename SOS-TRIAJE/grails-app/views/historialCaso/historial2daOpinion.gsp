@@ -105,7 +105,8 @@
             <div >
                     <g:hiddenField name="id" value="${casoInstance?.id}" />
                     <g:actionSubmit class="boton_submit5" action="saveSegundaOpinion" value="${message(code: 'button.asignar.label', default: 'Asignar')}" />
-             </div>
+                    <g:link class="boton1" controller="caso" action="listaDeCasosT"><g:message code="button.volver.label" default="Volover" /></g:link>           
+            </div>
             </g:form>
         </div>
 </div>        

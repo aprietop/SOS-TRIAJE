@@ -36,6 +36,7 @@
   
 <table>
 <tr>
+  <!--
 <td>
 <div id="formLogin">  
             <h2><g:message code="send.link.reset.password"/></h2>
@@ -60,7 +61,8 @@
             <input type="submit" name="doit" id="doit" value="Enviar" class="buttonlogin"/>
             </div>
             </g:form>
-</div>    
+</div>
+</td>-->
 <td> 
 
 <div id="formLogin">  

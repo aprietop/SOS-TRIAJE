@@ -73,9 +73,9 @@
                   
                   <th><g:message code="especialidad.label" default="Especialidad" /></th>
                   
-                  <g:sortableColumn property="nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre Paciente')}" />
+                  <g:sortableColumn property="nombre" title="${message(code: 'paciente.label', default: 'Paciente')}" />
                   
-                  <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />
+                <!--  <g:sortableColumn property="cedula" title="${message(code: 'paciente.ci.label', default: 'CI Paciente')}" />-->
                   
                   <th><g:message code="archivos.label" default="Archivos" /></th>
                   
@@ -90,9 +90,9 @@
 
                   <th><g:message code="especialidad.label" default="Especialidad" /></th>
 
-                  <th><g:message code="paciente.nombre.label" default="Nombre Paciente" /></th>
+                  <th><g:message code="paciente.label" default="Paciente" /></th>
 
-                  <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                  <!--<th><g:message code="paciente.ci.label" default="CI Paciente" /></th>-->
                   
                   <th><g:message code="archivos.label" default="Archivos" /></th>
 
@@ -117,10 +117,15 @@
                       </g:each>                            
                   </td>
           
-                  <td style="width:160px;">${CasoInstance.paciente.nombre}
-                      ${CasoInstance.paciente.apellido}</td>
+                  <td style="width:160px;">
+                    <g:link controller="paciente" action="show" id="${CasoInstance.paciente.id}">
+                      ${CasoInstance.paciente.nombre}
+                      ${CasoInstance.paciente.apellido}<br/>
+                      C.I. ${CasoInstance.paciente.cedula}  
+                    </g:link>
+                  </td>
                   
-                  <td style="width:160px;">${CasoInstance.paciente.cedula}</td>
+                  <!--<td style="width:160px;">${CasoInstance.paciente.cedula}</td>-->
                   
                   <td style="width:120px;">
                       <g:each in="${CasoInstance?.archivos}" var="archivos">                                  

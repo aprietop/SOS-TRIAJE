@@ -86,9 +86,9 @@
                   
                   <g:sortableColumn property="caso.fechaSolucion" title="${message(code: 'fecha.solucion.label', default: 'Fecha Solución')}" />
                   
-                  <g:sortableColumn property="caso.paciente.nombre" title="${message(code: 'paciente.nombre.label', default: 'Nombre paciente')}" />
+                  <g:sortableColumn property="caso.paciente.nombre" title="${message(code: 'paciente.label', default: 'Paciente')}" />
                   
-                  <g:sortableColumn property="caso.paciente.cedula" title="${message(code: 'paciente.ci.label', default: 'CI paciente')}" />
+                  <!--<g:sortableColumn property="caso.paciente.cedula" title="${message(code: 'paciente.ci.label', default: 'CI paciente')}" />-->
                   
                   <th><g:message code="opiniones.label" default="Opiniones" /></th>
                 </g:if>
@@ -105,9 +105,9 @@
                   
                   <th><g:message code="fecha.solucion.label" default="Fecha Solucion" /></th>
                                     
-                  <th><g:message code="paciente.nombre.label" default="Paciente" /></th>
+                  <th><g:message code="paciente.label" default="Paciente" /></th>
                   
-                  <th><g:message code="paciente.ci.label" default="CI Paciente" /></th>
+                  <!--<th><g:message code="paciente.ci.label" default="CI Paciente" /></th>-->
                   
                   <th><g:message code="opiniones.label" default="Opiniones" /></th>
                 </g:if>
@@ -131,10 +131,15 @@
 
                   <td style="width:85px;"><g:formatDate format="dd-MM-yyyy HH:mm a" date="${historialCasoInstance.caso.fechaSolucion}"/></td>
                   
-                  <td style="width:75px;">${fieldValue(bean: historialCasoInstance, field: "caso.paciente.nombre")}
-                      ${fieldValue(bean: historialCasoInstance, field: "caso.paciente.apellido")}</td>
+                  <td style="width:100px;">
+                    <g:link controller="paciente" action="show" id="${historialCasoInstance.caso.paciente.id}">
+                      ${fieldValue(bean: historialCasoInstance, field: "caso.paciente.nombre")}
+                      ${fieldValue(bean: historialCasoInstance, field: "caso.paciente.apellido")}<br/>
+                      C.I. ${historialCasoInstance.caso.paciente.cedula}
+                    </g:link>
+                    </td>
                   
-                  <td style="width:75px;">${fieldValue(bean: historialCasoInstance, field: "caso.paciente.cedula")}</td>
+                  <!--<td style="width:75px;">${fieldValue(bean: historialCasoInstance, field: "caso.paciente.cedula")}</td>-->
                   
                  <td style="width:120px;">
                     <g:each in="${historialCasoInstance.caso.opiniones}" var="o">
