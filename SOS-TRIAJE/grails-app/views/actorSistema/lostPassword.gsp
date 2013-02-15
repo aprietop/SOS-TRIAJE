@@ -36,7 +36,7 @@
   
 <table>
 <tr>
-  <!--
+  
 <td>
 <div id="formLogin">  
             <h2><g:message code="send.link.reset.password"/></h2>
@@ -62,7 +62,7 @@
             </div>
             </g:form>
 </div>
-</td>-->
+</td>
 <td> 
 
 <div id="formLogin">  

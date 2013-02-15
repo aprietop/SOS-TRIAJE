@@ -90,7 +90,7 @@ class ActorSistemaController {
             actor = ActorSistema.get(actor[0].id)
             actor.createIdReset()
             actor.save()
-
+            
             def link = "http://"+InetAddress.getLocalHost().getHostAddress() + ":"+ request.getLocalPort() + createLink(controller: 'actorSistema',action:'resetPassword',id:actor.idReset)
                 
             try{
@@ -139,7 +139,7 @@ class ActorSistemaController {
             try{
             mailService.sendMail {
                     to actor.mail //Email del usuario
-                    subject "Restablecer contraseña en SOS-TRIAJE" // Asunto del mensaje   <a href="/shop/book/list">Book List</a>
+                    subject "Solicitud de envío de contraseña SOS-TRIAJE" // Asunto del mensaje   <a href="/shop/book/list">Book List</a>
                     html    "Usted ha solicitado el envio de su contraseña. Su contraseña es: "+actor.password
                     flash.message = "loginAuth.sendEmailPassword.mensaje"
                 }
@@ -161,7 +161,6 @@ class ActorSistemaController {
             }else{
                 //Link Errado
                 flash.message = "loginAuth.resetPassword.linkErrado"
-                 
                 return [result:2]
             }
         }else{
@@ -175,16 +174,30 @@ class ActorSistemaController {
         if(params.id){
             def result =1 
             def actor = ActorSistema.get(params.id)
-            bindData(actor, params)
-            actor.idReset = ""
-            if(actor.save(flush: true)){
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'loginAuth.label', default: 'LoginAuth'), actor.id])}"
-                loginAuth.discard()
-                redirect(controller: "actorSistema",action: "login")
-                return 
-            }else{
-                render(view: 'resetPassword',model:[loginAuth: loginAuth,result:result])
-                return 
+            
+            String contrasena1=params.pass
+            String contrasena2=params.pass2
+            boolean contrasenaCompare = contrasena1.equals(contrasena2)
+            
+            if (contrasenaCompare){
+                //COntraseñas iguales
+                actor.password = contrasena1
+                actor.idReset = ""
+                
+                    if(actor.save(flush: true)){      
+                        flash.message = "${message(code: 'default.updated.message', args: [message(code: 'Médico', default: 'Médico'), actor.id])}"
+                        redirect(controller: "actorSistema",action: "login")
+                        return 
+                    }else{
+                        render(view: 'resetPassword',model:[actor: actor,result:result])
+                        return 
+                    }
+
+            }else {
+                //println "NO coinciden las contrasenas por favor repetir"//COntraseñas no coinciden
+                flash.message = "loginAuth.resetPassword.no.coincide"
+                render(view: 'resetPassword',model:[actor: actor,result:result])
+                return                 
             }
         }      
     }    
