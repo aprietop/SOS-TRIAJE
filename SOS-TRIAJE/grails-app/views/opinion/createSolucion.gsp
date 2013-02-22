@@ -68,10 +68,15 @@
             
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
-            </g:if>            
+            </g:if>         
+            <g:hasErrors bean="${opinionInstance}">
+            <div class="error">
+                <g:renderErrors bean="${opinionInstance}" as="list" />
+            </div>
+            </g:hasErrors>
+            
 <input type="hidden" value="${fieldValue(bean: casoInstance, field: "id")}" name="idCaso"/>  
 <g:set var="casoInstance" value="${casoInstance}" />
-
 <div class="form1">
 <table><tr><td>          
              <g:form>                      

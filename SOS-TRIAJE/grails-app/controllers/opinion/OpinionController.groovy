@@ -191,7 +191,7 @@ class OpinionController {
             render(view: "showC", model: [casoInstance: casoInstance])
         }
         else {
-            render(view: "createSolucion", model: [opinionInstance: opinionInstance])
+            render(view: "createSolucion", model: [opinionInstance: opinionInstance, casoInstance:casoInstance])
         }
     }    
     

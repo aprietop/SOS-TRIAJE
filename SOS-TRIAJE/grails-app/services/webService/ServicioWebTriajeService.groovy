@@ -150,7 +150,7 @@ class ServicioWebTriajeService {
         def centroInstance = CentroSOS.findByUuid(uuid)
 
         if(centroInstance){
-            def casos = Caso.findAllByCentro(centroInstance)
+            def casos = Caso.findAllByCentro(centroInstance, [sort: "fechaInicio", order: "desc"])
             if (casos){
                 casos.each{
                         if (it.opiniones){
